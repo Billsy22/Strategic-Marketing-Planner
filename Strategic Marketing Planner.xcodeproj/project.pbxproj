@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
-		B3F55E4220695F8100B2B1EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4120695F8100B2B1EE /* ViewController.swift */; };
 		B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4920695F8100B2B1EE /* Assets.xcassets */; };
@@ -19,7 +18,6 @@
 /* Begin PBXFileReference section */
 		B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Strategic Marketing Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3F55E4120695F8100B2B1EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B3F55E4420695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3F55E4720695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Strategic_Marketing_Planner.xcdatamodel; sourceTree = "<group>"; };
 		B3F55E4920695F8100B2B1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,16 +56,47 @@
 		B3F55E3E20695F8100B2B1EE /* Strategic Marketing Planner */ = {
 			isa = PBXGroup;
 			children = (
-				B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */,
-				B3F55E4120695F8100B2B1EE /* ViewController.swift */,
+				B3F55E5A206964E200B2B1EE /* Resources */,
+				B3F55E59206964CD00B2B1EE /* ViewControllers */,
+				B3F55E58206964C300B2B1EE /* Views */,
+				B3F55E57206964AC00B2B1EE /* Model+CoreData */,
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
-				B3F55E4920695F8100B2B1EE /* Assets.xcassets */,
-				B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */,
-				B3F55E4E20695F8100B2B1EE /* Info.plist */,
-				B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */,
-				B3F55E5420695FAE00B2B1EE /* CoreDataStack.swift */,
 			);
 			path = "Strategic Marketing Planner";
+			sourceTree = "<group>";
+		};
+		B3F55E57206964AC00B2B1EE /* Model+CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B3F55E5420695FAE00B2B1EE /* CoreDataStack.swift */,
+				B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */,
+			);
+			path = "Model+CoreData";
+			sourceTree = "<group>";
+		};
+		B3F55E58206964C300B2B1EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3F55E59206964CD00B2B1EE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B3F55E5A206964E200B2B1EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3F55E4E20695F8100B2B1EE /* Info.plist */,
+				B3F55E4920695F8100B2B1EE /* Assets.xcassets */,
+				B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */,
+				B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,7 +188,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3F55E4220695F8100B2B1EE /* ViewController.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 				B3F55E5520695FAE00B2B1EE /* CoreDataStack.swift in Sources */,
