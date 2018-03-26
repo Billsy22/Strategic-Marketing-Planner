@@ -53,11 +53,11 @@ class ClientController {
     }
     
     //MARK: - Persistence
-    func save(){
+    private func save(){
         try? CoreDataStack.context.save()
     }
     
-    func load(){
+    private func load(){
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
