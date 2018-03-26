@@ -14,9 +14,14 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatNavigationBar()
+        searchBar.delegate = self
+        tableView.reloadData()
+    }
+    
+    func formatNavigationBar() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 29.0/255.0, green: 102.0/255.0, blue: 156.0/255.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        tableView.reloadData()
     }
     
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
