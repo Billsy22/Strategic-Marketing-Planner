@@ -6,12 +6,12 @@
 //  Copyright © 2018 Christopher Thiebaut. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 extension Client {
     
-    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String?, context: NSManagedObjectContext = CoreDataStack.context){
+    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, context: NSManagedObjectContext = CoreDataStack.context){
         self.init(context: context)
         
         self.firstName = firstName
@@ -25,6 +25,10 @@ extension Client {
         self.zip = zip
         self.contactDate = initialContact
         self.notes = notes
+        if let image = image {
+            let imageData = UIImageJPEGRepresentation(image, 1)
+            self.imageData = imageData
+        }
     }
     
 }
