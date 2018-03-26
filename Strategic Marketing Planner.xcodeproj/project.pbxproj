@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EE120696BE900D6414B /* AddClient.storyboard */; };
 		B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
 		B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		160D1EE120696BE900D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Strategic Marketing Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F55E4420695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
+				160D1EE120696BE900D6414B /* AddClient.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
+				160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
