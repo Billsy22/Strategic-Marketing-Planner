@@ -12,6 +12,8 @@
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4920695F8100B2B1EE /* Assets.xcassets */; };
 		B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */; };
+		DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9D11C620696BED00529F60 /* ClientList.storyboard */; };
+		DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B3F55E4920695F8100B2B1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3F55E4C20695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3F55E4E20695F8100B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF9D11C620696BED00529F60 /* ClientList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
+		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/Views/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
+				DF9D11C620696BED00529F60 /* ClientList.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 		B3F55E59206964CD00B2B1EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
+				DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
+				DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
