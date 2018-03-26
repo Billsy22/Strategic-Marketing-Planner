@@ -38,9 +38,6 @@ class PresentationBaseViewController: UIViewController, NavigationTableViewContr
     }
     
     func destinationSelected(_ destination: UIViewController) {
-        guard destination.parent != self else {
-            return
-        }
         addChildViewController(destination)
         for subview in mainContentView.subviews {
             subview.removeFromSuperview()
