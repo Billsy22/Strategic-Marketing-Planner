@@ -47,9 +47,9 @@ class ClientController {
     }
     
     private func addDummyData(){
-        addClient(withFirstName: "test1", lastName: "testLast", practiceName: "You Know the Drill", phone: "12345678", email: "notarealemail@uncreative.com", streetAddress: "1234 WhateverPlace", city: nil, state: nil, zip: "54321", initialContactDate: Date(), notes: nil)
-        addClient(withFirstName: "Jenny", lastName: "Gotchournumber", practiceName: "Wall", phone: "8675309", email: "noemail@foragoodtimecall.com", streetAddress: "4321 dummyDataIsDumb", city: nil, state: nil, zip: "12345", initialContactDate: Date(), notes: nil)
-        addClient(withFirstName: "test2", lastName: "testLast", practiceName: "test office", phone: "12345678", email: "notarealemail@uncreative.com", streetAddress: "1234 WhateverPlace", city: nil, state: nil, zip: "54321", initialContactDate: Date(), notes: nil)
+        addClient(withFirstName: "Mike", lastName: "Jones", practiceName: "You Know the Drill", phone: "801-691-9273", email: "notarealemail@uncreative.com", streetAddress: "1234 WhateverPlace", city: nil, state: nil, zip: "54321", initialContactDate: Date(), notes: nil)
+        addClient(withFirstName: "Taylor", lastName: "Bills", practiceName: "Wall", phone: "801-485-3948", email: "noemail@foragoodtimecall.com", streetAddress: "4321 dummyDataIsDumb", city: nil, state: nil, zip: "12345", initialContactDate: Date(), notes: nil)
+        addClient(withFirstName: "Steven", lastName: "Brown", practiceName: "test office", phone: "801-358-4071", email: "notarealemail@uncreative.com", streetAddress: "1234 WhateverPlace", city: nil, state: nil, zip: "54321", initialContactDate: Date(), notes: nil)
     }
     
     //MARK: - Persistence

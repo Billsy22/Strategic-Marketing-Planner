@@ -19,6 +19,7 @@
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9D11C620696BED00529F60 /* ClientList.storyboard */; };
 		DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
+		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,8 @@
 		B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategic_Marketing_PlannerTests.swift; sourceTree = "<group>"; };
 		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF9D11C620696BED00529F60 /* ClientList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
-		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/Views/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 			children = (
 				B3F55E7320696AA700B2B1EE /* Model Controllers */,
 				B3F55E5A206964E200B2B1EE /* Resources */,
-				B3F55E59206964CD00B2B1EE /* ViewControllers */,
+				DF9D11CB20698CD500529F60 /* ViewControllers */,
 				B3F55E58206964C300B2B1EE /* Views */,
 				B3F55E57206964AC00B2B1EE /* Model+CoreData */,
 			);
@@ -114,16 +116,9 @@
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
 				160D1EE120696BE900D6414B /* AddClient.storyboard */,
 				DF9D11C620696BED00529F60 /* ClientList.storyboard */,
+				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		B3F55E59206964CD00B2B1EE /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B3F55E5A206964E200B2B1EE /* Resources */ = {
@@ -152,6 +147,14 @@
 				B3F55E822069780900B2B1EE /* Info.plist */,
 			);
 			path = "Strategic Marketing PlannerTests";
+			sourceTree = "<group>";
+		};
+		DF9D11CB20698CD500529F60 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +282,7 @@
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
+				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
 				DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
