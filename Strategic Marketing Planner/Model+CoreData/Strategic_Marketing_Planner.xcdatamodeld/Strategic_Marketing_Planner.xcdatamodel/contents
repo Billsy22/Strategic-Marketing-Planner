@@ -5,6 +5,7 @@
         <attribute name="contactDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="notes" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" attributeType="String" syncable="YES"/>
@@ -22,7 +23,7 @@
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarketingOption" inverseName="plan" inverseEntity="MarketingOption" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="Client" positionX="-54" positionY="-9" width="128" height="240"/>
         <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="75"/>
         <element name="MarketingOption" positionX="-18" positionY="117" width="128" height="60"/>
     </elements>
