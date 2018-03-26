@@ -10,6 +10,10 @@ import UIKit
 
 class AddClientModalViewController: UIViewController {
 
+    // MARK: -  Properites
+    var client: Client?
+    
+    // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,8 @@ class AddClientModalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
 
     /*
     // MARK: - Navigation
@@ -31,5 +37,4 @@ class AddClientModalViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
