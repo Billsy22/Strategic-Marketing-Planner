@@ -12,6 +12,9 @@
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4920695F8100B2B1EE /* Assets.xcassets */; };
 		B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */; };
+		B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
+		B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */; };
+		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		B3F55E4920695F8100B2B1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3F55E4C20695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3F55E4E20695F8100B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3F55E7420696C8100B2B1EE /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
+		B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Convenience.swift"; sourceTree = "<group>"; };
+		B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */,
+				B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */,
+				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -100,6 +108,7 @@
 		B3F55E7320696AA700B2B1EE /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3F55E7420696C8100B2B1EE /* ClientController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -193,7 +202,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
+				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
+				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
