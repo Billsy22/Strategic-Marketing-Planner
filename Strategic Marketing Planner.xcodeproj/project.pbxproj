@@ -12,9 +12,23 @@
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4920695F8100B2B1EE /* Assets.xcassets */; };
 		B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */; };
+		B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
+		B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */; };
+		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
+		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9D11C620696BED00529F60 /* ClientList.storyboard */; };
 		DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3F55E832069780900B2B1EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3F55E3420695F8100B2B1EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3F55E3B20695F8100B2B1EE;
+			remoteInfo = "Strategic Marketing Planner";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Strategic Marketing Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,12 +38,25 @@
 		B3F55E4920695F8100B2B1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3F55E4C20695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3F55E4E20695F8100B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3F55E7420696C8100B2B1EE /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
+		B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Convenience.swift"; sourceTree = "<group>"; };
+		B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B3F55E7E2069780900B2B1EE /* Strategic Marketing PlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Strategic Marketing PlannerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategic_Marketing_PlannerTests.swift; sourceTree = "<group>"; };
+		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF9D11C620696BED00529F60 /* ClientList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/Views/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B3F55E3920695F8100B2B1EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3F55E7B2069780900B2B1EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E3E20695F8100B2B1EE /* Strategic Marketing Planner */,
+				B3F55E7F2069780900B2B1EE /* Strategic Marketing PlannerTests */,
 				B3F55E3D20695F8100B2B1EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */,
+				B3F55E7E2069780900B2B1EE /* Strategic Marketing PlannerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */,
+				B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */,
+				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -106,8 +137,18 @@
 		B3F55E7320696AA700B2B1EE /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3F55E7420696C8100B2B1EE /* ClientController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		B3F55E7F2069780900B2B1EE /* Strategic Marketing PlannerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */,
+				B3F55E822069780900B2B1EE /* Info.plist */,
+			);
+			path = "Strategic Marketing PlannerTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +172,24 @@
 			productReference = B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B3F55E7D2069780900B2B1EE /* Strategic Marketing PlannerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3F55E852069780900B2B1EE /* Build configuration list for PBXNativeTarget "Strategic Marketing PlannerTests" */;
+			buildPhases = (
+				B3F55E7A2069780900B2B1EE /* Sources */,
+				B3F55E7B2069780900B2B1EE /* Frameworks */,
+				B3F55E7C2069780900B2B1EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3F55E842069780900B2B1EE /* PBXTargetDependency */,
+			);
+			name = "Strategic Marketing PlannerTests";
+			productName = "Strategic Marketing PlannerTests";
+			productReference = B3F55E7E2069780900B2B1EE /* Strategic Marketing PlannerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -144,6 +203,11 @@
 					B3F55E3B20695F8100B2B1EE = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					B3F55E7D2069780900B2B1EE = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B3F55E3B20695F8100B2B1EE;
 					};
 				};
 			};
@@ -161,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				B3F55E3B20695F8100B2B1EE /* Strategic Marketing Planner */,
+				B3F55E7D2069780900B2B1EE /* Strategic Marketing PlannerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +239,13 @@
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
 				DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3F55E7C2069780900B2B1EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,13 +272,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
+				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
+				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
 				DF9D11C920696F1600529F60 /* ClientListTableViewController.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3F55E7A2069780900B2B1EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3F55E842069780900B2B1EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3F55E3B20695F8100B2B1EE /* Strategic Marketing Planner */;
+			targetProxy = B3F55E832069780900B2B1EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B3F55E4320695F8100B2B1EE /* Main.storyboard */ = {
@@ -367,6 +458,38 @@
 			};
 			name = Release;
 		};
+		B3F55E862069780900B2B1EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Strategic Marketing Planner.app/Strategic Marketing Planner";
+			};
+			name = Debug;
+		};
+		B3F55E872069780900B2B1EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Strategic Marketing Planner.app/Strategic Marketing Planner";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -384,6 +507,15 @@
 			buildConfigurations = (
 				B3F55E5220695F8100B2B1EE /* Debug */,
 				B3F55E5320695F8100B2B1EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3F55E852069780900B2B1EE /* Build configuration list for PBXNativeTarget "Strategic Marketing PlannerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3F55E862069780900B2B1EE /* Debug */,
+				B3F55E872069780900B2B1EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
