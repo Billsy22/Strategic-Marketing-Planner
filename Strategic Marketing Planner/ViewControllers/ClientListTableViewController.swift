@@ -11,9 +11,20 @@ import UIKit
 class ClientListTableViewController: UITableViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    var isSearchActive: Bool = false
-    var filteredClients:[Client] = []
+    var clients:[Client] = []
+    var sortedFirstLetters: [String]  {
+        let firstLetters = clients.map { $0.lastNameFirstLetter }
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        return uniqueFirstLetters.sorted()
+    }
+    var sections:[[Client]] {
+        let sections =  sortedFirstLetters.map { firstLetter in
+            return clients
+                .filter { $0.lastNameFirstLetter == firstLetter }
+                .sorted { $0.lastName ?? "" < $1.lastName  ?? "" }
+        }
+        return sections
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +33,13 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
         searchBar.delegate = self
         tableView.reloadData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     func updateViews() {
-        filteredClients = ClientController.shared.clients
+        clients = ClientController.shared.clients
     }
     
     func formatNavigationBar() {
@@ -33,53 +48,51 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     // MARK: UISearchbar delegate
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchActive = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        isSearchActive = false
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        isSearchActive = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        isSearchActive = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            isSearchActive = false
+            clients = ClientController.shared.clients
             tableView.reloadData()
         } else {
-            isSearchActive = true
-            print(searchBar.text)
-            tableView.reloadData()
+            guard let searchString = searchBar.text else { return }
+            updateClientSearch(searchString: searchString)
         }
     }
     
-    func updateClientSearch() {
-        
+    func updateClientSearch(searchString: String) {
+        let filteredClients = ClientController.shared.clients.filter({ $0.matches(searchString: searchString) })
+        self.clients = filteredClients
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
     
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 0
-    //    }
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sortedFirstLetters
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sortedFirstLetters[section]
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredClients.count
+        return sections[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath) as? ClientTableViewCell else { return UITableViewCell() }
-        let client = filteredClients[indexPath.row]
+        let client = sections[indexPath.section][indexPath.row]
         cell.client = client
         return cell
     }
@@ -87,7 +100,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let client = filteredClients[indexPath.row]
+            let client = sections[indexPath.section][indexPath.row]
             ClientController.shared.removeClient(client)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -99,9 +112,18 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
             let indexPath = tableView.indexPathForSelectedRow {
             let detailVC = segue.destination as? UINavigationController
             let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
-            let client = filteredClients[indexPath.row]
+            let client = clients[indexPath.row]
             addClientVC?.client = client
         }
+    }
+}
+
+extension Client {
+    var lastNameFirstLetter: String {
+        guard let lastName = lastName,
+        let firstCharacter = lastName.first else { return "" }
+        return String(firstCharacter).uppercased()
+//        return String(lastName[lastName.startIndex]).uppercased()
     }
 }
 
