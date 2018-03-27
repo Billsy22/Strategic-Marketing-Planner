@@ -29,15 +29,14 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     @IBOutlet weak var navigationBarNextButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarClientButton: UIBarButtonItem!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    
     var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.isTranslucent = false
-        navigationBar.barStyle = .default
-        navigationBar.barTintColor = UIColor.brandBlue
+        navigationController?.navigationBar.barTintColor = UIColor.brandBlue
+//        navigationBar.isTranslucent = false
+//        navigationBar.barStyle = .default
+//        navigationBar.barTintColor = UIColor.brandBlue
     }
     
     // MARK: - Configure Embedded VCs

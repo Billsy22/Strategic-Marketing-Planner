@@ -31,4 +31,8 @@ extension Client {
         }
     }
     
+    func matches(searchString: String) -> Bool {
+        return firstName?.contains(searchString) ?? false || lastName?.contains(searchString) ?? false || practiceName?.contains(searchString) ?? false
+    }
+    
 }
