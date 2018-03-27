@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol NavigationTableViewControllerDelegate: class {
+protocol PresentationBaseViewControllerNavigationPaneDelegate: class {
     func selectedDestinationAtIndex(_ index: Int)
 }
 
 class NavigationTableViewController: UITableViewController {
     
     var destinations: [String] = []
-    weak var delegate: NavigationTableViewControllerDelegate?
+    weak var delegate: PresentationBaseViewControllerNavigationPaneDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,4 +56,17 @@ class NavigationTableViewController: UITableViewController {
         cell.backgroundColor = UIColor.brandPaleBlue
     }
 
+}
+
+extension NavigationTableViewController: PresentationBaseViewControllerNavigationPane {
+    
+    func requestMoveToDestination(index: Int) {
+        if let selectedRows = tableView.indexPathsForSelectedRows {
+            for row in selectedRows {
+                tableView(tableView, didDeselectRowAt: row)
+            }
+        }
+        tableView(tableView, didSelectRowAt: IndexPath(row: index, section: 0))
+        tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
+    }
 }

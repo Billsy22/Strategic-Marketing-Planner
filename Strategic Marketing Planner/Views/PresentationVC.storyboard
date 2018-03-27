@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,11 +77,28 @@
                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="KDx-Tt-l4z"/>
+                                    <navigationItem title="Title" id="KDx-Tt-l4z">
+                                        <barButtonItem key="leftBarButtonItem" title="Previous" style="done" id="Sg4-t1-R7G">
+                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="previousButtonTapped:" destination="laq-fo-5Bm" id="IQg-Y6-5o5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Next" style="done" id="Ku2-El-QN6">
+                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="nextButtonTapped:" destination="laq-fo-5Bm" id="Ksn-EX-L70"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Client" id="POS-Wr-K7K">
+                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.2044091821" green="0.39548438790000001" blue="0.59610432390000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="bottom" secondItem="boF-tl-QG7" secondAttribute="bottom" id="E1J-Pc-n6r"/>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="trailing" secondItem="vTM-UQ-pEO" secondAttribute="trailing" id="Izg-ov-JQf"/>
@@ -101,6 +119,9 @@
                     <connections>
                         <outlet property="mainContentView" destination="vTM-UQ-pEO" id="v5D-SG-aMk"/>
                         <outlet property="navigationBar" destination="34r-St-0lx" id="oCY-qP-s6p"/>
+                        <outlet property="navigationBarClientButton" destination="POS-Wr-K7K" id="2mh-n1-Pq6"/>
+                        <outlet property="navigationBarNextButton" destination="Ku2-El-QN6" id="vVu-Ih-qpQ"/>
+                        <outlet property="navigationBarPreviousButton" destination="Sg4-t1-R7G" id="snW-ux-gna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZ0-67-MaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
