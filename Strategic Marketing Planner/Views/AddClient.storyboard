@@ -324,6 +324,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="saveOrRemoveClientButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="7bc-vL-XnI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gG-o4-ncV">
                                                         <rect key="frame" x="285" y="0.0" width="265" height="40"/>
@@ -335,6 +338,10 @@
                                                         <state key="normal" title="Start Presentation">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="startPresentationButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="j0Q-xs-D1I"/>
+                                                            <segue destination="4tT-BN-jcU" kind="show" identifier="toPresentationVC" id="g7d-Ca-gwB"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -406,6 +413,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-NH-j5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-267.1875" y="79.6875"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="JjZ-Jf-IVg">
+            <objects>
+                <viewControllerPlaceholder id="4tT-BN-jcU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mRS-gj-EeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZfF-yU-XWV">

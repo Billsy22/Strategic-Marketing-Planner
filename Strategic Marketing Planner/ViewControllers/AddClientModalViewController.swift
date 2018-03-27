@@ -67,50 +67,65 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let firstName = firstNameTextField.text,
-        let lastName = lastNameTextField.text,
-        let practiceName = practiceNameTextField.text,
-        let phone = phoneTextField.text,
-        let email = emailTextField.text,
-        let streetAddress = addressTextField.text,
-            let zip = zipCodeTextField.text,
-        let city = cityTextField.text,
-        let state = stateTextField.text,
-        let initialContactDateString = initialContactDateTextField.text,
-            let notes = notesTextView.text else { return }
-            if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
-            createEmptyTextAlert()
+        save()
+    }
+    
+    @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
+        if let client = client {
+        ClientController.shared.removeClient(client)
         } else {
-                let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
-            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
-                dismiss(animated: true, completion: {
-                    print("Client Created")
-                })
+            save()
         }
     }
     
+    @IBAction func startPresentationButtonTapped(_ sender: Any) {
+        save()
+    }
     
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "toPresentationVC" {
+            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
+            presentationVC.client = client
+        }
      }
-     */
 }
 
-// MARK: -  Extension for UIAlert Functions
+// MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
     
+    // Creating an alert when textfields are empty
     func createEmptyTextAlert() {
         let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             print("Alert Dismissed")
         })
         emptyTextAlert.addAction(okAction)
-        present(emptyTextAlert, animated: true, completion: nil)
+        self.present(emptyTextAlert, animated: true, completion: nil)
+    }
+    
+    // Save Client
+    func save() {
+        guard let firstName = self.firstNameTextField.text,
+            let lastName = self.lastNameTextField.text,
+            let practiceName = self.practiceNameTextField.text,
+            let phone = self.phoneTextField.text,
+            let email = self.emailTextField.text,
+            let streetAddress = self.addressTextField.text,
+            let zip = self.zipCodeTextField.text,
+            let city = self.cityTextField.text,
+            let state = self.stateTextField.text,
+            let initialContactDateString = self.initialContactDateTextField.text,
+            let notes = self.notesTextView.text else { return }
+        if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
+            self.createEmptyTextAlert()
+        } else {
+            let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
+            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
+            dismiss(animated: true, completion: {
+                print("Client Created")
+            })
+        }
     }
 }
 
