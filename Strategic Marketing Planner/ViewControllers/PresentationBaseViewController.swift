@@ -11,20 +11,17 @@ import UIKit
 class PresentationBaseViewController: UIViewController, NavigationTableViewControllerDelegate {
 
     @IBOutlet weak var mainContentView: UIView!
-    var destinations: [(destinationName: String, destinationViewController: UIViewController)] = []
+    lazy var destinations: [(destinationName: String, destinationViewController: UIViewController)] = setupDefaultDestinations()
+    
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        navigationBar.isTranslucent = false
+        navigationBar.barStyle = .default
+        navigationBar.barTintColor = UIColor.brandBlue
     }
     
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -51,6 +48,20 @@ class PresentationBaseViewController: UIViewController, NavigationTableViewContr
         mainContentView.addSubview(destination.view)
         destination.view.frame = mainContentView.bounds
         destination.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    private func setupDefaultDestinations() ->  [(String, UIViewController)]{
+        var defaultDestinations: [(String, UIViewController)] = []
+        let redVC = UIViewController()
+        redVC.view.backgroundColor = .red
+        defaultDestinations.append(("Red", redVC))
+        let blueVC = UIViewController()
+        blueVC.view.backgroundColor = .blue
+        defaultDestinations.append(("Blue", blueVC))
+        let greenVC = UIViewController()
+        greenVC.view.backgroundColor = .green
+        defaultDestinations.append(("Green", greenVC))
+        return defaultDestinations
     }
 
 }
