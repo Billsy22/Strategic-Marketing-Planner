@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EE120696BE900D6414B /* AddClient.storyboard */; };
+		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
 		B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		160D1EE120696BE900D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
+		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationBaseViewController.swift; sourceTree = "<group>"; };
 		B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Strategic Marketing Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 				160D1EE120696BE900D6414B /* AddClient.storyboard */,
 				DF9D11C620696BED00529F60 /* ClientList.storyboard */,
 				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
+				B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
+				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
 				160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */,
 				DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */,
 			);
