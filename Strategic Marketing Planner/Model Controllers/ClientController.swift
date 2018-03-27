@@ -59,10 +59,12 @@ class ClientController {
     
     private func load(){
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
         let sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
-            clients = try CoreDataStack.context.fetch(fetchRequest)
+            let results = try CoreDataStack.context.fetch(fetchRequest)
+            self.clients = results
         } catch let error {
             NSLog("Error fetching clients from file: \(error.localizedDescription)")
         }
