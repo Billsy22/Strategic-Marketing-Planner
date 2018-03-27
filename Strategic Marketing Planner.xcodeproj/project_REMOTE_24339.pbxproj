@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160D1EE42069A30D00D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
-		160D1EF12069BDD400D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
-		160D1EF32069BDDD00D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EF22069BDDD00D6414B /* AddClient.storyboard */; };
 		160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EE120696BE900D6414B /* AddClient.storyboard */; };
 		160D1EE42069A30D00D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
@@ -30,6 +27,7 @@
 		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
+		DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9D11C620696BED00529F60 /* ClientList.storyboard */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddClientModalViewController.swift; path = "Strategic Marketing Planner/ViewControllers/AddClientModalViewController.swift"; sourceTree = SOURCE_ROOT; };
-		160D1EF22069BDDD00D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		160D1EE120696BE900D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddClientModalViewController.swift; path = "Strategic Marketing Planner/Views/AddClientModalViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
@@ -89,12 +85,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3998E1E2069C26300C4F02E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B3F55E3320695F8100B2B1EE = {
 			isa = PBXGroup;
 			children = (
 				B3F55E3E20695F8100B2B1EE /* Strategic Marketing Planner */,
 				B3F55E7F2069780900B2B1EE /* Strategic Marketing PlannerTests */,
 				B3F55E3D20695F8100B2B1EE /* Products */,
+				B3998E1E2069C26300C4F02E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,8 +139,8 @@
 			children = (
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
 				B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */,
+				160D1EE120696BE900D6414B /* AddClient.storyboard */,
 				DF9D11C620696BED00529F60 /* ClientList.storyboard */,
-				160D1EF22069BDDD00D6414B /* AddClient.storyboard */,
 				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
 				B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */,
 			);
@@ -177,7 +182,6 @@
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
 				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
-				160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -269,7 +273,6 @@
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
-				160D1EF32069BDDD00D6414B /* AddClient.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
 				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
 				160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */,
@@ -329,7 +332,6 @@
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
-				160D1EF12069BDD400D6414B /* AddClientModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
