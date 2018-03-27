@@ -321,7 +321,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="3ND-5Z-jsg"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                        <state key="normal">
+                                                        <state key="normal" title="Save Client">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
