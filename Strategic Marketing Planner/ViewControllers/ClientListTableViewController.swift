@@ -12,6 +12,10 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var isSearchActive: Bool = false
+    var clients:[Client] = []
+    var filtered:[Client] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
@@ -20,14 +24,41 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     func formatNavigationBar() {
-        navigationController?.navigationBar.barTintColor = UIColor(red: 29.0/255.0, green: 102.0/255.0, blue: 156.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = .brandBlue
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        <#code#>
-//    }
+    //MARK: UISearchbar delegate
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearchActive = true
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            isSearchActive = false
+            tableView.reloadData()
+        } else {
+            
+            isSearchActive = true
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - Table view data source
     
@@ -56,13 +87,14 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     // MARK: - Navigation
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "toClientDetail",
-    //            let indexPath = tableView.indexPathForSelectedRow {
-    //            let detailVC = segue.destination as? AddClientModalViewController
-    //            let client = ClientController.shared.clients[indexPath.row]
-    //            detailVC.client = client
-    //        }
-    //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toClientDetail",
+            let indexPath = tableView.indexPathForSelectedRow {
+            let detailVC = segue.destination as? UINavigationController
+            let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
+            let client = ClientController.shared.clients[indexPath.row]
+            addClientVC?.client = client
+        }
+    }
 }
 

@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160D1EE42069A30D00D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
-		160D1EF12069BDD400D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
 		160D1EF32069BDDD00D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EF22069BDDD00D6414B /* AddClient.storyboard */; };
-		160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160D1EE120696BE900D6414B /* AddClient.storyboard */; };
-		160D1EE42069A30D00D6414B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
@@ -30,6 +26,9 @@
 		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
+		DF4C7DAD206A9666004FC870 /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C7DAC206A9666004FC870 /* AddClientModalViewController.swift */; };
+		DF4C7DAE206A9666004FC870 /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4C7DAC206A9666004FC870 /* AddClientModalViewController.swift */; };
+		DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9D11C620696BED00529F60 /* ClientList.storyboard */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,10 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddClientModalViewController.swift; path = "Strategic Marketing Planner/ViewControllers/AddClientModalViewController.swift"; sourceTree = SOURCE_ROOT; };
 		160D1EF22069BDDD00D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
-		160D1EE120696BE900D6414B /* AddClient.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
-		160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddClientModalViewController.swift; path = "Strategic Marketing Planner/Views/AddClientModalViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +62,7 @@
 		B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategic_Marketing_PlannerTests.swift; sourceTree = "<group>"; };
 		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationVC.storyboard; sourceTree = "<group>"; };
+		DF4C7DAC206A9666004FC870 /* AddClientModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddClientModalViewController.swift; path = "/Users/stevenbrown33/Desktop/DevMountain/Group Capstone/Strategic-Marketing-Planner/Strategic Marketing Planner/ViewControllers/AddClientModalViewController.swift"; sourceTree = "<absolute>"; };
 		DF9D11C620696BED00529F60 /* ClientList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +92,7 @@
 				B3F55E3E20695F8100B2B1EE /* Strategic Marketing Planner */,
 				B3F55E7F2069780900B2B1EE /* Strategic Marketing PlannerTests */,
 				B3F55E3D20695F8100B2B1EE /* Products */,
+				DF4C7DAB206A9625004FC870 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,13 +169,20 @@
 			path = "Strategic Marketing PlannerTests";
 			sourceTree = "<group>";
 		};
+		DF4C7DAB206A9625004FC870 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		DF9D11CB20698CD500529F60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
 				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
-				160D1EE32069A30D00D6414B /* AddClientModalViewController.swift */,
+				DF4C7DAC206A9666004FC870 /* AddClientModalViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -272,7 +277,6 @@
 				160D1EF32069BDDD00D6414B /* AddClient.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
 				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
-				160D1EE220696BE900D6414B /* AddClient.storyboard in Resources */,
 				DF9D11C720696BED00529F60 /* ClientList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,11 +315,11 @@
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
-				160D1EE42069A30D00D6414B /* AddClientModalViewController.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */,
 				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
+				DF4C7DAE206A9666004FC870 /* AddClientModalViewController.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
@@ -329,7 +333,7 @@
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
-				160D1EF12069BDD400D6414B /* AddClientModalViewController.swift in Sources */,
+				DF4C7DAD206A9666004FC870 /* AddClientModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
