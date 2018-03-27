@@ -80,12 +80,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="MwM-DW-Iqq" secondAttribute="height" multiplier="1:1" id="zi4-sd-TGm"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" backgroundImage="clientDefaultPhoto"/>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="MwM-DW-Iqq" firstAttribute="height" secondItem="vs2-wd-IQ7" secondAttribute="height" id="Hft-Ek-4va"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lIy-Nq-3mV" userLabel="Practice and Phone">
                                                 <rect key="frame" x="0.0" y="153" width="550" height="50.5"/>
@@ -320,7 +317,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGJ-Ge-mP0">
                                                         <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
                                                         <color key="backgroundColor" red="0.20243188740000001" green="0.39411669970000002" blue="0.59610450270000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <state key="normal" title="Save Client">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
@@ -369,7 +366,11 @@
                                 <action selector="cancelButtonTapped:" destination="PDO-rf-Pu2" id="Blx-Qn-rbM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8rJ-ak-jEF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8rJ-ak-jEF">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="PDO-rf-Pu2" id="pyF-qU-zsG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="750" height="700"/>
                     <connections>
@@ -412,4 +413,7 @@
             <point key="canvasLocation" x="-907" y="80"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clientDefaultPhoto" width="119" height="119"/>
+    </resources>
 </document>
