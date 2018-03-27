@@ -36,6 +36,7 @@
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
+		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +53,9 @@
 		168B008C206A97B9002A1580 /* AddClientModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClientModalViewController.swift; sourceTree = "<group>"; };
 		168B008E206A98ED002A1580 /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
+		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		B36AA8C1206AC23F0039D37A /* GrowthCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculatorViewController.swift; sourceTree = "<group>"; };
 		B36AA8C2206AC23F0039D37A /* GrowthCalculatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthCalculatorViewController.xib; sourceTree = "<group>"; };
-		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 		E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
+		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,14 +155,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B3F55E59206964CD00B2B1EE /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		B3F55E5A206964E200B2B1EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +188,7 @@
 		DF4C7DAB206A9625004FC870 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -201,6 +196,7 @@
 		DF9D11CB20698CD500529F60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */,
 				168B008C206A97B9002A1580 /* AddClientModalViewController.swift */,
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
@@ -341,6 +337,7 @@
 				E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
+				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */,
