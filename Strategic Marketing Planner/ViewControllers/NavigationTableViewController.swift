@@ -9,12 +9,12 @@
 import UIKit
 
 protocol NavigationTableViewControllerDelegate: class {
-    func destinationSelected(_ destination: UIViewController)
+    func selectedDestinationAtIndex(_ index: Int)
 }
 
 class NavigationTableViewController: UITableViewController {
     
-    var destinations: [(name: String, viewController: UIViewController)] = []
+    var destinations: [String] = []
     weak var delegate: NavigationTableViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class NavigationTableViewController: UITableViewController {
 
         // Configure the cell...
         let destination = destinations[indexPath.row]
-        cell.textLabel?.text = destination.name
+        cell.textLabel?.text = destination
 
         return cell
     }
@@ -41,8 +41,7 @@ class NavigationTableViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath){
             cell.contentView.backgroundColor = .white
         }
-        let destination = destinations[indexPath.row].viewController
-        delegate?.destinationSelected(destination)
+        delegate?.selectedDestinationAtIndex(indexPath.row)
     }
 
 }
