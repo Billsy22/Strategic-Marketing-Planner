@@ -14,7 +14,7 @@
         <!--Client-->
         <scene sceneID="V7v-pL-aRJ">
             <objects>
-                <viewController modalPresentationStyle="pageSheet" id="PDO-rf-Pu2" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="PDO-rf-Pu2" customClass="AddClientModalViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OHy-79-qIV">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,10 +364,29 @@
                         <viewLayoutGuide key="safeArea" id="rRo-CJ-ym5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Client" id="y82-4C-jtb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qd9-Oh-Xmf"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qd9-Oh-Xmf">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="PDO-rf-Pu2" id="Blx-Qn-rbM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="8rJ-ak-jEF"/>
                     </navigationItem>
                     <size key="freeformSize" width="750" height="700"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="M48-2r-PSf" id="Cza-yb-6U4"/>
+                        <outlet property="cityTextField" destination="lBt-fJ-shA" id="bb5-pk-0S5"/>
+                        <outlet property="clientPhotoButton" destination="MwM-DW-Iqq" id="wYB-xH-YX9"/>
+                        <outlet property="emailTextField" destination="X0C-k8-EBW" id="QeY-jG-aO5"/>
+                        <outlet property="firstNameTextField" destination="L2t-3D-xPk" id="5sk-yz-aGE"/>
+                        <outlet property="initialContactDateTextField" destination="fFG-Sj-FFq" id="Ueh-zu-9gL"/>
+                        <outlet property="lastNameTextField" destination="7jR-OK-Z7s" id="XmU-4U-zLv"/>
+                        <outlet property="notesTextView" destination="dBB-Km-LeR" id="jgD-F8-8FP"/>
+                        <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
+                        <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
+                        <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
+                        <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
+                        <outlet property="zipCodeTextField" destination="i9o-en-3pE" id="6sO-TA-ahk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-NH-j5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
