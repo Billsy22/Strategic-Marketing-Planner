@@ -13,14 +13,18 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     @IBOutlet weak var searchBar: UISearchBar!
     
     var isSearchActive: Bool = false
-    var clients:[Client] = []
-    var filtered:[Client] = []
+    var filteredClients:[Client] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
+        updateViews()
         searchBar.delegate = self
         tableView.reloadData()
+    }
+    
+    func updateViews() {
+        filteredClients = ClientController.shared.clients
     }
     
     func formatNavigationBar() {
@@ -28,7 +32,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
-    //MARK: UISearchbar delegate
+    // MARK: UISearchbar delegate
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearchActive = true
     }
@@ -49,15 +53,18 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         if searchText == "" {
             isSearchActive = false
             tableView.reloadData()
         } else {
-            
             isSearchActive = true
+            print(searchBar.text)
             tableView.reloadData()
         }
+    }
+    
+    func updateClientSearch() {
+        
     }
     
     // MARK: - Table view data source
@@ -67,12 +74,12 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     //    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ClientController.shared.clients.count
+        return filteredClients.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath) as? ClientTableViewCell else { return UITableViewCell() }
-        let client = ClientController.shared.clients[indexPath.row]
+        let client = filteredClients[indexPath.row]
         cell.client = client
         return cell
     }
@@ -80,7 +87,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let client = ClientController.shared.clients[indexPath.row]
+            let client = filteredClients[indexPath.row]
             ClientController.shared.removeClient(client)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -92,7 +99,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
             let indexPath = tableView.indexPathForSelectedRow {
             let detailVC = segue.destination as? UINavigationController
             let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
-            let client = ClientController.shared.clients[indexPath.row]
+            let client = filteredClients[indexPath.row]
             addClientVC?.client = client
         }
     }

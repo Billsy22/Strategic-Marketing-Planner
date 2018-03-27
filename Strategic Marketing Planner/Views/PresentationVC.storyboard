@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="laq-fo-5Bm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IRt-Wz-LfC">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -50,6 +50,24 @@
             <point key="canvasLocation" x="-346" y="883"/>
         </scene>
         <!--Presentation-->
+        <scene sceneID="qzT-DU-E9V">
+            <objects>
+                <navigationController id="IRt-Wz-LfC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Presentation" id="gsp-6x-MiF"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvG-TN-EIJ">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="laq-fo-5Bm" kind="relationship" relationship="rootViewController" id="HZ5-an-OLd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEx-IT-3a0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="140"/>
+        </scene>
+        <!--Presentation Base View Controller-->
         <scene sceneID="gmG-l3-gT2">
             <objects>
                 <viewController id="laq-fo-5Bm" customClass="PresentationBaseViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,59 +87,44 @@
                                     <segue destination="f4j-xT-EVq" kind="embed" identifier="toMainContentVC" id="YO0-V8-wVz"/>
                                 </connections>
                             </containerView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34r-St-0lx">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
-                                <color key="backgroundColor" red="0.2044091821" green="0.39548438790000001" blue="0.59610432390000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.2044091821" green="0.39548438790000001" blue="0.59610432390000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Title" id="KDx-Tt-l4z">
-                                        <barButtonItem key="leftBarButtonItem" title="Previous" style="done" id="Sg4-t1-R7G">
-                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="previousButtonTapped:" destination="laq-fo-5Bm" id="IQg-Y6-5o5"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Next" style="done" id="Ku2-El-QN6">
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="nextButtonTapped:" destination="laq-fo-5Bm" id="Ksn-EX-L70"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="Client" id="POS-Wr-K7K">
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <constraints>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="bottom" secondItem="boF-tl-QG7" secondAttribute="bottom" id="E1J-Pc-n6r"/>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="trailing" secondItem="vTM-UQ-pEO" secondAttribute="trailing" id="Izg-ov-JQf"/>
-                            <constraint firstItem="34r-St-0lx" firstAttribute="top" secondItem="uOJ-lI-jt0" secondAttribute="top" id="Nhu-SG-tna"/>
+                            <constraint firstItem="boF-tl-QG7" firstAttribute="top" secondItem="uOJ-lI-jt0" secondAttribute="top" id="M3V-dj-MdY"/>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="bottom" secondItem="vTM-UQ-pEO" secondAttribute="bottom" id="PiV-HZ-kMm"/>
                             <constraint firstItem="vTM-UQ-pEO" firstAttribute="leading" secondItem="boF-tl-QG7" secondAttribute="trailing" id="X9Q-FX-3J8"/>
-                            <constraint firstItem="34r-St-0lx" firstAttribute="leading" secondItem="uOJ-lI-jt0" secondAttribute="leading" id="c0a-Mc-fXW"/>
                             <constraint firstItem="boF-tl-QG7" firstAttribute="width" secondItem="ura-zu-lsL" secondAttribute="width" multiplier="0.25" id="h6X-ib-Kgg"/>
-                            <constraint firstItem="vTM-UQ-pEO" firstAttribute="top" secondItem="34r-St-0lx" secondAttribute="bottom" id="kki-RW-dxC"/>
+                            <constraint firstItem="vTM-UQ-pEO" firstAttribute="top" secondItem="uOJ-lI-jt0" secondAttribute="top" id="jet-IC-2LB"/>
                             <constraint firstItem="boF-tl-QG7" firstAttribute="leading" secondItem="uOJ-lI-jt0" secondAttribute="leading" id="pR3-gC-Kwy"/>
-                            <constraint firstItem="boF-tl-QG7" firstAttribute="top" secondItem="34r-St-0lx" secondAttribute="bottom" id="vuB-K6-Nds"/>
-                            <constraint firstItem="34r-St-0lx" firstAttribute="trailing" secondItem="uOJ-lI-jt0" secondAttribute="trailing" id="z4p-PL-3vo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uOJ-lI-jt0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Presentation" id="gsp-6x-MiF"/>
+                    <navigationItem key="navigationItem" id="7aQ-us-j2a">
+                        <barButtonItem key="leftBarButtonItem" title="Previous" style="done" id="WnS-3f-4J5">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="previousButtonTapped:" destination="laq-fo-5Bm" id="Ckz-US-dVe"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Next" style="done" id="H72-pd-3mn">
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="laq-fo-5Bm" id="ETg-f6-Um2"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Client" id="Le1-m5-ecg">
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mainContentView" destination="vTM-UQ-pEO" id="v5D-SG-aMk"/>
-                        <outlet property="navigationBar" destination="34r-St-0lx" id="oCY-qP-s6p"/>
-                        <outlet property="navigationBarClientButton" destination="POS-Wr-K7K" id="2mh-n1-Pq6"/>
-                        <outlet property="navigationBarNextButton" destination="Ku2-El-QN6" id="vVu-Ih-qpQ"/>
-                        <outlet property="navigationBarPreviousButton" destination="Sg4-t1-R7G" id="snW-ux-gna"/>
+                        <outlet property="navigationBarClientButton" destination="Le1-m5-ecg" id="xbD-bO-b7R"/>
+                        <outlet property="navigationBarNextButton" destination="H72-pd-3mn" id="Uh7-gF-MKS"/>
+                        <outlet property="navigationBarPreviousButton" destination="WnS-3f-4J5" id="1b9-m8-vNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZ0-67-MaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
