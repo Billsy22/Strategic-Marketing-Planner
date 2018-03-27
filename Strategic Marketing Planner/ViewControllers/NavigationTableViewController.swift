@@ -9,16 +9,23 @@
 import UIKit
 
 protocol NavigationTableViewControllerDelegate: class {
-    func destinationSelected(_ destination: UIViewController)
+    func selectedDestinationAtIndex(_ index: Int)
 }
 
 class NavigationTableViewController: UITableViewController {
     
-    var destinations: [(name: String, viewController: UIViewController)] = []
+    var destinations: [String] = []
     weak var delegate: NavigationTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
     }
 
     // MARK: - Table view data source
@@ -32,17 +39,21 @@ class NavigationTableViewController: UITableViewController {
 
         // Configure the cell...
         let destination = destinations[indexPath.row]
-        cell.textLabel?.text = destination.name
-
+        cell.textLabel?.text = destination
+        cell.backgroundColor = UIColor.brandPaleBlue
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath){
-            cell.contentView.backgroundColor = .white
+            cell.backgroundColor = .white
         }
-        let destination = destinations[indexPath.row].viewController
-        delegate?.destinationSelected(destination)
+        delegate?.selectedDestinationAtIndex(indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.backgroundColor = UIColor.brandPaleBlue
     }
 
 }
