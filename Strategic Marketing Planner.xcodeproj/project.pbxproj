@@ -34,7 +34,6 @@
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
 		DF4C7DAD206A9666004FC870 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
-		E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationVC.storyboard; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
-		E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
 		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,7 +186,6 @@
 		DF4C7DAB206A9625004FC870 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 			files = (
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
-				E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
 				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
