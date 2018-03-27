@@ -10,6 +10,7 @@
 		168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
 		168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
+		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
@@ -322,6 +323,7 @@
 			files = (
 				B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
+				16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
 			);

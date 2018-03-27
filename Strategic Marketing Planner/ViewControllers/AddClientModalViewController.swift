@@ -24,11 +24,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var initialContactDateTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
-    var client: Client? {
-        didSet {
-            saveOrRemoveClientButton.titleLabel?.text = "Delete Client"
-        }
-    }
+    var client: Client?
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
