@@ -12,6 +12,8 @@
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4920695F8100B2B1EE /* Assets.xcassets */; };
 		B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */; };
+		E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */; };
+		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B3F55E4920695F8100B2B1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3F55E4C20695F8100B2B1EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3F55E4E20695F8100B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
+		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
+				E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 		B3F55E59206964CD00B2B1EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1CCB936206AFB8300A00889 /* MarketingToSuburbanViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */,
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
@@ -193,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CCB937206AFB8300A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
@@ -215,6 +223,14 @@
 				B3F55E4C20695F8100B2B1EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1CCB939206AFB9300A00889 /* Base */,
+			);
+			name = MarketingToSuburban.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
