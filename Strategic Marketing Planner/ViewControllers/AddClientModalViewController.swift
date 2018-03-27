@@ -25,6 +25,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     var client: Client?
+    weak var delegate: AddClientModalViewControllerDelegate?
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -78,12 +79,7 @@ class AddClientModalViewController: UIViewController {
         let initialContactDateString = initialContactDateTextField.text,
             let notes = notesTextView.text else { return }
             if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
-            let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out anything with a *", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                print("Alert Dismissed")
-            })
-            emptyTextAlert.addAction(okAction)
-            present(emptyTextAlert, animated: true, completion: nil)
+            createEmptyTextAlert()
         } else {
                 let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
             ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
@@ -92,6 +88,7 @@ class AddClientModalViewController: UIViewController {
                 })
         }
     }
+    
     
     /*
      // MARK: - Navigation
@@ -102,4 +99,22 @@ class AddClientModalViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+}
+
+// MARK: -  Extension for UIAlert Functions
+extension AddClientModalViewController {
+    
+    func createEmptyTextAlert() {
+        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        emptyTextAlert.addAction(okAction)
+        present(emptyTextAlert, animated: true, completion: nil)
+    }
+}
+
+// MARK: -   Delegate for adding client
+protocol AddClientModalViewControllerDelegate: class {
+    func clientAdded()
 }
