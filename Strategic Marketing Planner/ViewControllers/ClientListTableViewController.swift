@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ClientListTableViewController: UITableViewController, UISearchBarDelegate {
+class ClientListTableViewController: UITableViewController, UISearchBarDelegate, ClientControllerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var clients:[Client] = []
+    let clientController = ClientController.shared
     var sortedFirstLetters: [String]  {
         let firstLetters = clients.map { $0.lastNameFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
@@ -26,20 +27,27 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
         return sections
     }
     
+    func clientsUpdated() {
+        clients = clientController.clients
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
         updateViews()
+        clientController.delegate = self
         searchBar.delegate = self
         tableView.reloadData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
     func updateViews() {
-        clients = ClientController.shared.clients
+        clients = clientController.clients
     }
     
     func formatNavigationBar() {
@@ -58,7 +66,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            clients = ClientController.shared.clients
+            clients = clientController.clients
             tableView.reloadData()
         } else {
             guard let searchString = searchBar.text else { return }
@@ -67,7 +75,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     func updateClientSearch(searchString: String) {
-        let filteredClients = ClientController.shared.clients.filter({ $0.matches(searchString: searchString) })
+        let filteredClients = clientController.clients.filter({ $0.matches(searchString: searchString) })
         self.clients = filteredClients
         tableView.reloadData()
     }
@@ -97,12 +105,11 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
         return cell
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let client = sections[indexPath.section][indexPath.row]
-            ClientController.shared.removeClient(client)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            deleteConfirmation(client: client)
+     //       tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -112,9 +119,26 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
             let indexPath = tableView.indexPathForSelectedRow {
             let detailVC = segue.destination as? UINavigationController
             let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
-            let client = clients[indexPath.row]
+            let client = sections[indexPath.section][indexPath.row]
             addClientVC?.client = client
         }
+    }
+    
+    // MARK: - Alert
+    //Create a delete confirmation alert when swiping to delete
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.clientController.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
     }
 }
 
@@ -123,7 +147,6 @@ extension Client {
         guard let lastName = lastName,
         let firstCharacter = lastName.first else { return "" }
         return String(firstCharacter).uppercased()
-//        return String(lastName[lastName.startIndex]).uppercased()
     }
 }
 

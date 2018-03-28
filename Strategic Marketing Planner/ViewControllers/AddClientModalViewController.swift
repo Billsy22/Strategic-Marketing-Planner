@@ -26,12 +26,13 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     var client: Client?
-    weak var delegate: AddClientModalViewControllerDelegate?
+    let imagePicker = UIImagePickerController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     // MARK: -  Update Views
@@ -73,7 +74,7 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
         if let client = client {
-        ClientController.shared.removeClient(client)
+            deleteConfirmation(client: client)
         } else {
             save()
         }
@@ -83,27 +84,26 @@ class AddClientModalViewController: UIViewController {
         save()
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func clientPhotoButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
             guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
             presentationVC.client = client
         }
-     }
+    }
 }
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
     
-    // Creating an alert when textfields are empty
-    func createEmptyTextAlert() {
-        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            print("Alert Dismissed")
-        })
-        emptyTextAlert.addAction(okAction)
-        self.present(emptyTextAlert, animated: true, completion: nil)
-    }
     
     // Save Client
     func save() {
@@ -128,12 +128,44 @@ extension AddClientModalViewController {
             })
         }
     }
+    
+    // Creating an alert when textfields are empty
+    func createEmptyTextAlert() {
+        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        emptyTextAlert.addAction(okAction)
+        self.present(emptyTextAlert, animated: true, completion: nil)
+    }
+    
+    // Create a delete confirmation alert when hitting delete button
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            ClientController.shared.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
+    }
 }
 
 // MARK: -  Extention for AVKit
-
-
-// MARK: -  Delegate for adding client
-protocol AddClientModalViewControllerDelegate: class {
-    func clientAdded()
+extension AddClientModalViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
