@@ -26,9 +26,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     var client: Client?
-    weak var delegate: AddClientModalViewControllerDelegate?
     let imagePicker = UIImagePickerController()
-    let clientController = ClientController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -97,7 +95,7 @@ class AddClientModalViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
-            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = clientController.clients.last else { return }
+            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
             presentationVC.client = client
         }
     }
@@ -124,7 +122,7 @@ extension AddClientModalViewController {
             self.createEmptyTextAlert()
         } else {
             let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
-            clientController.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
+            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
             dismiss(animated: true, completion: {
                 print("Client Created")
             })
@@ -148,7 +146,7 @@ extension AddClientModalViewController {
             print("Action Cancelled")
         })
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-            self.clientController.removeClient(client)
+            ClientController.shared.removeClient(client)
             self.dismiss(animated: true, completion: nil)
             print("Client Deleted")
         }
@@ -170,9 +168,4 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-}
-
-// MARK: -  Delegate for adding client
-protocol AddClientModalViewControllerDelegate: class {
-    func clientAdded()
 }
