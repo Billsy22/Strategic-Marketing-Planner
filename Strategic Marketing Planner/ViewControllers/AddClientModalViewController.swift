@@ -32,6 +32,15 @@ class AddClientModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        practiceNameTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
+        addressTextField.delegate = self
+        cityTextField.delegate = self
+        stateTextField.delegate = self
+        zipCodeTextField.delegate = self
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
@@ -92,6 +101,7 @@ class AddClientModalViewController: UIViewController {
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
         present(imagePicker, animated: true, completion: nil)
     }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
@@ -103,7 +113,6 @@ class AddClientModalViewController: UIViewController {
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
-    
     
     // Save Client
     func save() {
@@ -153,6 +162,47 @@ extension AddClientModalViewController {
         deleteConfirmationAlert.addAction(cancelAction)
         deleteConfirmationAlert.addAction(deleteAction)
         self.present(deleteConfirmationAlert, animated: true, completion: nil)
+    }
+}
+
+// MARK: -  Extension for textfields and keyboard appearance
+extension AddClientModalViewController: UITextFieldDelegate {
+
+    // Return key moves to the next text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            textField.resignFirstResponder()
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            textField.resignFirstResponder()
+            practiceNameTextField.becomeFirstResponder()
+        } else if textField == practiceNameTextField {
+            textField.resignFirstResponder()
+            phoneTextField.becomeFirstResponder()
+        } else if textField == phoneTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
+            textField.resignFirstResponder()
+            addressTextField.becomeFirstResponder()
+        } else if textField == addressTextField {
+            textField.resignFirstResponder()
+            cityTextField.becomeFirstResponder()
+        } else if textField == cityTextField {
+            textField.resignFirstResponder()
+            stateTextField.becomeFirstResponder()
+        } else if textField == stateTextField {
+            textField.resignFirstResponder()
+            zipCodeTextField.becomeFirstResponder()
+        } else if textField == zipCodeTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    // Dismiss keyboard when touching outside the keyboard or textfield
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
