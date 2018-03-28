@@ -27,11 +27,13 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     var client: Client?
     weak var delegate: AddClientModalViewControllerDelegate?
+    let imagePicker = UIImagePickerController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     // MARK: -  Update Views
@@ -83,7 +85,15 @@ class AddClientModalViewController: UIViewController {
         save()
     }
     
-     // MARK: - Navigation
+    @IBAction func clientPhotoButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    // MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
             guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
@@ -131,7 +141,18 @@ extension AddClientModalViewController {
 }
 
 // MARK: -  Extention for AVKit
-
+extension AddClientModalViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
 // MARK: -  Delegate for adding client
 protocol AddClientModalViewControllerDelegate: class {

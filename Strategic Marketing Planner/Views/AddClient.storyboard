@@ -81,6 +81,9 @@
                                                             <constraint firstAttribute="width" secondItem="MwM-DW-Iqq" secondAttribute="height" multiplier="1:1" id="zi4-sd-TGm"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="clientDefaultPhoto"/>
+                                                        <connections>
+                                                            <action selector="clientPhotoButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="SyH-vM-ahr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
