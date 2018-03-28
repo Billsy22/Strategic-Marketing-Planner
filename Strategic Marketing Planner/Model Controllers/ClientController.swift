@@ -9,11 +9,17 @@
 import Foundation
 import CoreData
 
+protocol ClientControllerDelegate: class {
+    func clientsUpdated()
+}
+
 class ClientController {
     
     var clients: [Client] {
         return load()
     }
+    
+    weak var delegate: ClientControllerDelegate?
     
     static let shared = ClientController()
     
@@ -47,6 +53,7 @@ class ClientController {
     //MARK: - Persistence
     private func save(){
         try? CoreDataStack.context.save()
+        delegate?.clientsUpdated()
     }
     
     private func load() -> [Client]{
