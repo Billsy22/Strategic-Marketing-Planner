@@ -12,7 +12,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
     
     @IBOutlet weak var searchBar: UISearchBar!
     var clients:[Client] = []
-    let clientController = ClientController()
+    let clientController = ClientController.shared
     var sortedFirstLetters: [String]  {
         let firstLetters = clients.map { $0.lastNameFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
@@ -105,12 +105,11 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         return cell
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let client = sections[indexPath.section][indexPath.row]
+            deleteConfirmation(client: client)
      //       tableView.deleteRows(at: [indexPath], with: .fade)
-            clientController.removeClient(client)
         }
     }
     
@@ -123,6 +122,23 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
             let client = sections[indexPath.section][indexPath.row]
             addClientVC?.client = client
         }
+    }
+    
+    // MARK: - Alert
+    //Create a delete confirmation alert when swiping to delete
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.clientController.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
     }
 }
 

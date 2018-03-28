@@ -8,67 +8,77 @@
 
 import UIKit
 
-@IBDesignable class BoxedLabel: UILabel {
+@IBDesignable class BoxedLabel: UIView {
     
-    var textInsets = UIEdgeInsets.zero {
-        didSet { invalidateIntrinsicContentSize(); setNeedsDisplay() }
+    @IBInspectable var text: String = "" {
+        didSet {
+            label.text = text
+        }
     }
     
-    @IBInspectable var topInset: CGFloat {
-        get { return textInsets.top }
-        set { textInsets.top = newValue }
+    var insets: UIEdgeInsets = UIEdgeInsets.zero {
+        didSet {
+            setup()
+            invalidateIntrinsicContentSize()
+            setNeedsDisplay()
+        }
     }
+    
+    @IBInspectable var topInset: CGFloat  {
+        get { return insets.top }
+        set { insets.top = newValue }
+    }
+    
     @IBInspectable var rightInset: CGFloat {
-        get { return textInsets.right }
-        set { textInsets.right = newValue }
+        get { return insets.right }
+        set { insets.right = newValue }
     }
+    
     @IBInspectable var bottomInset: CGFloat {
-        get { return textInsets.bottom }
-        set { textInsets.bottom = newValue }
+        get { return insets.bottom }
+        set { insets.bottom = newValue }
     }
+    
     @IBInspectable var leftInset: CGFloat {
-        get { return textInsets.left }
-        set { textInsets.left = newValue }
+        get { return insets.left }
+        set { insets.left = newValue }
     }
+    
+    private var label: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setInsets(top: topInset, right: rightInset, bottom: bottomInset, left: leftInset)
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setInsets(top: topInset, right: rightInset, bottom: bottomInset, left: leftInset)
+        setup()
     }
     
-    private func setInsets(top: CGFloat, right: CGFloat, bottom: CGFloat, left: CGFloat){
-        topInset = top
-        rightInset = right
-        bottomInset = bottom
-        leftInset = left
+    private func setup(){
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.removeFromSuperview()
+        addSubview(label)
+        label.removeConstraints(label.constraints)
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left).isActive = true
+        label.topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top).isActive = true
+        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -insets.right).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -insets.bottom).isActive = true
+        
+        setNeedsLayout()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setup()
     }
     
     override var intrinsicContentSize: CGSize {
-        var size = super.intrinsicContentSize
-        size.width += textInsets.left + textInsets.right
-        size.height += textInsets.top + textInsets.bottom
+        var size: CGSize = CGSize.zero
+        size.width = label.intrinsicContentSize.width + insets.left + insets.right
+        size.height = label.intrinsicContentSize.height + insets.top + insets.bottom
         return size
     }
-    
-    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
-        let insetRect = UIEdgeInsetsInsetRect(bounds, textInsets)
-        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
-        let invertedInsets = UIEdgeInsets(top: -textInsets.top,
-                                          left: -textInsets.left,
-                                          bottom: -textInsets.bottom,
-                                          right: -textInsets.right)
-        return UIEdgeInsetsInsetRect(textRect, invertedInsets)
-    }
-    
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
-        sizeToFit()
-    }
-    
 
 }
