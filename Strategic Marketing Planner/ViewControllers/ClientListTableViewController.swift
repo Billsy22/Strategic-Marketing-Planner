@@ -8,23 +8,46 @@
 
 import UIKit
 
-class ClientListTableViewController: UITableViewController, UISearchBarDelegate {
+class ClientListTableViewController: UITableViewController, UISearchBarDelegate, ClientControllerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    var clients:[Client] = []
+    let clientController = ClientController.shared
+    var sortedFirstLetters: [String]  {
+        let firstLetters = clients.map { $0.lastNameFirstLetter }
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        return uniqueFirstLetters.sorted()
+    }
+    var sections:[[Client]] {
+        let sections =  sortedFirstLetters.map { firstLetter in
+            return clients
+                .filter { $0.lastNameFirstLetter == firstLetter }
+                .sorted { $0.lastName ?? "" < $1.lastName  ?? "" }
+        }
+        return sections
+    }
     
-    var isSearchActive: Bool = false
-    var filteredClients:[Client] = []
+    func clientsUpdated() {
+        clients = clientController.clients
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
         updateViews()
+        clientController.delegate = self
         searchBar.delegate = self
         tableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     func updateViews() {
-        filteredClients = ClientController.shared.clients
+        clients = clientController.clients
     }
     
     func formatNavigationBar() {
@@ -33,63 +56,60 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     // MARK: UISearchbar delegate
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchActive = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        isSearchActive = false
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        isSearchActive = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        isSearchActive = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            isSearchActive = false
+            clients = clientController.clients
             tableView.reloadData()
         } else {
-            isSearchActive = true
-            print(searchBar.text)
-            tableView.reloadData()
+            guard let searchString = searchBar.text else { return }
+            updateClientSearch(searchString: searchString)
         }
     }
     
-    func updateClientSearch() {
-        
+    func updateClientSearch(searchString: String) {
+        let filteredClients = clientController.clients.filter({ $0.matches(searchString: searchString) })
+        self.clients = filteredClients
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
     
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 0
-    //    }
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sortedFirstLetters
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sortedFirstLetters[section]
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredClients.count
+        return sections[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath) as? ClientTableViewCell else { return UITableViewCell() }
-        let client = filteredClients[indexPath.row]
+        let client = sections[indexPath.section][indexPath.row]
         cell.client = client
         return cell
     }
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let client = filteredClients[indexPath.row]
-            ClientController.shared.removeClient(client)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let client = sections[indexPath.section][indexPath.row]
+            deleteConfirmation(client: client)
+     //       tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -99,9 +119,34 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
             let indexPath = tableView.indexPathForSelectedRow {
             let detailVC = segue.destination as? UINavigationController
             let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
-            let client = filteredClients[indexPath.row]
+            let client = sections[indexPath.section][indexPath.row]
             addClientVC?.client = client
         }
+    }
+    
+    // MARK: - Alert
+    //Create a delete confirmation alert when swiping to delete
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.clientController.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
+    }
+}
+
+extension Client {
+    var lastNameFirstLetter: String {
+        guard let lastName = lastName,
+        let firstCharacter = lastName.first else { return "" }
+        return String(firstCharacter).uppercased()
     }
 }
 

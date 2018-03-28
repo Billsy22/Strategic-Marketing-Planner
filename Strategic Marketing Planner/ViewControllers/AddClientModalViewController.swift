@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class AddClientModalViewController: UIViewController {
     
@@ -25,12 +26,13 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     var client: Client?
-    weak var delegate: AddClientModalViewControllerDelegate?
+    let imagePicker = UIImagePickerController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     // MARK: -  Update Views
@@ -67,54 +69,103 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let firstName = firstNameTextField.text,
-        let lastName = lastNameTextField.text,
-        let practiceName = practiceNameTextField.text,
-        let phone = phoneTextField.text,
-        let email = emailTextField.text,
-        let streetAddress = addressTextField.text,
-            let zip = zipCodeTextField.text,
-        let city = cityTextField.text,
-        let state = stateTextField.text,
-        let initialContactDateString = initialContactDateTextField.text,
-            let notes = notesTextView.text else { return }
-            if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
-            createEmptyTextAlert()
+        save()
+    }
+    
+    @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
+        if let client = client {
+            deleteConfirmation(client: client)
         } else {
-                let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
-            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
-                dismiss(animated: true, completion: {
-                    print("Client Created")
-                })
+            save()
         }
     }
     
+    @IBAction func startPresentationButtonTapped(_ sender: Any) {
+        save()
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func clientPhotoButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPresentationVC" {
+            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
+            presentationVC.client = client
+        }
+    }
 }
 
-// MARK: -  Extension for UIAlert Functions
+// MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
     
+    
+    // Save Client
+    func save() {
+        guard let firstName = self.firstNameTextField.text,
+            let lastName = self.lastNameTextField.text,
+            let practiceName = self.practiceNameTextField.text,
+            let phone = self.phoneTextField.text,
+            let email = self.emailTextField.text,
+            let streetAddress = self.addressTextField.text,
+            let zip = self.zipCodeTextField.text,
+            let city = self.cityTextField.text,
+            let state = self.stateTextField.text,
+            let initialContactDateString = self.initialContactDateTextField.text,
+            let notes = self.notesTextView.text else { return }
+        if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
+            self.createEmptyTextAlert()
+        } else {
+            let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
+            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
+            dismiss(animated: true, completion: {
+                print("Client Created")
+            })
+        }
+    }
+    
+    // Creating an alert when textfields are empty
     func createEmptyTextAlert() {
         let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             print("Alert Dismissed")
         })
         emptyTextAlert.addAction(okAction)
-        present(emptyTextAlert, animated: true, completion: nil)
+        self.present(emptyTextAlert, animated: true, completion: nil)
+    }
+    
+    // Create a delete confirmation alert when hitting delete button
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            ClientController.shared.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
     }
 }
 
-// MARK: -   Delegate for adding client
-protocol AddClientModalViewControllerDelegate: class {
-    func clientAdded()
+// MARK: -  Extention for AVKit
+extension AddClientModalViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }

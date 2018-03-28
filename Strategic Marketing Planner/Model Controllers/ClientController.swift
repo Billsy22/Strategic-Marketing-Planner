@@ -9,25 +9,25 @@
 import Foundation
 import CoreData
 
+protocol ClientControllerDelegate: class {
+    func clientsUpdated()
+}
+
 class ClientController {
     
-    var clients: [Client] = []
+    var clients: [Client] {
+        return load()
+    }
+    
+    weak var delegate: ClientControllerDelegate?
     
     static let shared = ClientController()
     
     private let context = CoreDataStack.context
     
-    init() {
-        load()
-        if clients.count == 0 {
-            addDummyData()
-        }
-    }
-    
     //MARK: - CREATE
     func addClient(withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
-        let client = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
-        clients.append(client)
+        let _ = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
         save()
     }
     
@@ -40,8 +40,6 @@ class ClientController {
     
     //MARK: - Delete
     func removeClient(_ client: Client) {
-        guard let removedClientIndex = clients.index(of: client) else {return}
-        clients.remove(at: removedClientIndex)
         context.delete(client)
         save()
     }
@@ -55,16 +53,20 @@ class ClientController {
     //MARK: - Persistence
     private func save(){
         try? CoreDataStack.context.save()
+        delegate?.clientsUpdated()
     }
     
-    private func load(){
+    private func load() -> [Client]{
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
         let sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
-            clients = try CoreDataStack.context.fetch(fetchRequest)
+            let results = try CoreDataStack.context.fetch(fetchRequest)
+            return results
         } catch let error {
             NSLog("Error fetching clients from file: \(error.localizedDescription)")
+            return []
         }
         
     }

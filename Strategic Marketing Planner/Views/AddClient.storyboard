@@ -45,7 +45,7 @@
                                                                         <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -61,12 +61,12 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jR-OK-Z7s">
+                                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jR-OK-Z7s">
                                                                         <rect key="frame" x="0.0" y="20.5" width="378" height="40.5"/>
                                                                         <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -81,6 +81,9 @@
                                                             <constraint firstAttribute="width" secondItem="MwM-DW-Iqq" secondAttribute="height" multiplier="1:1" id="zi4-sd-TGm"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="clientDefaultPhoto"/>
+                                                        <connections>
+                                                            <action selector="clientPhotoButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="SyH-vM-ahr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -96,7 +99,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qr-wB-v9f">
+                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qr-wB-v9f">
                                                                 <rect key="frame" x="0.0" y="20.5" width="265" height="30"/>
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -104,7 +107,7 @@
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -120,12 +123,12 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEt-lq-xDo">
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEt-lq-xDo">
                                                                 <rect key="frame" x="0.0" y="20.5" width="265" height="30"/>
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" smartDashesType="yes" textContentType="tel"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -151,12 +154,12 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0C-k8-EBW">
+                                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0C-k8-EBW">
                                                                 <rect key="frame" x="0.0" y="20.5" width="262.5" height="72"/>
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -172,12 +175,12 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M48-2r-PSf">
+                                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M48-2r-PSf">
                                                                 <rect key="frame" x="0.0" y="20.5" width="262.5" height="72"/>
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="address-line1"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -209,7 +212,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="address-level2"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -230,7 +233,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="address-level1"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -252,7 +255,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="postal-code"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -274,7 +277,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="continue"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -321,9 +324,12 @@
                                                             <constraint firstAttribute="height" constant="40" id="3ND-5Z-jsg"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                        <state key="normal">
+                                                        <state key="normal" title="Save Client">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="saveOrRemoveClientButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="7bc-vL-XnI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gG-o4-ncV">
                                                         <rect key="frame" x="285" y="0.0" width="265" height="40"/>
@@ -335,6 +341,10 @@
                                                         <state key="normal" title="Start Presentation">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="startPresentationButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="j0Q-xs-D1I"/>
+                                                            <segue destination="4tT-BN-jcU" kind="show" identifier="toPresentationVC" id="g7d-Ca-gwB"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -406,6 +416,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-NH-j5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-267.1875" y="79.6875"/>
+        </scene>
+        <!--PresentationVC-->
+        <scene sceneID="JjZ-Jf-IVg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PresentationVC" id="4tT-BN-jcU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mRS-gj-EeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZfF-yU-XWV">
