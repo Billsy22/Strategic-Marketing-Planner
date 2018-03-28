@@ -12,7 +12,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
     
     @IBOutlet weak var searchBar: UISearchBar!
     var clients:[Client] = []
-    let clientController = ClientController()
+    let clientController = ClientController.shared
     var sortedFirstLetters: [String]  {
         let firstLetters = clients.map { $0.lastNameFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
