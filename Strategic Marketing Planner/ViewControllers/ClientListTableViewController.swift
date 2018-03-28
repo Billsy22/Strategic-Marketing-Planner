@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ClientListTableViewController: UITableViewController, UISearchBarDelegate {
+class ClientListTableViewController: UITableViewController, UISearchBarDelegate, AddClientModalViewControllerDelegate {
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     var clients:[Client] = []
@@ -26,10 +27,16 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate 
         return sections
     }
     
+    func clientAdded() {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
         updateViews()
+        guard let addClientVC = childViewControllers.first as? AddClientModalViewController else { return }
+        addClientVC.delegate = self
         searchBar.delegate = self
         tableView.reloadData()
     }
