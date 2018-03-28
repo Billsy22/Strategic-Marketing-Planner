@@ -11,23 +11,17 @@ import CoreData
 
 class ClientController {
     
-    var clients: [Client] = []
+    var clients: [Client] {
+        return load()
+    }
     
     static let shared = ClientController()
     
     private let context = CoreDataStack.context
     
-    init() {
-        load()
-        if clients.count == 0 {
-            addDummyData()
-        }
-    }
-    
     //MARK: - CREATE
     func addClient(withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
-        let client = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
-        clients.append(client)
+        let _ = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
         save()
     }
     
@@ -40,8 +34,6 @@ class ClientController {
     
     //MARK: - Delete
     func removeClient(_ client: Client) {
-        guard let removedClientIndex = clients.index(of: client) else {return}
-        clients.remove(at: removedClientIndex)
         context.delete(client)
         save()
     }
@@ -57,16 +49,17 @@ class ClientController {
         try? CoreDataStack.context.save()
     }
     
-    private func load(){
+    private func load() -> [Client]{
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
         let sortDescriptor = NSSortDescriptor(key: "lastName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
             let results = try CoreDataStack.context.fetch(fetchRequest)
-            self.clients = results
+            return results
         } catch let error {
             NSLog("Error fetching clients from file: \(error.localizedDescription)")
+            return []
         }
         
     }
