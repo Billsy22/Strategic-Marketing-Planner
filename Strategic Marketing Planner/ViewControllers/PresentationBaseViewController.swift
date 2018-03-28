@@ -90,6 +90,9 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         let greenVC = UIViewController()
         greenVC.view.backgroundColor = .green
         defaultDestinations.append(("Green", greenVC))
+        let growthCalculatorSB = UIStoryboard(name: "GrowthCalculator", bundle: nil)
+        let growthCalculatorVC = growthCalculatorSB.instantiateViewController(withIdentifier: "growthCalculator")
+        defaultDestinations.append(("Growth Calculator", growthCalculatorVC))
         return defaultDestinations
     }
     
