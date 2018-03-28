@@ -28,6 +28,7 @@ class AddClientModalViewController: UIViewController {
     var client: Client?
     weak var delegate: AddClientModalViewControllerDelegate?
     let imagePicker = UIImagePickerController()
+    let clientController = ClientController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -75,7 +76,7 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
         if let client = client {
-        ClientController.shared.removeClient(client)
+            deleteConfirmation(client: client)
         } else {
             save()
         }
@@ -94,26 +95,17 @@ class AddClientModalViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
-            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
+            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = clientController.clients.last else { return }
             presentationVC.client = client
         }
-     }
+    }
 }
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
     
-    // Creating an alert when textfields are empty
-    func createEmptyTextAlert() {
-        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            print("Alert Dismissed")
-        })
-        emptyTextAlert.addAction(okAction)
-        self.present(emptyTextAlert, animated: true, completion: nil)
-    }
     
     // Save Client
     func save() {
@@ -132,11 +124,37 @@ extension AddClientModalViewController {
             self.createEmptyTextAlert()
         } else {
             let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
-            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
+            clientController.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
             dismiss(animated: true, completion: {
                 print("Client Created")
             })
         }
+    }
+    
+    // Creating an alert when textfields are empty
+    func createEmptyTextAlert() {
+        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        emptyTextAlert.addAction(okAction)
+        self.present(emptyTextAlert, animated: true, completion: nil)
+    }
+    
+    // Create a delete confirmation alert when hitting delete button
+    func deleteConfirmation(client: Client) {
+        let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            print("Action Cancelled")
+        })
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.clientController.removeClient(client)
+            self.dismiss(animated: true, completion: nil)
+            print("Client Deleted")
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
+        deleteConfirmationAlert.addAction(deleteAction)
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
     }
 }
 
