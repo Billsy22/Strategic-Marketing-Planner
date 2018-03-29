@@ -13,6 +13,7 @@ class Strategic_Marketing_PlannerTests: XCTestCase {
     
     var clientCount = 0
     var testClient: Client?
+    var products = [Product]()
     
     override func setUp() {
         super.setUp()
@@ -33,5 +34,29 @@ class Strategic_Marketing_PlannerTests: XCTestCase {
         ClientController.shared.removeClient(testClient!)
         XCTAssert(ClientController.shared.clients.count == clientCount)
     }
+    
+    func decodeProduct(){
+        guard let filepath = Bundle.main.url(forResource: "productPages", withExtension: "json") else { print("bad filepath"); return }
+        
+        
+        do {
+            let data = try Data(contentsOf: filepath)
+        
+     
+            let productsTest = Product.productsFromJSON(data)
+            XCTAssert(productsTest != nil)
+        } catch let error {
+            print("Error \(#function) \(error) \(error.localizedDescription)")
+        }
+        
+    }
+    
+    func testProductInitialization() {
+       let product = Product(title: "Tooth", intro: "Hurts", included: "pull my tooth", training: "good train", image1Name: "test1", image2Name: "test2", image3Name: "test3", image4Name: "test4", image5Name: "test5")
+        
+        XCTAssertNoThrow(product)
+        
+    }
+    
     
 }

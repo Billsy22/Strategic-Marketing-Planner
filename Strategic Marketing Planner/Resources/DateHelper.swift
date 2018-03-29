@@ -15,4 +15,10 @@ class DateHelper {
         guard let date = dateFormatter.date(from: string) else { return Date() }
         return date
     }
+    
+    static func format(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        return dateFormatter.string(from:date)
+    }
 }
