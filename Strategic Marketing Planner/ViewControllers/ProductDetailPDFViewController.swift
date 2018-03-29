@@ -11,11 +11,13 @@ import PDFKit
 
 class ProductDetailPDFViewController: UIViewController {
     
+    // MARK: - Properties
     var product: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pdfViewer()
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func pdfViewer() {
@@ -29,6 +31,7 @@ class ProductDetailPDFViewController: UIViewController {
         pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         pdfView.displayMode = PDFDisplayMode.singlePage
+        
         pdfView.autoScales = true
         
         guard let path = Bundle.main.url(forResource: product, withExtension: "pdf") else { return }
