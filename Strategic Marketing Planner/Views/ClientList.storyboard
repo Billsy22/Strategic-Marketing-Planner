@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,6 +69,40 @@
                                     <segue destination="26h-2D-8lk" kind="presentation" identifier="toClientDetail" id="rQC-o7-TC1"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noClientsCell" rowHeight="531" id="eFF-u3-rBC" customClass="NoClientsTableViewCell" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="1024" height="531"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eFF-u3-rBC" id="7tU-k6-bNB">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="530.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cdC-SY-9rd">
+                                            <rect key="frame" x="281.5" y="128" width="461" height="74.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Strategic Marketing Planner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eci-Id-RD7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="461" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get started, add a client to your list using the button in the top right corner." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jl-Yp-Z44">
+                                                    <rect key="frame" x="0.0" y="29" width="461" height="45.5"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cdC-SY-9rd" firstAttribute="centerY" secondItem="7tU-k6-bNB" secondAttribute="centerY" constant="-100" id="4d3-Xd-OT9"/>
+                                        <constraint firstItem="cdC-SY-9rd" firstAttribute="centerX" secondItem="7tU-k6-bNB" secondAttribute="centerX" id="rsu-sp-K3Z"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="cdC-SY-9rd" firstAttribute="width" secondItem="eFF-u3-rBC" secondAttribute="width" multiplier="0.45" id="lpx-Yp-NFh"/>
+                                </constraints>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ayz-9n-tGr" id="Vyg-Ti-rg8"/>
@@ -88,7 +123,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehx-W9-5Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="155"/>
+            <point key="canvasLocation" x="244.92187499999997" y="154.6875"/>
         </scene>
         <!--AddClient-->
         <scene sceneID="KjS-b0-mcK">

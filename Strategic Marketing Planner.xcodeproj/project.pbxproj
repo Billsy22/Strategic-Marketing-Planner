@@ -37,11 +37,66 @@
 		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
+		DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */; };
+		DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */; };
+		DF06C669206C6D2A00E6F4CC /* SEO.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF06C668206C6D1800E6F4CC /* SEO.pdf */; };
+		DF06C66B206D390B00E6F4CC /* Adwords.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF06C66A206D38FA00E6F4CC /* Adwords.pdf */; };
 		DF4C7DAD206A9666004FC870 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		DF4EA3D9206D3B7F00C44A83 /* 8-Page Brochures.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C0206D3AC800C44A83 /* 8-Page Brochures.pdf */; };
+		DF4EA3DA206D3B7F00C44A83 /* Ad Design.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CC206D3ACA00C44A83 /* Ad Design.pdf */; };
+		DF4EA3DB206D3B7F00C44A83 /* Ancillary Services.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D0206D3ACB00C44A83 /* Ancillary Services.pdf */; };
+		DF4EA3DC206D3B7F00C44A83 /* Brand Definition.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C2206D3AC900C44A83 /* Brand Definition.pdf */; };
+		DF4EA3DD206D3B7F00C44A83 /* Call Training.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C1206D3AC800C44A83 /* Call Training.pdf */; };
+		DF4EA3DE206D3B7F00C44A83 /* Case Acceptance.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D5206D3ACC00C44A83 /* Case Acceptance.pdf */; };
+		DF4EA3DF206D3B7F00C44A83 /* Custom Logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */; };
+		DF4EA3E0206D3B7F00C44A83 /* Door Hangers.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CB206D3ACA00C44A83 /* Door Hangers.pdf */; };
+		DF4EA3E1206D3B7F00C44A83 /* Email Campaign.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C5206D3AC900C44A83 /* Email Campaign.pdf */; };
+		DF4EA3E2206D3B7F00C44A83 /* Facebook Jumpstart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CF206D3ACB00C44A83 /* Facebook Jumpstart.pdf */; };
+		DF4EA3E3206D3B7F00C44A83 /* Facebook Outreach.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C3206D3AC900C44A83 /* Facebook Outreach.pdf */; };
+		DF4EA3E4206D3B7F00C44A83 /* Internet Review.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CE206D3ACB00C44A83 /* Internet Review.pdf */; };
+		DF4EA3E5206D3B7F00C44A83 /* Marketing Strategy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D1206D3ACB00C44A83 /* Marketing Strategy.pdf */; };
+		DF4EA3E6206D3B7F00C44A83 /* Mini-Zine Mailer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C6206D3AC900C44A83 /* Mini-Zine Mailer.pdf */; };
+		DF4EA3E7206D3B7F00C44A83 /* Movie Theater Ad.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D3206D3ACC00C44A83 /* Movie Theater Ad.pdf */; };
+		DF4EA3E8206D3B7F00C44A83 /* Open House.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C4206D3AC900C44A83 /* Open House.pdf */; };
+		DF4EA3E9206D3B7F00C44A83 /* Postcard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D6206D3ACC00C44A83 /* Postcard.pdf */; };
+		DF4EA3EA206D3B7F00C44A83 /* Radio Ad.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C7206D3ACA00C44A83 /* Radio Ad.pdf */; };
+		DF4EA3EB206D3B7F00C44A83 /* Reactivation System.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CD206D3ACB00C44A83 /* Reactivation System.pdf */; };
+		DF4EA3EC206D3B7F00C44A83 /* Referral System.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C8206D3ACA00C44A83 /* Referral System.pdf */; };
+		DF4EA3ED206D3B7F00C44A83 /* Responsive Website.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3BF206D3AC800C44A83 /* Responsive Website.pdf */; };
+		DF4EA3EE206D3B7F00C44A83 /* Result Tracking.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D4206D3ACC00C44A83 /* Result Tracking.pdf */; };
+		DF4EA3EF206D3B7F00C44A83 /* Smile Savings System.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D2206D3ACB00C44A83 /* Smile Savings System.pdf */; };
+		DF4EA3F0206D3B7F00C44A83 /* Tri-fold Brochures.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C9206D3ACA00C44A83 /* Tri-fold Brochures.pdf */; };
+		DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */; };
+		DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
 		DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
 		E1033B79206BE9EC000EC27B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B78206BE9EC000EC27B /* Product.swift */; };
+		E1033B7B206C3046000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
+		E1033B7D206C4702000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
+		E1033B7E206D3CFE000EC27B /* Strategic Marketing PlannerTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E7E2069780900B2B1EE /* Strategic Marketing PlannerTests.xctest */; };
+		E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
+		E1033B80206D3D0F000EC27B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B78206BE9EC000EC27B /* Product.swift */; };
+		E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */; };
+		E1033B82206D3D1B000EC27B /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
+		E1033B83206D3D1F000EC27B /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
+		E1033B84206D3D23000EC27B /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
+		E1033B85206D3D2C000EC27B /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
+		E1033B86206D3D32000EC27B /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
+		E1033B87206D3D36000EC27B /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
+		E1033B88206D3D3A000EC27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
+		E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
+		E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
+		E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
+		E1033B8C206D3D4A000EC27B /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
+		E1033B8D206D3D59000EC27B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
+		E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
+		E1033B8F206D3D61000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
+		E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
+		E1033B91206D3D6A000EC27B /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
+		E1033B92206D3D72000EC27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
+		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
+		E1033B94206D3DBA000EC27B /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 /* End PBXBuildFile section */
@@ -86,11 +141,43 @@
 		B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategic_Marketing_PlannerTests.swift; sourceTree = "<group>"; };
 		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationVC.storyboard; sourceTree = "<group>"; };
+		DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPDFViewController.swift; sourceTree = "<group>"; };
+		DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF06C668206C6D1800E6F4CC /* SEO.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SEO.pdf; sourceTree = "<group>"; };
+		DF06C66A206D38FA00E6F4CC /* Adwords.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Adwords.pdf; sourceTree = "<group>"; };
+		DF4EA3BF206D3AC800C44A83 /* Responsive Website.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Responsive Website.pdf"; sourceTree = "<group>"; };
+		DF4EA3C0206D3AC800C44A83 /* 8-Page Brochures.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "8-Page Brochures.pdf"; sourceTree = "<group>"; };
+		DF4EA3C1206D3AC800C44A83 /* Call Training.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Call Training.pdf"; sourceTree = "<group>"; };
+		DF4EA3C2206D3AC900C44A83 /* Brand Definition.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Brand Definition.pdf"; sourceTree = "<group>"; };
+		DF4EA3C3206D3AC900C44A83 /* Facebook Outreach.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Facebook Outreach.pdf"; sourceTree = "<group>"; };
+		DF4EA3C4206D3AC900C44A83 /* Open House.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Open House.pdf"; sourceTree = "<group>"; };
+		DF4EA3C5206D3AC900C44A83 /* Email Campaign.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Email Campaign.pdf"; sourceTree = "<group>"; };
+		DF4EA3C6206D3AC900C44A83 /* Mini-Zine Mailer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Mini-Zine Mailer.pdf"; sourceTree = "<group>"; };
+		DF4EA3C7206D3ACA00C44A83 /* Radio Ad.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Radio Ad.pdf"; sourceTree = "<group>"; };
+		DF4EA3C8206D3ACA00C44A83 /* Referral System.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Referral System.pdf"; sourceTree = "<group>"; };
+		DF4EA3C9206D3ACA00C44A83 /* Tri-fold Brochures.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Tri-fold Brochures.pdf"; sourceTree = "<group>"; };
+		DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Video & Photo.pdf"; sourceTree = "<group>"; };
+		DF4EA3CB206D3ACA00C44A83 /* Door Hangers.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Door Hangers.pdf"; sourceTree = "<group>"; };
+		DF4EA3CC206D3ACA00C44A83 /* Ad Design.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Ad Design.pdf"; sourceTree = "<group>"; };
+		DF4EA3CD206D3ACB00C44A83 /* Reactivation System.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Reactivation System.pdf"; sourceTree = "<group>"; };
+		DF4EA3CE206D3ACB00C44A83 /* Internet Review.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Internet Review.pdf"; sourceTree = "<group>"; };
+		DF4EA3CF206D3ACB00C44A83 /* Facebook Jumpstart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Facebook Jumpstart.pdf"; sourceTree = "<group>"; };
+		DF4EA3D0206D3ACB00C44A83 /* Ancillary Services.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Ancillary Services.pdf"; sourceTree = "<group>"; };
+		DF4EA3D1206D3ACB00C44A83 /* Marketing Strategy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Marketing Strategy.pdf"; sourceTree = "<group>"; };
+		DF4EA3D2206D3ACB00C44A83 /* Smile Savings System.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Smile Savings System.pdf"; sourceTree = "<group>"; };
+		DF4EA3D3206D3ACC00C44A83 /* Movie Theater Ad.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Movie Theater Ad.pdf"; sourceTree = "<group>"; };
+		DF4EA3D4206D3ACC00C44A83 /* Result Tracking.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Result Tracking.pdf"; sourceTree = "<group>"; };
+		DF4EA3D5206D3ACC00C44A83 /* Case Acceptance.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Case Acceptance.pdf"; sourceTree = "<group>"; };
+		DF4EA3D6206D3ACC00C44A83 /* Postcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Postcard.pdf; sourceTree = "<group>"; };
+		DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Custom Logo.pdf"; sourceTree = "<group>"; };
+		DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClientsTableViewCell.swift; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 		DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductsCollectionView.storyboard; sourceTree = "<group>"; };
 		DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		E1033B78206BE9EC000EC27B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		E1033B7A206C3045000EC27B /* productPages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = productPages.json; sourceTree = "<group>"; };
+		E1033B7C206C4702000EC27B /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
 		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,11 +250,13 @@
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
 				B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */,
 				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
+				DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */,
 				B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */,
 				B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */,
 				B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */,
 				E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */,
 				DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */,
+				DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */,
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
@@ -179,12 +268,14 @@
 		B3F55E5A206964E200B2B1EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DF4EA3D8206D3AEB00C44A83 /* ProductPDFs */,
 				B3F55E4E20695F8100B2B1EE /* Info.plist */,
 				B3F55E4920695F8100B2B1EE /* Assets.xcassets */,
 				B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */,
 				B3F55E4B20695F8100B2B1EE /* LaunchScreen.storyboard */,
 				B3998E1F2069C72400C4F02E /* Branding.swift */,
 				16BC2367206AD8730027C2EE /* DateHelper.swift */,
+				E1033B7A206C3045000EC27B /* productPages.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -192,6 +283,7 @@
 		B3F55E7320696AA700B2B1EE /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1033B7C206C4702000EC27B /* ProductController.swift */,
 				B3F55E7420696C8100B2B1EE /* ClientController.swift */,
 			);
 			path = "Model Controllers";
@@ -213,6 +305,41 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		DF4EA3D8206D3AEB00C44A83 /* ProductPDFs */ = {
+			isa = PBXGroup;
+			children = (
+				DF06C668206C6D1800E6F4CC /* SEO.pdf */,
+				DF06C66A206D38FA00E6F4CC /* Adwords.pdf */,
+				DF4EA3C0206D3AC800C44A83 /* 8-Page Brochures.pdf */,
+				DF4EA3CC206D3ACA00C44A83 /* Ad Design.pdf */,
+				DF4EA3D0206D3ACB00C44A83 /* Ancillary Services.pdf */,
+				DF4EA3C2206D3AC900C44A83 /* Brand Definition.pdf */,
+				DF4EA3C1206D3AC800C44A83 /* Call Training.pdf */,
+				DF4EA3D5206D3ACC00C44A83 /* Case Acceptance.pdf */,
+				DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */,
+				DF4EA3CB206D3ACA00C44A83 /* Door Hangers.pdf */,
+				DF4EA3C5206D3AC900C44A83 /* Email Campaign.pdf */,
+				DF4EA3CF206D3ACB00C44A83 /* Facebook Jumpstart.pdf */,
+				DF4EA3C3206D3AC900C44A83 /* Facebook Outreach.pdf */,
+				DF4EA3CE206D3ACB00C44A83 /* Internet Review.pdf */,
+				DF4EA3D1206D3ACB00C44A83 /* Marketing Strategy.pdf */,
+				DF4EA3C6206D3AC900C44A83 /* Mini-Zine Mailer.pdf */,
+				DF4EA3D3206D3ACC00C44A83 /* Movie Theater Ad.pdf */,
+				DF4EA3C4206D3AC900C44A83 /* Open House.pdf */,
+				DF4EA3D6206D3ACC00C44A83 /* Postcard.pdf */,
+				DF4EA3C7206D3ACA00C44A83 /* Radio Ad.pdf */,
+				DF4EA3CD206D3ACB00C44A83 /* Reactivation System.pdf */,
+				DF4EA3C8206D3ACA00C44A83 /* Referral System.pdf */,
+				DF4EA3BF206D3AC800C44A83 /* Responsive Website.pdf */,
+				DF4EA3D4206D3ACC00C44A83 /* Result Tracking.pdf */,
+				DF4EA3D2206D3ACB00C44A83 /* Smile Savings System.pdf */,
+				DF4EA3C9206D3ACA00C44A83 /* Tri-fold Brochures.pdf */,
+				DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */,
+			);
+			name = ProductPDFs;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		DF9D11CB20698CD500529F60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +350,7 @@
 				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
 				B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */,
 				DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */,
+				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -311,9 +439,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4EA3D9206D3B7F00C44A83 /* 8-Page Brochures.pdf in Resources */,
+				DF4EA3DA206D3B7F00C44A83 /* Ad Design.pdf in Resources */,
+				DF4EA3DB206D3B7F00C44A83 /* Ancillary Services.pdf in Resources */,
+				DF4EA3DC206D3B7F00C44A83 /* Brand Definition.pdf in Resources */,
+				DF4EA3DD206D3B7F00C44A83 /* Call Training.pdf in Resources */,
+				DF4EA3DE206D3B7F00C44A83 /* Case Acceptance.pdf in Resources */,
+				DF4EA3DF206D3B7F00C44A83 /* Custom Logo.pdf in Resources */,
+				DF4EA3E0206D3B7F00C44A83 /* Door Hangers.pdf in Resources */,
+				DF4EA3E1206D3B7F00C44A83 /* Email Campaign.pdf in Resources */,
+				DF4EA3E2206D3B7F00C44A83 /* Facebook Jumpstart.pdf in Resources */,
+				DF4EA3E3206D3B7F00C44A83 /* Facebook Outreach.pdf in Resources */,
+				DF4EA3E4206D3B7F00C44A83 /* Internet Review.pdf in Resources */,
+				DF4EA3E5206D3B7F00C44A83 /* Marketing Strategy.pdf in Resources */,
+				DF4EA3E6206D3B7F00C44A83 /* Mini-Zine Mailer.pdf in Resources */,
+				DF4EA3E7206D3B7F00C44A83 /* Movie Theater Ad.pdf in Resources */,
+				DF4EA3E8206D3B7F00C44A83 /* Open House.pdf in Resources */,
+				DF4EA3E9206D3B7F00C44A83 /* Postcard.pdf in Resources */,
+				DF4EA3EA206D3B7F00C44A83 /* Radio Ad.pdf in Resources */,
+				DF4EA3EB206D3B7F00C44A83 /* Reactivation System.pdf in Resources */,
+				DF4EA3EC206D3B7F00C44A83 /* Referral System.pdf in Resources */,
+				DF4EA3ED206D3B7F00C44A83 /* Responsive Website.pdf in Resources */,
+				DF4EA3EE206D3B7F00C44A83 /* Result Tracking.pdf in Resources */,
+				DF4EA3EF206D3B7F00C44A83 /* Smile Savings System.pdf in Resources */,
+				DF4EA3F0206D3B7F00C44A83 /* Tri-fold Brochures.pdf in Resources */,
+				DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */,
+				DF06C66B206D390B00E6F4CC /* Adwords.pdf in Resources */,
+				DF06C669206C6D2A00E6F4CC /* SEO.pdf in Resources */,
 				B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */,
 				168B0091206A9905002A1580 /* ClientList.storyboard in Resources */,
 				E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */,
+				E1033B7B206C3046000EC27B /* productPages.json in Resources */,
 				B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */,
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */,
@@ -329,6 +485,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1033B88206D3D3A000EC27B /* Main.storyboard in Resources */,
+				E1033B7E206D3CFE000EC27B /* Strategic Marketing PlannerTests.xctest in Resources */,
+				E1033B8F206D3D61000EC27B /* productPages.json in Resources */,
+				E1033B87206D3D36000EC27B /* PresentationVC.storyboard in Resources */,
+				E1033B83206D3D1F000EC27B /* MarketingToSuburban.storyboard in Resources */,
+				E1033B82206D3D1B000EC27B /* ProductsCollectionView.storyboard in Resources */,
+				E1033B85206D3D2C000EC27B /* RootTabBarController.storyboard in Resources */,
+				E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */,
+				E1033B84206D3D23000EC27B /* GrowthCalculator.storyboard in Resources */,
+				E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +521,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */,
 				DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */,
+				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
@@ -373,7 +541,9 @@
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,
+				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
+				DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,12 +552,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */,
+				E1033B93206D3D78000EC27B /* ProductController.swift in Sources */,
+				E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */,
+				E1033B8D206D3D59000EC27B /* AddClientModalViewController.swift in Sources */,
+				E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */,
+				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
+				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
+				E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */,
 				16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
+				E1033B94206D3DBA000EC27B /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
+				E1033B86206D3D32000EC27B /* ClientTableViewCell.swift in Sources */,
 				DF4C7DAD206A9666004FC870 /* (null) in Sources */,
+				E1033B91206D3D6A000EC27B /* Branding.swift in Sources */,
+				E1033B92206D3D72000EC27B /* AppDelegate.swift in Sources */,
+				E1033B8C206D3D4A000EC27B /* GrowthCalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +724,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 5H5Z34E2S5;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -557,7 +740,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 5H5Z34E2S5;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -573,7 +756,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 77T5A89VWP;
 				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";
@@ -589,7 +772,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 77T5A89VWP;
 				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";
