@@ -25,18 +25,53 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var initialContactDateTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
+    @IBOutlet weak var startPresentationButton: UIButton!
     var client: Client?
+    var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        practiceNameTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
+        addressTextField.delegate = self
+        cityTextField.delegate = self
+        stateTextField.delegate = self
+        zipCodeTextField.delegate = self
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     // MARK: -  Update Views
     func updateViews() {
+        notesTextView.layer.cornerRadius = 5
+        notesTextView.layer.borderWidth = 0.1
+        firstNameTextField.layer.cornerRadius = 5
+        lastNameTextField.layer.cornerRadius = 5
+        practiceNameTextField.layer.cornerRadius = 5
+        phoneTextField.layer.cornerRadius = 5
+        emailTextField.layer.cornerRadius = 5
+        addressTextField.layer.cornerRadius = 5
+        cityTextField.layer.cornerRadius = 5
+        stateTextField.layer.cornerRadius = 5
+        zipCodeTextField.layer.cornerRadius = 5
+        initialContactDateTextField.layer.cornerRadius = 5
+        saveOrRemoveClientButton.layer.cornerRadius = 5
+        startPresentationButton.layer.cornerRadius = 5
         if let client = client {
             firstNameTextField.text = client.firstName
             lastNameTextField.text = client.lastName
@@ -92,6 +127,7 @@ class AddClientModalViewController: UIViewController {
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
         present(imagePicker, animated: true, completion: nil)
     }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPresentationVC" {
@@ -103,7 +139,6 @@ class AddClientModalViewController: UIViewController {
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
-    
     
     // Save Client
     func save() {
@@ -153,6 +188,64 @@ extension AddClientModalViewController {
         deleteConfirmationAlert.addAction(cancelAction)
         deleteConfirmationAlert.addAction(deleteAction)
         self.present(deleteConfirmationAlert, animated: true, completion: nil)
+    }
+}
+
+// MARK: -  Extension for textfields and keyboard appearance
+extension AddClientModalViewController: UITextFieldDelegate {
+
+    // Return key moves to the next text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            textField.resignFirstResponder()
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            textField.resignFirstResponder()
+            practiceNameTextField.becomeFirstResponder()
+        } else if textField == practiceNameTextField {
+            textField.resignFirstResponder()
+            phoneTextField.becomeFirstResponder()
+        } else if textField == phoneTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
+            textField.resignFirstResponder()
+            addressTextField.becomeFirstResponder()
+        } else if textField == addressTextField {
+            textField.resignFirstResponder()
+            cityTextField.becomeFirstResponder()
+        } else if textField == cityTextField {
+            textField.resignFirstResponder()
+            stateTextField.becomeFirstResponder()
+        } else if textField == stateTextField {
+            textField.resignFirstResponder()
+            zipCodeTextField.becomeFirstResponder()
+        } else if textField == zipCodeTextField {
+            textField.resignFirstResponder()
+            notesTextView.becomeFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+    }
+    // Dismiss keyboard when touching outside the keyboard or textfield
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // move view based on textfield
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name == Notification.Name.UIKeyboardWillChangeFrame || notification.name == Notification.Name.UIKeyboardWillShow {
+        if activeTextField == emailTextField || activeTextField == addressTextField {
+            view.frame.origin.y = view.frame.origin.y - 50
+        } else if activeTextField == cityTextField || activeTextField == stateTextField || activeTextField == zipCodeTextField {
+            view.frame.origin.y = view.frame.origin.y - 100
+            }
+        } else {
+            view.frame.origin.y = 0
+        }
     }
 }
 

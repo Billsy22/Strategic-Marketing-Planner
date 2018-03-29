@@ -128,7 +128,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" smartDashesType="yes" textContentType="tel"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" smartDashesType="no"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -159,7 +159,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -180,7 +180,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="address-line1"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -212,7 +212,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="address-level2"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -233,7 +233,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="address-level1"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -255,7 +255,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="postal-code"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -272,12 +272,12 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-Sj-FFq">
+                                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-Sj-FFq">
                                                                 <rect key="frame" x="0.0" y="20.5" width="122.5" height="30"/>
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="continue"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>
@@ -409,6 +409,7 @@
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
                         <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
+                        <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
                         <outlet property="zipCodeTextField" destination="i9o-en-3pE" id="6sO-TA-ahk"/>
                     </connections>
