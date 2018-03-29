@@ -68,22 +68,6 @@ class Product: Codable {
         self.image5Name = image5Name
     }
     
-    static func productsFromJSON(_ data: Data) -> [Product]? {
-        do {
-            var products: [Product] = []
-            let productsDictionary = try JSONDecoder().decode(Dictionary<String, Dictionary<String, Product>>.self, from: data)
-            for key in productsDictionary.keys {
-                guard let innerDictionary = productsDictionary[key] else { continue }
-                for product in innerDictionary.values {
-                    
-                }
-            }
-            return products
-        } catch let error {
-            NSLog("Error decoding products from stored JSON: \(error.localizedDescription)")
-            return nil
-        }
-    }
     
 }
 
