@@ -9,16 +9,34 @@
 import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
+    
+    @IBOutlet weak var currentProductionTextfield: UITextField!
+    @IBOutlet weak var productionGoalTextField: UITextField!
+    
+    var currentProduction: Decimal = 0 {
+        didSet {
+            updateComputedValues()
+        }
+    }
+    var productionGoal: Decimal = 0 {
+        didSet {
+            updateComputedValues()
+        }
+    }
+    var desiredGrowth: Decimal { return productionGoal - currentProduction }
 
+    @IBOutlet weak var desiredGrowthLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        currentProductionTextfield.setAsNumericKeyboard()
+        productionGoalTextField.setAsNumericKeyboard()
+        updateComputedValues()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateComputedValues(){
+        desiredGrowthLabel.text = "\(desiredGrowth)"
     }
     
 
@@ -32,4 +50,27 @@ class GrowthCalculatorViewController: UIViewController {
     }
     */
 
+    
+    @IBAction func currentProductionEntered(_ sender: UITextField) {
+        guard let text = sender.text, let value = Decimal(string: text) else {
+            currentProduction = 0
+            return
+        }
+        currentProduction = value
+    }
+    
+    @IBAction func productionGoalEntered(_ sender: UITextField) {
+        guard let text = sender.text, let value = Decimal(string: text) else {
+            productionGoal = 0
+            return
+        }
+        productionGoal = value
+    }
+}
+
+extension GrowthCalculatorViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
