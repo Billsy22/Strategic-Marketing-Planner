@@ -34,9 +34,6 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.brandBlue
-//        navigationBar.isTranslucent = false
-//        navigationBar.barStyle = .default
-//        navigationBar.barTintColor = UIColor.brandBlue
     }
     
     // MARK: - Configure Embedded VCs
@@ -75,21 +72,11 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
             NSAttributedStringKey.font: UIFont(name: "Georgia-Bold", size: 24)!
         ]
         
-        /*UINavigationBar.appearance()*/
         navigationBarPreviousButton.setTitleTextAttributes(attrs, for: .normal)
     }
     
     private func setupDefaultDestinations() ->  [(String, UIViewController)]{
         var defaultDestinations: [(String, UIViewController)] = []
-        let redVC = UIViewController()
-        redVC.view.backgroundColor = .red
-        defaultDestinations.append(("Red", redVC))
-        let blueVC = UIViewController()
-        blueVC.view.backgroundColor = .blue
-        defaultDestinations.append(("Blue", blueVC))
-        let greenVC = UIViewController()
-        greenVC.view.backgroundColor = .green
-        defaultDestinations.append(("Green", greenVC))
         let growthCalculatorSB = UIStoryboard(name: "GrowthCalculator", bundle: nil)
         let growthCalculatorVC = growthCalculatorSB.instantiateViewController(withIdentifier: "growthCalculator")
         defaultDestinations.append(("Growth Calculator", growthCalculatorVC))
