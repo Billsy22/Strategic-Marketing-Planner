@@ -12,6 +12,7 @@ class GrowthCalculatorViewController: UIViewController {
     
     @IBOutlet weak var currentProductionTextfield: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     var currentProduction: Decimal = 0 {
         didSet {
@@ -33,6 +34,18 @@ class GrowthCalculatorViewController: UIViewController {
         productionGoalTextField.setAsNumericKeyboard()
         updateComputedValues()
         // Do any additional setup after loading the view.
+        var points: [CGPoint] = []
+        for position in 1...10 {
+            let newPoint = CGPoint(x: position, y: 20)
+            points.append(newPoint)
+        }
+        var morePoints: [CGPoint] = []
+        for position in 1...10 {
+            let newPoint = CGPoint(x: position, y: position + 10)
+            morePoints.append(newPoint)
+        }
+        lineChartView.addDataSeries(points: points, color: .blue, labelText: "not displayed yet")
+        lineChartView.addDataSeries(points: morePoints, color: .red, labelText: "displayed!!!!")
     }
 
     func updateComputedValues(){

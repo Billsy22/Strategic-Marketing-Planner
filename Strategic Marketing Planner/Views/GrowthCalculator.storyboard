@@ -142,6 +142,14 @@
                                     <constraint firstItem="TtR-d6-mXv" firstAttribute="centerY" secondItem="gcx-Iq-4dq" secondAttribute="centerY" id="svP-06-xPY"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k77-Kp-CR4" customClass="LineChartView" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
+                                <rect key="frame" x="574" y="418" width="400" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="23J-xz-GNT"/>
+                                    <constraint firstAttribute="width" constant="400" id="OFq-ST-OrO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -156,6 +164,7 @@
                             <constraint firstItem="osf-t5-aJw" firstAttribute="top" secondItem="g0t-3j-bah" secondAttribute="top" constant="16" id="Doc-cz-6hJ"/>
                             <constraint firstItem="CDV-Vz-Gko" firstAttribute="leading" secondItem="UE5-85-pfb" secondAttribute="trailing" id="EA3-ct-jue"/>
                             <constraint firstItem="gcx-Iq-4dq" firstAttribute="top" secondItem="a3K-JJ-klW" secondAttribute="top" id="LfU-QY-rBC"/>
+                            <constraint firstItem="g0t-3j-bah" firstAttribute="trailing" secondItem="k77-Kp-CR4" secondAttribute="trailing" constant="50" id="Nc3-Ft-8kQ"/>
                             <constraint firstItem="wvq-eX-zwS" firstAttribute="top" secondItem="ADS-Gz-c8o" secondAttribute="top" id="PCd-ob-F1g"/>
                             <constraint firstItem="UE5-85-pfb" firstAttribute="leading" secondItem="osf-t5-aJw" secondAttribute="leading" id="Roo-54-bXg"/>
                             <constraint firstItem="wvq-eX-zwS" firstAttribute="height" secondItem="ADS-Gz-c8o" secondAttribute="height" id="RvH-Ke-fvU"/>
@@ -163,6 +172,7 @@
                             <constraint firstItem="g0t-3j-bah" firstAttribute="centerX" secondItem="CDV-Vz-Gko" secondAttribute="trailing" constant="-16" id="Uxz-gV-RAw"/>
                             <constraint firstItem="ADS-Gz-c8o" firstAttribute="leading" secondItem="UE5-85-pfb" secondAttribute="leading" id="V8i-bm-KZA"/>
                             <constraint firstItem="gcx-Iq-4dq" firstAttribute="leading" secondItem="a3K-JJ-klW" secondAttribute="trailing" id="Wfb-Kj-iiF"/>
+                            <constraint firstItem="g0t-3j-bah" firstAttribute="bottom" secondItem="k77-Kp-CR4" secondAttribute="bottom" constant="50" id="Xm4-Bl-cP4"/>
                             <constraint firstItem="UE5-85-pfb" firstAttribute="top" secondItem="osf-t5-aJw" secondAttribute="bottom" constant="8" id="ebb-KZ-GKN"/>
                             <constraint firstItem="gcx-Iq-4dq" firstAttribute="trailing" secondItem="wvq-eX-zwS" secondAttribute="trailing" id="fyg-LE-KU6"/>
                             <constraint firstItem="gcx-Iq-4dq" firstAttribute="height" secondItem="a3K-JJ-klW" secondAttribute="height" id="n4U-ba-e8S"/>
@@ -174,6 +184,7 @@
                     <connections>
                         <outlet property="currentProductionTextfield" destination="ZyI-2n-3Ev" id="XEj-bm-SSk"/>
                         <outlet property="desiredGrowthLabel" destination="TtR-d6-mXv" id="T7b-M1-gMg"/>
+                        <outlet property="lineChartView" destination="k77-Kp-CR4" id="HGT-wg-eRs"/>
                         <outlet property="productionGoalTextField" destination="ex7-Dc-9QM" id="Zcn-bq-Oaz"/>
                     </connections>
                 </viewController>
