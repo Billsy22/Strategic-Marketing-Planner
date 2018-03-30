@@ -11,22 +11,27 @@ import UIKit
 class BarGraphView: UIView {
     
     // MARK: -  Axis Properties
-    var graphTransform: CGAffineTransform?
-    var barDataArray: [BarData] = []
     var barsArray: [CAShapeLayer] = []
-    var axisWidth: CGFloat = 2.0
-    var axisColor: UIColor = .lightGray
+    var axisWidth: CGFloat = 8
     var showXAxisGraduations = true
     var labelFontSize: CGFloat = 10.0
+    var graphTransform: CGAffineTransform?
+    var axisColor: UIColor = .lightGray
     var axisLineWidth: CGFloat = 5
-
+    var xGraduationCount: CGFloat = 5
+    var barDataArray: [BarData] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     // MARK: -  Bar Properties
-    var barHeight: CGFloat = 10
+    var barHeight: CGFloat = 25
     var minX: CGFloat = 0
     var maxX: CGFloat = 0
     var deltaX: CGFloat = 0
     var deltaY: CGFloat = 0
-    var barSpacing: CGFloat = 5
+    var barSpacing: CGFloat = 40
     
     // MARK: -  Initializers
     override init(frame: CGRect) {
@@ -41,9 +46,10 @@ class BarGraphView: UIView {
     func setUpBarsForData() {
         for barData in barDataArray {
             let barLayer = CAShapeLayer()
-            barLayer.fillColor = barData.dataColor.cgColor
+            barLayer.fillColor = UIColor.clear.cgColor
             barLayer.strokeColor = barData.dataColor.cgColor
-            barLayer.frame = frame
+            barLayer.lineWidth = barHeight
+            barLayer.frame = CGRect(origin: CGPoint.zero, size: layer.frame.size)
             barLayer.bounds = bounds
             layer.addSublayer(barLayer)
             barsArray.append(barLayer)
@@ -62,7 +68,6 @@ class BarGraphView: UIView {
         for barData in barDataArray {
             xValues.append(barData.data)
         }
-        minX = xValues.min() ?? 0
         maxX = xValues.max() ?? 0
         var highestXValue = maxX
         var exponent: CGFloat = 0
@@ -71,13 +76,9 @@ class BarGraphView: UIView {
             exponent += 1
         }
         let xValueRoundedUp = ceil(highestXValue)
-        maxX = xValueRoundedUp * pow(10, exponent)
-        deltaX = maxX / 4
-        let biggestDataSeries = barDataArray.reduce(barDataArray[0]) { (largestSoFar, barDataSeries) -> BarData in
-            let largerDataSeries = largestSoFar.data > barDataSeries.data ? largestSoFar : barDataSeries
-            return largerDataSeries
-        }
-        deltaX =  maxX / CGFloat(biggestDataSeries.data)
+        let maxXCandidate = xValueRoundedUp * pow(10, exponent)
+        maxX = maxXCandidate < maxX * 1.5 ? maxXCandidate : maxXCandidate * 0.75
+        deltaX =  maxX / xGraduationCount
         setTransform(minX: minX, maxX: maxX)
     }
     
@@ -85,19 +86,21 @@ class BarGraphView: UIView {
         let xLabelSize = "\(Int(maxX))".size(withSystemFontSize: labelFontSize)
         let xPadding = xLabelSize.height + 5
         let xScale = (bounds.width - xLabelSize.width/2 - 2)/(maxX - minX)
-        let yScale = (bounds.height)
+        let yScale: CGFloat = 1
         graphTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: 1, ty: bounds.height - xPadding)
         setNeedsDisplay()
     }
     
     func plot() {
         guard let graphTransform = graphTransform else { updateAxisRange(); return }
+        var barYPosition: CGFloat = 0
         for index in 0..<barDataArray.count {
             let data = barDataArray[index].data
             let barLayer = barsArray[index]
             let barPath = CGMutablePath()
-            barPath.addLine(to: CGPoint(x: data, y: 0), transform: graphTransform)
+            barPath.addLines(between: [CGPoint(x: 0 ,y: barYPosition), CGPoint(x: data, y: barYPosition)], transform: graphTransform)
             barLayer.path = barPath
+            barYPosition += barSpacing
         }
     }
     
@@ -131,23 +134,27 @@ class BarGraphView: UIView {
             deltaXLines.addLines(between: points, transform: graphTransform)
             deltaXLayer.path = deltaXLines
             self.layer.addSublayer(deltaXLayer)
-            let label = "\(Int(x))"
+            let label = "\(Int(x).shortenedUSDstring)" as NSString
+            let labelSize = "\(Int(x).shortenedUSDstring)".size(withSystemFontSize: labelFontSize)
+            var labelDrawPoint = CGPoint(x: x, y: 0).applying(graphTransform)
+            labelDrawPoint.y += labelSize.height
+            label.draw(at: labelDrawPoint, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
         }
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        clearSublayers(layer: layer)
+        setUpBarsForData()
+        updateAxisRange()
+        drawAxes()
+        plot()
     }
-    */
-
+    
 }
 
 // MARK: -  Struct based on user input
 struct BarData {
     
     var data: CGFloat
-    var dataColor: UIColor = .blue
+    var dataColor: UIColor
 }
