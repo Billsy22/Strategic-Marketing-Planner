@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16228719206D41EA00160BF0 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16228718206D41EA00160BF0 /* LineChartView.swift */; };
 		168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
 		168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
@@ -38,6 +37,7 @@
 		B3D9DF31206D785700DA8A4A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
+		B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9DF34206DD76700DA8A4A /* LineChartView.swift */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
 		B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
@@ -143,6 +143,7 @@
 		B3407ADE206C89E800630F6F /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
+		B3D9DF34206DD76700DA8A4A /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationBaseViewController.swift; sourceTree = "<group>"; };
 		B3F55E3C20695F8100B2B1EE /* Strategic Marketing Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Strategic Marketing Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +264,7 @@
 		B3F55E58206964C300B2B1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3D9DF34206DD76700DA8A4A /* LineChartView.swift */,
 				168B0090206A9905002A1580 /* ClientList.storyboard */,
 				168B008E206A98ED002A1580 /* AddClient.storyboard */,
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
@@ -319,6 +321,7 @@
 		DF4C7DAB206A9625004FC870 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				16228718206D41EA00160BF0 /* LineChartView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */,
 				DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */,
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
+				B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
@@ -570,12 +574,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */,
+				E1033B93206D3D78000EC27B /* ProductController.swift in Sources */,
+				E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */,
+				E1033B8D206D3D59000EC27B /* AddClientModalViewController.swift in Sources */,
+				E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */,
+				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
+				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */,
 				B3D9DF30206D784F00DA8A4A /* MarketingToSuburbanViewController.swift in Sources */,
 				B3D9DF2D206D783D00DA8A4A /* ProductsCollectionViewController.swift in Sources */,
 				B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */,
 				B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
+				E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */,
 				B3D9DF31206D785700DA8A4A /* DateHelper.swift in Sources */,
 				16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
@@ -588,11 +600,15 @@
 				B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */,
 				B3D9DF26206D782400DA8A4A /* Client+Convenience.swift in Sources */,
 				B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */,
+				E1033B94206D3DBA000EC27B /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				E1033B86206D3D32000EC27B /* ClientTableViewCell.swift in Sources */,
 				DF4C7DAD206A9666004FC870 /* (null) in Sources */,
 				B3D9DF24206D781D00DA8A4A /* Product.swift in Sources */,
 				B3D9DF25206D782100DA8A4A /* CoreDataStack.swift in Sources */,
+				E1033B91206D3D6A000EC27B /* Branding.swift in Sources */,
+				E1033B92206D3D72000EC27B /* AppDelegate.swift in Sources */,
+				E1033B8C206D3D4A000EC27B /* GrowthCalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,7 +762,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -762,7 +778,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -88,11 +88,7 @@ class LineChartView: UIView {
         let roundedUp = ceil(highestYValue)
         maxY = roundedUp * pow(10, exponent)
         deltaY = maxY / 4
-        let biggestDataSeries = dataArray.reduce(dataArray[0]) { (largestSoFar, dataSeries) -> DataSeries in
-            let largerDataSeries = largestSoFar.data.count > dataSeries.data.count ? largestSoFar : dataSeries
-            return largerDataSeries
-        }
-        deltaX =  maxX / CGFloat(biggestDataSeries.data.count)
+        deltaX =  floor(maxX / 5)//CGFloat(biggestDataSeries.data.count)
         setTransform(minX: minX, maxX: maxX, minY: minY, maxY: maxY)
     }
     
@@ -104,7 +100,7 @@ class LineChartView: UIView {
         let yPadding = yLabelSize.width + 5
         let xScale = (bounds.width - yPadding - xLabelSize.width/2 - 2)/(maxX - minX)
         let yScale = (bounds.height - xPadding - yLabelSize.height/2 - 2)/(maxY - minY)
-        chartTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: yPadding, ty: bounds.height - xPadding)
+        chartTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: -(minX * xScale) + yPadding/*yPadding - xScale yPadding*/, ty: bounds.height - xPadding)
         setNeedsDisplay()
     }
     
@@ -142,6 +138,8 @@ class LineChartView: UIView {
         deltaYLayer.lineWidth = axesWidth / 2
         
         let xAxisPoints = [CGPoint(x: minX, y: 0), CGPoint(x: maxX, y: 0)]
+//        let yAxisPoints = [CGPoint(x: 0, y: minY), CGPoint(x: 0, y: maxY)]
+//        axesLines.addLines(between: yAxisPoints, transform: chartTransform)
         
         axesLines.addLines(between: xAxisPoints, transform: chartTransform)
         
@@ -161,14 +159,14 @@ class LineChartView: UIView {
                 let label = "\(Int(y))" as NSString
                 let labelSize = "\(Int(y))".size(withSystemFontSize: labelFontSize)
                 var labelDrawPoint = CGPoint(x: 0, y: y).applying(chartTransform)
-                labelDrawPoint.x -= labelSize.width - 1
+                labelDrawPoint.x -= chartTransform.tx //- labelSize.width - 1
                 labelDrawPoint.y -= labelSize.height/2
                 label.draw(at: labelDrawPoint, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
             }
         }
         
         for x in stride(from: minX, through: maxX, by: deltaX) {
-            let label = "Year \(x)" as NSString
+            let label = "Year \(Int(x))" as NSString
             let labelSize = "\(Int(x))".size(withSystemFontSize: labelFontSize)
             var labelDrawPoint = CGPoint(x: x, y: 0).applying(chartTransform)
             labelDrawPoint.x -= labelSize.width - 1
