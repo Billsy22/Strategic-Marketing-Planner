@@ -35,18 +35,30 @@ class GrowthCalculatorViewController: UIViewController {
         updateComputedValues()
         // Do any additional setup after loading the view.
         var points: [CGPoint] = []
-        for position in 100...120 {
-            let newPoint = CGPoint(x: position, y: 20)
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 100_001 * position)
             points.append(newPoint)
         }
         var morePoints: [CGPoint] = []
-        for position in 21...40 {
-            let newPoint = CGPoint(x: position, y: position + 10)
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 150_000 * position)
             morePoints.append(newPoint)
         }
+        var points2: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 110_001 * position)
+            points2.append(newPoint)
+        }
+        var points3: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 110_001 * position)
+            points3.append(newPoint)
+        }
 
-        lineChartView.addDataSeries(points: points, color: .blue, labelText: "not displayed yet")
-        lineChartView.addDataSeries(points: morePoints, color: .red, labelText: "displayed!!!!")
+        lineChartView.addDataSeries(points: points, color: .blue, labelText: "Cumulative Return")
+        lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
+        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
+        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
     }
 
     func updateComputedValues(){
