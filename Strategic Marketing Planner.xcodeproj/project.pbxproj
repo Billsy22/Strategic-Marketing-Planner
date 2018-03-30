@@ -11,7 +11,6 @@
 		168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
-		16EEF506206EC9330069C77F /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EEF505206EC9330069C77F /* BarGraphView.swift */; };
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
 		B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
@@ -53,6 +52,7 @@
 		B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
+		B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F90F81206EC0A400EE2940 /* BarGraphView.swift */; };
 		DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */; };
 		DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */; };
 		DF06C669206C6D2A00E6F4CC /* SEO.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF06C668206C6D1800E6F4CC /* SEO.pdf */; };
@@ -159,6 +159,7 @@
 		B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strategic_Marketing_PlannerTests.swift; sourceTree = "<group>"; };
 		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationVC.storyboard; sourceTree = "<group>"; };
+		B3F90F81206EC0A400EE2940 /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPDFViewController.swift; sourceTree = "<group>"; };
 		DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF06C668206C6D1800E6F4CC /* SEO.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SEO.pdf; sourceTree = "<group>"; };
@@ -263,7 +264,7 @@
 		B3F55E58206964C300B2B1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16EEF505206EC9330069C77F /* BarGraphView.swift */,
+				B3F90F81206EC0A400EE2940 /* BarGraphView.swift */,
 				B3D9DF34206DD76700DA8A4A /* LineChartView.swift */,
 				168B0090206A9905002A1580 /* ClientList.storyboard */,
 				168B008E206A98ED002A1580 /* AddClient.storyboard */,
@@ -321,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				16228718206D41EA00160BF0 /* LineChartView.swift */,
+				16EEF503206E96310069C77F /* BarGraphView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -554,6 +556,7 @@
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
+				B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */,
 				B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */,
 				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
 				B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */,

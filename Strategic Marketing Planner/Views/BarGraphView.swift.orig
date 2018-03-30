@@ -2,11 +2,7 @@
 //  BarGraphView.swift
 //  Strategic Marketing Planner
 //
-<<<<<<< HEAD
 //  Created by Taylor Bills on 3/30/18.
-=======
-//  Created by Christopher Thiebaut on 3/28/18.
->>>>>>> development
 //  Copyright © 2018 Christopher Thiebaut. All rights reserved.
 //
 
@@ -14,7 +10,6 @@ import UIKit
 
 class BarGraphView: UIView {
     
-<<<<<<< HEAD
     // MARK: -  Axis Properties
     var graphTransform: CGAffineTransform?
     var barDataArray: [BarData] = []
@@ -136,31 +131,14 @@ class BarGraphView: UIView {
             deltaXLines.addLines(between: points, transform: graphTransform)
             deltaXLayer.path = deltaXLines
             self.layer.addSublayer(deltaXLayer)
+<<<<<<< HEAD
+            let label = "\(Int(x).)"
+=======
             let label = "\(Int(x))"
+>>>>>>> 06bfad104975164559d7ab7264e9c2367fbea85b
         }
     }
     
-=======
-    var data: [BarGraphData] = []
-    
-    var max: Double {
-        return data.max()?.value ?? 0
-    }
-    
-    var min: Double {
-        return data.min()?.value ?? 0
-    }
-    
-    func addData(_ data: BarGraphData){
-        self.data.append(data)
-        redrawGraph()
-    }
-    
-    func redrawGraph(){
-        
-    }
-
->>>>>>> development
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -171,25 +149,9 @@ class BarGraphView: UIView {
 
 }
 
-<<<<<<< HEAD
 // MARK: -  Struct based on user input
 struct BarData {
     
     var data: CGFloat
     var dataColor: UIColor = .blue
-=======
-struct BarGraphData: Comparable {
-    
-    var value: Double
-    var color: UIColor
-    var label: String
-    
-    static func <(lhs: BarGraphData, rhs: BarGraphData) -> Bool {
-        return lhs.value < rhs.value
-    }
-    
-    static func ==(lhs: BarGraphData, rhs: BarGraphData) -> Bool {
-        return lhs.value == rhs.value
-    }
->>>>>>> development
 }

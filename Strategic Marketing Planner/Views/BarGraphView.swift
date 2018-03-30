@@ -131,7 +131,7 @@ class BarGraphView: UIView {
             deltaXLines.addLines(between: points, transform: graphTransform)
             deltaXLayer.path = deltaXLines
             self.layer.addSublayer(deltaXLayer)
-            let label = "\(Int(x).)"
+            let label = "\(Int(x))"
         }
     }
     
