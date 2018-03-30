@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rZf-xL-NBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rZf-xL-NBx">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,9 +82,28 @@
                     <view key="view" contentMode="scaleToFill" id="SVv-NW-w4O">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-cs-yD2">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sGa-EF-IhC" firstAttribute="trailing" secondItem="gTd-cs-yD2" secondAttribute="trailing" id="ehv-Z6-xCh"/>
+                            <constraint firstItem="gTd-cs-yD2" firstAttribute="top" secondItem="sGa-EF-IhC" secondAttribute="top" id="m8h-vb-Vf6"/>
+                            <constraint firstItem="gTd-cs-yD2" firstAttribute="leading" secondItem="sGa-EF-IhC" secondAttribute="leading" id="xC6-hM-Hwl"/>
+                            <constraint firstItem="sGa-EF-IhC" firstAttribute="bottom" secondItem="gTd-cs-yD2" secondAttribute="bottom" id="yte-jZ-elL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sGa-EF-IhC"/>
                     </view>
+                    <connections>
+                        <outlet property="pdfWebView" destination="gTd-cs-yD2" id="ugW-mC-X7c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-hM-vFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
