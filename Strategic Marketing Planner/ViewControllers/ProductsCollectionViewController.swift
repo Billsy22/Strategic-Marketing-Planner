@@ -47,7 +47,7 @@ class ProductsCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         cell.productNameLabel.text = productsArray[indexPath.row]
         cell.productImageView.image = #imageLiteral(resourceName: "imageNotAvailable") //imagesArray[indexPath.row]
-        // TODO: Need to implement photos for product cells.
+        // TODO: - Need to implement photos for product cells.
         return cell
     }
 }
