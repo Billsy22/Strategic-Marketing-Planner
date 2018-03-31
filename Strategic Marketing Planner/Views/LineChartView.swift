@@ -8,8 +8,8 @@
 
 import UIKit
 
-class LineChartView: UIView {
-
+class LineChartView: UIView, Graph {
+    
     // MARK: -  Line and circle properties
     var linesAndCirclesArray: [(lineLayer: CAShapeLayer, circleLayer: CAShapeLayer)] = []
     var axesWidth: CGFloat = 2.0
@@ -187,6 +187,7 @@ class LineChartView: UIView {
     
     // MARK: -  Draw
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         clearSublayers(layer: layer)
         setUpLayersForData()
         updateAxisRange()
@@ -195,9 +196,53 @@ class LineChartView: UIView {
         drawDataSeriesLabels()
     }
     
+}
+
+// MARK: -  DataSeries Struct
+
+protocol GraphLegendData {
+    var dataLabelText: String? { get }
+    var dataColor: UIColor { get }
+}
+
+struct DataSeries: GraphLegendData {
+    
+    // MARK: -  Properties
+    var data: [CGPoint]
+    var dataColor: UIColor
+    var dataLabelText: String?
+}
+
+// MARK: -  Extension on string
+extension String {
+    // Get the size of a string and cast as NSString
+    func size(withSystemFontSize pointSize: CGFloat) -> CGSize {
+        return (self as NSString).size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: pointSize)])
+    }
+}
+
+extension Int {
+    
+    var shortenedUSDstring: String {
+        return self > 1000 ? "$\(self/1000)k" : "$\(self)"
+    }
+}
+
+protocol Graph: class {
+    var chartTransform: CGAffineTransform? { get }
+    var legendBlockWidth: CGFloat { get }
+    var legendHeight: CGFloat { get }
+    var minX: CGFloat { get }
+    associatedtype  GraphData: GraphLegendData
+    var dataArray: [GraphData] { get }
+    var labelFontSize: CGFloat { get }
+    var axisColor: UIColor { get }
+}
+
+extension Graph where Self: UIView {
     func drawDataSeriesLabels() {
         guard let chartTransform = chartTransform else {
-            updateAxisRange()
+            //updateAxisRange()
             return
         }
         let blockWidth: CGFloat = legendBlockWidth
@@ -236,29 +281,5 @@ class LineChartView: UIView {
             labelText.draw(at: labelPosition, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
             nextBlockPosition.x = labelPosition.x + labelSize.width + 2 * blockWidth
         }
-    }
-}
-
-// MARK: -  DataSeries Struct
-struct DataSeries {
-    
-    // MARK: -  Properties
-    var data: [CGPoint]
-    var dataColor: UIColor
-    var dataLabelText: String?
-}
-
-// MARK: -  Extension on string
-extension String {
-    // Get the size of a string and cast as NSString
-    func size(withSystemFontSize pointSize: CGFloat) -> CGSize {
-        return (self as NSString).size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: pointSize)])
-    }
-}
-
-extension Int {
-    
-    var shortenedUSDstring: String {
-        return self > 1000 ? "$\(self/1000)k" : "$\(self)"
     }
 }
