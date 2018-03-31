@@ -13,6 +13,7 @@ class GrowthCalculatorViewController: UIViewController {
     @IBOutlet weak var currentProductionTextfield: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var barGraphView: BarGraphView!
     
     var currentProduction: Decimal = 0 {
         didSet {
@@ -59,6 +60,13 @@ class GrowthCalculatorViewController: UIViewController {
         lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
         lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
         lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
+        
+        let data: CGFloat = 99
+        let moreData: CGFloat = 25
+        let littleData: CGFloat = 24
+        barGraphView.addBarData(data: moreData, color: .blue)
+        barGraphView.addBarData(data: littleData, color: .green)
+        barGraphView.addBarData(data: data, color: .red)
     }
 
     func updateComputedValues(){

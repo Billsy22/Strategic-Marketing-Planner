@@ -8,24 +8,49 @@
 
 import UIKit
 import PDFKit
-import WebKit
 
 class ProductDetailPDFViewController: UIViewController {
     
     // MARK: - Properties
     var product: String?
-    @IBOutlet weak var pdfWebView: WKWebView!
+    let pdfView = PDFView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pdfViewer()
+        formatNavigationBar()
+        loadPDF()
+        configurePDFView()
+    }
+    
+    func formatNavigationBar() {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    func pdfViewer() {
-        if let path = Bundle.main.url(forResource: product, withExtension: "pdf") {
-        let pdfDocument = NSURLRequest(url: path)
-            pdfWebView.load(pdfDocument as URLRequest)
+    func loadPDF() {
+        guard let url = Bundle.main.url(forResource: product, withExtension: "pdf") else { return }
+        if let document = PDFDocument(url: url) {
+            pdfView.document = document
+        }
+    }
+    
+    func configurePDFView() {
+        pdfView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(pdfView)
+        
+        pdfView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        pdfView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        switch Devices.currentDevice {
+        case .iPadPro9Inch, .otheriPad:
+            pdfView.scaleFactor = 0.499
+        case .iPadPro10Inch:
+            pdfView.scaleFactor = 0.54
+        case .iPadPro12Inch:
+            pdfView.scaleFactor = 0.665
+        default:
+             break
         }
     }
 }

@@ -82,28 +82,9 @@
                     <view key="view" contentMode="scaleToFill" id="SVv-NW-w4O">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-cs-yD2">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="655"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="sGa-EF-IhC" firstAttribute="trailing" secondItem="gTd-cs-yD2" secondAttribute="trailing" id="ehv-Z6-xCh"/>
-                            <constraint firstItem="gTd-cs-yD2" firstAttribute="top" secondItem="sGa-EF-IhC" secondAttribute="top" id="m8h-vb-Vf6"/>
-                            <constraint firstItem="gTd-cs-yD2" firstAttribute="leading" secondItem="sGa-EF-IhC" secondAttribute="leading" id="xC6-hM-Hwl"/>
-                            <constraint firstItem="sGa-EF-IhC" firstAttribute="bottom" secondItem="gTd-cs-yD2" secondAttribute="bottom" id="yte-jZ-elL"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="sGa-EF-IhC"/>
                     </view>
-                    <connections>
-                        <outlet property="pdfWebView" destination="gTd-cs-yD2" id="ugW-mC-X7c"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-hM-vFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
