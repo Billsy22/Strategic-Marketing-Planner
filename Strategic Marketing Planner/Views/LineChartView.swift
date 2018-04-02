@@ -8,8 +8,8 @@
 
 import UIKit
 
-class LineChartView: UIView {
-
+class LineChartView: UIView, Graph {
+    
     // MARK: -  Line and circle properties
     var linesAndCirclesArray: [(lineLayer: CAShapeLayer, circleLayer: CAShapeLayer)] = []
     var axesWidth: CGFloat = 2.0
@@ -187,6 +187,7 @@ class LineChartView: UIView {
     
     // MARK: -  Draw
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         clearSublayers(layer: layer)
         setUpLayersForData()
         updateAxisRange()
@@ -195,44 +196,16 @@ class LineChartView: UIView {
         drawDataSeriesLabels()
     }
     
-    func drawDataSeriesLabels() {
-        guard let chartTransform = chartTransform else {
-            updateAxisRange()
-            return
-        }
-        let blockWidth: CGFloat = legendBlockWidth
-        var nextBlockPosition = CGPoint.init(x: minX, y: 0).applying(chartTransform)
-        
-        nextBlockPosition.x += blockWidth
-        nextBlockPosition.y = bounds.height - legendHeight
-        for dataSeries in dataArray.filter({$0.dataLabelText != nil}) {
-            let labelText = dataSeries.dataLabelText ?? ""
-            let labelSize = labelText.size(withSystemFontSize: labelFontSize)
-            //nextBlockPosition.y += 2 * labelSize.height
-            
-            let labelLayer = CAShapeLayer()
-            labelLayer.fillColor = dataSeries.dataColor.cgColor
-            let path = CGMutablePath()
-            var labelPosition = CGPoint(x: nextBlockPosition.x + 2, y: nextBlockPosition.y + labelSize.height - 2)
-            
-            if labelPosition.x + labelSize.width > bounds.maxX {
-                nextBlockPosition.x = blockWidth
-                nextBlockPosition.y += blockWidth + 5
-                labelPosition = CGPoint(x: nextBlockPosition.x + 2, y: nextBlockPosition.y + labelSize.height - 2)
-            }
-            
-            let colorBlock = CGRect(x: nextBlockPosition.x - blockWidth, y: nextBlockPosition.y + blockWidth, width: blockWidth, height: blockWidth)
-            path.addRect(colorBlock)
-            labelLayer.path = path
-            layer.addSublayer(labelLayer)
-            labelText.draw(at: labelPosition, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
-            nextBlockPosition.x = labelPosition.x + labelSize.width + 2 * blockWidth
-        }
-    }
 }
 
 // MARK: -  DataSeries Struct
-struct DataSeries {
+
+protocol GraphLegendData {
+    var dataLabelText: String? { get }
+    var dataColor: UIColor { get }
+}
+
+struct DataSeries: GraphLegendData {
     
     // MARK: -  Properties
     var data: [CGPoint]
@@ -252,5 +225,61 @@ extension Int {
     
     var shortenedUSDstring: String {
         return self > 1000 ? "$\(self/1000)k" : "$\(self)"
+    }
+}
+
+protocol Graph: class {
+    var chartTransform: CGAffineTransform? { get }
+    var legendBlockWidth: CGFloat { get }
+    var legendHeight: CGFloat { get }
+    var minX: CGFloat { get }
+    associatedtype  GraphData: GraphLegendData
+    var dataArray: [GraphData] { get }
+    var labelFontSize: CGFloat { get }
+    var axisColor: UIColor { get }
+}
+
+extension Graph where Self: UIView {
+    func drawDataSeriesLabels() {
+        guard let chartTransform = chartTransform else {
+            //updateAxisRange()
+            return
+        }
+        let blockWidth: CGFloat = legendBlockWidth
+        var nextBlockPosition = CGPoint.init(x: minX, y: 0).applying(chartTransform)
+        
+        nextBlockPosition.x += blockWidth
+        nextBlockPosition.y = bounds.height - legendHeight
+        
+        let longestLabel = dataArray.reduce("") { (longestLabelSoFar, dataSeries) -> String in
+            guard let currentLabel = dataSeries.dataLabelText else { return longestLabelSoFar }
+            return longestLabelSoFar.count > currentLabel.count ? longestLabelSoFar : currentLabel
+        }
+        
+        let labelSize = longestLabel.size(withSystemFontSize: labelFontSize)
+        
+        for dataSeries in dataArray.filter({$0.dataLabelText != nil}) {
+            let labelText = dataSeries.dataLabelText ?? ""
+            
+            let labelLayer = CAShapeLayer()
+            labelLayer.fillColor = dataSeries.dataColor.cgColor
+            let path = CGMutablePath()
+            var labelPosition = CGPoint(x: nextBlockPosition.x + 2, y: nextBlockPosition.y + labelSize.height - 2)
+            
+            if labelPosition.x + labelSize.width > bounds.maxX {
+                var nextRowBlockPosition = CGPoint(x: minX, y: 0).applying(chartTransform)
+                nextRowBlockPosition.x += blockWidth
+                nextBlockPosition.x = nextRowBlockPosition.x
+                nextBlockPosition.y += blockWidth + 5
+                labelPosition = CGPoint(x: nextBlockPosition.x + 2, y: nextBlockPosition.y + labelSize.height - 2)
+            }
+            
+            let colorBlock = CGRect(x: nextBlockPosition.x - blockWidth, y: nextBlockPosition.y + blockWidth, width: blockWidth, height: blockWidth)
+            path.addRect(colorBlock)
+            labelLayer.path = path
+            layer.addSublayer(labelLayer)
+            labelText.draw(at: labelPosition, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: labelFontSize), NSAttributedStringKey.foregroundColor: axisColor])
+            nextBlockPosition.x = labelPosition.x + labelSize.width + 2 * blockWidth
+        }
     }
 }
