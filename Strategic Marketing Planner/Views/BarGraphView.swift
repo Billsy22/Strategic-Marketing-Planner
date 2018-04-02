@@ -8,18 +8,24 @@
 
 import UIKit
 
-class BarGraphView: UIView {
+class BarGraphView: UIView, Graph {
     
     // MARK: -  Axis Properties
     var barsArray: [CAShapeLayer] = []
-    var axisWidth: CGFloat = 8
+    var axisWidth: CGFloat = 5
     var showXAxisGraduations = true
     var labelFontSize: CGFloat = 10.0
-    var graphTransform: CGAffineTransform?
-    var axisColor: UIColor = .lightGray
-    var axisLineWidth: CGFloat = 15
-    var xGraduationCount: CGFloat = 5
-    var barDataArray: [BarData] = [] {
+    var chartTransform: CGAffineTransform?
+    var axisColor: UIColor = .black
+    var deltaXColor: UIColor = .lightGray
+    var axisLineWidth: CGFloat = 2
+    var xGraduationCount: CGFloat = 4
+    var legendHeight: CGFloat = 5
+    var legendBlockWidth: CGFloat = 5
+    var internalHeight: CGFloat {
+        return (barHeight * CGFloat(barsArray.count)) + (barSpacing * CGFloat((barsArray.count + 1)))
+    }
+    var dataArray: [BarData] = [] {
         didSet {
             setNeedsDisplay()
         }
@@ -29,8 +35,17 @@ class BarGraphView: UIView {
     var barHeight: CGFloat = 25
     var minX: CGFloat = 0
     var maxX: CGFloat = 0
+    var graphMaxValue: CGFloat {
+        var highestXValue = maxX
+        var exponent: CGFloat = 0
+        while highestXValue > 10 {
+            highestXValue /= 10
+            exponent += 1
+        }
+        let xValueRoundedUp = ceil(highestXValue)
+        return xValueRoundedUp * pow(10, exponent)
+    }
     var deltaX: CGFloat = 0
-    var deltaY: CGFloat = 0
     var barSpacing: CGFloat = 10
     
     // MARK: -  Initializers
@@ -44,7 +59,7 @@ class BarGraphView: UIView {
     
     // MARK: -  SetUP Methods
     func setUpBarsForData() {
-        for barData in barDataArray {
+        for barData in dataArray {
             let barLayer = CAShapeLayer()
             barLayer.fillColor = UIColor.clear.cgColor
             barLayer.strokeColor = barData.dataColor.cgColor
@@ -65,72 +80,65 @@ class BarGraphView: UIView {
     
     func updateAxisRange() {
         var xValues: [CGFloat] = []
-        for barData in barDataArray {
+        for barData in dataArray {
             xValues.append(barData.data)
         }
         maxX = xValues.max() ?? 0
-        var highestXValue = maxX
-        var exponent: CGFloat = 0
-        while highestXValue > 10 {
-            highestXValue /= 10
-            exponent += 1
-        }
-        let xValueRoundedUp = ceil(highestXValue)
-        let maxXCandidate = xValueRoundedUp * pow(10, exponent)
-        maxX = maxXCandidate < maxX * 1.5 ? maxXCandidate : maxXCandidate * 0.75
-        deltaX =  maxX / xGraduationCount
-        setTransform(minX: minX, maxX: maxX)
+        deltaX =  graphMaxValue / xGraduationCount
+        setTransform(minX: minX, maxX: graphMaxValue)
     }
     
     func setTransform(minX: CGFloat, maxX: CGFloat) {
         let xLabelSize = "\(Int(maxX))".size(withSystemFontSize: labelFontSize)
         let xPadding = xLabelSize.height + 15
         let xScale = (bounds.width - xLabelSize.width/2 - 2)/(maxX - minX)
-        let yScale = ((barHeight * 4) + (barSpacing * 3)) - (xPadding)
-        graphTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: 1, ty: bounds.height - xPadding)
+        let totalSpace = bounds.height - xPadding
+        let yScale = totalSpace / internalHeight
+        chartTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: 0, ty: bounds.height - xPadding)
+        barHeight = barHeight * yScale
         setNeedsDisplay()
     }
     
     func plot() {
-        guard let graphTransform = graphTransform else { updateAxisRange(); return }
-        var barYPosition: CGFloat = 0
-        for index in 0..<barDataArray.count {
-            let data = barDataArray[index].data
+        guard let graphTransform = chartTransform else { updateAxisRange(); return }
+        var barYSpacing: CGFloat = barSpacing
+        for index in 0..<dataArray.count {
+            let data = dataArray[index].data
             let barLayer = barsArray[index]
             let barPath = CGMutablePath()
-            barPath.addLines(between: [CGPoint(x: 0 ,y: barYPosition), CGPoint(x: data, y: barYPosition)], transform: graphTransform)
+            barPath.addLines(between: [CGPoint(x: 0 ,y:  barYSpacing + barHeight/2), CGPoint(x: data, y: barYSpacing + barHeight/2)], transform: graphTransform)
             barLayer.path = barPath
-            barYPosition += barSpacing
+            barYSpacing += barSpacing + barHeight/2
         }
     }
     
     func addBarData(data: CGFloat, color: UIColor) {
-        let newBarData = BarData(data: data, dataColor: color)
-        barDataArray.append(newBarData)
+        let newBarData = BarData(data: data, dataLabelText: "The brand", dataColor: color)
+        dataArray.append(newBarData)
     }
     
     func drawAxes() {
-        guard let graphTransform = graphTransform else { updateAxisRange(); return }
+        guard let graphTransform = chartTransform else { updateAxisRange(); return }
         let axisLine = CGMutablePath()
         let deltaXLines = CGMutablePath()
         let axisLayer = CAShapeLayer()
         let deltaXLayer = CAShapeLayer()
-        axisLayer.frame = frame
+        axisLayer.frame = CGRect(origin: CGPoint.zero, size: layer.frame.size)
         axisLayer.bounds = bounds
-        deltaXLayer.frame = frame
+        deltaXLayer.frame = CGRect(origin: CGPoint.zero, size: layer.frame.size)
         deltaXLayer.bounds = bounds
         axisLayer.strokeColor = axisColor.cgColor
         axisLayer.fillColor = UIColor.clear.cgColor
-        deltaXLayer.strokeColor = axisColor.cgColor
+        deltaXLayer.strokeColor = deltaXColor.cgColor
         deltaXLayer.fillColor = UIColor.clear.cgColor
         axisLayer.lineWidth = axisLineWidth
         deltaXLayer.lineWidth = axisLineWidth / 2
-        let xAxisPoints = [CGPoint(x: minX, y: 0), CGPoint(x: maxX, y: 0)]
-        axisLine.addLines(between: xAxisPoints, transform: graphTransform)
+        let yAxisPoints = [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: internalHeight)]
+        axisLine.addLines(between: yAxisPoints, transform: graphTransform)
         axisLayer.path = axisLine
         self.layer.addSublayer(axisLayer)
-        for x in stride(from: minX, to: maxX, by: deltaX) {
-            let points = [CGPoint(x: x, y: 0), CGPoint(x: x, y: frame.height)]
+        for x in stride(from: minX, through: graphMaxValue, by: deltaX) {
+            let points = [CGPoint(x: x, y: 0), CGPoint(x: x, y: internalHeight)]
             deltaXLines.addLines(between: points, transform: graphTransform)
             deltaXLayer.path = deltaXLines
             self.layer.addSublayer(deltaXLayer)
@@ -153,8 +161,8 @@ class BarGraphView: UIView {
 }
 
 // MARK: -  Struct based on user input
-struct BarData {
-    
+struct BarData: GraphLegendData {
     var data: CGFloat
+    var dataLabelText: String?
     var dataColor: UIColor
 }
