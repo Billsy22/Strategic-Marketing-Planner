@@ -36,7 +36,7 @@ extension MarketingPlan {
         return options
     }
     
-    func getOptionsForCategory(_ category: OptionCategory) -> [MarketingOption]{
+    func getOptionsForCategory(_ category: OptionCategory, includeOnlyActive: Bool = false) -> [MarketingOption]{
         var selectedOptions: [MarketingOption] = []
         guard let options = self.options else {
             NSLog("No options found for category because the marketing plan's options have not been initialized.  This most likely represents an invalid state.")
@@ -45,7 +45,9 @@ extension MarketingPlan {
         for option in options {
             guard let marketingOption = option as? MarketingOption, let optionCategory = marketingOption.category else { continue }
             if optionCategory == category.rawValue {
-                selectedOptions.append(marketingOption)
+                if includeOnlyActive && marketingOption.isActive || includeOnlyActive == false {
+                    selectedOptions.append(marketingOption)
+                }
             }
         }
         return selectedOptions
