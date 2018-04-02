@@ -64,9 +64,11 @@ class GrowthCalculatorViewController: UIViewController {
         let data: CGFloat = 99
         let moreData: CGFloat = 25
         let littleData: CGFloat = 24
-        barGraphView.addBarData(data: moreData, color: .blue)
-        barGraphView.addBarData(data: littleData, color: .green)
-        barGraphView.addBarData(data: data, color: .red)
+        let theLastTestData: CGFloat = 74
+        barGraphView.addBarData(data: theLastTestData, dataLabelText: "theLastTestData", color: .black)
+        barGraphView.addBarData(data: moreData, dataLabelText: "More Data", color: .blue)
+        barGraphView.addBarData(data: littleData, dataLabelText: "little data", color: .green)
+        barGraphView.addBarData(data: data, dataLabelText: "data", color: .red)
     }
 
     func updateComputedValues(){
