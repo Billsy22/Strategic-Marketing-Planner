@@ -84,6 +84,7 @@
 		DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */; };
 		DF64C416206EE9CC00E27046 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64C415206EE9CC00E27046 /* Devices.swift */; };
 		DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF883CAD20729DE80061A78C /* GrowthCalculator.swift */; };
+		DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CAF2072D52A0061A78C /* NextSteps.storyboard */; };
 		DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
@@ -195,6 +196,7 @@
 		DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Custom Logo.pdf"; sourceTree = "<group>"; };
 		DF64C415206EE9CC00E27046 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		DF883CAD20729DE80061A78C /* GrowthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculator.swift; sourceTree = "<group>"; };
+		DF883CAF2072D52A0061A78C /* NextSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextSteps.storyboard; sourceTree = "<group>"; };
 		DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClientsTableViewCell.swift; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -292,9 +294,13 @@
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
+<<<<<<< HEAD
+				DF883CAF2072D52A0061A78C /* NextSteps.storyboard */,
+=======
 				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
+>>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */,
 				168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */,
+				DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */,
 				DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
 				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
