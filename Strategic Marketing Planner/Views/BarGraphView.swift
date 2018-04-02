@@ -17,7 +17,7 @@ class BarGraphView: UIView {
     var labelFontSize: CGFloat = 10.0
     var graphTransform: CGAffineTransform?
     var axisColor: UIColor = .lightGray
-    var axisLineWidth: CGFloat = 5
+    var axisLineWidth: CGFloat = 15
     var xGraduationCount: CGFloat = 5
     var barDataArray: [BarData] = [] {
         didSet {
@@ -31,7 +31,7 @@ class BarGraphView: UIView {
     var maxX: CGFloat = 0
     var deltaX: CGFloat = 0
     var deltaY: CGFloat = 0
-    var barSpacing: CGFloat = 40
+    var barSpacing: CGFloat = 10
     
     // MARK: -  Initializers
     override init(frame: CGRect) {
@@ -84,9 +84,9 @@ class BarGraphView: UIView {
     
     func setTransform(minX: CGFloat, maxX: CGFloat) {
         let xLabelSize = "\(Int(maxX))".size(withSystemFontSize: labelFontSize)
-        let xPadding = xLabelSize.height + 5
+        let xPadding = xLabelSize.height + 15
         let xScale = (bounds.width - xLabelSize.width/2 - 2)/(maxX - minX)
-        let yScale: CGFloat = 1
+        let yScale = ((barHeight * 4) + (barSpacing * 3)) - (xPadding)
         graphTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: 1, ty: bounds.height - xPadding)
         setNeedsDisplay()
     }
@@ -130,7 +130,7 @@ class BarGraphView: UIView {
         axisLayer.path = axisLine
         self.layer.addSublayer(axisLayer)
         for x in stride(from: minX, to: maxX, by: deltaX) {
-            let points = [CGPoint(x: minX, y: 0), CGPoint(x: maxX, y: 0)]
+            let points = [CGPoint(x: x, y: 0), CGPoint(x: x, y: frame.height)]
             deltaXLines.addLines(between: points, transform: graphTransform)
             deltaXLayer.path = deltaXLines
             self.layer.addSublayer(deltaXLayer)
