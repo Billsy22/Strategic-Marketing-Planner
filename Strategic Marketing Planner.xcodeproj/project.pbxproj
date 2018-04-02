@@ -106,6 +106,9 @@
 		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
 		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
+		E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D80F31206D5EB000D3F812 /* ProductList.storyboard */; };
+		E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */; };
+		E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +195,9 @@
 		E1033B7C206C4702000EC27B /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
 		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
+		E1D80F31206D5EB000D3F812 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
+		E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
+		E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +276,7 @@
 				B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */,
 				E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */,
 				DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */,
+				E1D80F31206D5EB000D3F812 /* ProductList.storyboard */,
 				DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */,
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
@@ -366,6 +373,8 @@
 				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
 				B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */,
 				DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */,
+				E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */,
+				E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */,
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
 			);
@@ -491,6 +500,7 @@
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
 				B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */,
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
+				E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */,
 				168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */,
 				DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
@@ -543,10 +553,12 @@
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
 				B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
+				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
 				DF64C416206EE9CC00E27046 /* Devices.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
+				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
 				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
