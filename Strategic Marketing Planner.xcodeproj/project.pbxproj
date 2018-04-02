@@ -99,6 +99,7 @@
 		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D80F31206D5EB000D3F812 /* ProductList.storyboard */; };
 		E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */; };
+		E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1D80F31206D5EB000D3F812 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
 		E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
+		E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +352,7 @@
 				B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */,
 				DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */,
 				E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */,
+				E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */,
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
 			);
 			path = ViewControllers;
@@ -526,6 +529,7 @@
 				DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */,
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
+				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
