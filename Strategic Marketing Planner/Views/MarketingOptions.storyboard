@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Marketing Options View Controller-->
         <scene sceneID="BpI-bV-1Gl">
             <objects>
-                <viewController id="cE0-MQ-xVU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="marketingOptionsVC" id="cE0-MQ-xVU" customClass="MarketingOptionsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qce-XN-Lmp">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,10 +32,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioV-Yz-sI6">
                                 <rect key="frame" x="32" y="140" width="960" height="620"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cE0-MQ-xVU" id="A3E-7e-aIP"/>
-                                    <outlet property="delegate" destination="cE0-MQ-xVU" id="ATH-fx-Nvb"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,10 +47,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b04-tF-oD6"/>
                     </view>
+                    <connections>
+                        <outlet property="marketingOptionsTableview" destination="ioV-Yz-sI6" id="J0F-2z-Etz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-zQ-zHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9.9609375" y="-65.625"/>
+            <point key="canvasLocation" x="-21" y="-66"/>
         </scene>
     </scenes>
 </document>

@@ -61,7 +61,7 @@
                 <outlet property="nameLabel" destination="wfW-ii-ID3" id="wxj-eN-HA7"/>
                 <outlet property="selectionButton" destination="RIq-O2-xup" id="Me8-ax-RIS"/>
             </connections>
-            <point key="canvasLocation" x="38" y="35.5"/>
+            <point key="canvasLocation" x="19" y="46"/>
         </tableViewCell>
     </objects>
     <resources>

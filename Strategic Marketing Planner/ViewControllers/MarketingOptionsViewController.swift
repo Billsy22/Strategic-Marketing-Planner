@@ -10,12 +10,17 @@ import UIKit
 
 class MarketingOptionsViewController: UIViewController {
     
+    @IBOutlet weak var marketingOptionsTableview: UITableView!
+    
     var marketingOptions: [MarketingOption]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        marketingOptionsTableview.register(MarketingOptionTableViewCell.self, forCellReuseIdentifier: MarketingOptionTableViewCell.preferredReuseID)
+        marketingOptionsTableview.delegate = self
+        marketingOptionsTableview.delegate = self
     }
     
 
