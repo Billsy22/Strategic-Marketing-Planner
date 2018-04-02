@@ -13,6 +13,11 @@
 		16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
+		B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */; };
+		B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */; };
+		B32DC60320728275002E68AF /* MarketingOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32DC60220728275002E68AF /* MarketingOptions.storyboard */; };
+		B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */; };
+		B32DC60D207293D2002E68AF /* MarketingOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */; };
 		B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
 		B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */; };
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
@@ -129,6 +134,11 @@
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		B31534A6206C2ADD00688099 /* BoxedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedTextField.swift; sourceTree = "<group>"; };
+		B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+Convenience.swift"; sourceTree = "<group>"; };
+		B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionsViewController.swift; sourceTree = "<group>"; };
+		B32DC60220728275002E68AF /* MarketingOptions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketingOptions.storyboard; sourceTree = "<group>"; };
+		B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionTableViewCell.swift; sourceTree = "<group>"; };
+		B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketingOptionTableViewCell.xib; sourceTree = "<group>"; };
 		B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthCalculatorViewController.swift; sourceTree = "<group>"; };
 		B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxedLabel.swift; sourceTree = "<group>"; };
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
@@ -258,6 +268,7 @@
 				B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */,
 				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
 				E1033B78206BE9EC000EC27B /* Product.swift */,
+				B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -283,7 +294,13 @@
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
+<<<<<<< HEAD
 				DF883CAF2072D52A0061A78C /* NextSteps.storyboard */,
+=======
+				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
+				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
+				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
+>>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,6 +396,7 @@
 				E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */,
 				E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */,
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
+				B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */,
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -490,6 +508,7 @@
 				DF4EA3EC206D3B7F00C44A83 /* Referral System.pdf in Resources */,
 				DF4EA3ED206D3B7F00C44A83 /* Responsive Website.pdf in Resources */,
 				DF4EA3EE206D3B7F00C44A83 /* Result Tracking.pdf in Resources */,
+				B32DC60320728275002E68AF /* MarketingOptions.storyboard in Resources */,
 				DF4EA3EF206D3B7F00C44A83 /* Smile Savings System.pdf in Resources */,
 				DF4EA3F0206D3B7F00C44A83 /* Tri-fold Brochures.pdf in Resources */,
 				DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */,
@@ -498,6 +517,7 @@
 				B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */,
 				168B0091206A9905002A1580 /* ClientList.storyboard in Resources */,
 				E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */,
+				B32DC60D207293D2002E68AF /* MarketingOptionTableViewCell.xib in Resources */,
 				E1033B7B206C3046000EC27B /* productPages.json in Resources */,
 				B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */,
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
@@ -559,12 +579,15 @@
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
+				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
 				DF64C416206EE9CC00E27046 /* Devices.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
+				B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */,
 				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
+				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
@@ -784,7 +807,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
