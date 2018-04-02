@@ -10,6 +10,7 @@ import UIKit
 
 class ClientListTableViewController: UITableViewController, UISearchBarDelegate, ClientControllerDelegate {
     
+    // MARK: - Properties
     @IBOutlet weak var searchBar: UISearchBar!
     var clients:[Client] = []
     let clientController = ClientController.shared
@@ -27,11 +28,6 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         return sections
     }
     
-    func clientsUpdated() {
-        clients = clientController.clients
-        tableView.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatNavigationBar()
@@ -41,8 +37,8 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func clientsUpdated() {
+        clients = clientController.clients
         tableView.reloadData()
     }
     
@@ -81,35 +77,76 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
     }
     
     // MARK: - Table view data source
-    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        if clients.count == 0 {
+            return nil
+        } else {
+            return sortedFirstLetters
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sortedFirstLetters[section]
+        if clients.count == 0 {
+            return nil
+        } else {
+            return sortedFirstLetters[section]
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        if clients.count == 0 {
+            return 1
+        } else {
+            return sections.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
+        if clients.count == 0 {
+            return 1
+        } else {
+            return sections[section].count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath) as? ClientTableViewCell else { return UITableViewCell() }
-        let client = sections[indexPath.section][indexPath.row]
-        cell.client = client
-        return cell
+        if clients.count == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "noClientsCell") as? NoClientsTableViewCell else { return UITableViewCell() }
+            tableView.allowsSelection = false
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "clientCell", for: indexPath) as? ClientTableViewCell else { return UITableViewCell() }
+            let client = sections[indexPath.section][indexPath.row]
+            cell.client = client
+            tableView.allowsSelection = true
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if clients.count == 0 {
+            tableView.isScrollEnabled = false
+            return tableView.frame.height
+        } else {
+            tableView.isScrollEnabled = true
+            return 41
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell is NoClientsTableViewCell {
+            return false
+        } else {
+            return true
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let client = sections[indexPath.section][indexPath.row]
-            deleteConfirmation(client: client)
-     //       tableView.deleteRows(at: [indexPath], with: .fade)
+            if editingStyle == .delete {
+                let client = sections[indexPath.section][indexPath.row]
+                deleteConfirmation(client: client)
+                //       tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -124,7 +161,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         }
     }
     
-    // MARK: - Alert
+    // MARK: - Alerts
     //Create a delete confirmation alert when swiping to delete
     func deleteConfirmation(client: Client) {
         let deleteConfirmationAlert = UIAlertController(title: "Delete Client", message: "Are you sure you want to delete this client?", preferredStyle: .alert)
@@ -145,7 +182,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
 extension Client {
     var lastNameFirstLetter: String {
         guard let lastName = lastName,
-        let firstCharacter = lastName.first else { return "" }
+            let firstCharacter = lastName.first else { return "" }
         return String(firstCharacter).uppercased()
     }
 }
