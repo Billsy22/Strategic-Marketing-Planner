@@ -50,6 +50,20 @@ class ClientController {
         }
     }
     
+    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
+        client.firstName = firstName
+        client.lastName = lastName
+        client.practiceName = practiceName
+        client.phoneNumber = phone
+        client.email = email
+        client.streetAddress = streetAddress
+        client.city = city
+        client.state = state
+        client.zip = zip
+        save()
+    }
+    
+    
     //MARK: - Delete
     func removeClient(_ client: Client) {
         context.delete(client)
