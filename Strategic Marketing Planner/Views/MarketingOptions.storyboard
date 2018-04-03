@@ -50,7 +50,7 @@
                     </view>
                     <connections>
                         <outlet property="marketingOptionsTableview" destination="ioV-Yz-sI6" id="J0F-2z-Etz"/>
-                        <segue destination="FGQ-X1-2uc" kind="presentation" identifier="presentProductDetailModal" id="VvC-11-NeJ"/>
+                        <segue destination="FGQ-X1-2uc" kind="presentation" identifier="presentProductDetailModal" modalPresentationStyle="pageSheet" id="VvC-11-NeJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-zQ-zHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
