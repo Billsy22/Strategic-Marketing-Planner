@@ -1,17 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fyI-JZ-ezc">
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YXh-fV-hyf">
+>>>>>>> steven
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+<<<<<<< HEAD
+=======
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+>>>>>>> steven
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Send Email View Controller-->
+<<<<<<< HEAD
+        <scene sceneID="jAT-Zh-2TA">
+            <objects>
+                <viewController id="fyI-JZ-ezc" customClass="SendEmailViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aQP-T5-eDt">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" axis="vertical" distribution="fillProportionally" alignment="bottom" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-eu-LP0">
+                                <rect key="frame" x="50" y="40" width="924" height="653"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-o0-c91">
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="71.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary &amp; Confirmation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-6f-xMt">
+                                                <rect key="frame" x="0.0" y="27" width="734" height="44.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                <color key="textColor" red="0.87058823529999996" green="0.45098039220000002" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al4-1z-tAm">
+                                                <rect key="frame" x="734" y="45" width="190" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="nDT-B1-Q2G">
+                                        <rect key="frame" x="0.0" y="106.5" width="924" height="546.5"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TGN-yQ-npb">
+                                                <rect key="frame" x="0.0" y="0.0" width="924" height="436.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gb8-fr-dpB">
+                                                <rect key="frame" x="346.5" y="501.5" width="231" height="45"/>
+                                                <color key="backgroundColor" red="0.87058823529999996" green="0.45098039220000002" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="8gw-em-Sa5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Send Confirmation"/>
+                                                <connections>
+                                                    <action selector="sendConfirmationEmailWithSender:" destination="fyI-JZ-ezc" eventType="touchUpInside" id="y5h-25-eiH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TGN-yQ-npb" firstAttribute="top" secondItem="nDT-B1-Q2G" secondAttribute="top" id="5NQ-BE-FV2"/>
+                                            <constraint firstItem="gb8-fr-dpB" firstAttribute="width" secondItem="nDT-B1-Q2G" secondAttribute="width" multiplier="0.25" id="90h-aX-Bxl"/>
+                                            <constraint firstAttribute="trailing" secondItem="TGN-yQ-npb" secondAttribute="trailing" id="ZjE-2i-hWX"/>
+                                            <constraint firstItem="TGN-yQ-npb" firstAttribute="leading" secondItem="nDT-B1-Q2G" secondAttribute="leading" id="oYy-qj-adA"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z3V-o0-c91" firstAttribute="leading" secondItem="g5h-eu-LP0" secondAttribute="leading" id="R7z-w4-OT1"/>
+                                    <constraint firstItem="z3V-o0-c91" firstAttribute="top" secondItem="g5h-eu-LP0" secondAttribute="top" id="cCJ-KN-w46"/>
+                                    <constraint firstAttribute="trailing" secondItem="z3V-o0-c91" secondAttribute="trailing" id="to4-9v-wTn"/>
+=======
         <scene sceneID="ANr-fT-n8S">
             <objects>
                 <viewController id="YXh-fV-hyf" customClass="SendEmailViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,11 +133,28 @@
                                 <constraints>
                                     <constraint firstItem="acX-T7-zRG" firstAttribute="width" secondItem="MFJ-Fr-w3X" secondAttribute="width" multiplier="0.25" id="fuo-CP-eGH"/>
                                     <constraint firstAttribute="height" constant="45" id="xW8-es-IUX"/>
+>>>>>>> steven
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+<<<<<<< HEAD
+                            <constraint firstItem="gPy-fq-uE6" firstAttribute="trailing" secondItem="g5h-eu-LP0" secondAttribute="trailing" constant="50" id="78d-jl-RDU"/>
+                            <constraint firstItem="g5h-eu-LP0" firstAttribute="top" secondItem="gPy-fq-uE6" secondAttribute="top" constant="20" id="8Ux-KH-jlV"/>
+                            <constraint firstItem="g5h-eu-LP0" firstAttribute="leading" secondItem="gPy-fq-uE6" secondAttribute="leading" constant="50" id="9u7-eO-5Kw"/>
+                            <constraint firstItem="gPy-fq-uE6" firstAttribute="bottom" secondItem="g5h-eu-LP0" secondAttribute="bottom" constant="75" id="twH-PV-5eq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gPy-fq-uE6"/>
+                    </view>
+                    <connections>
+                        <outlet property="sendConfirmationEmailButton" destination="gb8-fr-dpB" id="yTR-Ai-tZB"/>
+                        <outlet property="summaryTextView" destination="TGN-yQ-npb" id="HQG-QN-a0M"/>
+                        <outlet property="totalPriceLabel" destination="al4-1z-tAm" id="C8T-PS-WL3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hs6-Yh-bLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+=======
                             <constraint firstItem="MFJ-Fr-w3X" firstAttribute="top" secondItem="4u8-me-TJb" secondAttribute="bottom" constant="60" id="8ad-K4-jCb"/>
                             <constraint firstItem="yqQ-4i-iGs" firstAttribute="trailing" secondItem="Ycs-eR-a7n" secondAttribute="trailing" constant="50" id="Ktv-j5-Zgz"/>
                             <constraint firstItem="4u8-me-TJb" firstAttribute="leading" secondItem="yqQ-4i-iGs" secondAttribute="leading" constant="60" id="Mxq-oK-0FQ"/>
@@ -87,6 +176,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lT-JP-6Go" userLabel="First Responder" sceneMemberID="firstResponder"/>
+>>>>>>> steven
             </objects>
             <point key="canvasLocation" x="167" y="168"/>
         </scene>

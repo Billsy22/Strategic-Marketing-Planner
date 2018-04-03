@@ -10,11 +10,16 @@ import UIKit
 
 class NextStepsViewController: UIViewController {
     
+<<<<<<< HEAD
+=======
     @IBOutlet weak var headerLabel: UILabel!
+>>>>>>> steven
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
+=======
         formatHeaderLabel()
         formatTotalPriceLabel()
     }
@@ -24,6 +29,7 @@ class NextStepsViewController: UIViewController {
     }
     
     func formatTotalPriceLabel() {
+>>>>>>> steven
         totalPriceLabel.text = "$0/$5000"
     }
 }

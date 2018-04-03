@@ -308,10 +308,7 @@
 				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
-<<<<<<< HEAD
 				DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */,
-=======
->>>>>>> 248c63a209ff5c55389ae929ae39be527b6976b1
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,7 +406,8 @@
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
 				B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */,
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
-				DF883CB12073D9880061A78C /* NextStepsViewController.swift */,
+				DF883CB72073FD5E0061A78C /* SummaryAndConfirmation.storyboard */,
+				DF883CB52073FD0F0061A78C /* NextStepsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -504,6 +502,7 @@
 				DF4EA3DB206D3B7F00C44A83 /* Ancillary Services.pdf in Resources */,
 				DF4EA3DC206D3B7F00C44A83 /* Brand Definition.pdf in Resources */,
 				DF4EA3DD206D3B7F00C44A83 /* Call Training.pdf in Resources */,
+				DF94944D2073FE160035513F /* NextSteps.storyboard in Resources */,
 				DF4EA3DE206D3B7F00C44A83 /* Case Acceptance.pdf in Resources */,
 				DF4EA3DF206D3B7F00C44A83 /* Custom Logo.pdf in Resources */,
 				DF4EA3E0206D3B7F00C44A83 /* Door Hangers.pdf in Resources */,
@@ -538,7 +537,6 @@
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */,
 				168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */,
-				DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */,
 				DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
 				DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */,
