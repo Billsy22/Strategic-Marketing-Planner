@@ -25,8 +25,11 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>
+<<<<<<< HEAD
 	<string>ProductList</string>
-	<string>RootTabBarController</string>
+=======
+	<string>SendEmail</string>
+>>>>>>> development
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
