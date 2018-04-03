@@ -28,4 +28,8 @@ extension UIColor {
     public static var currentBlue: UIColor {
         return UIColor(red: 25.0/255.0, green: 108.0/255.0, blue: 176.0/255.0, alpha: 1.0)
     }
+    
+    public static var brandOrange: UIColor {
+        return UIColor(red: 232.0/255.0, green: 108.0/255.0, blue: 69.0/255.0, alpha: 1.0)
+    }
 }

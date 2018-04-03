@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="GGr-2C-S0Y">
-                                <rect key="frame" x="50" y="40" width="924" height="344.5"/>
+                                <rect key="frame" x="50" y="40" width="924" height="340.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aid-HM-aIn">
                                         <rect key="frame" x="0.0" y="0.0" width="924" height="99.5"/>
@@ -71,8 +71,8 @@
                                             <constraint firstAttribute="trailing" secondItem="sQH-pq-aD8" secondAttribute="trailing" id="l2P-KR-4Lu"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="k8M-PE-diM">
-                                        <rect key="frame" x="0.0" y="139.5" width="924" height="82.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="k8M-PE-diM">
+                                        <rect key="frame" x="0.0" y="139.5" width="924" height="80.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orientation Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIc-Tv-QVe">
                                                 <rect key="frame" x="0.0" y="0.0" width="924" height="27.5"/>
@@ -81,7 +81,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-Sg-SYY">
-                                                <rect key="frame" x="0.0" y="32.5" width="924" height="50"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="924" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="oKS-p3-mlx"/>
                                                 </constraints>
@@ -100,8 +100,8 @@
                                             <constraint firstAttribute="trailing" secondItem="KIc-Tv-QVe" secondAttribute="trailing" id="qk4-9y-aCR"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Yj-sP-Lv2">
-                                        <rect key="frame" x="0.0" y="262" width="924" height="82.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Yj-sP-Lv2">
+                                        <rect key="frame" x="0.0" y="260" width="924" height="80.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-zf-tf7">
                                                 <rect key="frame" x="0.0" y="0.0" width="924" height="27.5"/>
@@ -110,7 +110,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-S0-kic">
-                                                <rect key="frame" x="0.0" y="32.5" width="924" height="50"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="924" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cgn-Uh-Cxi"/>
                                                 </constraints>
@@ -152,6 +152,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GQK-O6-fJp"/>
                     </view>
+                    <connections>
+                        <outlet property="headerLabel" destination="iHM-NI-aOa" id="ywY-eg-HpN"/>
+                        <outlet property="totalPriceLabel" destination="jVZ-WZ-U1u" id="02F-dG-DFG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIM-wY-jLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

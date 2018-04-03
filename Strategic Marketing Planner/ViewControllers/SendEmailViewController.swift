@@ -13,10 +13,46 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     var client: Client?
     
-    // TODO: - Connect Action Button
-    //    @IBAction func sendConfirmationEmail(sender: UIButton) {
-    //        composeEmail()
-    //    }
+    @IBOutlet weak var summaryTextView: UITextView!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var sendConfirmationEmailButton: UIButton!
+    @IBOutlet weak var headerLabel: UILabel!
+    
+    @IBAction func sendConfirmationEmail(sender: UIButton) {
+            composeEmail()
+        }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        formatTextView()
+        formatConfirmationButton()
+        formatHeaderLabel()
+        formatTotalPriceLabel()
+    }
+    
+    func formatTextView() {
+        summaryTextView.layer.borderColor = UIColor.gray.cgColor
+        summaryTextView.layer.borderWidth = 0.5
+        summaryTextView.layer.cornerRadius = 5
+        summaryTextView.contentInset.left = 15
+        summaryTextView.contentInset.right = 15
+        summaryTextView.contentInset.top = 10
+        summaryTextView.contentInset.bottom = 10
+        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: ***BUDGET*** per month\n***MARKETINGPLAN***\n\nTotal cost: ***TOTAL COST*** per month"
+    }
+    
+    func formatConfirmationButton() {
+        sendConfirmationEmailButton.layer.cornerRadius = 5
+        sendConfirmationEmailButton.backgroundColor = .brandOrange
+    }
+    
+    func formatHeaderLabel() {
+        headerLabel.textColor = .brandOrange
+    }
+    
+    func formatTotalPriceLabel() {
+        
+    }
     
     // TODO: - Format Email Content
     func composeEmail() {
