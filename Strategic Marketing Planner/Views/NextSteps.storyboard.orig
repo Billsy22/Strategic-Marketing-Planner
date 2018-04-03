@@ -153,7 +153,10 @@
                         <viewLayoutGuide key="safeArea" id="GQK-O6-fJp"/>
                     </view>
                     <connections>
+<<<<<<< HEAD
+=======
                         <outlet property="headerLabel" destination="iHM-NI-aOa" id="ywY-eg-HpN"/>
+>>>>>>> steven
                         <outlet property="totalPriceLabel" destination="jVZ-WZ-U1u" id="02F-dG-DFG"/>
                     </connections>
                 </viewController>
