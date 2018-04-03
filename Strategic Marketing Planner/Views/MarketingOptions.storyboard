@@ -23,8 +23,8 @@
                                 <color key="textColor" red="0.82745098039215681" green="0.4823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foundation items enhance all your marketing efforts and ensure increased effectiveness." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWr-Va-iLZ">
-                                <rect key="frame" x="20" y="84" width="763" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foundation items enhance all your marketing efforts and ensure increased effectiveness." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWr-Va-iLZ">
+                                <rect key="frame" x="20" y="84" width="984" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,6 +36,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="b04-tF-oD6" firstAttribute="trailing" secondItem="RWr-Va-iLZ" secondAttribute="trailing" constant="20" id="DFh-6d-Adc"/>
                             <constraint firstItem="b04-tF-oD6" firstAttribute="bottom" secondItem="ioV-Yz-sI6" secondAttribute="bottom" constant="8" id="Fgq-gM-Kkr"/>
                             <constraint firstItem="ciG-Sv-3DA" firstAttribute="leading" secondItem="b04-tF-oD6" secondAttribute="leading" constant="20" id="HG8-fA-FBv"/>
                             <constraint firstItem="ioV-Yz-sI6" firstAttribute="top" secondItem="RWr-Va-iLZ" secondAttribute="bottom" constant="32" id="LJd-tJ-SGW"/>
@@ -53,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-zQ-zHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21" y="-66"/>
+            <point key="canvasLocation" x="-308" y="-63"/>
         </scene>
     </scenes>
 </document>

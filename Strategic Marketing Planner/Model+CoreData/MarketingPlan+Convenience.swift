@@ -18,7 +18,7 @@ extension MarketingPlan {
         case suburban
     }
     
-    convenience init(context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(targetContext context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.options = setupDefaultMarketingOptions()
     }
