@@ -294,13 +294,10 @@
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
-<<<<<<< HEAD
 				DF883CAF2072D52A0061A78C /* NextSteps.storyboard */,
-=======
 				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
->>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";

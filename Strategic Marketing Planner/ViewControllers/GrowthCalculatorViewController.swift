@@ -10,8 +10,17 @@ import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
     
-    @IBOutlet weak var currentProductionTextfield: UITextField!
+
+
+    @IBOutlet weak var currentProductionTextField: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
+    @IBOutlet weak var desiredGrowthTextField: UITextField!
+    @IBOutlet weak var monthlyMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var annualMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var lowEndReturnTextField: UITextField!
+    @IBOutlet weak var highEndReturnTextField: UITextField!
+    @IBOutlet weak var averageReturnTextField: UITextField!
+    @IBOutlet weak var estimatedGrowthTextField: UITextField!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var barGraphView: BarGraphView!
     
@@ -31,10 +40,15 @@ class GrowthCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentProductionTextfield.setAsNumericKeyboard()
+        currentProductionTextField.delegate = self
+        currentProductionTextField.setAsNumericKeyboard()
+        productionGoalTextField.delegate = self
         productionGoalTextField.setAsNumericKeyboard()
+        desiredGrowthTextField.delegate = self
+        desiredGrowthTextField.isEnabled = false
+        monthlyMarketingBudgetTextField.delegate = self
+        monthlyMarketingBudgetTextField.setAsNumericKeyboard()
         updateComputedValues()
-        // Do any additional setup after loading the view.
         var points: [CGPoint] = []
         for position in 1...5 {
             let newPoint = CGPoint(x: position, y: 100_001 * position)
@@ -105,8 +119,5 @@ class GrowthCalculatorViewController: UIViewController {
 }
 
 extension GrowthCalculatorViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+
 }
