@@ -14,7 +14,7 @@ private let segueIdentifier = "toProductDetailPDF"
 class ProductsCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
-    let productsArray: [String] = ["SEO", "Ad Design", "Adwords", "Referral System", "Call Training", "Custom Logo", "Responsive Website", "Marketing Strategy", "Video & Photo", "Tri-fold Brochures", "Brand Definition", "Ancillary Services", "Postcard", "Internet Review", "Email Campaign", "Smile Savings System", "Reactivation System", "Case Acceptance", "Open House", "Mini-Zine Mailer", "Door Hangers", "8-Page Brochures", "Movie Theater Ad", "Radio Ad", "Facebook Jumpstart", "Facebook Outreach", "Result Tracking"]
+    let productsArray = ["SEO", "Ad Design", "Adwords", "Referral System", "Call Training", "Custom Logo", "Responsive Website", "Marketing Strategy", "Video & Photo", "Tri-fold Brochures", "Brand Definition", "Ancillary Services", "Postcard", "Internet Review", "Email Campaign", "Smile Savings System", "Reactivation System", "Case Acceptance", "Open House", "Mini-Zine Mailer", "Door Hangers", "8-Page Brochures", "Movie Theater Ad", "Radio Ad", "Facebook Jumpstart", "Facebook Outreach", "Result Tracking"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

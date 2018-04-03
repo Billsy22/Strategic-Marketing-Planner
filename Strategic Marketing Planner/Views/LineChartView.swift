@@ -13,7 +13,7 @@ class LineChartView: UIView, Graph {
     // MARK: -  Line and circle properties
     var linesAndCirclesArray: [(lineLayer: CAShapeLayer, circleLayer: CAShapeLayer)] = []
     var axesWidth: CGFloat = 2.0
-    var circleWidth: CGFloat = 2.0
+    var circleWidth: CGFloat = 5
     var axisColor: UIColor = .black
     var showYAxisGraduations = true
     var labelFontSize: CGFloat = 10
@@ -58,11 +58,13 @@ class LineChartView: UIView, Graph {
             lineLayer.strokeColor = dataSeries.dataColor.cgColor
             lineLayer.frame = CGRect(origin: CGPoint.zero, size: layer.frame.size)
             lineLayer.bounds = bounds
+            lineLayer.zPosition = 1
             layer.addSublayer(lineLayer)
             let circleLayer = CAShapeLayer()
             circleLayer.fillColor = dataSeries.dataColor.cgColor
             circleLayer.frame = CGRect(origin: CGPoint.zero, size: layer.frame.size)
             circleLayer.bounds = bounds
+            circleLayer.zPosition = 1
             layer.addSublayer(circleLayer)
             linesAndCirclesArray.append((lineLayer, circleLayer))
         }
@@ -122,11 +124,19 @@ class LineChartView: UIView, Graph {
             let linePath = CGMutablePath()
             linePath.addLines(between: dataPoints, transform: chartTransform)
             lineLayer.path = linePath
+            let circleLayer = linesAndCirclesArray[index].circleLayer
+            let circlePath = CGMutablePath()
+            for point in dataPoints {
+                let circleCenter = point.applying(chartTransform)
+                circlePath.addEllipse(in: CGRect(x: circleCenter.x - circleWidth/2, y: circleCenter.y - circleWidth/2, width: circleWidth, height: circleWidth))
+            }
+            circleLayer.path = circlePath
+            layer.addSublayer(circleLayer)
         }
     }
     
-    func addDataSeries(points: [CGPoint], color: UIColor, labelText: String){
-        let newDataSeries = DataSeries(data: points, dataColor: color, dataLabelText: labelText)
+    func addDataSeries(points: [CGPoint], color: UIColor, labelText: String, showLines: Bool = true, showCircles: Bool = true){
+        let newDataSeries = DataSeries(data: points, dataColor: color, dataLabelText: labelText, showLine: showLines, showCircles: showCircles)
         dataArray.append(newDataSeries)
     }
     
@@ -148,8 +158,6 @@ class LineChartView: UIView, Graph {
         deltaYLayer.lineWidth = axesWidth / 2
         
         let xAxisPoints = [CGPoint(x: minX, y: 0), CGPoint(x: maxX, y: 0)]
-//        let yAxisPoints = [CGPoint(x: 0, y: minY), CGPoint(x: 0, y: maxY)]
-//        axesLines.addLines(between: yAxisPoints, transform: chartTransform)
         
         axesLines.addLines(between: xAxisPoints, transform: chartTransform)
         
@@ -159,11 +167,13 @@ class LineChartView: UIView, Graph {
         
         guard showYAxisGraduations else { return }
         
-        for y in stride(from: minY, through: maxY, by: deltaY) {
+        for y in stride(from: deltaY, through: maxY, by: deltaY) {
             
             let points = [CGPoint(x: minX, y: y), CGPoint(x: maxX, y: y)]
             deltaYLines.addLines(between: points, transform: chartTransform)
+            deltaYLayer.lineDashPattern = [3,3]
             deltaYLayer.path = deltaYLines
+            deltaYLayer.zPosition = 0
             self.layer.addSublayer(deltaYLayer)
             if y != minY {
                 let label = "\(Int(y).shortenedUSDstring)" as NSString
@@ -211,6 +221,8 @@ struct DataSeries: GraphLegendData {
     var data: [CGPoint]
     var dataColor: UIColor
     var dataLabelText: String?
+    var showLine: Bool = true
+    var showCircles: Bool = true
 }
 
 // MARK: -  Extension on string

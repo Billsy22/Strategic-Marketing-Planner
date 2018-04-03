@@ -10,8 +10,17 @@ import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
     
-    @IBOutlet weak var currentProductionTextfield: UITextField!
+
+
+    @IBOutlet weak var currentProductionTextField: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
+    @IBOutlet weak var desiredGrowthTextField: UITextField!
+    @IBOutlet weak var monthlyMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var annualMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var lowEndReturnTextField: UITextField!
+    @IBOutlet weak var highEndReturnTextField: UITextField!
+    @IBOutlet weak var averageReturnTextField: UITextField!
+    @IBOutlet weak var estimatedGrowthTextField: UITextField!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var barGraphView: BarGraphView!
     
@@ -31,10 +40,14 @@ class GrowthCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentProductionTextfield.setAsNumericKeyboard()
+        currentProductionTextField.delegate = self
+        currentProductionTextField.setAsNumericKeyboard()
+        productionGoalTextField.delegate = self
         productionGoalTextField.setAsNumericKeyboard()
-        updateComputedValues()
-        // Do any additional setup after loading the view.
+        desiredGrowthTextField.delegate = self
+        desiredGrowthTextField.isEnabled = false
+        monthlyMarketingBudgetTextField.delegate = self
+        monthlyMarketingBudgetTextField.setAsNumericKeyboard()
         var points: [CGPoint] = []
         for position in 1...5 {
             let newPoint = CGPoint(x: position, y: 100_001 * position)
@@ -64,13 +77,20 @@ class GrowthCalculatorViewController: UIViewController {
         let data: CGFloat = 99
         let moreData: CGFloat = 25
         let littleData: CGFloat = 24
-        barGraphView.addBarData(data: moreData, color: .blue)
-        barGraphView.addBarData(data: littleData, color: .green)
-        barGraphView.addBarData(data: data, color: .red)
+        let theLastTestData: CGFloat = 74
+        barGraphView.addBarData(data: theLastTestData, dataLabelText: "theLastTestData", color: .black)
+        barGraphView.addBarData(data: moreData, dataLabelText: "More Data", color: .blue)
+        barGraphView.addBarData(data: littleData, dataLabelText: "little data", color: .green)
+        barGraphView.addBarData(data: data, dataLabelText: "data", color: .red)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateComputedValues()
     }
 
     func updateComputedValues(){
-        desiredGrowthLabel.text = "\(desiredGrowth)"
+        desiredGrowthTextField.text = "\(desiredGrowth)"
     }
     
 
@@ -103,8 +123,5 @@ class GrowthCalculatorViewController: UIViewController {
 }
 
 extension GrowthCalculatorViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+
 }
