@@ -25,6 +25,8 @@ class ClientController {
     
     private let context = CoreDataStack.context
     
+    var currentClient: Client?
+    
     //MARK: - CREATE
     func addClient(withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
         let _ = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
@@ -37,6 +39,16 @@ class ClientController {
         save()
     }
     
+    func toggleActivationForMarketingOption(_ option: MarketingOption, forClient client: Client){
+        guard let marketingPlan = client.marketingPlan, let options = marketingPlan.options else {
+            NSLog("Tried to edit a marketing option without a marketing plan.")
+            return
+        }
+        if options.contains(option){
+            option.isActive = !option.isActive
+            save()
+        }
+    }
     
     //MARK: - Delete
     func removeClient(_ client: Client) {
