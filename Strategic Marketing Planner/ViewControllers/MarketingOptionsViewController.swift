@@ -65,6 +65,7 @@ extension MarketingOptionsViewController: UITableViewDataSource {
         }
         let marketingOption = marketingOptions[indexPath.row]
         cell.marketingOption = marketingOption
+        cell.delegate = self
         return cell
     }
 }

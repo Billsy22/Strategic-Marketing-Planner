@@ -84,7 +84,9 @@
 		DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */; };
 		DF64C416206EE9CC00E27046 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64C415206EE9CC00E27046 /* Devices.swift */; };
 		DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF883CAD20729DE80061A78C /* GrowthCalculator.swift */; };
-		DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CAF2072D52A0061A78C /* NextSteps.storyboard */; };
+		DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */; };
+		DF94944F207426170035513F /* NextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94944E207426170035513F /* NextStepsViewController.swift */; };
+		DF94945120743B4D0035513F /* ProductsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94945020743B4D0035513F /* ProductsInfo.swift */; };
 		DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
@@ -199,6 +201,10 @@
 		DF64C415206EE9CC00E27046 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		DF883CAD20729DE80061A78C /* GrowthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculator.swift; sourceTree = "<group>"; };
 		DF883CAF2072D52A0061A78C /* NextSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextSteps.storyboard; sourceTree = "<group>"; };
+		DF883CB12073D9880061A78C /* NextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
+		DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryAndConfirmation.storyboard; sourceTree = "<group>"; };
+		DF94944E207426170035513F /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
+		DF94945020743B4D0035513F /* ProductsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsInfo.swift; sourceTree = "<group>"; };
 		DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClientsTableViewCell.swift; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -304,6 +310,7 @@
 				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
+				DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 				E1033B7A206C3045000EC27B /* productPages.json */,
 				DF64C415206EE9CC00E27046 /* Devices.swift */,
 				DF883CAD20729DE80061A78C /* GrowthCalculator.swift */,
+				DF94945020743B4D0035513F /* ProductsInfo.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				16228718206D41EA00160BF0 /* LineChartView.swift */,
+				DF883CB12073D9880061A78C /* NextStepsViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -401,6 +410,7 @@
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
 				B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */,
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
+				DF94944E207426170035513F /* NextStepsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -529,9 +539,9 @@
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */,
 				168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */,
-				DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */,
 				DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
+				DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */,
 				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,6 +607,7 @@
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */,
+				DF94944F207426170035513F /* NextStepsViewController.swift in Sources */,
 				B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */,
 				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
 				B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */,
@@ -607,6 +618,7 @@
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,
 				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
+				DF94945120743B4D0035513F /* ProductsInfo.swift in Sources */,
 				DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */,
 				DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
@@ -796,7 +808,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 5H5Z34E2S5;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -812,7 +824,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 5H5Z34E2S5;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
