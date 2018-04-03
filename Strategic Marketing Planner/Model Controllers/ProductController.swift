@@ -12,12 +12,23 @@ class ProductController {
     
     static let shared = ProductController()
     var products: [Product] = []
+    var product: Product?
     
     // Any time you call this class it will fetch the products 
     init() {
         fetchProducts()
     }
     
+    func productImageCount(indexPath: IndexPath) -> Int {
+        return products[indexPath.row].images.count
+    }
+    
+//    func productImage(indexPath: IndexPath) -> UIImage? {
+//        let productImage = product.images[indexPath.row]
+//        
+////        let productName = UIImage(named: <#T##String#>)
+//        return productImage
+//    }
 
     // MARK: - Fetch
  
@@ -29,16 +40,19 @@ class ProductController {
         
         do {
             let data = try Data(contentsOf: localURL)
-            productsFromJSON(data)
+            if let products = productsFromJSON(data) {
+                self.products = products
+            }
+            
             
         } catch let error {
             print("Error fetching proctucts \(#function) \(error) \(error.localizedDescription)")
         }
     }
     
-   @discardableResult func productsFromJSON(_ data: Data) -> [Product]? {
+    func productsFromJSON(_ data: Data) -> [Product]? {
         do {
-            
+            var products: [Product] = []
             let productsDictionary = try JSONDecoder().decode(Dictionary<String, Dictionary<String, Product>>.self, from: data)
             for key in productsDictionary.keys {
                 guard let innerDictionary = productsDictionary[key] else { continue }

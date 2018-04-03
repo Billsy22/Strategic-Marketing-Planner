@@ -13,6 +13,10 @@ class MarketingOptionsViewController: UIViewController {
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
     var marketingOptions: [MarketingOption]?
+    let clientController = ClientController.shared
+    let productController = ProductController.shared
+    
+    private var requestedProductPage: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +29,18 @@ class MarketingOptionsViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "presentProductDetailModal" {
+            guard let destination = segue.destination as? ProductDetailViewController, let requestedPage = requestedProductPage else { return }
+            let product = productController.products[requestedPage]
+            destination.product = product
+            requestedProductPage = nil
+        }
     }
-    */
+ 
 
 }
 
@@ -60,6 +67,18 @@ extension MarketingOptionsViewController: UITableViewDataSource {
         cell.marketingOption = marketingOption
         return cell
     }
+}
+
+extension MarketingOptionsViewController: MarketingOptionTableViewCellDelegate {
     
+    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, changedSelectionStateTo newState: Bool) {
+        guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return }
+        clientController.toggleActivationForMarketingOption(marketingOption, forClient: currentClient)
+    }
+    
+    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {
+        requestedProductPage = pageIndex
+        performSegue(withIdentifier: "presentProductDetailModal", sender: self)
+    }
     
 }

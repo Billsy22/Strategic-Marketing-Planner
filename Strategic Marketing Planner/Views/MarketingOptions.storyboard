@@ -50,11 +50,20 @@
                     </view>
                     <connections>
                         <outlet property="marketingOptionsTableview" destination="ioV-Yz-sI6" id="J0F-2z-Etz"/>
+                        <segue destination="FGQ-X1-2uc" kind="presentation" identifier="presentProductDetailModal" id="VvC-11-NeJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-zQ-zHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-308" y="-63"/>
+        </scene>
+        <!--ProductDetail-->
+        <scene sceneID="fbe-Vc-i0f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductDetail" id="FGQ-X1-2uc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5D-8D-tff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="-63"/>
         </scene>
     </scenes>
 </document>
