@@ -10,8 +10,7 @@ import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
     
-
-
+    // MARK: -  Properties and Outlets
     @IBOutlet weak var currentProductionTextField: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
     @IBOutlet weak var desiredGrowthTextField: UITextField!
@@ -35,9 +34,8 @@ class GrowthCalculatorViewController: UIViewController {
         }
     }
     var desiredGrowth: Decimal { return productionGoal - currentProduction }
-
-    @IBOutlet weak var desiredGrowthLabel: UILabel!
     
+    // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         currentProductionTextField.delegate = self
@@ -48,6 +46,18 @@ class GrowthCalculatorViewController: UIViewController {
         desiredGrowthTextField.isEnabled = false
         monthlyMarketingBudgetTextField.delegate = self
         monthlyMarketingBudgetTextField.setAsNumericKeyboard()
+        annualMarketingBudgetTextField.delegate = self
+        annualMarketingBudgetTextField.isEnabled = false
+        lowEndReturnTextField.delegate = self
+        lowEndReturnTextField.isEnabled = false
+        highEndReturnTextField.delegate = self
+        highEndReturnTextField.isEnabled = false
+        averageReturnTextField.delegate = self
+        averageReturnTextField.isEnabled = false
+        estimatedGrowthTextField.delegate = self
+        estimatedGrowthTextField.isEnabled = false
+        
+        // TODO: -  Remove Dummy Data
         var points: [CGPoint] = []
         for position in 1...5 {
             let newPoint = CGPoint(x: position, y: 100_001 * position)
@@ -89,6 +99,7 @@ class GrowthCalculatorViewController: UIViewController {
         updateComputedValues()
     }
 
+    // MARK: -  Update Views
     func updateComputedValues(){
         desiredGrowthTextField.text = "\(desiredGrowth)"
     }
@@ -122,6 +133,11 @@ class GrowthCalculatorViewController: UIViewController {
     }
 }
 
+// MARK: -  TextFieldDelegate extension
 extension GrowthCalculatorViewController: UITextFieldDelegate {
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
