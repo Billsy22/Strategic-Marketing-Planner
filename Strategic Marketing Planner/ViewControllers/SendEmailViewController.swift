@@ -13,17 +13,29 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     var client: Client?
     
-    // TODO: - Connect Action Button
-    //    @IBAction func sendConfirmationEmail(sender: UIButton) {
-    //        composeEmail()
-    //    }
+    @IBOutlet weak var summaryTextView: UITextView!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var sendConfirmationEmailButton: UIButton!
+    
+    @IBAction func sendConfirmationEmail(sender: UIButton) {
+            composeEmail()
+        }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        populateTextView()
+    }
+    
+    func populateTextView() {
+        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with ***SALESMAN*** about your marketing plan. This is the information we have based on your conversation.\n\nBudget: ***BUDGET*** per month\n\(String(describing: client?.marketingPlan))\n\nTotal cost: ***TOTAL COST*** per month"
+    }
     
     // TODO: - Format Email Content
     func composeEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mc = MFMailComposeViewController()
             let emailSubject = "Confirmation"
-            let messageBody = "Bring in info from confirmation screen"
+            guard let messageBody = summaryTextView.text else { return }
             let toRecipients = ["\(client?.email ?? "")", "salesman@db.com", "corporate@db.com"]
             mc.mailComposeDelegate = self
             mc.setSubject(emailSubject)

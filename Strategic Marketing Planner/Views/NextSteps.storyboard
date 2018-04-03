@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Next Steps View Controller-->
         <scene sceneID="F54-FX-emA">
             <objects>
-                <viewController id="K8t-CR-E1u" sceneMemberID="viewController">
+                <viewController id="K8t-CR-E1u" customClass="NextStepsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aM2-No-8cY">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,6 +152,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GQK-O6-fJp"/>
                     </view>
+                    <connections>
+                        <outlet property="totalPriceLabel" destination="jVZ-WZ-U1u" id="02F-dG-DFG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIM-wY-jLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
