@@ -18,9 +18,10 @@ class MarketingOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        marketingOptionsTableview.register(MarketingOptionTableViewCell.self, forCellReuseIdentifier: MarketingOptionTableViewCell.preferredReuseID)
+        marketingOptionsTableview.register(UINib.init(nibName: "MarketingOptionTableViewCell", bundle: nil), forCellReuseIdentifier: MarketingOptionTableViewCell.preferredReuseID)
+        marketingOptionsTableview.dataSource = self
         marketingOptionsTableview.delegate = self
-        marketingOptionsTableview.delegate = self
+        marketingOptionsTableview.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: marketingOptionsTableview.frame.size.width, height: 1))
     }
     
 
@@ -51,7 +52,7 @@ extension MarketingOptionsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MarketingOptionTableViewCell.preferredReuseID) as? MarketingOptionTableViewCell else {
             fatalError("Unexpected cell type found. Cannot set up marketing options table.")
         }
-        guard let marketingOptions = marketingOptions, let indexPath = tableView.indexPathForSelectedRow else {
+        guard let marketingOptions = marketingOptions else {
             NSLog("Cannot complete cell setup because no marketing option was found for the IndexPath")
             return cell
         }

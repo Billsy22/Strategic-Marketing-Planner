@@ -294,13 +294,10 @@
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
-<<<<<<< HEAD
 				DF883CAF2072D52A0061A78C /* NextSteps.storyboard */,
-=======
 				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
->>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -791,7 +788,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
