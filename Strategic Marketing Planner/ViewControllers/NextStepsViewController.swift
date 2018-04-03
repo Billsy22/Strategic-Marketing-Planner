@@ -21,6 +21,7 @@ class NextStepsViewController: UIViewController {
     
     func formatHeaderLabel() {
         headerLabel.textColor = .brandOrange
+        headerLabel.text = "Congratulations!"
     }
     
     func formatTotalPriceLabel() {
