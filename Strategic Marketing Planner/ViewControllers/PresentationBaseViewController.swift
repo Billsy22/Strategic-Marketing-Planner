@@ -83,6 +83,9 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
         defaultDestinations.append(("Foundation", foundationOptionsVC))
+        //TODO: Replace this temporary test implementation
+        guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
+        foundationVC.marketingOptions = MarketingPlan(targetContext: CoreDataStack.context).getOptionsForCategory(MarketingPlan.OptionCategory.foundation, includeOnlyActive: false)
         return defaultDestinations
     }
     

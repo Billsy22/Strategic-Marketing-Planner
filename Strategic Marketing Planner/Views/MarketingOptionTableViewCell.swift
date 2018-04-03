@@ -18,6 +18,7 @@ class MarketingOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var selectionButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
     
     weak var delegate: MarketingOptionTableViewCellDelegate?
     
@@ -44,6 +45,13 @@ class MarketingOptionTableViewCell: UITableViewCell {
         nameLabel.text = marketingOption.name
         descriptionLabel.text = marketingOption.summary
         updateSelectionButtonAppearance()
+        if marketingOption.descriptionPageIndex == nil {
+            infoButton.isHidden = true
+            infoButton.isEnabled = false
+        }else{
+            infoButton.isEnabled = false
+            infoButton.isEnabled = true
+        }
     }
     
     func updateSelectionButtonAppearance(){
@@ -63,8 +71,13 @@ class MarketingOptionTableViewCell: UITableViewCell {
     
     @IBAction func selectionButtonTapped(_ sender: UIButton) {
         guard let marketingOption = marketingOption else { return }
+        marketingOption.isActive = !marketingOption.isActive
         delegate?.marketingOptionTableViewCell(self, changedSelectionStateTo: !marketingOption.isActive)
         updateSelectionButtonAppearance()
     }
     
+    @IBAction func productInfoButtonTapped(_ sender: UIButton) {
+        guard let descriptionPageIndex = marketingOption?.descriptionPageIndex?.intValue else { return }
+        delegate?.marketingOptionTableViewCell(self, receivedRequestForInformationPage: descriptionPageIndex)
+    }
 }

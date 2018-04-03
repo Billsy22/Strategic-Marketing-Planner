@@ -10,8 +10,16 @@ import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
     
-    @IBOutlet weak var currentProductionTextfield: UITextField!
+    // MARK: -  Properties and Outlets
+    @IBOutlet weak var currentProductionTextField: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
+    @IBOutlet weak var desiredGrowthTextField: UITextField!
+    @IBOutlet weak var monthlyMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var annualMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var lowEndReturnTextField: UITextField!
+    @IBOutlet weak var highEndReturnTextField: UITextField!
+    @IBOutlet weak var averageReturnTextField: UITextField!
+    @IBOutlet weak var estimatedGrowthTextField: UITextField!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var barGraphView: BarGraphView!
     
@@ -26,15 +34,30 @@ class GrowthCalculatorViewController: UIViewController {
         }
     }
     var desiredGrowth: Decimal { return productionGoal - currentProduction }
-
-    @IBOutlet weak var desiredGrowthLabel: UILabel!
     
+    // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentProductionTextfield.setAsNumericKeyboard()
+        currentProductionTextField.delegate = self
+        currentProductionTextField.setAsNumericKeyboard()
+        productionGoalTextField.delegate = self
         productionGoalTextField.setAsNumericKeyboard()
-        updateComputedValues()
-        // Do any additional setup after loading the view.
+        desiredGrowthTextField.delegate = self
+        desiredGrowthTextField.isEnabled = false
+        monthlyMarketingBudgetTextField.delegate = self
+        monthlyMarketingBudgetTextField.setAsNumericKeyboard()
+        annualMarketingBudgetTextField.delegate = self
+        annualMarketingBudgetTextField.isEnabled = false
+        lowEndReturnTextField.delegate = self
+        lowEndReturnTextField.isEnabled = false
+        highEndReturnTextField.delegate = self
+        highEndReturnTextField.isEnabled = false
+        averageReturnTextField.delegate = self
+        averageReturnTextField.isEnabled = false
+        estimatedGrowthTextField.delegate = self
+        estimatedGrowthTextField.isEnabled = false
+        
+        // TODO: -  Remove Dummy Data
         var points: [CGPoint] = []
         for position in 1...5 {
             let newPoint = CGPoint(x: position, y: 100_001 * position)
@@ -70,9 +93,15 @@ class GrowthCalculatorViewController: UIViewController {
         barGraphView.addBarData(data: littleData, dataLabelText: "little data", color: .green)
         barGraphView.addBarData(data: data, dataLabelText: "data", color: .red)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateComputedValues()
+    }
 
+    // MARK: -  Update Views
     func updateComputedValues(){
-        desiredGrowthLabel.text = "\(desiredGrowth)"
+        desiredGrowthTextField.text = "\(desiredGrowth)"
     }
     
 
@@ -104,7 +133,9 @@ class GrowthCalculatorViewController: UIViewController {
     }
 }
 
+// MARK: -  TextFieldDelegate extension
 extension GrowthCalculatorViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

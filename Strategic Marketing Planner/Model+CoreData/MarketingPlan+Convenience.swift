@@ -18,14 +18,15 @@ extension MarketingPlan {
         case suburban
     }
     
-    convenience init(context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(targetContext context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.options = setupDefaultMarketingOptions()
     }
     
     private func setupDefaultMarketingOptions() -> NSOrderedSet{
         let options = NSMutableOrderedSet()
-        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation)
+//        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation)
+        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: 18)
         let responsiveWebsite = MarketingOption(name: "Responsive Website", price: 1000, category: .foundation)
         let hosting = MarketingOption(name: "12 Months of Hosting", price: 50, category: .foundation)
         let videoAndPhotography = MarketingOption(name: "Video and Photography", price: 1000, category: .foundation)
@@ -36,7 +37,7 @@ extension MarketingPlan {
         return options
     }
     
-    func getOptionsForCategory(_ category: OptionCategory) -> [MarketingOption]{
+    func getOptionsForCategory(_ category: OptionCategory, includeOnlyActive: Bool = false) -> [MarketingOption]{
         var selectedOptions: [MarketingOption] = []
         guard let options = self.options else {
             NSLog("No options found for category because the marketing plan's options have not been initialized.  This most likely represents an invalid state.")
@@ -45,7 +46,9 @@ extension MarketingPlan {
         for option in options {
             guard let marketingOption = option as? MarketingOption, let optionCategory = marketingOption.category else { continue }
             if optionCategory == category.rawValue {
-                selectedOptions.append(marketingOption)
+                if includeOnlyActive && marketingOption.isActive || includeOnlyActive == false {
+                    selectedOptions.append(marketingOption)
+                }
             }
         }
         return selectedOptions

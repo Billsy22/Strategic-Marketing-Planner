@@ -11,13 +11,12 @@
 		168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
+<<<<<<< HEAD
+		16EEF506206EC9330069C77F /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EEF505206EC9330069C77F /* BarGraphView.swift */; };
+=======
+>>>>>>> 06bfad104975164559d7ab7264e9c2367fbea85b
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
-		B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */; };
-		B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */; };
-		B32DC60320728275002E68AF /* MarketingOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32DC60220728275002E68AF /* MarketingOptions.storyboard */; };
-		B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */; };
-		B32DC60D207293D2002E68AF /* MarketingOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */; };
 		B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
 		B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */; };
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
@@ -25,12 +24,19 @@
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
+		B3D9DF24206D781D00DA8A4A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B78206BE9EC000EC27B /* Product.swift */; };
+		B3D9DF25206D782100DA8A4A /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */; };
+		B3D9DF26206D782400DA8A4A /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */; };
 		B3D9DF27206D782700DA8A4A /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
 		B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */; };
 		B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
+		B3D9DF2D206D783D00DA8A4A /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
 		B3D9DF2E206D784100DA8A4A /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
+		B3D9DF2F206D784C00DA8A4A /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
+		B3D9DF30206D784F00DA8A4A /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
+		B3D9DF31206D785700DA8A4A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
 		B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9DF34206DD76700DA8A4A /* LineChartView.swift */; };
@@ -51,7 +57,6 @@
 		B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E802069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift */; };
 		B3F55E8B2069890200B2B1EE /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
 		B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F90F81206EC0A400EE2940 /* BarGraphView.swift */; };
-		DF01877D207282E300131358 /* SendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF01877C207282E300131358 /* SendEmailViewController.swift */; };
 		DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */; };
 		DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */; };
 		DF06C669206C6D2A00E6F4CC /* SEO.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF06C668206C6D1800E6F4CC /* SEO.pdf */; };
@@ -82,11 +87,6 @@
 		DF4EA3EF206D3B7F00C44A83 /* Smile Savings System.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3D2206D3ACB00C44A83 /* Smile Savings System.pdf */; };
 		DF4EA3F0206D3B7F00C44A83 /* Tri-fold Brochures.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3C9206D3ACA00C44A83 /* Tri-fold Brochures.pdf */; };
 		DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */; };
-		DF64C416206EE9CC00E27046 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64C415206EE9CC00E27046 /* Devices.swift */; };
-		DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF883CAD20729DE80061A78C /* GrowthCalculator.swift */; };
-		DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CAF2072D52A0061A78C /* NextSteps.storyboard */; };
-		DF883CB22073D9880061A78C /* NextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF883CB12073D9880061A78C /* NextStepsViewController.swift */; };
-		DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */; };
 		DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
@@ -102,23 +102,25 @@
 		E1033B83206D3D1F000EC27B /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1033B84206D3D23000EC27B /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		E1033B85206D3D2C000EC27B /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
+		E1033B86206D3D32000EC27B /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		E1033B87206D3D36000EC27B /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
 		E1033B88206D3D3A000EC27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
 		E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
+		E1033B8C206D3D4A000EC27B /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
 		E1033B8D206D3D59000EC27B /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
 		E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1033B8F206D3D61000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
 		E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
+		E1033B91206D3D6A000EC27B /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
+		E1033B92206D3D72000EC27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
 		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
-		E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */; };
-		E13F85AB2073ED83003764C1 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */; };
+		E1033B94206D3DBA000EC27B /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D80F31206D5EB000D3F812 /* ProductList.storyboard */; };
 		E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */; };
-		E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,12 +139,8 @@
 		168B008E206A98ED002A1580 /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		16EEF505206EC9330069C77F /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		B31534A6206C2ADD00688099 /* BoxedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedTextField.swift; sourceTree = "<group>"; };
-		B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+Convenience.swift"; sourceTree = "<group>"; };
-		B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionsViewController.swift; sourceTree = "<group>"; };
-		B32DC60220728275002E68AF /* MarketingOptions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MarketingOptions.storyboard; sourceTree = "<group>"; };
-		B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionTableViewCell.swift; sourceTree = "<group>"; };
-		B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketingOptionTableViewCell.xib; sourceTree = "<group>"; };
 		B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthCalculatorViewController.swift; sourceTree = "<group>"; };
 		B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxedLabel.swift; sourceTree = "<group>"; };
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 		B3F55E822069780900B2B1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationVC.storyboard; sourceTree = "<group>"; };
 		B3F90F81206EC0A400EE2940 /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
-		DF01877C207282E300131358 /* SendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewController.swift; sourceTree = "<group>"; };
 		DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPDFViewController.swift; sourceTree = "<group>"; };
 		DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF06C668206C6D1800E6F4CC /* SEO.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SEO.pdf; sourceTree = "<group>"; };
@@ -198,11 +195,6 @@
 		DF4EA3D5206D3ACC00C44A83 /* Case Acceptance.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Case Acceptance.pdf"; sourceTree = "<group>"; };
 		DF4EA3D6206D3ACC00C44A83 /* Postcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Postcard.pdf; sourceTree = "<group>"; };
 		DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Custom Logo.pdf"; sourceTree = "<group>"; };
-		DF64C415206EE9CC00E27046 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
-		DF883CAD20729DE80061A78C /* GrowthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculator.swift; sourceTree = "<group>"; };
-		DF883CAF2072D52A0061A78C /* NextSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextSteps.storyboard; sourceTree = "<group>"; };
-		DF883CB12073D9880061A78C /* NextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
-		DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryAndConfirmation.storyboard; sourceTree = "<group>"; };
 		DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClientsTableViewCell.swift; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -211,13 +203,10 @@
 		E1033B78206BE9EC000EC27B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E1033B7A206C3045000EC27B /* productPages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = productPages.json; sourceTree = "<group>"; };
 		E1033B7C206C4702000EC27B /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
-		E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
 		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
 		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1D80F31206D5EB000D3F812 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
 		E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
-		E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +265,6 @@
 				B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */,
 				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
 				E1033B78206BE9EC000EC27B /* Product.swift */,
-				B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -284,8 +272,11 @@
 		B3F55E58206964C300B2B1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */,
+<<<<<<< HEAD
+				16EEF505206EC9330069C77F /* BarGraphView.swift */,
+=======
 				B3F90F81206EC0A400EE2940 /* BarGraphView.swift */,
+>>>>>>> 06bfad104975164559d7ab7264e9c2367fbea85b
 				B3D9DF34206DD76700DA8A4A /* LineChartView.swift */,
 				168B0090206A9905002A1580 /* ClientList.storyboard */,
 				168B008E206A98ED002A1580 /* AddClient.storyboard */,
@@ -298,20 +289,20 @@
 				B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */,
 				E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */,
 				DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */,
-				E1D80F31206D5EB000D3F812 /* ProductList.storyboard */,
-				E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */,
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+>>>>>>> development
 				DF06C664206C331300E6F4CC /* ProductCollectionViewCell.swift */,
 				B31534A6206C2ADD00688099 /* BoxedTextField.swift */,
 				B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */,
 				B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */,
-				DF883CAF2072D52A0061A78C /* NextSteps.storyboard */,
-				B32DC60220728275002E68AF /* MarketingOptions.storyboard */,
-				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
-				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
 <<<<<<< HEAD
-				DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */,
 =======
->>>>>>> 248c63a209ff5c55389ae929ae39be527b6976b1
+				E1D80F31206D5EB000D3F812 /* ProductList.storyboard */,
+>>>>>>> Stashed changes
+=======
+>>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,8 +318,6 @@
 				B3998E1F2069C72400C4F02E /* Branding.swift */,
 				16BC2367206AD8730027C2EE /* DateHelper.swift */,
 				E1033B7A206C3045000EC27B /* productPages.json */,
-				DF64C415206EE9CC00E27046 /* Devices.swift */,
-				DF883CAD20729DE80061A78C /* GrowthCalculator.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				16228718206D41EA00160BF0 /* LineChartView.swift */,
+				16EEF503206E96310069C77F /* BarGraphView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -404,12 +394,11 @@
 				DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */,
 				B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */,
 				DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */,
-				E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */,
-				E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */,
+<<<<<<< Updated upstream
 				DF06C660206C2CD700E6F4CC /* ProductDetailPDFViewController.swift */,
-				B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */,
-				DF01877C207282E300131358 /* SendEmailViewController.swift */,
-				DF883CB12073D9880061A78C /* NextStepsViewController.swift */,
+=======
+				E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */,
+>>>>>>> Stashed changes
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -460,7 +449,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Christopher Thiebaut";
 				TargetAttributes = {
 					B3F55E3B20695F8100B2B1EE = {
@@ -500,7 +489,6 @@
 			files = (
 				DF4EA3D9206D3B7F00C44A83 /* 8-Page Brochures.pdf in Resources */,
 				DF4EA3DA206D3B7F00C44A83 /* Ad Design.pdf in Resources */,
-				E13F85AB2073ED83003764C1 /* ProductDetail.storyboard in Resources */,
 				DF4EA3DB206D3B7F00C44A83 /* Ancillary Services.pdf in Resources */,
 				DF4EA3DC206D3B7F00C44A83 /* Brand Definition.pdf in Resources */,
 				DF4EA3DD206D3B7F00C44A83 /* Call Training.pdf in Resources */,
@@ -521,7 +509,6 @@
 				DF4EA3EC206D3B7F00C44A83 /* Referral System.pdf in Resources */,
 				DF4EA3ED206D3B7F00C44A83 /* Responsive Website.pdf in Resources */,
 				DF4EA3EE206D3B7F00C44A83 /* Result Tracking.pdf in Resources */,
-				B32DC60320728275002E68AF /* MarketingOptions.storyboard in Resources */,
 				DF4EA3EF206D3B7F00C44A83 /* Smile Savings System.pdf in Resources */,
 				DF4EA3F0206D3B7F00C44A83 /* Tri-fold Brochures.pdf in Resources */,
 				DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */,
@@ -530,7 +517,6 @@
 				B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */,
 				168B0091206A9905002A1580 /* ClientList.storyboard in Resources */,
 				E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */,
-				B32DC60D207293D2002E68AF /* MarketingOptionTableViewCell.xib in Resources */,
 				E1033B7B206C3046000EC27B /* productPages.json in Resources */,
 				B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */,
 				B3F55E4D20695F8100B2B1EE /* LaunchScreen.storyboard in Resources */,
@@ -538,10 +524,8 @@
 				B3F55E4A20695F8100B2B1EE /* Assets.xcassets in Resources */,
 				E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */,
 				168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */,
-				DF883CB02072D52A0061A78C /* NextSteps.storyboard in Resources */,
 				DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */,
 				B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */,
-				DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */,
 				B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,18 +575,12 @@
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
 				B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
-				E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */,
-				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
-				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
-				DF64C416206EE9CC00E27046 /* Devices.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
-				B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */,
 				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
-				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
@@ -610,7 +588,6 @@
 				B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */,
 				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
 				B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */,
-				DF01877D207282E300131358 /* SendEmailViewController.swift in Sources */,
 				B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */,
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
@@ -618,8 +595,7 @@
 				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,
 				DF06C665206C331300E6F4CC /* ProductCollectionViewCell.swift in Sources */,
-				DF883CB22073D9880061A78C /* NextStepsViewController.swift in Sources */,
-				DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */,
+				16EEF506206EC9330069C77F /* BarGraphView.swift in Sources */,
 				B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,20 +612,32 @@
 				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
 				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */,
+				B3D9DF30206D784F00DA8A4A /* MarketingToSuburbanViewController.swift in Sources */,
+				B3D9DF2D206D783D00DA8A4A /* ProductsCollectionViewController.swift in Sources */,
 				B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */,
 				B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
 				E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */,
+				B3D9DF31206D785700DA8A4A /* DateHelper.swift in Sources */,
 				16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
 				B3D9DF27206D782700DA8A4A /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */,
 				B3D9DF2E206D784100DA8A4A /* GrowthCalculatorViewController.swift in Sources */,
+				B3D9DF2F206D784C00DA8A4A /* AddClientModalViewController.swift in Sources */,
 				B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */,
 				B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */,
+				B3D9DF26206D782400DA8A4A /* Client+Convenience.swift in Sources */,
 				B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */,
+				E1033B94206D3DBA000EC27B /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
+				E1033B86206D3D32000EC27B /* ClientTableViewCell.swift in Sources */,
 				DF4C7DAD206A9666004FC870 /* (null) in Sources */,
+				B3D9DF24206D781D00DA8A4A /* Product.swift in Sources */,
+				B3D9DF25206D782100DA8A4A /* CoreDataStack.swift in Sources */,
+				E1033B91206D3D6A000EC27B /* Branding.swift in Sources */,
+				E1033B92206D3D72000EC27B /* AppDelegate.swift in Sources */,
+				E1033B8C206D3D4A000EC27B /* GrowthCalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,7 +693,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -713,7 +700,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -764,7 +750,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -772,7 +757,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -807,7 +791,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 77T5A89VWP;
+=======
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
+>>>>>>> development
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -823,7 +811,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 77T5A89VWP;
+=======
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
+>>>>>>> development
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
