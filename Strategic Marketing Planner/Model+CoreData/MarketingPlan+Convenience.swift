@@ -25,7 +25,8 @@ extension MarketingPlan {
     
     private func setupDefaultMarketingOptions() -> NSOrderedSet{
         let options = NSMutableOrderedSet()
-        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation)
+//        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation)
+        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: 18)
         let responsiveWebsite = MarketingOption(name: "Responsive Website", price: 1000, category: .foundation)
         let hosting = MarketingOption(name: "12 Months of Hosting", price: 50, category: .foundation)
         let videoAndPhotography = MarketingOption(name: "Video and Photography", price: 1000, category: .foundation)
