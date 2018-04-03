@@ -48,7 +48,6 @@ class GrowthCalculatorViewController: UIViewController {
         desiredGrowthTextField.isEnabled = false
         monthlyMarketingBudgetTextField.delegate = self
         monthlyMarketingBudgetTextField.setAsNumericKeyboard()
-        updateComputedValues()
         var points: [CGPoint] = []
         for position in 1...5 {
             let newPoint = CGPoint(x: position, y: 100_001 * position)
@@ -84,9 +83,14 @@ class GrowthCalculatorViewController: UIViewController {
         barGraphView.addBarData(data: littleData, dataLabelText: "little data", color: .green)
         barGraphView.addBarData(data: data, dataLabelText: "data", color: .red)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateComputedValues()
+    }
 
     func updateComputedValues(){
-        desiredGrowthLabel.text = "\(desiredGrowth)"
+        desiredGrowthTextField.text = "\(desiredGrowth)"
     }
     
 

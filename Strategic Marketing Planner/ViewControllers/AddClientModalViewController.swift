@@ -9,6 +9,10 @@
 import UIKit
 import AVKit
 
+protocol AddClientDelegate: class {
+    func clientWasAdded()
+}
+
 class AddClientModalViewController: UIViewController {
     
     // MARK: -  Properites
@@ -29,6 +33,7 @@ class AddClientModalViewController: UIViewController {
     var client: Client?
     var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
+    weak var delegate: AddClientDelegate?
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -118,6 +123,10 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         save()
+//        self.performSegue(withIdentifier: "toPresentationVC", sender: self)
+//        let presentationStoryboard = UIStoryboard(name: "PresentationVC", bundle: nil)
+//        guard let presentationNavVC = presentationStoryboard.instantiateInitialViewController() else { return }
+//        presentingViewController?.navigationController?.pushViewController(presentationNavVC, animated: true)
     }
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
@@ -129,13 +138,13 @@ class AddClientModalViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPresentationVC" {
-            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
-            presentationVC.client = client
-        }
-    }
+//    // MARK: - Navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toPresentationVC" {
+//            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
+//            presentationVC.client = client
+//        }
+//    }
 }
 
 // MARK: -  Extension for DRY methods
@@ -161,6 +170,7 @@ extension AddClientModalViewController {
             ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
             dismiss(animated: true, completion: {
                 print("Client Created")
+                self.delegate?.clientWasAdded()
             })
         }
     }
