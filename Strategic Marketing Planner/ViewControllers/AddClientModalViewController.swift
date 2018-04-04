@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 
 protocol AddClientDelegate: class {
-    func clientWasAdded()
+    func presentationStarting()
 }
 
 class AddClientModalViewController: UIViewController {
@@ -123,7 +123,8 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         save()
-        ClientController.shared.currentClient = ClientController.shared.clients.last
+        ClientController.shared.currentClient = self.client
+        delegate?.presentationStarting()
     }
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
@@ -134,14 +135,6 @@ class AddClientModalViewController: UIViewController {
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
         present(imagePicker, animated: true, completion: nil)
     }
-    
-//    // MARK: - Navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toPresentationVC" {
-//            guard let destinationVC = segue.destination as? UINavigationController, let presentationVC = destinationVC.viewControllers.first as? PresentationBaseViewController, let client = ClientController.shared.clients.last else { return }
-//            presentationVC.client = client
-//        }
-//    }
 }
 
 // MARK: -  Extension for DRY methods
@@ -158,23 +151,25 @@ extension AddClientModalViewController {
             let zip = self.zipCodeTextField.text,
             let city = self.cityTextField.text,
             let state = self.stateTextField.text,
-            let initialContactDateString = self.initialContactDateTextField.text,
             let notes = self.notesTextView.text else { return }
         if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
             self.createEmptyTextAlert()
         } else {
-            let initialContactDate = DateHelper.dateFrom(string: initialContactDateString)
-            ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: initialContactDate, notes: notes)
+            if let client = client {
+                ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
+            } else {
+                ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
+                self.client = ClientController.shared.clients.last
+            }
             dismiss(animated: true, completion: {
                 print("Client Created")
-                self.delegate?.clientWasAdded()
             })
         }
     }
     
     // Creating an alert when textfields are empty
     func createEmptyTextAlert() {
-        let emptyTextAlert = UIAlertController(title: "Required text field empty", message: "Please fill out all required text fields", preferredStyle: .alert)
+        let emptyTextAlert = UIAlertController(title: "Required field", message: "Please fill out all r", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             print("Alert Dismissed")
         })
@@ -201,7 +196,7 @@ extension AddClientModalViewController {
 
 // MARK: -  Extension for textfields and keyboard appearance
 extension AddClientModalViewController: UITextFieldDelegate {
-
+    
     // Return key moves to the next text field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == firstNameTextField {
@@ -246,10 +241,10 @@ extension AddClientModalViewController: UITextFieldDelegate {
     // move view based on textfield
     @objc func keyboardWillChange(notification: Notification) {
         if notification.name == Notification.Name.UIKeyboardWillChangeFrame || notification.name == Notification.Name.UIKeyboardWillShow {
-        if activeTextField == emailTextField || activeTextField == addressTextField {
-            view.frame.origin.y = view.frame.origin.y - 50
-        } else if activeTextField == cityTextField || activeTextField == stateTextField || activeTextField == zipCodeTextField {
-            view.frame.origin.y = view.frame.origin.y - 100
+            if activeTextField == emailTextField || activeTextField == addressTextField {
+                view.frame.origin.y = view.frame.origin.y - 50
+            } else if activeTextField == cityTextField || activeTextField == stateTextField || activeTextField == zipCodeTextField {
+                view.frame.origin.y = view.frame.origin.y - 100
             }
         } else {
             view.frame.origin.y = 0

@@ -50,7 +50,7 @@ class ClientController {
         }
     }
     
-    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
+    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
         client.firstName = firstName
         client.lastName = lastName
         client.practiceName = practiceName
