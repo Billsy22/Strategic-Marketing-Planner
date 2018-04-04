@@ -64,6 +64,7 @@ extension MarketingPlan {
             let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .internal, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
             options.add(marketingOption)
         }
+        let externalMarketingOption = MarketingOption(name: ExternalMarketingFocus.digitalTraditionalMix.rawValue, price: 0, category: .external, description: nil, isActive: false, extendedDescriptionIndex: nil)
         addToOptions(options)
     }
     
