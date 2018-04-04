@@ -50,6 +50,16 @@ class ClientController {
         }
     }
     
+    func updateExternalMarketingFocus(_ focus: MarketingPlan.ExternalMarketingFocus, forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.name = focus.rawValue
+    }
+    
+    func updateExternalMarketingBudget(_ budget: Decimal, forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.price = budget as NSDecimalNumber
+    }
+    
     func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
         client.firstName = firstName
         client.lastName = lastName

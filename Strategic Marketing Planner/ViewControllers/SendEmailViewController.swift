@@ -24,11 +24,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateTextView()
-    }
-    
-    func populateTextView() {
-        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with ***SALESMAN*** about your marketing plan. This is the information we have based on your conversation.\n\nBudget: ***BUDGET*** per month\n\(String(describing: client?.marketingPlan))\n\nTotal cost: ***TOTAL COST*** per month"
         formatTextView()
         formatConfirmationButton()
         formatHeaderLabel()
@@ -43,7 +38,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: ***BUDGET*** per month\n***MARKETINGPLAN***\n\nTotal cost: ***TOTAL COST*** per month"
+        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: ***BUDGET*** per month\n\n***MARKETINGPLAN***\n\nTotal cost: ***TOTAL COST*** per month"
     }
     
     func formatConfirmationButton() {
@@ -56,16 +51,15 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func formatTotalPriceLabel() {
-    
     }
     
     // TODO: - Format Email Content
     func composeEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mc = MFMailComposeViewController()
-            let emailSubject = "Confirmation"
+            let emailSubject = "Summary & Confirmation"
             guard let messageBody = summaryTextView.text else { return }
-            let toRecipients = ["\(client?.email ?? "")", "salesman@db.com", "corporate@db.com"]
+            let toRecipients = ["\(client?.email ?? "")", "sheryl.dayler@henryschein.com", "bruce@dentalbranding.com"]
             mc.mailComposeDelegate = self
             mc.setSubject(emailSubject)
             mc.setMessageBody(messageBody, isHTML: false)

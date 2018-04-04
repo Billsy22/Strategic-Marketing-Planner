@@ -20,8 +20,17 @@ class BarGraphView: UIView, Graph {
     var deltaXColor: UIColor = .lightGray
     var axisLineWidth: CGFloat = 2
     var xGraduationCount: CGFloat = 4
+    var legendRows: Int {
+        let longestLabel = dataArray.reduce("") { (longestLabelSoFar, dataSeries) -> String in
+            guard let currentLabel = dataSeries.dataLabelText else { return longestLabelSoFar }
+            return longestLabelSoFar.count > currentLabel.count ? longestLabelSoFar : currentLabel
+        }
+        let legendEntryWidth = longestLabel.size(withSystemFontSize: labelFontSize).width + legendBlockWidth * 3
+        let legendRowSpace = frame.size.width
+        return max(Int(CGFloat(legendRowSpace)/legendEntryWidth), 1)
+    }
     var legendHeight: CGFloat {
-        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count) + 1) * legendBlockWidth + 20
+        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count / legendRows) + 1) * legendBlockWidth + 20
     }
     var legendBlockWidth: CGFloat = 10
     var internalHeight: CGFloat = 0

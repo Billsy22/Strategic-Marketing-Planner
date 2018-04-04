@@ -38,8 +38,9 @@ class LineChartView: UIView, Graph {
     var maxY: CGFloat = 10
     
     var legendBlockWidth: CGFloat = 10
+    var legendRows: Int = 1
     var legendHeight: CGFloat {
-        return CGFloat((dataArray.filter({$0.dataLabelText != nil}).count / 3) + 1) * legendBlockWidth + 20
+        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count / legendRows) + 1) * legendBlockWidth + 20
     }
     
     // MARK: -  Initializers
@@ -123,13 +124,23 @@ class LineChartView: UIView, Graph {
     
     func setTransform(minX: CGFloat, maxX: CGFloat, minY: CGFloat, maxY: CGFloat) {
         let xLabelSize = "\(Int(maxX))".size(withSystemFontSize: labelFontSize)
-        let yLabelSize = "\(Int(maxY))".size(withSystemFontSize: labelFontSize)
-        let xPadding = xLabelSize.height * 2
-        let yPadding = yLabelSize.width * 2
+        let yLabelSize = "$\(Int(maxY))".size(withSystemFontSize: labelFontSize)
+        let xPadding = xLabelSize.height + 20
+        let yPadding = yLabelSize.width + 20
         let xScale = (bounds.width - yPadding - xLabelSize.width/2 - 2)/(maxX - minX)
+        legendRows = calculateLegendRows(width: (maxX - minX) * xScale)
         let yScale = (bounds.height - xPadding - legendHeight - yLabelSize.height/2 - 2)/(maxY - minY)
         chartTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: -(minX * xScale) + yPadding/2, ty: bounds.height - xPadding - legendHeight)
         setNeedsDisplay()
+    }
+    
+    private func calculateLegendRows(width: CGFloat) -> Int{
+        let longestLabel = dataArray.reduce("") { (longestLabelSoFar, dataSeries) -> String in
+            guard let currentLabel = dataSeries.dataLabelText else { return longestLabelSoFar }
+            return longestLabelSoFar.count > currentLabel.count ? longestLabelSoFar : currentLabel
+        }
+        let legendEntryWidth = longestLabel.size(withSystemFontSize: labelFontSize).width + legendBlockWidth * 3
+        return max(Int(CGFloat(width)/legendEntryWidth), 1)
     }
     
     func plot() {
