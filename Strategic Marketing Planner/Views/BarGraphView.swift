@@ -34,7 +34,7 @@ class BarGraphView: UIView, Graph {
     // MARK: -  Bar Properties
     var barHeight: CGFloat = 25
     var minX: CGFloat = 0
-    var maxX: CGFloat = 0
+    var maxX: CGFloat = 1
     var graphMaxValue: CGFloat {
         var highestXValue = maxX
         var exponent: CGFloat = 0
@@ -45,7 +45,7 @@ class BarGraphView: UIView, Graph {
         let xValueRoundedUp = ceil(highestXValue)
         return xValueRoundedUp * pow(10, exponent)
     }
-    var deltaX: CGFloat = 0
+    var deltaX: CGFloat = 1
     var barSpacing: CGFloat = 5
     
     // MARK: -  Initializers
@@ -59,7 +59,6 @@ class BarGraphView: UIView, Graph {
     
     // MARK: -  SetUP Methods
     func setUpBarsForData() {
-//        guard let graphTransform = chartTransform else { updateAxisRange(); return }
         for barData in dataArray {
             let barLayer = CAShapeLayer()
             barLayer.fillColor = barData.dataColor.cgColor
@@ -80,14 +79,23 @@ class BarGraphView: UIView, Graph {
         }
     }
     
+    func clearBarData() {
+        dataArray.removeAll()
+        barsArray.removeAll()
+    }
+    
     func updateAxisRange() {
         var xValues: [CGFloat] = []
         for barData in dataArray {
             xValues.append(barData.data)
         }
-        maxX = xValues.max() ?? 0
-        deltaX =  graphMaxValue / xGraduationCount
-        setTransform(minX: minX, maxX: graphMaxValue)
+        if xValues.max() == 0 {
+            maxX = 1
+        } else {
+            maxX = xValues.max() ?? 1
+            deltaX =  graphMaxValue / xGraduationCount
+            setTransform(minX: minX, maxX: graphMaxValue)
+        }
     }
     
     func setTransform(minX: CGFloat, maxX: CGFloat) {
@@ -108,11 +116,19 @@ class BarGraphView: UIView, Graph {
             let data = dataArray[index].data
             let barLayer = barsArray[index]
             let barPath = CGMutablePath()
-            let rect = CGRect(x: 0, y: barYSpacing, width: data, height: barHeight)
-            barPath.addRect(rect, transform: graphTransform)
-            barLayer.path = barPath
-            barLayer.lineWidth = barHeight
-            barYSpacing += barSpacing + barHeight
+            if data > 0 {
+                let rect = CGRect(x: 0, y: barYSpacing, width: data, height: barHeight)
+                barPath.addRect(rect, transform: graphTransform)
+                barLayer.path = barPath
+                barLayer.lineWidth = barHeight
+                barYSpacing += barSpacing + barHeight
+            } else {
+                let rect = CGRect(x: 0, y: barYSpacing, width: 0, height: barHeight)
+                barPath.addRect(rect, transform: graphTransform)
+                barLayer.path = barPath
+                barLayer.lineWidth = barHeight
+                barYSpacing += barSpacing + barHeight
+            }
         }
     }
     

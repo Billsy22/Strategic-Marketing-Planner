@@ -29,7 +29,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     func populateTextView() {
         summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with ***SALESMAN*** about your marketing plan. This is the information we have based on your conversation.\n\nBudget: ***BUDGET*** per month\n\(String(describing: client?.marketingPlan))\n\nTotal cost: ***TOTAL COST*** per month"
-
         formatTextView()
         formatConfirmationButton()
         formatHeaderLabel()
@@ -57,7 +56,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func formatTotalPriceLabel() {
-        
     }
     
     // TODO: - Format Email Content

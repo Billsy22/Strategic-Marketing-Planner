@@ -17,12 +17,13 @@ protocol NumericKeyboardDelegate: class {
 extension UITextField: NumericKeyboardDelegate {
     
     func digitPressed(digit: Int) {
-        if self.text == "0" { self.text = "" }
+        if self.text == "$0" { self.text = "$" }
         self.text?.append("\(digit)")
     }
     
     func backspacePressed() {
         guard var text = self.text, text.count > 0 else { return }
+        guard text.last != "$" else { return }
         _ = text.removeLast()
         self.text = text
     }
@@ -34,12 +35,18 @@ extension UITextField: NumericKeyboardDelegate {
     }
     
     func setAsNumericKeyboard(){
+        if text?.first != "$" {
+            text?.insert("$", at: text!.startIndex)
+        }
         let numericKeyboard = NumericKeyboard(frame: CGRect(x: 0, y: 0, width: 0, height: 100))
         self.inputView = numericKeyboard
         numericKeyboard.delegate = self
     }
     
     func unsetNumericKeyboard(){
+        if text?.first == "$" {
+            text?.removeFirst()
+        }
         if let numericKeyboard = self.inputView as? NumericKeyboard {
             numericKeyboard.delegate = nil
             self.inputView = nil

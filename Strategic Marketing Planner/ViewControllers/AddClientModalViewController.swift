@@ -123,10 +123,7 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         save()
-//        self.performSegue(withIdentifier: "toPresentationVC", sender: self)
-//        let presentationStoryboard = UIStoryboard(name: "PresentationVC", bundle: nil)
-//        guard let presentationNavVC = presentationStoryboard.instantiateInitialViewController() else { return }
-//        presentingViewController?.navigationController?.pushViewController(presentationNavVC, animated: true)
+        ClientController.shared.currentClient = ClientController.shared.clients.last
     }
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
