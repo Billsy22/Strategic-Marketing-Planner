@@ -12,6 +12,7 @@
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
+		16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
 		B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */; };
 		B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */; };
@@ -137,6 +138,7 @@
 		168B008E206A98ED002A1580 /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		B31534A6206C2ADD00688099 /* BoxedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedTextField.swift; sourceTree = "<group>"; };
 		B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+Convenience.swift"; sourceTree = "<group>"; };
 		B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionsViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				168B0090206A9905002A1580 /* ClientList.storyboard */,
 				168B008E206A98ED002A1580 /* AddClient.storyboard */,
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
+				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 				B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */,
 				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
 				DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */,
@@ -614,6 +617,7 @@
 				DF01877D207282E300131358 /* SendEmailViewController.swift in Sources */,
 				B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */,
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
+				16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,
 				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
@@ -808,7 +812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = NZ5N56B84J;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -824,7 +828,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5Z34E2S5;
+				DEVELOPMENT_TEAM = NZ5N56B84J;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
