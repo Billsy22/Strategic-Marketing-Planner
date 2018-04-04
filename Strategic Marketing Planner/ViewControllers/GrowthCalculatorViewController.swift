@@ -24,22 +24,6 @@ class GrowthCalculatorViewController: UIViewController {
     @IBOutlet weak var barGraphView: BarGraphView!
     
     let growthCalc = GrowthCalculator()
-//    var currentProduction: Decimal = 0 {
-//        didSet {
-//            updateComputedValues()
-//        }
-//    }
-//    var productionGoal: Decimal = 0 {
-//        didSet {
-//            updateComputedValues()
-//        }
-//    }
-//    var monthlyGoal: Decimal = 0 {
-//        didSet {
-//            updateComputedValues()
-//        }
-//    }
-//    var desiredGrowth: Decimal { return productionGoal - currentProduction }
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -62,41 +46,32 @@ class GrowthCalculatorViewController: UIViewController {
         averageReturnTextField.isEnabled = false
         estimatedGrowthTextField.delegate = self
         estimatedGrowthTextField.isEnabled = false
-//
-//        var points: [CGPoint] = []
-//        for position in 1...5 {
-//            let newPoint = CGPoint(x: position, y: 100_001 * position)
-//            points.append(newPoint)
-//        }
-//        var morePoints: [CGPoint] = []
-//        for position in 1...5 {
-//            let newPoint = CGPoint(x: position, y: 150_000 * position)
-//            morePoints.append(newPoint)
-//        }
-//        var points2: [CGPoint] = []
-//        for position in 1...5 {
-//            let newPoint = CGPoint(x: position, y: 110_001 * position)
-//            points2.append(newPoint)
-//        }
-//        var points3: [CGPoint] = []
-//        for position in 1...5 {
-//            let newPoint = CGPoint(x: position, y: 110_001 * position)
-//            points3.append(newPoint)
-//        }
-//
-//        lineChartView.addDataSeries(points: points, color: .blue, labelText: "Cumulative Return")
-//        lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
-//        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
-//        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
-//
-//        let data: CGFloat = 99
-//        let moreData: CGFloat = 25
-//        let littleData: CGFloat = 24
-//        let theLastTestData: CGFloat = 74
-//        barGraphView.addBarData(data: theLastTestData, dataLabelText: "theLastTestData", color: .black)
-//        barGraphView.addBarData(data: moreData, dataLabelText: "More Data", color: .blue)
-//        barGraphView.addBarData(data: littleData, dataLabelText: "little data", color: .green)
-//        barGraphView.addBarData(data: data, dataLabelText: "data", color: .red)
+
+        var points: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 100_001 * position)
+            points.append(newPoint)
+        }
+        var morePoints: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 150_000 * position)
+            morePoints.append(newPoint)
+        }
+        var points2: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 110_001 * position)
+            points2.append(newPoint)
+        }
+        var points3: [CGPoint] = []
+        for position in 1...5 {
+            let newPoint = CGPoint(x: position, y: 110_001 * position)
+            points3.append(newPoint)
+        }
+
+        lineChartView.addDataSeries(points: points, color: .blue, labelText: "Cumulative Return")
+        lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
+        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
+        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,20 +81,22 @@ class GrowthCalculatorViewController: UIViewController {
 
     // MARK: -  Update Views
     func updateComputedValues(){
-        desiredGrowthTextField.text = "$"
+        desiredGrowthTextField.text = "$\(Int(growthCalc.desiredGrowth))"
+        annualMarketingBudgetTextField.text = "$\(Int(growthCalc.annualizedBudget))"
+        lowEndReturnTextField.text = "$\(Int(growthCalc.lowEndReturn))"
+        highEndReturnTextField.text = "$\(Int(growthCalc.highEndReturn))"
+        averageReturnTextField.text = "$\(Int(growthCalc.averageReturn))"
+        estimatedGrowthTextField.text = "\(growthCalc.growthPercentage)"
+        updateGraphs()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateGraphs() {
+        barGraphView.clearBarData()
+        barGraphView.addBarData(data: growthCalc.averageReturn, dataLabelText: "Estimated Average Return", color: .returnGreen)
+        barGraphView.addBarData(data: growthCalc.desiredGrowth, dataLabelText: "Desired Growth", color: .black)
+        barGraphView.addBarData(data: growthCalc.productionGoal, dataLabelText: "12 Month\nProduction Goal", color: .goalBlue)
+        barGraphView.addBarData(data: growthCalc.currentProduction, dataLabelText: "Current Production\n(Last 12 Months)", color: .currentBlue)
     }
-    */
-
     
     @IBAction func currentProductionEntered(_ sender: UITextField) {
         var text = sender.text
@@ -130,29 +107,31 @@ class GrowthCalculatorViewController: UIViewController {
             return
         }
         growthCalc.currentProduction = CGFloat(value)
-        
+        updateComputedValues()
     }
     
     @IBAction func productionGoalEntered(_ sender: UITextField) {
         var text = sender.text
         text?.removeFirst()
         guard let valueAsString = text else { return }
-        guard let value = Decimal(string: valueAsString) else {
-//            productionGoal = 0
+        guard let value = Double(valueAsString) else {
+            growthCalc.productionGoal = 0
             return
         }
-//        productionGoal = value
+        growthCalc.productionGoal = CGFloat(value)
+        updateComputedValues()
     }
     
     @IBAction func monthlyMarketingBudgetEntered(_ sender: UITextField) {
         var text = sender.text
         text?.removeFirst()
         guard let valueAsString = text else { return }
-        guard let value = Decimal(string: valueAsString) else {
-//            monthlyGoal = 0
+        guard let value = Double(valueAsString) else {
+            growthCalc.monthlyBudget = 0
             return
         }
-//        monthlyGoal = value
+        growthCalc.monthlyBudget = CGFloat(value)
+        updateComputedValues()
     }
 }
 
