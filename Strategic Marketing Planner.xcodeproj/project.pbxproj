@@ -93,6 +93,8 @@
 		DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */; };
 		DF94944F207426170035513F /* NextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94944E207426170035513F /* NextStepsViewController.swift */; };
 		DF94945120743B4D0035513F /* ProductsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94945020743B4D0035513F /* ProductsInfo.swift */; };
+		DF949453207526010035513F /* ExternalMarketing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF949452207526010035513F /* ExternalMarketing.storyboard */; };
+		DF949455207529B60035513F /* ExternalMarketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF949454207529B60035513F /* ExternalMarketingViewController.swift */; };
 		DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */; };
 		DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
 		DFA14E5C206C00EF00920559 /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
@@ -218,6 +220,8 @@
 		DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryAndConfirmation.storyboard; sourceTree = "<group>"; };
 		DF94944E207426170035513F /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
 		DF94945020743B4D0035513F /* ProductsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsInfo.swift; sourceTree = "<group>"; };
+		DF949452207526010035513F /* ExternalMarketing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExternalMarketing.storyboard; sourceTree = "<group>"; };
+		DF949454207529B60035513F /* ExternalMarketingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalMarketingViewController.swift; sourceTree = "<group>"; };
 		DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClientsTableViewCell.swift; sourceTree = "<group>"; };
 		DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientListTableViewController.swift; path = "Strategic Marketing Planner/ViewControllers/ClientListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 				B32DC60A207293D2002E68AF /* MarketingOptionTableViewCell.swift */,
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
 				DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */,
+				DF949452207526010035513F /* ExternalMarketing.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 				B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */,
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
 				DF94944E207426170035513F /* NextStepsViewController.swift */,
+				DF949454207529B60035513F /* ExternalMarketingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4EA3D9206D3B7F00C44A83 /* 8-Page Brochures.pdf in Resources */,
+				DF949453207526010035513F /* ExternalMarketing.storyboard in Resources */,
 				DF4EA3DA206D3B7F00C44A83 /* Ad Design.pdf in Resources */,
 				E13F85AB2073ED83003764C1 /* ProductDetail.storyboard in Resources */,
 				DF4EA3DB206D3B7F00C44A83 /* Ancillary Services.pdf in Resources */,
@@ -617,6 +624,7 @@
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
+				DF949455207529B60035513F /* ExternalMarketingViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
 				DF64C416206EE9CC00E27046 /* Devices.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
