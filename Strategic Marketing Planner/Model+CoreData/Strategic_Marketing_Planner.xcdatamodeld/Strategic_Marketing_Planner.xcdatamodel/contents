@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Client" representedClassName="Client" syncable="YES" codeGenerationType="class">
+    <entity name="Client" representedClassName="Client" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="email" attributeType="String" syncable="YES"/>
@@ -10,12 +10,13 @@
         <attribute name="notes" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" attributeType="String" syncable="YES"/>
         <attribute name="practiceName" attributeType="String" syncable="YES"/>
+        <attribute name="practiceType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streetAddress" attributeType="String" syncable="YES"/>
         <attribute name="zip" attributeType="String" syncable="YES"/>
         <relationship name="marketingPlan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketingPlan" inverseName="client" inverseEntity="MarketingPlan" syncable="YES"/>
     </entity>
-    <entity name="MarketingOption" representedClassName="MarketingOption" syncable="YES" codeGenerationType="class">
+    <entity name="MarketingOption" representedClassName="MarketingOption" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionPageIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -24,14 +25,14 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketingPlan" inverseName="options" inverseEntity="MarketingPlan" syncable="YES"/>
     </entity>
-    <entity name="MarketingPlan" representedClassName="MarketingPlan" syncable="YES" codeGenerationType="class">
+    <entity name="MarketingPlan" representedClassName="MarketingPlan" syncable="YES">
         <attribute name="cost" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="targetBudget" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="marketingPlan" inverseEntity="Client" syncable="YES"/>
         <relationship name="options" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MarketingOption" inverseName="plan" inverseEntity="MarketingOption" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-54" positionY="-9" width="128" height="240"/>
+        <element name="Client" positionX="-54" positionY="-9" width="128" height="255"/>
         <element name="MarketingOption" positionX="-18" positionY="117" width="128" height="150"/>
         <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="105"/>
     </elements>

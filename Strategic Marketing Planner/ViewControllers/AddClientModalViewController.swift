@@ -89,7 +89,7 @@ class AddClientModalViewController: UIViewController {
             stateTextField.text = client.state
             zipCodeTextField.text = client.zip
             guard let contactDate = client.contactDate else { print("No contact date for client"); return }
-            let formattedContactedDate = DateHelper.format(date: contactDate)
+            let formattedContactedDate = DateHelper.format(date: contactDate as Date)
             initialContactDateTextField.text = "\(formattedContactedDate)"
             notesTextView.text = client.notes
             saveOrRemoveClientButton.setTitle("Delete Client", for: .normal)
