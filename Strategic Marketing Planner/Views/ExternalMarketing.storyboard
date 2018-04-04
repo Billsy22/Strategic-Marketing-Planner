@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VCW-yc-bbJ">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--External Marketing View Controller-->
+        <scene sceneID="WCh-JH-STM">
+            <objects>
+                <viewController id="VCW-yc-bbJ" customClass="ExternalMarketingViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YMI-hD-Ada">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tUW-rh-bCg">
+                                <rect key="frame" x="50" y="20" width="924" height="76"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="NL4-Pd-Fkr">
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="External Marketing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6X-U6-adj">
+                                                <rect key="frame" x="0.0" y="0.0" width="821" height="44.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCK-Gj-Duf">
+                                                <rect key="frame" x="821" y="18" width="103" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your external marketing mix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umc-mU-QiZ">
+                                        <rect key="frame" x="0.0" y="49.5" width="325" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NL4-Pd-Fkr" secondAttribute="trailing" id="DpJ-w3-SFf"/>
+                                    <constraint firstItem="NL4-Pd-Fkr" firstAttribute="leading" secondItem="tUW-rh-bCg" secondAttribute="leading" id="IBU-qB-IQA"/>
+                                    <constraint firstItem="NL4-Pd-Fkr" firstAttribute="top" secondItem="tUW-rh-bCg" secondAttribute="top" id="eNM-dg-yNb"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-4U-5Hu">
+                                <rect key="frame" x="50" y="116" width="894" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="raL-ZP-uX3"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a marketing mix." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ON-4m-lfr">
+                                <rect key="frame" x="50" y="386" width="894" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ZKo-tt-lUa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Hia-tL-Dpa">
+                                <rect key="frame" x="50" y="496" width="894" height="96"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 per month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtx-KD-Muz">
+                                        <rect key="frame" x="0.0" y="0.0" width="894" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rb2-n9-ifh">
+                                        <rect key="frame" x="42.5" y="66" width="809" height="31"/>
+                                        <connections>
+                                            <action selector="sliderValueSelected:" destination="VCW-yc-bbJ" eventType="valueChanged" id="ahE-kc-Dv3"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xtx-KD-Muz" secondAttribute="trailing" id="3ed-MU-Vfi"/>
+                                    <constraint firstItem="xtx-KD-Muz" firstAttribute="top" secondItem="Hia-tL-Dpa" secondAttribute="top" id="7Rj-XS-Vaz"/>
+                                    <constraint firstAttribute="bottom" secondItem="rb2-n9-ifh" secondAttribute="bottom" id="aY2-Nu-Cur"/>
+                                    <constraint firstItem="rb2-n9-ifh" firstAttribute="width" secondItem="Hia-tL-Dpa" secondAttribute="width" multiplier="0.9" id="eWj-N0-TnL"/>
+                                    <constraint firstItem="xtx-KD-Muz" firstAttribute="leading" secondItem="Hia-tL-Dpa" secondAttribute="leading" id="yvo-4I-0wg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tfc-dI-dn5" firstAttribute="trailing" secondItem="0ON-4m-lfr" secondAttribute="trailing" constant="80" id="1ge-r9-xv8"/>
+                            <constraint firstItem="3bT-4U-5Hu" firstAttribute="leading" secondItem="tfc-dI-dn5" secondAttribute="leading" constant="50" id="3GE-hZ-TcR"/>
+                            <constraint firstItem="tfc-dI-dn5" firstAttribute="trailing" secondItem="3bT-4U-5Hu" secondAttribute="trailing" constant="80" id="94V-hM-6uI"/>
+                            <constraint firstItem="tUW-rh-bCg" firstAttribute="top" secondItem="YMI-hD-Ada" secondAttribute="top" constant="20" id="KUZ-tD-boR"/>
+                            <constraint firstItem="Hia-tL-Dpa" firstAttribute="leading" secondItem="tfc-dI-dn5" secondAttribute="leading" constant="50" id="Ogf-Bs-faN"/>
+                            <constraint firstItem="0ON-4m-lfr" firstAttribute="top" secondItem="3bT-4U-5Hu" secondAttribute="bottom" constant="50" id="dC9-UF-bya"/>
+                            <constraint firstItem="Hia-tL-Dpa" firstAttribute="top" secondItem="0ON-4m-lfr" secondAttribute="bottom" constant="50" id="ekx-2g-ph4"/>
+                            <constraint firstAttribute="trailing" secondItem="tUW-rh-bCg" secondAttribute="trailing" constant="50" id="rFd-yj-SsJ"/>
+                            <constraint firstItem="tfc-dI-dn5" firstAttribute="trailing" secondItem="Hia-tL-Dpa" secondAttribute="trailing" constant="80" id="sYW-Rw-hAo"/>
+                            <constraint firstItem="3bT-4U-5Hu" firstAttribute="top" secondItem="tUW-rh-bCg" secondAttribute="bottom" constant="20" id="wdk-DB-mx1"/>
+                            <constraint firstItem="0ON-4m-lfr" firstAttribute="leading" secondItem="tfc-dI-dn5" secondAttribute="leading" constant="50" id="zKr-iN-txh"/>
+                            <constraint firstItem="tUW-rh-bCg" firstAttribute="leading" secondItem="YMI-hD-Ada" secondAttribute="leading" constant="50" id="zWv-gL-1xY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tfc-dI-dn5"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerLabel" destination="y6X-U6-adj" id="Q6z-G6-C7Z"/>
+                        <outlet property="marketingMixTableView" destination="3bT-4U-5Hu" id="fFd-mM-c8q"/>
+                        <outlet property="marketingToLabel" destination="0ON-4m-lfr" id="LTo-ac-s4v"/>
+                        <outlet property="pricePerMonthLabel" destination="xtx-KD-Muz" id="R1T-k1-bpo"/>
+                        <outlet property="pricePerMonthSlider" destination="rb2-n9-ifh" id="WvY-Bx-Pc5"/>
+                        <outlet property="totalPriceLabel" destination="vCK-Gj-Duf" id="ZJq-RK-Jrc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bbF-Yg-Yxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71.484375" y="-105.46875"/>
+        </scene>
+    </scenes>
+</document>
