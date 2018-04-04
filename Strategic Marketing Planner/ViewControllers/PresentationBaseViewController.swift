@@ -86,6 +86,10 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         //TODO: Replace this temporary test implementation
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
         foundationVC.category = MarketingPlan.OptionCategory.foundation
+        guard let internalVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC") as? MarketingOptionsViewController else { fatalError() }
+        internalVC.category = MarketingPlan.OptionCategory.internal
+        defaultDestinations.append(("Internal", internalVC))
+        
         return defaultDestinations
     }
     

@@ -45,14 +45,14 @@ extension MarketingPlan {
 //    @objc(replaceOptionsAtIndexes:withOptions:)
 //    @NSManaged public func replaceOptions(at indexes: NSIndexSet, with values: [MarketingOption])
 //
-//    @objc(addOptionsObject:)
-//    @NSManaged public func addToOptions(_ value: MarketingOption)
+    @objc(addOptionsObject:)
+    @NSManaged public func addToOptions(_ value: MarketingOption)
 //
 //    @objc(removeOptionsObject:)
 //    @NSManaged public func removeFromOptions(_ value: MarketingOption)
 //
-//    @objc(addOptions:)
-//    @NSManaged public func addToOptions(_ values: NSOrderedSet)
+    @objc(addOptions:)
+    @NSManaged public func addToOptions(_ values: NSOrderedSet)
 //
 //    @objc(removeOptions:)
 //    @NSManaged public func removeFromOptions(_ values: NSOrderedSet)
