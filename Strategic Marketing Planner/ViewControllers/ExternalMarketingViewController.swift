@@ -78,19 +78,24 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         cell.nameLabel.text = marketingOptions[indexPath.row]
         cell.descriptionLabel.text = marketingOptionSummaries[indexPath.row]
         cell.delegate = self
-//          if cell.showActive == true {
-//            marketingOptionTableViewCell.selectionButton.setImage("selected", for: .normal)
-//        } else {
-//            marketingOptionTableViewCell.selectionButton.setImage("unselected", for: .normal)
-//        }
         return cell
     }
 }
 
 extension ExternalMarketingViewController: MarketingOptionTableViewCellDelegate {
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
-        //logic
+        deselectCells()
         return true
+    }
+    
+    func deselectCells() {
+        for index in 0..<marketingOptions.count {
+            if let tableViewCell = marketingMixTableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? MarketingOptionTableViewCell{
+                if tableViewCell != MarketingOptionTableViewCell() {
+                    tableViewCell.showActive = false
+                }
+            }
+        }
     }
     
     func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {
