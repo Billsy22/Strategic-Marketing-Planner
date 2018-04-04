@@ -10,12 +10,17 @@ import UIKit
 
 class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let client = Client(firstName: "Mike", lastName: "Jones", practiceName: "Mike's Dental", phone: "801-223-2332", email: "mike@jones.com", address: "123", city: "SLC", state: "UT", zip: "84059", initialContact: Date())
+    
+    let marketingOptionTableViewCell = MarketingOptionTableViewCell()
+    let clientController = ClientController.shared
+    
     let marketingOptions = ["Urban", "Suburban", "Rural"]
     let marketingOptionSummaries = ["A digital marketing focus. Ideal for highly populated areas.", "A mix of digital and traditional marketing to maximize results in a suburban demographic.", "A traditional marketing focus. Ideal for rural areas."]
     
     let urbanPrices = ["0", "750", "1750", "2750", "3750", "4750"]
     let suburbanPrices = ["0", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "4500", "5000", "5500", "6000", "6500"]
-    let ruralPrices = ["500", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "5000", "6000"]
+    let ruralPrices = ["0", "500", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "5000", "6000"]
     
     let marketingToUrban = "Move the slider to select an external marketing budget for Urban/Digital marketing. Below are the available monthly payment amounts for a 12 month term."
     let marketingToSuburban = "Move the slider to select an external marketing budget for Suburban/Mix of Digital & Traditional marketing. Below are the available monthly payment amounts for a 12 month term."
@@ -40,11 +45,17 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         formatHeader()
         tableViewCustomization()
         formatSlider()
+        marketingToLabel.text = marketingToSuburban
     }
     
     func formatSlider() {
         pricePerMonthSlider.maximumValue = Float(suburbanPrices.count - 1)
         pricePerMonthSlider.tintColor = .brandBlue
+        pricePerMonthSlider.value = 0
+    }
+    
+    func formatMarketingToLabel() {
+        
     }
     
     func tableViewCustomization() {
@@ -68,17 +79,23 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         cell.nameLabel.text = marketingOptions[indexPath.row]
         cell.descriptionLabel.text = marketingOptionSummaries[indexPath.row]
         cell.delegate = self
+//          if cell.showActive == true {
+//            marketingOptionTableViewCell.selectionButton.setImage("selected", for: .normal)
+//        } else {
+//            marketingOptionTableViewCell.selectionButton.setImage("unselected", for: .normal)
+//        }
         return cell
     }
 }
 
 extension ExternalMarketingViewController: MarketingOptionTableViewCellDelegate {
-    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, changedSelectionStateTo newState: Bool) {
-        guard let marketingOption = cell.marketingOption, let currentClient = ClientController.shared.currentClient else { return }
-        ClientController.shared.toggleActivationForMarketingOption(marketingOption, forClient: currentClient)
+    func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
+        guard let marketingButton = marketingOptionTableViewCell.selectionButton else { return false }
+        marketingOptionTableViewCell.selectionButtonTapped(marketingButton)
+        return true
     }
     
     func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {
-        // Not using info button on this screen.
+        // Not using information button
     }
 }
