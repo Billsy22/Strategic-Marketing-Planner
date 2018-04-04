@@ -129,10 +129,8 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
         imagePicker.allowsEditing = true
-        imagePicker.sourceType = .camera
         imagePicker.sourceType = .photoLibrary
         imagePicker.sourceType = .savedPhotosAlbum
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera)!
         present(imagePicker, animated: true, completion: nil)
     }
 }

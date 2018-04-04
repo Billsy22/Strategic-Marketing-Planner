@@ -175,7 +175,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vzj-FL-dhA" userLabel="Monthy Budget Stack">
-                                                <rect key="frame" x="0.0" y="147" width="477" height="56.5"/>
+                                                <rect key="frame" x="0.0" y="152" width="477" height="56.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d17-Zc-dgH">
                                                         <rect key="frame" x="0.0" y="0.0" width="152" height="26.5"/>
@@ -234,7 +234,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E8w-Sy-d5Z" userLabel="Estimated Return Stack">
-                                                <rect key="frame" x="0.0" y="233.5" width="477" height="176.5"/>
+                                                <rect key="frame" x="0.0" y="243.5" width="477" height="176.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated Budget Returns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpZ-h1-fWD">
                                                         <rect key="frame" x="0.0" y="0.0" width="248" height="26.5"/>
@@ -457,7 +457,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QUA-OZ-Pbb" userLabel="Legend Stack">
-                                                <rect key="frame" x="0.0" y="440" width="477" height="98"/>
+                                                <rect key="frame" x="0.0" y="455" width="477" height="98"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-h5-d2a">
                                                         <rect key="frame" x="0.0" y="0.0" width="477" height="18"/>
@@ -554,10 +554,10 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-LA-yOt">
-                                                <rect key="frame" x="0.0" y="568" width="477" height="80"/>
+                                                <rect key="frame" x="0.0" y="588" width="477" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="t1X-1y-Hkc"/>
+                                                    <constraint firstAttribute="height" constant="60" id="t1X-1y-Hkc"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
