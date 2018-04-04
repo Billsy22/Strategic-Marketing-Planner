@@ -12,7 +12,6 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     
     let client = Client(firstName: "Mike", lastName: "Jones", practiceName: "Mike's Dental", phone: "801-223-2332", email: "mike@jones.com", address: "123", city: "SLC", state: "UT", zip: "84059", initialContact: Date())
     
-    let marketingOptionTableViewCell = MarketingOptionTableViewCell()
     let clientController = ClientController.shared
     
     let marketingOptions = ["Urban", "Suburban", "Rural"]
@@ -90,8 +89,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
 
 extension ExternalMarketingViewController: MarketingOptionTableViewCellDelegate {
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
-        guard let marketingButton = marketingOptionTableViewCell.selectionButton else { return false }
-        marketingOptionTableViewCell.selectionButtonTapped(marketingButton)
+        //logic
         return true
     }
     

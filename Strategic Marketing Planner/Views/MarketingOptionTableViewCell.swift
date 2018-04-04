@@ -43,6 +43,8 @@ class MarketingOptionTableViewCell: UITableViewCell {
     
     private func performSetup(){
         guard let marketingOption = marketingOption else {
+            infoButton.isEnabled = false
+            infoButton.isHidden = true
             NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
             return
         }
@@ -73,9 +75,8 @@ class MarketingOptionTableViewCell: UITableViewCell {
     }
     
     @IBAction func selectionButtonTapped(_ sender: UIButton) {
-        guard let marketingOption = marketingOption else { return }
-        marketingOption.isActive = !marketingOption.isActive
         if delegate?.marketingOptionTableViewCellShouldToggleSelectionState(self) ?? false {
+            showActive = !showActive
             updateSelectionButtonAppearance()
         }
     }
