@@ -26,12 +26,6 @@
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
-		B3CFCC7D2074485A00D3B524 /* MarketingOption+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC772074485A00D3B524 /* MarketingOption+CoreDataClass.swift */; };
-		B3CFCC7E2074485A00D3B524 /* MarketingOption+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC782074485A00D3B524 /* MarketingOption+CoreDataProperties.swift */; };
-		B3CFCC802074485A00D3B524 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7A2074485A00D3B524 /* Client+CoreDataProperties.swift */; };
-		B3CFCC822074485B00D3B524 /* MarketingPlan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7C2074485A00D3B524 /* MarketingPlan+CoreDataProperties.swift */; };
-		B3CFCC832074805400D3B524 /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC792074485A00D3B524 /* Client+CoreDataClass.swift */; };
-		B3CFCC842074806200D3B524 /* MarketingPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7B2074485A00D3B524 /* MarketingPlan+CoreDataClass.swift */; };
 		B3D9DF27206D782700DA8A4A /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
@@ -161,12 +155,6 @@
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
-		B3CFCC772074485A00D3B524 /* MarketingOption+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B3CFCC782074485A00D3B524 /* MarketingOption+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B3CFCC792074485A00D3B524 /* Client+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B3CFCC7A2074485A00D3B524 /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B3CFCC7B2074485A00D3B524 /* MarketingPlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B3CFCC7C2074485A00D3B524 /* MarketingPlan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B3D9DF34206DD76700DA8A4A /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationBaseViewController.swift; sourceTree = "<group>"; };
@@ -293,12 +281,6 @@
 		B3F55E57206964AC00B2B1EE /* Model+CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B3CFCC772074485A00D3B524 /* MarketingOption+CoreDataClass.swift */,
-				B3CFCC782074485A00D3B524 /* MarketingOption+CoreDataProperties.swift */,
-				B3CFCC792074485A00D3B524 /* Client+CoreDataClass.swift */,
-				B3CFCC7A2074485A00D3B524 /* Client+CoreDataProperties.swift */,
-				B3CFCC7B2074485A00D3B524 /* MarketingPlan+CoreDataClass.swift */,
-				B3CFCC7C2074485A00D3B524 /* MarketingPlan+CoreDataProperties.swift */,
 				B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */,
 				B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */,
 				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
@@ -616,8 +598,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3CFCC842074806200D3B524 /* MarketingPlan+CoreDataClass.swift in Sources */,
-				B3CFCC832074805400D3B524 /* Client+CoreDataClass.swift in Sources */,
 				DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */,
 				DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */,
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
@@ -633,12 +613,10 @@
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
-				B3CFCC802074485A00D3B524 /* Client+CoreDataProperties.swift in Sources */,
 				B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */,
 				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
-				B3CFCC822074485B00D3B524 /* MarketingPlan+CoreDataProperties.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */,
@@ -651,8 +629,6 @@
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
 				16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
-				B3CFCC7D2074485A00D3B524 /* MarketingOption+CoreDataClass.swift in Sources */,
-				B3CFCC7E2074485A00D3B524 /* MarketingOption+CoreDataProperties.swift in Sources */,
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,
 				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
 				B3F55E7720696D1400B2B1EE /* Client+Convenience.swift in Sources */,

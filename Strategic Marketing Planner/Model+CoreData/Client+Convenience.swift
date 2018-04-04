@@ -23,14 +23,17 @@ extension Client {
         self.city = city
         self.state = state
         self.zip = zip
-        self.contactDate = initialContact as NSDate
+        self.contactDate = initialContact
         self.notes = notes
         self.practiceType = practiceType.rawValue
         if let image = image {
             let imageData = UIImageJPEGRepresentation(image, 1)
-            self.imageData = imageData as NSData?
+            self.imageData = imageData
         }
         self.marketingPlan = MarketingPlan(practiceType: practiceType,targetContext: context)
+        self.monthlyBudget = 0
+        self.currentProduction = 0
+        self.productionGoal = 0
     }
     
     func matches(searchString: String) -> Bool {
