@@ -53,7 +53,7 @@
         <scene sceneID="qzT-DU-E9V">
             <objects>
                 <navigationController id="IRt-Wz-LfC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Presentation" id="gsp-6x-MiF"/>
+                    <tabBarItem key="tabBarItem" title="Presentation" image="TabBarImagePresentation" id="gsp-6x-MiF"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WvG-TN-EIJ">
                         <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
@@ -147,4 +147,7 @@
             <point key="canvasLocation" x="275" y="883"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TabBarImagePresentation" width="24" height="24"/>
+    </resources>
 </document>

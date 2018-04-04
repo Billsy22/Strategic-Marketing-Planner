@@ -67,7 +67,7 @@
                             <outlet property="delegate" destination="ueG-My-Okj" id="5jc-DM-Vyd"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Products" id="YyQ-RY-hvE"/>
+                    <tabBarItem key="tabBarItem" title="Products" image="TabBarImageProducts" id="YyQ-RY-hvE"/>
                     <navigationItem key="navigationItem" title="Products" id="37u-Lx-HPT"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
@@ -110,6 +110,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TabBarImageProducts" width="21" height="24"/>
         <image name="imageNotAvailable" width="450" height="450"/>
     </resources>
 </document>
