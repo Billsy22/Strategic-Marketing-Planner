@@ -32,9 +32,9 @@ class LineChartView: UIView, Graph {
     //The following 6 values are defaults which will be re-calculated before the graph is ever drawn.
     var deltaX: CGFloat = 10
     var deltaY: CGFloat = 10
-    var minX: CGFloat = 10
+    var minX: CGFloat = 0
     var maxX: CGFloat = 10
-    var minY: CGFloat = 10
+    var minY: CGFloat = 0
     var maxY: CGFloat = 10
     
     var legendBlockWidth: CGFloat = 10
@@ -77,6 +77,11 @@ class LineChartView: UIView, Graph {
         }
     }
     
+    func clearLineData() {
+        dataArray.removeAll()
+        linesAndCirclesArray.removeAll()
+    }
+    
     func updateAxisRange() {
         var xValues: [CGFloat] = []
         var yValues: [CGFloat] = []
@@ -86,9 +91,20 @@ class LineChartView: UIView, Graph {
                 yValues.append(point.y)
             }
         }
-        maxY = yValues.max() ?? 0
-        maxX = xValues.max() ?? 0
-        minX = xValues.min() ?? 0
+        if xValues.max() == 0 && yValues.max() == 0 {
+            maxX = 1
+            maxY = 1
+        } else if xValues.max() != 0 && yValues.max() == 0 {
+            maxX = xValues.max() ?? 0
+            maxY = 1
+        } else if xValues.max() == 0 && yValues.max() != 0 {
+            maxX = 1
+            maxY = yValues.max() ?? 1
+        } else {
+            maxY = yValues.max() ?? 0
+            maxX = xValues.max() ?? 0
+            minX = xValues.min() ?? 0
+        }
         minY = 0
         var highestYValue = maxY
         var exponent: CGFloat = 0
@@ -120,18 +136,22 @@ class LineChartView: UIView, Graph {
         guard let chartTransform = chartTransform else { updateAxisRange(); return }
         for index in 0..<dataArray.count {
             let dataPoints = dataArray[index].data
-            let lineLayer = linesAndCirclesArray[index].lineLayer
-            let linePath = CGMutablePath()
-            linePath.addLines(between: dataPoints, transform: chartTransform)
-            lineLayer.path = linePath
-            let circleLayer = linesAndCirclesArray[index].circleLayer
-            let circlePath = CGMutablePath()
-            for point in dataPoints {
-                let circleCenter = point.applying(chartTransform)
-                circlePath.addEllipse(in: CGRect(x: circleCenter.x - circleWidth/2, y: circleCenter.y - circleWidth/2, width: circleWidth, height: circleWidth))
+            if dataArray[index].showLine {
+                let lineLayer = linesAndCirclesArray[index].lineLayer
+                let linePath = CGMutablePath()
+                linePath.addLines(between: dataPoints, transform: chartTransform)
+                lineLayer.path = linePath
             }
-            circleLayer.path = circlePath
-            layer.addSublayer(circleLayer)
+            if dataArray[index].showCircles {
+                let circleLayer = linesAndCirclesArray[index].circleLayer
+                let circlePath = CGMutablePath()
+                for point in dataPoints {
+                    let circleCenter = point.applying(chartTransform)
+                    circlePath.addEllipse(in: CGRect(x: circleCenter.x - circleWidth/2, y: circleCenter.y - circleWidth/2, width: circleWidth, height: circleWidth))
+                }
+                circleLayer.path = circlePath
+                layer.addSublayer(circleLayer)
+            }
         }
     }
     

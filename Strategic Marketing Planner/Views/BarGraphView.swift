@@ -21,7 +21,7 @@ class BarGraphView: UIView, Graph {
     var axisLineWidth: CGFloat = 2
     var xGraduationCount: CGFloat = 4
     var legendHeight: CGFloat {
-        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count / 3) + 1) * legendBlockWidth + 20
+        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count) + 1) * legendBlockWidth + 20
     }
     var legendBlockWidth: CGFloat = 10
     var internalHeight: CGFloat = 0
