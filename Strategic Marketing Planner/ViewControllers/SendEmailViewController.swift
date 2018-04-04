@@ -51,7 +51,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func formatTotalPriceLabel() {
-    
     }
     
     // TODO: - Format Email Content

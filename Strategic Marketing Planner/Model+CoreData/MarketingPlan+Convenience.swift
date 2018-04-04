@@ -18,9 +18,16 @@ extension MarketingPlan {
         case suburban
     }
     
-    convenience init(targetContext context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(practiceType: Client.PracticeType, targetContext context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
-        self.options = setupDefaultMarketingOptions()
+        switch practiceType {
+        case .general:
+            options = setupGeneralPracticeMarketingOptions()
+        case .specialty:
+            options = setupDefaultMarketingOptions()
+        case .startup:
+            options = setupDefaultMarketingOptions()
+        }
     }
     
     private func setupDefaultMarketingOptions() -> NSOrderedSet{
@@ -40,7 +47,21 @@ extension MarketingPlan {
         return options
     }
     
-    func getOptionsForCategory(_ category: OptionCategory, includeOnlyActive: Bool = false) -> [MarketingOption]{
+    private func setupGeneralPracticeMarketingOptions() -> NSOrderedSet {
+        let options = NSMutableOrderedSet()
+        for productInfo in ProductsInfo.foundationProduct {
+            let descriptionIndex = ProductController.shared.products.index { (product) -> Bool in
+                return product.title == productInfo.name
+            }
+            let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
+            options.add(marketingOption)
+            }
+        
+        return options
+    }
+    
+    func getOptionsForCategory(_ category: OptionCategory?, includeOnlyActive: Bool = false) -> [MarketingOption]{
+        guard let category = category else { return [] }
         var selectedOptions: [MarketingOption] = []
         guard let options = self.options else {
             NSLog("No options found for category because the marketing plan's options have not been initialized.  This most likely represents an invalid state.")
