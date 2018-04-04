@@ -76,10 +76,10 @@ extension MarketingOptionsViewController: UITableViewDataSource {
 }
 
 extension MarketingOptionsViewController: MarketingOptionTableViewCellDelegate {
-    
-    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, changedSelectionStateTo newState: Bool) {
-        guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return }
+    func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
+        guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return  false }
         clientController.toggleActivationForMarketingOption(marketingOption, forClient: currentClient)
+        return true
     }
     
     func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {
