@@ -25,13 +25,12 @@
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
-		B3CFCC76207430EF00D3B524 /* NextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */; };
 		B3CFCC7D2074485A00D3B524 /* MarketingOption+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC772074485A00D3B524 /* MarketingOption+CoreDataClass.swift */; };
 		B3CFCC7E2074485A00D3B524 /* MarketingOption+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC782074485A00D3B524 /* MarketingOption+CoreDataProperties.swift */; };
-		B3CFCC7F2074485A00D3B524 /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC792074485A00D3B524 /* Client+CoreDataClass.swift */; };
 		B3CFCC802074485A00D3B524 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7A2074485A00D3B524 /* Client+CoreDataProperties.swift */; };
-		B3CFCC812074485A00D3B524 /* MarketingPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7B2074485A00D3B524 /* MarketingPlan+CoreDataClass.swift */; };
 		B3CFCC822074485B00D3B524 /* MarketingPlan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7C2074485A00D3B524 /* MarketingPlan+CoreDataProperties.swift */; };
+		B3CFCC832074805400D3B524 /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC792074485A00D3B524 /* Client+CoreDataClass.swift */; };
+		B3CFCC842074806200D3B524 /* MarketingPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFCC7B2074485A00D3B524 /* MarketingPlan+CoreDataClass.swift */; };
 		B3D9DF27206D782700DA8A4A /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
 		B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
@@ -607,6 +606,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CFCC842074806200D3B524 /* MarketingPlan+CoreDataClass.swift in Sources */,
+				B3CFCC832074805400D3B524 /* Client+CoreDataClass.swift in Sources */,
 				DF06C661206C2CD700E6F4CC /* ProductDetailPDFViewController.swift in Sources */,
 				DFA14E5E206C014100920559 /* ProductsCollectionViewController.swift in Sources */,
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,

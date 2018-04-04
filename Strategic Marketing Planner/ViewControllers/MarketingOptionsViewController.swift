@@ -12,7 +12,12 @@ class MarketingOptionsViewController: UIViewController {
     
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
-    var marketingOptions: [MarketingOption]?
+    var category: MarketingPlan.OptionCategory? = nil {
+        didSet {
+            marketingOptionsTableview?.reloadData()
+        }
+    }
+    lazy var marketingOptions = ClientController.shared.currentClient?.marketingPlan?.getOptionsForCategory(category)
     let clientController = ClientController.shared
     let productController = ProductController.shared
     

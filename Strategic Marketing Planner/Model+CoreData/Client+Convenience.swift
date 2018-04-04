@@ -30,7 +30,7 @@ extension Client {
             let imageData = UIImageJPEGRepresentation(image, 1)
             self.imageData = imageData as NSData?
         }
-        self.marketingPlan = MarketingPlan(targetContext: context)
+        self.marketingPlan = MarketingPlan(practiceType: practiceType,targetContext: context)
     }
     
     func matches(searchString: String) -> Bool {
