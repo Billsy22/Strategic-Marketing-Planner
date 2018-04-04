@@ -20,9 +20,10 @@ extension MarketingPlan {
     
     convenience init(practiceType: Client.PracticeType, targetContext context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
+        options = NSOrderedSet()
         switch practiceType {
         case .general:
-            options = setupGeneralPracticeMarketingOptions()
+            setupGeneralPracticeMarketingOptions()
         case .specialty:
             options = setupDefaultMarketingOptions()
         case .startup:
@@ -47,7 +48,7 @@ extension MarketingPlan {
         return options
     }
     
-    private func setupGeneralPracticeMarketingOptions() -> NSOrderedSet {
+    private func setupGeneralPracticeMarketingOptions()  {
         let options = NSMutableOrderedSet()
         for productInfo in ProductsInfo.foundationProduct {
             let descriptionIndex = ProductController.shared.products.index { (product) -> Bool in
@@ -56,8 +57,14 @@ extension MarketingPlan {
             let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
             options.add(marketingOption)
             }
-        
-        return options
+        for productInfo in ProductsInfo.internalMarketingProduct {
+            let descriptionIndex = ProductController.shared.products.index { (product) -> Bool in
+                return product.title == productInfo.name
+            }
+            let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .internal, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
+            options.add(marketingOption)
+        }
+        addToOptions(options)
     }
     
     func getOptionsForCategory(_ category: OptionCategory?, includeOnlyActive: Bool = false) -> [MarketingOption]{
@@ -76,6 +83,12 @@ extension MarketingPlan {
             }
         }
         return selectedOptions
+    }
+    
+    enum ExternalMarketingFocus: String {
+        case digital
+        case traditional
+        case digitalTraditionalMix
     }
     
 }

@@ -42,16 +42,16 @@ class MarketingOptionTableViewCell: UITableViewCell {
     }
     
     private func performSetup(){
-        if marketingOption?.descriptionPageIndex == nil {
+        guard let marketingOption = marketingOption else {
+            NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
+            return
+        }
+        if marketingOption.descriptionPageIndex == nil {
             infoButton.isHidden = true
             infoButton.isEnabled = false
         }else{
             infoButton.isEnabled = false
             infoButton.isEnabled = true
-        }
-        guard let marketingOption = marketingOption else {
-            NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
-            return
         }
         nameLabel.text = marketingOption.name
         descriptionLabel.text = marketingOption.summary
