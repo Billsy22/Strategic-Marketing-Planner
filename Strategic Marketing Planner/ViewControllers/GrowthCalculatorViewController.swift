@@ -46,32 +46,6 @@ class GrowthCalculatorViewController: UIViewController {
         averageReturnTextField.isEnabled = false
         estimatedGrowthTextField.delegate = self
         estimatedGrowthTextField.isEnabled = false
-
-        var points: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 100_001 * position)
-            points.append(newPoint)
-        }
-        var morePoints: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 150_000 * position)
-            morePoints.append(newPoint)
-        }
-        var points2: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 110_001 * position)
-            points2.append(newPoint)
-        }
-        var points3: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 110_001 * position)
-            points3.append(newPoint)
-        }
-
-        lineChartView.addDataSeries(points: points, color: .blue, labelText: "Cumulative Return")
-        lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
-        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
-        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,8 +68,17 @@ class GrowthCalculatorViewController: UIViewController {
         barGraphView.clearBarData()
         barGraphView.addBarData(data: growthCalc.averageReturn, dataLabelText: "Estimated Average Return", color: .returnGreen)
         barGraphView.addBarData(data: growthCalc.desiredGrowth, dataLabelText: "Desired Growth", color: .black)
-        barGraphView.addBarData(data: growthCalc.productionGoal, dataLabelText: "12 Month\nProduction Goal", color: .goalBlue)
-        barGraphView.addBarData(data: growthCalc.currentProduction, dataLabelText: "Current Production\n(Last 12 Months)", color: .currentBlue)
+        barGraphView.addBarData(data: growthCalc.productionGoal, dataLabelText: "12 Month Production Goal", color: .goalBlue)
+        barGraphView.addBarData(data: growthCalc.currentProduction, dataLabelText: "Current Production(Last 12 Months)", color: .currentBlue)
+        lineChartView.clearLineData()
+        lineChartView.addDataSeries(points: growthCalc.goal, color: .black, labelText: "Goal", showLines: true, showCircles: false)
+        lineChartView.addDataSeries(points: growthCalc.cumulativeROI, color: .goalBlue, labelText: "Cululative ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearlyInvestment, color: .lightGray, labelText: "Yearly Investment", showLines: false)
+        lineChartView.addDataSeries(points: growthCalc.yearOneROI, color: .returnGreen, labelText: "Yr 1 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearTwoROI, color: .returnGreen, labelText: "Yr 2 - Annual ROI", showLines:  true)
+        lineChartView.addDataSeries(points: growthCalc.yearThreeROI, color: .returnGreen, labelText: "Yr 3 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearFourROI, color: .returnGreen, labelText: "Yr 4 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearFiveROI, color: .returnGreen, labelText: "Yr 5 - Annual ROI", showLines: true)
     }
     
     @IBAction func currentProductionEntered(_ sender: UITextField) {
