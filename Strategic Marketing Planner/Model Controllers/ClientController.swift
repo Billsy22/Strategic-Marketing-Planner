@@ -87,9 +87,17 @@ class ClientController {
         save()
     }
     
-    func updateMonthlyBudget(for client: Client, withAmount amount: NSDecimalNumber) {
-        client.monthlyBudget = amount
+    func updateMonthlyBudget(for client: Client, withAmount amount: Decimal) {
+        client.monthlyBudget = amount as NSDecimalNumber
         save()
+    }
+    
+    func updateCurrentProduction(for client: Client, withAmount amount: Decimal) {
+        client.currentProduction = amount as NSDecimalNumber
+    }
+    
+    func updateProductionGoal(for client: Client, withAmount amount: Decimal) {
+        client.productionGoal = amount as NSDecimalNumber
     }
     
     //MARK: - Delete

@@ -24,6 +24,10 @@ class GrowthCalculatorViewController: UIViewController {
     @IBOutlet weak var barGraphView: BarGraphView!
     
     let growthCalc = GrowthCalculator()
+    let clientController = ClientController.shared
+    var client: Client? {
+        return clientController.currentClient
+    }
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -92,6 +96,8 @@ class GrowthCalculatorViewController: UIViewController {
         }
         growthCalc.currentProduction = CGFloat(value)
         updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateCurrentProduction(for: client, withAmount: Decimal(value))
     }
     
     @IBAction func productionGoalEntered(_ sender: UITextField) {
@@ -104,6 +110,8 @@ class GrowthCalculatorViewController: UIViewController {
         }
         growthCalc.productionGoal = CGFloat(value)
         updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateProductionGoal(for: client, withAmount: Decimal(value))
     }
     
     @IBAction func monthlyMarketingBudgetEntered(_ sender: UITextField) {
@@ -117,8 +125,8 @@ class GrowthCalculatorViewController: UIViewController {
         growthCalc.monthlyBudget = CGFloat(value)
         updateComputedValues()
         let budgetAsDecimal = Decimal(value)
-        guard let client = ClientController.shared.currentClient else { return }
-        ClientController.shared.updateMonthlyBudget(for: client, withAmount: NSDecimalNumber(decimal: budgetAsDecimal))
+        guard let client = client else { return }
+        clientController.updateMonthlyBudget(for: client, withAmount: budgetAsDecimal)
     }
     
     private func restoreState(){
