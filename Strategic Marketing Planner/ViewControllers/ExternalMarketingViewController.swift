@@ -61,7 +61,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
             }
         }
         slider.value = closestValue
-        pricePerMonthLabel.text = "$\(slider.value) per month"
+        pricePerMonthLabel.text = "\(NumberHelper.currencyString(for: slider.value) ?? "$0") per month"
         guard let client = client else { return }
         clientController.updateExternalMarketingBudget(Decimal.init(Double(slider.value)), forClient: client)
         if slider.value == 0 {
@@ -69,6 +69,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         }else{
             clientController.activateExternalMarketing(forClient: client)
         }
+        updateTotalPriceLabel()
     }
     
     private func restoreState(){
@@ -81,24 +82,20 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
             sliderValueSelected(pricePerMonthSlider)
             marketingToLabel.text = marketingToUrban
             activeName = "Urban"
-//            guard let urbanIndex = marketingOptions.index(of: "Urban"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: urbanIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
-//            cell.showActive = true
+            
         case .digitalTraditionalMix:
             sliderPrices = suburbanPrices
             pricePerMonthSlider.value = Float(truncating: price)
             sliderValueSelected(pricePerMonthSlider)
             marketingToLabel.text = marketingToSuburban
             activeName = "Suburban"
-//            guard let suburbanIndex = marketingOptions.index(of: "Suburban"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: suburbanIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
-//            cell.showActive = true
+            
         case .traditional:
             sliderPrices = ruralPrices
             pricePerMonthSlider.value = Float(truncating: price)
             sliderValueSelected(pricePerMonthSlider)
             marketingToLabel.text = marketingToRural
             activeName = "Rural"
-//            guard let ruralIndex = marketingOptions.index(of: "Rural"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: ruralIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
-//            cell.showActive = true
         }
         
     }
@@ -108,7 +105,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         formatHeader()
         tableViewCustomization()
         formatSlider()
-        formatTotalPriceLabel()
+        updateTotalPriceLabel()
         marketingToLabel.text = marketingToSuburban
     }
     
@@ -122,9 +119,9 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         pricePerMonthSlider.value = 0
     }
     
-    func formatTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
+    func updateTotalPriceLabel() {
+        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
+        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
     
     func tableViewCustomization() {

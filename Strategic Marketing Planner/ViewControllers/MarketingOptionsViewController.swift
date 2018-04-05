@@ -58,8 +58,8 @@ class MarketingOptionsViewController: UIViewController {
     }
     
     func updateTotalPriceLabel(){
-        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
+        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
+        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
 
     // MARK: - Navigation

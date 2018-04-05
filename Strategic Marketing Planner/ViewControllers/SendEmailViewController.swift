@@ -29,19 +29,19 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         formatTextView()
         formatConfirmationButton()
         formatHeaderLabel()
-        formatTotalPriceLabel()
+        updateTotalPriceLabel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatTextView()
-        formatTotalPriceLabel()
+        updateTotalPriceLabel()
     }
     
     func formatTextView() {
         guard let client = client else { print("No client passed to email view"); return }
-        guard let marketingPlan = client.marketingPlan else { return }
-        guard let monthlyBudget = client.monthlyBudget else { return }
+        guard let marketingPlan = client.marketingPlan, let planCostString = NumberHelper.currencyString(for: marketingPlan.cost) else { return }
+        guard let monthlyBudget = client.monthlyBudget, let budgetString = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
         summaryTextView.layer.borderColor = UIColor.gray.cgColor
         summaryTextView.layer.borderWidth = 0.5
         summaryTextView.layer.cornerRadius = 5
@@ -49,8 +49,8 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: $\(monthlyBudget) per month\n"
-        let lastSection = "\nTotal cost: $\(marketingPlan.cost) per month"
+        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n"
+        let lastSection = "\nTotal cost: \(planCostString) per month"
         summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
     }
     
@@ -107,9 +107,9 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         headerLabel.textColor = .brandOrange
     }
     
-    func formatTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
+    func updateTotalPriceLabel() {
+        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
+        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
     
     func composeEmail() {
