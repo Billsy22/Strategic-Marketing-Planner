@@ -27,13 +27,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHM-NI-aOa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="663.5" height="44.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                                         <color key="textColor" red="0.87058823529411766" green="0.45098039215686275" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-WZ-U1u">
-                                                        <rect key="frame" x="663.5" y="18" width="260.5" height="26.5"/>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-WZ-U1u">
+                                                        <rect key="frame" x="924" y="18" width="0.0" height="26.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26.5" id="NJC-F0-KaI"/>
                                                         </constraints>
