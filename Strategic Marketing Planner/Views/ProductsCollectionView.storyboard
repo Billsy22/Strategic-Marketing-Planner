@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="-2030.8593749999998" y="609.375"/>
         </scene>
-        <!--Product DetailPDF View Controller-->
+        <!--Title-->
         <scene sceneID="pBF-d0-bJ6">
             <objects>
                 <viewController id="aBe-9t-oMf" customClass="ProductDetailPDFViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,6 +85,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sGa-EF-IhC"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="j1Y-pj-oHy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-hM-vFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -42,14 +42,14 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         guard let client = client else { print("No client passed to email view"); return }
         guard let marketingPlan = client.marketingPlan, let planCostString = NumberHelper.currencyString(for: marketingPlan.cost) else { return }
         guard let monthlyBudget = client.monthlyBudget, let budgetString = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        summaryTextView.layer.borderColor = UIColor.gray.cgColor
-        summaryTextView.layer.borderWidth = 0.5
-        summaryTextView.layer.cornerRadius = 5
+//        summaryTextView.layer.borderColor = UIColor.gray.cgColor
+//        summaryTextView.layer.borderWidth = 0.5
+//        summaryTextView.layer.cornerRadius = 5
         summaryTextView.contentInset.left = 15
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n"
+        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n\n"
         let lastSection = "\nTotal cost: \(planCostString) per month"
         summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
     }

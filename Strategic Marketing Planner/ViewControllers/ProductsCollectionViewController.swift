@@ -32,7 +32,8 @@ class ProductsCollectionViewController: UICollectionViewController {
             let cell = sender as? ProductCollectionViewCell,
             let indexPath = collectionView?.indexPath(for: cell) {
             let detailVC = segue.destination as? ProductDetailPDFViewController
-            let product = productsArray[indexPath.row]
+            let sortedArray = productsArray.sorted()
+            let product = sortedArray[indexPath.row]
             detailVC?.product = product
         }
     }
@@ -44,41 +45,9 @@ class ProductsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        cell.productNameLabel.text = productsArray[indexPath.row]
+        let sortedArray = productsArray.sorted()
+        cell.productNameLabel.text = sortedArray[indexPath.row]
         cell.productImageView.image = #imageLiteral(resourceName: "genericProductImage")
         return cell
     }
 }
-
-
-/*
- "Custom Logo" 175
- "Responsive Website" 500
- "Video & Photo" 750
- 
- "Referral System" 150
- "Ancillary Services" 175
- "Case Acceptance" 750
- "Reactivation System" 175
- "Smile Savings System" 350
- 
-"SEO"
-"Ad Design"
-"Adwords"
-"Call Training"
-"Marketing Strategy"
-"Tri-fold Brochures"
-"Brand Definition"
-"Postcard"
-"Internet Review"
-"Email Campaign"
-"Open House"
-"Mini-Zine Mailer"
-"Door Hangers"
-"8-Page Brochures"
-"Movie Theater Ad"
-"Radio Ad"
-"Facebook Jumpstart"
-"Facebook Outreach"
-"Result Tracking"
-*/
