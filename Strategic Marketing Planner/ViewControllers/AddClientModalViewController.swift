@@ -20,6 +20,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var clientPhotoButton: UIButton!
     @IBOutlet weak var practiceNameTextField: UITextField!
+    @IBOutlet weak var practiceTypeDropDownButton: PracticeTypeDropDownButton!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -48,7 +49,9 @@ class AddClientModalViewController: UIViewController {
         cityTextField.delegate = self
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
+        
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -156,8 +159,7 @@ extension AddClientModalViewController {
             if let client = client {
                 ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
             } else {
-                ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
-                self.client = ClientController.shared.clients.last
+                self.client = ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
             }
             dismiss(animated: true, completion: {
                 print("Client Created")

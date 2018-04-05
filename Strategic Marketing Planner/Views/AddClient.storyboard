@@ -388,6 +388,7 @@
                         <outlet property="notesTextView" destination="dBB-Km-LeR" id="jgD-F8-8FP"/>
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
+                        <outlet property="practiceTypeDropDownButton" destination="bcG-ku-Znp" id="kfZ-M1-zbX"/>
                         <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
                         <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
