@@ -20,10 +20,14 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     
     weak var navigationPane: PresentationBaseViewControllerNavigationPane?
     
-    var client: Client?
+    var client: Client? {
+        return ClientController.shared.currentClient
+    }
 
     @IBOutlet weak var mainContentView: UIView!
-    lazy var destinations: [(destinationName: String, destinationViewController: UIViewController)] = setupDefaultDestinations()
+    var destinations: [(destinationName: String, destinationViewController: UIViewController)] {
+        return setupDefaultDestinations()
+    }
     
     @IBOutlet var navigationBarPreviousButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarNextButton: UIBarButtonItem!
@@ -35,6 +39,11 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.brandBlue
     }
+    
+//    override func viewWillAppear(_ animated: Bool){
+//        super.viewWillAppear(animated)
+//        destinations = setupDefaultDestinations()
+//    }
     
     // MARK: - Configure Embedded VCs
 
@@ -77,9 +86,14 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     
     private func setupDefaultDestinations() ->  [(String, UIViewController)]{
         var defaultDestinations: [(String, UIViewController)] = []
+        let brandStoryboard = UIStoryboard(name: "BrandDefinition", bundle: nil)
+        if let brandVC  = brandStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Brand Definition", brandVC))
+        }
         let growthCalculatorSB = UIStoryboard(name: "GrowthCalculator", bundle: nil)
         let growthCalculatorVC = growthCalculatorSB.instantiateViewController(withIdentifier: "growthCalculator")
         defaultDestinations.append(("Growth Calculator", growthCalculatorVC))
+        guard let client = client else { return defaultDestinations }
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
         defaultDestinations.append(("Foundation", foundationOptionsVC))
@@ -96,6 +110,10 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         let summaryStoryboard = UIStoryboard(name: "SummaryAndConfirmation", bundle: nil)
         if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
             defaultDestinations.append(("Summary + Confirmation", summaryVC))
+        }
+        let nextStepsStoryboard = UIStoryboard(name: "NextSteps", bundle: nil)
+        if let nextStepsVC = nextStepsStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Next Steps", nextStepsVC))
         }
         return defaultDestinations
     }
