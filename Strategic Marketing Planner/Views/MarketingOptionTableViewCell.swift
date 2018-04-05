@@ -41,20 +41,28 @@ class MarketingOptionTableViewCell: UITableViewCell {
         performSetup()
     }
     
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        performSetup()
+    }
+    
     private func performSetup(){
+        //TODO: Make info button hidden only if there is no info to go to
+        infoButton.isHidden = true
+        infoButton.isEnabled = false
         guard let marketingOption = marketingOption else {
-            infoButton.isEnabled = false
-            infoButton.isHidden = true
+//            infoButton.isEnabled = false
+//            infoButton.isHidden = true
             NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
             return
         }
-        if marketingOption.descriptionPageIndex == nil {
-            infoButton.isHidden = true
-            infoButton.isEnabled = false
-        }else{
-            infoButton.isHidden = false
-            infoButton.isEnabled = true
-        }
+//        if marketingOption.descriptionPageIndex == nil {
+//            infoButton.isHidden = true
+//            infoButton.isEnabled = false
+//        }else{
+//            infoButton.isHidden = false
+//            infoButton.isEnabled = true
+//        }
         nameLabel.text = marketingOption.name
         descriptionLabel.text = marketingOption.summary
         showActive = marketingOption.isActive

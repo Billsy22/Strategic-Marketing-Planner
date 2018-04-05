@@ -15,7 +15,9 @@ class MarketingOptionsViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
-    let client = ClientController.shared.currentClient
+    var client : Client? {
+        return ClientController.shared.currentClient
+    }
     
     var category: MarketingPlan.OptionCategory? = nil {
         didSet {
@@ -48,8 +50,16 @@ class MarketingOptionsViewController: UIViewController {
         default:
             headerLabel.text = "Error"
         }
-        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTotalPriceLabel()
+    }
+    
+    func updateTotalPriceLabel(){
+        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
     }
 
     // MARK: - Navigation
@@ -97,6 +107,7 @@ extension MarketingOptionsViewController: MarketingOptionTableViewCellDelegate {
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
         guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return  false }
         clientController.toggleActivationForMarketingOption(marketingOption, forClient: currentClient)
+        updateTotalPriceLabel()
         return true
     }
     
