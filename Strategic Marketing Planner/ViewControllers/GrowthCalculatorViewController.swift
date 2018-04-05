@@ -24,6 +24,10 @@ class GrowthCalculatorViewController: UIViewController {
     @IBOutlet weak var barGraphView: BarGraphView!
     
     let growthCalc = GrowthCalculator()
+    let clientController = ClientController.shared
+    var client: Client? {
+        return clientController.currentClient
+    }
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -50,6 +54,7 @@ class GrowthCalculatorViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        restoreState()
         updateComputedValues()
     }
 
@@ -91,6 +96,8 @@ class GrowthCalculatorViewController: UIViewController {
         }
         growthCalc.currentProduction = CGFloat(value)
         updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateCurrentProduction(for: client, withAmount: Decimal(value))
     }
     
     @IBAction func productionGoalEntered(_ sender: UITextField) {
@@ -103,6 +110,8 @@ class GrowthCalculatorViewController: UIViewController {
         }
         growthCalc.productionGoal = CGFloat(value)
         updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateProductionGoal(for: client, withAmount: Decimal(value))
     }
     
     @IBAction func monthlyMarketingBudgetEntered(_ sender: UITextField) {
@@ -116,8 +125,21 @@ class GrowthCalculatorViewController: UIViewController {
         growthCalc.monthlyBudget = CGFloat(value)
         updateComputedValues()
         let budgetAsDecimal = Decimal(value)
-        guard let client = ClientController.shared.currentClient else { return }
-        ClientController.shared.updateMonthlyBudget(for: client, withAmount: NSDecimalNumber(decimal: budgetAsDecimal))
+        guard let client = client else { return }
+        clientController.updateMonthlyBudget(for: client, withAmount: budgetAsDecimal)
+    }
+    
+    private func restoreState(){
+        guard let client = ClientController.shared.currentClient, let monthlyBudget = client.monthlyBudget, let currentProduction = client.currentProduction, let productionGoal = client.productionGoal else { return }
+        monthlyMarketingBudgetTextField.text = "$\(monthlyBudget)"
+        monthlyMarketingBudgetEntered(monthlyMarketingBudgetTextField)
+        //growthCalc.monthlyBudget = CGFloat(truncating: monthlyBudget)
+        currentProductionTextField.text = "$\(currentProduction)"
+        currentProductionEntered(currentProductionTextField)
+        //growthCalc.currentProduction = CGFloat(truncating: currentProduction)
+        productionGoalTextField.text = "$\(productionGoal)"
+        productionGoalEntered(productionGoalTextField)
+//        growthCalc.productionGoal = CGFloat(truncating: productionGoal)
     }
 }
 

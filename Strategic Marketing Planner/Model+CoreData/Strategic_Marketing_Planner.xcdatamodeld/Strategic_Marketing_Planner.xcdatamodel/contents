@@ -29,13 +29,12 @@
         <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketingPlan" inverseName="options" inverseEntity="MarketingPlan" syncable="YES"/>
     </entity>
     <entity name="MarketingPlan" representedClassName="MarketingPlan" syncable="YES" codeGenerationType="class">
-        <attribute name="cost" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="marketingPlan" inverseEntity="Client" syncable="YES"/>
         <relationship name="options" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MarketingOption" inverseName="plan" inverseEntity="MarketingOption" syncable="YES"/>
     </entity>
     <elements>
         <element name="Client" positionX="-54" positionY="-9" width="128" height="300"/>
         <element name="MarketingOption" positionX="-18" positionY="117" width="128" height="150"/>
-        <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="90"/>
+        <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="75"/>
     </elements>
 </model>

@@ -53,11 +53,25 @@ class ClientController {
     func updateExternalMarketingFocus(_ focus: MarketingPlan.ExternalMarketingFocus, forClient client: Client){
         guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
         externalMarketingOption.name = focus.rawValue
+        save()
     }
     
     func updateExternalMarketingBudget(_ budget: Decimal, forClient client: Client){
         guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
         externalMarketingOption.price = budget as NSDecimalNumber
+        save()
+    }
+    
+    func activateExternalMarketing(forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.isActive = true
+        save()
+    }
+    
+    func deactivateExternalMarketing(forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.isActive = false
+        save()
     }
     
     func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
@@ -73,9 +87,17 @@ class ClientController {
         save()
     }
     
-    func updateMonthlyBudget(for client: Client, withAmount amount: NSDecimalNumber) {
-        client.monthlyBudget = amount
+    func updateMonthlyBudget(for client: Client, withAmount amount: Decimal) {
+        client.monthlyBudget = amount as NSDecimalNumber
         save()
+    }
+    
+    func updateCurrentProduction(for client: Client, withAmount amount: Decimal) {
+        client.currentProduction = amount as NSDecimalNumber
+    }
+    
+    func updateProductionGoal(for client: Client, withAmount amount: Decimal) {
+        client.productionGoal = amount as NSDecimalNumber
     }
     
     //MARK: - Delete

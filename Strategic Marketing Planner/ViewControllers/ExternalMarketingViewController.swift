@@ -33,6 +33,8 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
+    var activeName: String = ""
+    
     let marketingToUrban = "Move the slider to select an external marketing budget for Urban/Digital marketing. Below are the available monthly payment amounts for a 12 month term."
     let marketingToSuburban = "Move the slider to select an external marketing budget for Suburban/Mix of Digital & Traditional marketing. Below are the available monthly payment amounts for a 12 month term."
     let marketingToRural = "Move the slider to select an external marketing budget for Rural/Traditional marketing. Below are the available monthly payment amounts for a 12 month term."
@@ -46,10 +48,6 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     
     @IBAction func sliderValueSelected(_ sender: UISlider) {
         computeNewSliderValue(sender)
-//        pricePerMonthSlider.value = roundf(pricePerMonthSlider.value)
-//        let currentValue = suburbanPrices[Int(sender.value)]
-//        pricePerMonthLabel.text = "$\(currentValue) per month"
-//        totalPriceLabel.text = "$\(currentValue)/$5000"
     }
     
     private func computeNewSliderValue(_ slider: UISlider){
@@ -64,6 +62,44 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         }
         slider.value = closestValue
         pricePerMonthLabel.text = "$\(slider.value) per month"
+        guard let client = client else { return }
+        clientController.updateExternalMarketingBudget(Decimal.init(Double(slider.value)), forClient: client)
+        if slider.value == 0 {
+            clientController.deactivateExternalMarketing(forClient: client)
+        }else{
+            clientController.activateExternalMarketing(forClient: client)
+        }
+    }
+    
+    private func restoreState(){
+        guard let externalMarketing = clientController.currentClient?.marketingPlan?.getOptionsForCategory(MarketingPlan.OptionCategory.external).first, let name = externalMarketing.name, let focus = MarketingPlan.ExternalMarketingFocus(rawValue: name), let price = externalMarketing.price else { return }
+        
+        switch focus {
+        case .digital:
+            sliderPrices = urbanPrices
+            pricePerMonthSlider.value = Float(truncating: price)
+            sliderValueSelected(pricePerMonthSlider)
+            marketingToLabel.text = marketingToUrban
+            activeName = "Urban"
+//            guard let urbanIndex = marketingOptions.index(of: "Urban"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: urbanIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
+//            cell.showActive = true
+        case .digitalTraditionalMix:
+            sliderPrices = suburbanPrices
+            pricePerMonthSlider.value = Float(truncating: price)
+            sliderValueSelected(pricePerMonthSlider)
+            marketingToLabel.text = marketingToSuburban
+            activeName = "Suburban"
+//            guard let suburbanIndex = marketingOptions.index(of: "Suburban"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: suburbanIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
+//            cell.showActive = true
+        case .traditional:
+            sliderPrices = ruralPrices
+            pricePerMonthSlider.value = Float(truncating: price)
+            sliderValueSelected(pricePerMonthSlider)
+            marketingToLabel.text = marketingToRural
+            activeName = "Rural"
+//            guard let ruralIndex = marketingOptions.index(of: "Rural"), let cell = tableView(marketingMixTableView, cellForRowAt: IndexPath(row: ruralIndex, section: 0)) as? MarketingOptionTableViewCell else { return }
+//            cell.showActive = true
+        }
         
     }
     
@@ -76,6 +112,10 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         marketingToLabel.text = marketingToSuburban
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        restoreState()
+    }
+    
     func formatSlider() {
         pricePerMonthSlider.maximumValue = Float(suburbanPrices.count - 1)
         pricePerMonthSlider.tintColor = .brandBlue
@@ -83,8 +123,8 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     }
     
     func formatTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
+        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
     }
     
     func tableViewCustomization() {
@@ -108,6 +148,9 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         cell.nameLabel.text = marketingOptions[indexPath.row]
         cell.descriptionLabel.text = marketingOptionSummaries[indexPath.row]
         cell.delegate = self
+        if marketingOptions[indexPath.row] == activeName {
+            cell.showActive = true
+        }
         return cell
     }
 }
