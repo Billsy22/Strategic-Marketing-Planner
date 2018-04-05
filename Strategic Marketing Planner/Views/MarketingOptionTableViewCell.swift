@@ -57,6 +57,7 @@ class MarketingOptionTableViewCell: UITableViewCell {
         }
         nameLabel.text = marketingOption.name
         descriptionLabel.text = marketingOption.summary
+        showActive = marketingOption.isActive
         updateSelectionButtonAppearance()
     }
     

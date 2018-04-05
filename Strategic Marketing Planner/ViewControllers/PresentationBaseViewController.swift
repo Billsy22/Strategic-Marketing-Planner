@@ -89,7 +89,14 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         guard let internalVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC") as? MarketingOptionsViewController else { fatalError() }
         internalVC.category = MarketingPlan.OptionCategory.internal
         defaultDestinations.append(("Internal", internalVC))
-        
+        let externalStoryboard = UIStoryboard(name: "ExternalMarketing", bundle: nil)
+        if let externalVC = externalStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("External", externalVC))
+        }
+        let summaryStoryboard = UIStoryboard(name: "SummaryAndConfirmation", bundle: nil)
+        if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Summary + Confirmation", summaryVC))
+        }
         return defaultDestinations
     }
     

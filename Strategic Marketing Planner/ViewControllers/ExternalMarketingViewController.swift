@@ -10,16 +10,28 @@ import UIKit
 
 class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let client = Client(firstName: "Mike", lastName: "Jones", practiceName: "Mike's Dental", phone: "801-223-2332", email: "mike@jones.com", address: "123", city: "SLC", state: "UT", zip: "84059", initialContact: Date())
+    var client: Client? {
+        return clientController.currentClient
+    }
     
     let clientController = ClientController.shared
     
-    let marketingOptions = ["Urban", "Suburban", "Rural"]
+    let nameMap = ["Urban":MarketingPlan.ExternalMarketingFocus.digital.rawValue, "Suburban":MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue,"Rural":MarketingPlan.ExternalMarketingFocus.traditional.rawValue]
+    var marketingOptions: [String] {
+        return nameMap.keys.map({$0})
+    }
     let marketingOptionSummaries = ["A digital marketing focus. Ideal for highly populated areas.", "A mix of digital and traditional marketing to maximize results in a suburban demographic.", "A traditional marketing focus. Ideal for rural areas."]
     
-    let urbanPrices = ["0", "750", "1750", "2750", "3750", "4750"]
-    let suburbanPrices = ["0", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "4500", "5000", "5500", "6000", "6500"]
-    let ruralPrices = ["0", "500", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "5000", "6000"]
+    let urbanPrices: [Float] = [0, 750, 1750, 2750, 3750, 4750]
+    let suburbanPrices: [Float] = [0, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500]
+    let ruralPrices: [Float] = [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 6000]
+    var sliderPrices: [Float] = [0] {
+        didSet {
+            pricePerMonthSlider.minimumValue = sliderPrices.min() ?? 0
+            pricePerMonthSlider.maximumValue = sliderPrices.max() ?? 0
+            computeNewSliderValue(pricePerMonthSlider)
+        }
+    }
     
     let marketingToUrban = "Move the slider to select an external marketing budget for Urban/Digital marketing. Below are the available monthly payment amounts for a 12 month term."
     let marketingToSuburban = "Move the slider to select an external marketing budget for Suburban/Mix of Digital & Traditional marketing. Below are the available monthly payment amounts for a 12 month term."
@@ -33,10 +45,26 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var pricePerMonthSlider: UISlider!
     
     @IBAction func sliderValueSelected(_ sender: UISlider) {
-        pricePerMonthSlider.value = roundf(pricePerMonthSlider.value)
-        let currentValue = suburbanPrices[Int(sender.value)]
-        pricePerMonthLabel.text = "$\(currentValue) per month"
-        totalPriceLabel.text = "$\(currentValue)/$5000"
+        computeNewSliderValue(sender)
+//        pricePerMonthSlider.value = roundf(pricePerMonthSlider.value)
+//        let currentValue = suburbanPrices[Int(sender.value)]
+//        pricePerMonthLabel.text = "$\(currentValue) per month"
+//        totalPriceLabel.text = "$\(currentValue)/$5000"
+    }
+    
+    private func computeNewSliderValue(_ slider: UISlider){
+        var closestDistance = Float.greatestFiniteMagnitude
+        guard var closestValue = sliderPrices.first else { return }
+        for price in sliderPrices {
+            let distance = abs(price - slider.value)
+            if distance < closestDistance {
+                closestValue = price
+                closestDistance = distance
+            }
+        }
+        slider.value = closestValue
+        pricePerMonthLabel.text = "$\(slider.value) per month"
+        
     }
     
     override func viewDidLoad() {
@@ -84,7 +112,22 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
 
 extension ExternalMarketingViewController: MarketingOptionTableViewCellDelegate {
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
+        guard let client = client else { return false }
         deselectCells()
+        if let name = cell.nameLabel.text, let externalFocus = nameMap[name], let externalMarketingFocus = MarketingPlan.ExternalMarketingFocus(rawValue: externalFocus) {
+            clientController.updateExternalMarketingFocus(externalMarketingFocus, forClient: client)
+            switch externalMarketingFocus {
+            case .digital:
+                sliderPrices = urbanPrices
+                marketingToLabel.text = marketingToUrban
+            case .digitalTraditionalMix:
+                sliderPrices = suburbanPrices
+                marketingToLabel.text = marketingToSuburban
+            case .traditional:
+                sliderPrices = ruralPrices
+                marketingToLabel.text = marketingToRural
+            }
+        }
         return true
     }
     
