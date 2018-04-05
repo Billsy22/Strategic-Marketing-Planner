@@ -97,6 +97,10 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
             defaultDestinations.append(("Summary + Confirmation", summaryVC))
         }
+        let nextStepsStoryboard = UIStoryboard(name: "NextSteps", bundle: nil)
+        if let nextStepsVC = nextStepsStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Next Steps", nextStepsVC))
+        }
         return defaultDestinations
     }
     

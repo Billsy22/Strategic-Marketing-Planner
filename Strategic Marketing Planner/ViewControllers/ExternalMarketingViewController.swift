@@ -46,10 +46,6 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     
     @IBAction func sliderValueSelected(_ sender: UISlider) {
         computeNewSliderValue(sender)
-//        pricePerMonthSlider.value = roundf(pricePerMonthSlider.value)
-//        let currentValue = suburbanPrices[Int(sender.value)]
-//        pricePerMonthLabel.text = "$\(currentValue) per month"
-//        totalPriceLabel.text = "$\(currentValue)/$5000"
     }
     
     private func computeNewSliderValue(_ slider: UISlider){
@@ -64,7 +60,13 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         }
         slider.value = closestValue
         pricePerMonthLabel.text = "$\(slider.value) per month"
-        
+        guard let client = client else { return }
+        clientController.updateExternalMarketingBudget(Decimal.init(Double(slider.value)), forClient: client)
+        if slider.value == 0 {
+            clientController.deactivateExternalMarketing(forClient: client)
+        }else{
+            clientController.activateExternalMarketing(forClient: client)
+        }
     }
     
     override func viewDidLoad() {
