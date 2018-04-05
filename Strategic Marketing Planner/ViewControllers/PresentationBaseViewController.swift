@@ -97,7 +97,7 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         let growthCalculatorSB = UIStoryboard(name: "GrowthCalculator", bundle: nil)
         let growthCalculatorVC = growthCalculatorSB.instantiateViewController(withIdentifier: "growthCalculator")
         defaultDestinations.append(("Growth Calculator", growthCalculatorVC))
-        guard let client = client else { return defaultDestinations }
+        guard client != nil else { return defaultDestinations }
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
         defaultDestinations.append(("Foundation", foundationOptionsVC))

@@ -9,8 +9,9 @@
 import UIKit
 import MessageUI
 
-class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate, PriceLableable {
     
+    var clientController: ClientController = ClientController.shared
     var client : Client? {
         return ClientController.shared.currentClient
     }
@@ -102,11 +103,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     func formatHeaderLabel() {
         headerLabel.textColor = .brandOrange
-    }
-    
-    func updateTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
     
     func composeEmail() {
