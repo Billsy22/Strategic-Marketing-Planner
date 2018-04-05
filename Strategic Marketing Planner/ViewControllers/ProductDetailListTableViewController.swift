@@ -24,6 +24,13 @@ class ProductDetailViewController: UIViewController {
         productDetailCollectionView.dataSource = self
       
     }
+    //  MARK: - Actions
+    
+    @IBAction func doneTapped(_ sender: Any) {
+        dismiss(animated: true) {
+            print("View Dismissed")
+        }
+    }
     var product: Product?
 
    
