@@ -85,7 +85,18 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         defaultDestinations.append(("Foundation", foundationOptionsVC))
         //TODO: Replace this temporary test implementation
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
-        foundationVC.marketingOptions = MarketingPlan(targetContext: CoreDataStack.context).getOptionsForCategory(MarketingPlan.OptionCategory.foundation, includeOnlyActive: false)
+        foundationVC.category = MarketingPlan.OptionCategory.foundation
+        guard let internalVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC") as? MarketingOptionsViewController else { fatalError() }
+        internalVC.category = MarketingPlan.OptionCategory.internal
+        defaultDestinations.append(("Internal", internalVC))
+        let externalStoryboard = UIStoryboard(name: "ExternalMarketing", bundle: nil)
+        if let externalVC = externalStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("External", externalVC))
+        }
+        let summaryStoryboard = UIStoryboard(name: "SummaryAndConfirmation", bundle: nil)
+        if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Summary + Confirmation", summaryVC))
+        }
         return defaultDestinations
     }
     

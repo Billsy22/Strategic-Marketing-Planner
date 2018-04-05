@@ -49,3 +49,36 @@ class ProductsCollectionViewController: UICollectionViewController {
         return cell
     }
 }
+
+
+/*
+ "Custom Logo" 175
+ "Responsive Website" 500
+ "Video & Photo" 750
+ 
+ "Referral System" 150
+ "Ancillary Services" 175
+ "Case Acceptance" 750
+ "Reactivation System" 175
+ "Smile Savings System" 350
+ 
+"SEO"
+"Ad Design"
+"Adwords"
+"Call Training"
+"Marketing Strategy"
+"Tri-fold Brochures"
+"Brand Definition"
+"Postcard"
+"Internet Review"
+"Email Campaign"
+"Open House"
+"Mini-Zine Mailer"
+"Door Hangers"
+"8-Page Brochures"
+"Movie Theater Ad"
+"Radio Ad"
+"Facebook Jumpstart"
+"Facebook Outreach"
+"Result Tracking"
+*/

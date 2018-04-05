@@ -166,7 +166,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         }
     }
     
-    func clientWasAdded() {
+    func presentationStarting() {
         tabBarController?.selectedIndex = 1
     }
     

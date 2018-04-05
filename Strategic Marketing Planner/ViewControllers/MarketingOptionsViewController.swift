@@ -10,9 +10,19 @@ import UIKit
 
 class MarketingOptionsViewController: UIViewController {
     
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
-    var marketingOptions: [MarketingOption]?
+    let client = ClientController.shared.currentClient
+    
+    var category: MarketingPlan.OptionCategory? = nil {
+        didSet {
+            marketingOptionsTableview?.reloadData()
+        }
+    }
+    lazy var marketingOptions = ClientController.shared.currentClient?.marketingPlan?.getOptionsForCategory(category)
     let clientController = ClientController.shared
     let productController = ProductController.shared
     
@@ -26,8 +36,21 @@ class MarketingOptionsViewController: UIViewController {
         marketingOptionsTableview.dataSource = self
         marketingOptionsTableview.delegate = self
         marketingOptionsTableview.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: marketingOptionsTableview.frame.size.width, height: 1))
+        headerLabel.textColor = .brandOrange
+        guard let category = category else { return }
+        switch category {
+        case .internal:
+            headerLabel.text = "Internal Marketing"
+            summaryLabel.text = "You should think of your external marketing as a feeder for your internal marketing. If your internal marketing systems aren't functioning efficiently, you're wasting opportunity and not maximizing your growth and profitability.\n\nOur internal systems include employee marketing training, internal marketing tools, accountability, and ongoing measurements. They focus on building habits taht become part of your daily tasks.\n\nSelect the internal systems that are right for your needs:"
+        case .foundation:
+            headerLabel.text = "Foundation Options"
+            summaryLabel.text = "Foundation items enhance all your marketing efforts and ensure increased effectiveness."
+        default:
+            headerLabel.text = "Error"
+        }
+        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
     }
-    
 
     // MARK: - Navigation
 
@@ -71,10 +94,10 @@ extension MarketingOptionsViewController: UITableViewDataSource {
 }
 
 extension MarketingOptionsViewController: MarketingOptionTableViewCellDelegate {
-    
-    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, changedSelectionStateTo newState: Bool) {
-        guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return }
+    func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
+        guard let marketingOption = cell.marketingOption, let currentClient = clientController.currentClient else { return  false }
         clientController.toggleActivationForMarketingOption(marketingOption, forClient: currentClient)
+        return true
     }
     
     func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {

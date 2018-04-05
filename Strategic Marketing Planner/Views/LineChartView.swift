@@ -32,14 +32,15 @@ class LineChartView: UIView, Graph {
     //The following 6 values are defaults which will be re-calculated before the graph is ever drawn.
     var deltaX: CGFloat = 10
     var deltaY: CGFloat = 10
-    var minX: CGFloat = 10
+    var minX: CGFloat = 0
     var maxX: CGFloat = 10
-    var minY: CGFloat = 10
+    var minY: CGFloat = 0
     var maxY: CGFloat = 10
     
     var legendBlockWidth: CGFloat = 10
+    var legendRows: Int = 1
     var legendHeight: CGFloat {
-        return CGFloat((dataArray.filter({$0.dataLabelText != nil}).count / 3) + 1) * legendBlockWidth + 20
+        return CGFloat((dataArray.filter( {$0.dataLabelText != nil} ).count / legendRows) + 1) * legendBlockWidth + 20
     }
     
     // MARK: -  Initializers
@@ -77,6 +78,11 @@ class LineChartView: UIView, Graph {
         }
     }
     
+    func clearLineData() {
+        dataArray.removeAll()
+        linesAndCirclesArray.removeAll()
+    }
+    
     func updateAxisRange() {
         var xValues: [CGFloat] = []
         var yValues: [CGFloat] = []
@@ -86,9 +92,20 @@ class LineChartView: UIView, Graph {
                 yValues.append(point.y)
             }
         }
-        maxY = yValues.max() ?? 0
-        maxX = xValues.max() ?? 0
-        minX = xValues.min() ?? 0
+        if xValues.max() == 0 && yValues.max() == 0 {
+            maxX = 1
+            maxY = 1
+        } else if xValues.max() != 0 && yValues.max() == 0 {
+            maxX = xValues.max() ?? 0
+            maxY = 1
+        } else if xValues.max() == 0 && yValues.max() != 0 {
+            maxX = 1
+            maxY = yValues.max() ?? 1
+        } else {
+            maxY = yValues.max() ?? 0
+            maxX = xValues.max() ?? 0
+            minX = xValues.min() ?? 0
+        }
         minY = 0
         var highestYValue = maxY
         var exponent: CGFloat = 0
@@ -107,31 +124,45 @@ class LineChartView: UIView, Graph {
     
     func setTransform(minX: CGFloat, maxX: CGFloat, minY: CGFloat, maxY: CGFloat) {
         let xLabelSize = "\(Int(maxX))".size(withSystemFontSize: labelFontSize)
-        let yLabelSize = "\(Int(maxY))".size(withSystemFontSize: labelFontSize)
-        let xPadding = xLabelSize.height * 2
-        let yPadding = yLabelSize.width * 2
+        let yLabelSize = "$\(Int(maxY))".size(withSystemFontSize: labelFontSize)
+        let xPadding = xLabelSize.height + 20
+        let yPadding = yLabelSize.width + 20
         let xScale = (bounds.width - yPadding - xLabelSize.width/2 - 2)/(maxX - minX)
+        legendRows = calculateLegendRows(width: (maxX - minX) * xScale)
         let yScale = (bounds.height - xPadding - legendHeight - yLabelSize.height/2 - 2)/(maxY - minY)
         chartTransform = CGAffineTransform(a: xScale, b: 0, c: 0, d: -yScale, tx: -(minX * xScale) + yPadding/2, ty: bounds.height - xPadding - legendHeight)
         setNeedsDisplay()
+    }
+    
+    private func calculateLegendRows(width: CGFloat) -> Int{
+        let longestLabel = dataArray.reduce("") { (longestLabelSoFar, dataSeries) -> String in
+            guard let currentLabel = dataSeries.dataLabelText else { return longestLabelSoFar }
+            return longestLabelSoFar.count > currentLabel.count ? longestLabelSoFar : currentLabel
+        }
+        let legendEntryWidth = longestLabel.size(withSystemFontSize: labelFontSize).width + legendBlockWidth * 3
+        return max(Int(CGFloat(width)/legendEntryWidth), 1)
     }
     
     func plot() {
         guard let chartTransform = chartTransform else { updateAxisRange(); return }
         for index in 0..<dataArray.count {
             let dataPoints = dataArray[index].data
-            let lineLayer = linesAndCirclesArray[index].lineLayer
-            let linePath = CGMutablePath()
-            linePath.addLines(between: dataPoints, transform: chartTransform)
-            lineLayer.path = linePath
-            let circleLayer = linesAndCirclesArray[index].circleLayer
-            let circlePath = CGMutablePath()
-            for point in dataPoints {
-                let circleCenter = point.applying(chartTransform)
-                circlePath.addEllipse(in: CGRect(x: circleCenter.x - circleWidth/2, y: circleCenter.y - circleWidth/2, width: circleWidth, height: circleWidth))
+            if dataArray[index].showLine {
+                let lineLayer = linesAndCirclesArray[index].lineLayer
+                let linePath = CGMutablePath()
+                linePath.addLines(between: dataPoints, transform: chartTransform)
+                lineLayer.path = linePath
             }
-            circleLayer.path = circlePath
-            layer.addSublayer(circleLayer)
+            if dataArray[index].showCircles {
+                let circleLayer = linesAndCirclesArray[index].circleLayer
+                let circlePath = CGMutablePath()
+                for point in dataPoints {
+                    let circleCenter = point.applying(chartTransform)
+                    circlePath.addEllipse(in: CGRect(x: circleCenter.x - circleWidth/2, y: circleCenter.y - circleWidth/2, width: circleWidth, height: circleWidth))
+                }
+                circleLayer.path = circlePath
+                layer.addSublayer(circleLayer)
+            }
         }
     }
     

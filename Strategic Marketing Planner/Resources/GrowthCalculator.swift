@@ -61,7 +61,13 @@ class GrowthCalculator {
     }
     
     var growthPercentage: CGFloat {
-        return (averageReturn / desiredGrowth)
+        if averageReturn == 0 || desiredGrowth == 0 {
+            return 0.0
+        } else {
+        let growthLong = averageReturn / desiredGrowth
+        let growthShort = round(100 * growthLong) / 100
+        return growthShort
+        }
     }
     
     var yearOneROI: [CGPoint] {

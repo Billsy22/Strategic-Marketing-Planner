@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lo9-Da-Kby">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lo9-Da-Kby">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,6 +109,7 @@
                             <outlet property="delegate" destination="ayz-9n-tGr" id="bEC-1f-Q9C"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Clients" image="TabBarImageClients" id="iLT-7Q-Jck"/>
                     <navigationItem key="navigationItem" title="Clients" id="CPH-32-gI3">
                         <barButtonItem key="rightBarButtonItem" title="Add Client" id="jCZ-nz-ayW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,6 +118,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="WbJ-Ha-8xB" id="uz0-9i-B75"/>
                     </connections>
@@ -152,6 +154,9 @@
             <point key="canvasLocation" x="-499" y="155"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TabBarImageClients" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OrD-Aw-SUu"/>
     </inferredMetricsTieBreakers>

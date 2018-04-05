@@ -11,7 +11,7 @@ import CoreData
 
 extension Client {
     
-    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, context: NSManagedObjectContext = CoreDataStack.context){
+    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, practiceType: PracticeType = .general, context: NSManagedObjectContext = CoreDataStack.context){
         self.init(context: context)
         
         self.firstName = firstName
@@ -25,15 +25,25 @@ extension Client {
         self.zip = zip
         self.contactDate = initialContact
         self.notes = notes
+        self.practiceType = practiceType.rawValue
         if let image = image {
             let imageData = UIImageJPEGRepresentation(image, 1)
             self.imageData = imageData
         }
-        self.marketingPlan = MarketingPlan(targetContext: context)
+        self.marketingPlan = MarketingPlan(practiceType: practiceType,targetContext: context)
+        self.monthlyBudget = 0
+        self.currentProduction = 0
+        self.productionGoal = 0
     }
     
     func matches(searchString: String) -> Bool {
         return firstName?.contains(searchString) ?? false || lastName?.contains(searchString) ?? false || practiceName?.contains(searchString) ?? false
+    }
+    
+    enum PracticeType: String {
+        case startup
+        case general
+        case specialty
     }
     
 }

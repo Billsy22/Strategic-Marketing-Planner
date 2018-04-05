@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MarketingOptionTableViewCellDelegate: class {
-    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, changedSelectionStateTo newState: Bool)
+    func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool
     func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int)
 }
 
@@ -19,6 +19,11 @@ class MarketingOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var infoButton: UIButton!
+    var showActive = false {
+        didSet {
+            updateSelectionButtonAppearance()
+        }
+    }
     
     weak var delegate: MarketingOptionTableViewCellDelegate?
     
@@ -37,26 +42,27 @@ class MarketingOptionTableViewCell: UITableViewCell {
     }
     
     private func performSetup(){
-        //TODO: hide information button or show it depending on whether there is more information.
         guard let marketingOption = marketingOption else {
+            infoButton.isEnabled = false
+            infoButton.isHidden = true
             NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
             return
         }
-        nameLabel.text = marketingOption.name
-        descriptionLabel.text = marketingOption.summary
-        updateSelectionButtonAppearance()
         if marketingOption.descriptionPageIndex == nil {
             infoButton.isHidden = true
             infoButton.isEnabled = false
         }else{
-            infoButton.isEnabled = false
+            infoButton.isHidden = false
             infoButton.isEnabled = true
         }
+        nameLabel.text = marketingOption.name
+        descriptionLabel.text = marketingOption.summary
+        showActive = marketingOption.isActive
+        updateSelectionButtonAppearance()
     }
     
     func updateSelectionButtonAppearance(){
-        guard let marketingOption = marketingOption else { return }
-        if marketingOption.isActive {
+        if showActive {
             selectionButton.setImage(UIImage(named: "selected"), for: .normal)
         }else{
             selectionButton.setImage(UIImage(named: "unselected"), for: .normal)
@@ -70,10 +76,10 @@ class MarketingOptionTableViewCell: UITableViewCell {
     }
     
     @IBAction func selectionButtonTapped(_ sender: UIButton) {
-        guard let marketingOption = marketingOption else { return }
-        marketingOption.isActive = !marketingOption.isActive
-        delegate?.marketingOptionTableViewCell(self, changedSelectionStateTo: !marketingOption.isActive)
-        updateSelectionButtonAppearance()
+        if delegate?.marketingOptionTableViewCellShouldToggleSelectionState(self) ?? false {
+            showActive = !showActive
+            updateSelectionButtonAppearance()
+        }
     }
     
     @IBAction func productInfoButtonTapped(_ sender: UIButton) {
