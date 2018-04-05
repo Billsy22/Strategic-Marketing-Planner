@@ -59,16 +59,13 @@
                                 </constraints>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a marketing mix." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ON-4m-lfr">
-                                <rect key="frame" x="50" y="383.5" width="894" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ZKo-tt-lUa"/>
-                                </constraints>
+                                <rect key="frame" x="50" y="383.5" width="894" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Hia-tL-Dpa">
-                                <rect key="frame" x="50" y="493.5" width="894" height="96"/>
+                                <rect key="frame" x="50" y="457.5" width="894" height="96"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 per month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtx-KD-Muz">
                                         <rect key="frame" x="0.0" y="0.0" width="894" height="36"/>
