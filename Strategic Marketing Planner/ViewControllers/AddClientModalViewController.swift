@@ -80,6 +80,8 @@ class AddClientModalViewController: UIViewController {
         initialContactDateTextField.layer.cornerRadius = 5
         saveOrRemoveClientButton.layer.cornerRadius = 5
         startPresentationButton.layer.cornerRadius = 5
+        practiceTypeDropDownButton.layer.cornerRadius = 5
+        practiceTypeDropDownButton.layer.borderWidth = 0.1
         if let client = client {
             firstNameTextField.text = client.firstName
             lastNameTextField.text = client.lastName
