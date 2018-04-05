@@ -35,7 +35,7 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     
     @IBOutlet var navigationBarPreviousButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarNextButton: UIBarButtonItem!
-    @IBOutlet weak var navigationBarClientButton: UIBarButtonItem!
+
     
     var currentIndex = 0
     
@@ -47,6 +47,10 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         destinations = setupDefaultDestinations()
+        guard let client = client, let customerFirstName = client.firstName, let customerLastName = client.lastName else { return }
+        let customerBarButtonItem = UIBarButtonItem(title: "\(customerFirstName) \(customerLastName)", style: .plain, target: nil, action: nil)
+        customerBarButtonItem.tintColor = UIColor.white
+        navigationItem.setRightBarButtonItems([navigationBarNextButton, customerBarButtonItem], animated: false)
     }
     
     // MARK: - Configure Embedded VCs
@@ -86,7 +90,11 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         ]
         
         navigationBarPreviousButton.setTitleTextAttributes(attrs, for: .normal)
+        
+        
     }
+    
+    
     
     private func setupDefaultDestinations() ->  [(String, UIViewController)]{
         var defaultDestinations: [(String, UIViewController)] = []
