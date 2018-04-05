@@ -60,6 +60,11 @@ class NavigationTableViewController: UITableViewController {
 
 extension NavigationTableViewController: PresentationBaseViewControllerNavigationPane {
     
+    func destinationsUpdated(to: [String]) {
+        destinations = to
+        tableView.reloadData()
+    }
+    
     func requestMoveToDestination(index: Int) {
         if let selectedRows = tableView.indexPathsForSelectedRows {
             for row in selectedRows {
