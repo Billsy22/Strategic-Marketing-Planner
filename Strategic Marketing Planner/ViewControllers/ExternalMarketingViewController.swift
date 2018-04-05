@@ -106,6 +106,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         tableViewCustomization()
         formatSlider()
         updateTotalPriceLabel()
+        updateTotalPriceLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {

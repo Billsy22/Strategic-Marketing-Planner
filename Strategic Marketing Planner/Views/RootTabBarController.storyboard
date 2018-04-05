@@ -17,11 +17,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.11372549019607843" green="0.40392156862745099" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedTab">
-                                <color key="value" red="0.11372549019607843" green="0.40392156862745099" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="wv6-Ur-194" kind="relationship" relationship="viewControllers" id="fIy-HC-utj"/>
