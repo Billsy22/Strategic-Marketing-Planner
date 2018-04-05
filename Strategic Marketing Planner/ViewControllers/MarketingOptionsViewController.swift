@@ -10,6 +10,9 @@ import UIKit
 
 class MarketingOptionsViewController: UIViewController {
     
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
     var category: MarketingPlan.OptionCategory? = nil {
@@ -31,6 +34,19 @@ class MarketingOptionsViewController: UIViewController {
         marketingOptionsTableview.dataSource = self
         marketingOptionsTableview.delegate = self
         marketingOptionsTableview.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: marketingOptionsTableview.frame.size.width, height: 1))
+        headerLabel.textColor = .brandOrange
+        guard let category = category else { return }
+        switch category {
+        case .internal:
+            headerLabel.text = "Internal Marketing"
+            summaryLabel.text = "You should think of your external marketing as a feeder for your internal marketing. If your internal marketing systems aren't functioning efficiently, you're wasting opportunity and not maximizing your growth and profitability.\n\nOur internal systems include employee marketing training, internal marketing tools, accountability, and ongoing measurements. They focus on building habits taht become part of your daily tasks.\n\nSelect the internal systems that are right for your needs:"
+        case .foundation:
+            headerLabel.text = "Foundation Options"
+            summaryLabel.text = "Foundation items enhance all your marketing efforts and ensure increased effectiveness."
+        default:
+            headerLabel.text = "Error"
+        }
+        totalPriceLabel.text = "$\(ClientController.shared.currentClient?.marketingPlan?.cost)/$\(ClientController.shared.currentClient?.monthlyBudget)"
     }
     
 
