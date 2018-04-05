@@ -11,7 +11,9 @@ import MessageUI
 
 class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    var client = ClientController.shared.currentClient
+    var client : Client? {
+        return ClientController.shared.currentClient
+    }
     
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -32,6 +34,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        formatTextView()
         formatTotalPriceLabel()
     }
     
@@ -47,7 +50,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
         let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: $\(monthlyBudget) per month\n"
-        let lastSection = "\nTotal cost: $\(totalCost) per month"
+        let lastSection = "\nTotal cost: $\(marketingPlan.cost) per month"
         summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
     }
     
@@ -105,8 +108,8 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func formatTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
-        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
+        guard let client = client, let marketingPlan = client.marketingPlan, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(marketingPlan.cost)/$\(monthlyBudget)"
     }
     
     func composeEmail() {

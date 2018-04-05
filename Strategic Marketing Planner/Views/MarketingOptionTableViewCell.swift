@@ -41,6 +41,11 @@ class MarketingOptionTableViewCell: UITableViewCell {
         performSetup()
     }
     
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        performSetup()
+    }
+    
     private func performSetup(){
         guard let marketingOption = marketingOption else {
             infoButton.isEnabled = false
