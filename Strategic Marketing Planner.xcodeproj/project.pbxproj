@@ -13,6 +13,7 @@
 		16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */; };
+		16FC46DB207679B300CC99D0 /* PracticeTypeDropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
 		B3202C432075B80000A71F4E /* NextSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CAF2072D52A0061A78C /* NextSteps.storyboard */; };
 		B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */; };
@@ -143,6 +144,7 @@
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		16BC2367206AD8730027C2EE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTypeDropDownButton.swift; sourceTree = "<group>"; };
 		B31534A6206C2ADD00688099 /* BoxedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedTextField.swift; sourceTree = "<group>"; };
 		B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingPlan+Convenience.swift"; sourceTree = "<group>"; };
 		B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingOptionsViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				B32DC60B207293D2002E68AF /* MarketingOptionTableViewCell.xib */,
 				DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */,
 				DF949452207526010035513F /* ExternalMarketing.storyboard */,
+				16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */,
 				DF9494562075BF900035513F /* BrandDefinition.storyboard */,
 			);
 			path = Views;
@@ -610,6 +613,7 @@
 				B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
 				E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */,
+				16FC46DB207679B300CC99D0 /* PracticeTypeDropDownButton.swift in Sources */,
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
