@@ -14,19 +14,23 @@ protocol PresentationBaseViewControllerNavigationPane: class {
     var destinations: [String] { get set }
     
     func requestMoveToDestination(index: Int)
+    
+    func destinationsUpdated(to: [String] )
 }
 
 class PresentationBaseViewController: UIViewController, PresentationBaseViewControllerNavigationPaneDelegate {
     
-    weak var navigationPane: PresentationBaseViewControllerNavigationPane?
+    var navigationPane: PresentationBaseViewControllerNavigationPane?
     
     var client: Client? {
         return ClientController.shared.currentClient
     }
 
     @IBOutlet weak var mainContentView: UIView!
-    var destinations: [(destinationName: String, destinationViewController: UIViewController)] {
-        return setupDefaultDestinations()
+    var destinations: [(destinationName: String, destinationViewController: UIViewController)] = [] {
+        didSet{
+            navigationPane?.destinationsUpdated(to: destinations.map({$0.destinationName}))
+        }
     }
     
     @IBOutlet var navigationBarPreviousButton: UIBarButtonItem!
@@ -40,10 +44,10 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         navigationController?.navigationBar.barTintColor = UIColor.brandBlue
     }
     
-//    override func viewWillAppear(_ animated: Bool){
-//        super.viewWillAppear(animated)
-//        destinations = setupDefaultDestinations()
-//    }
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        destinations = setupDefaultDestinations()
+    }
     
     // MARK: - Configure Embedded VCs
 
