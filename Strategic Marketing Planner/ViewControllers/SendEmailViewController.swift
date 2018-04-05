@@ -11,7 +11,7 @@ import MessageUI
 
 class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
-    var client: Client?
+    var client: Client? = Client(firstName: "Taylor", lastName: "Bills", practiceName: "Bills Dentall", phone: "7577577575", email: "theigneiogheg", address: "iioeriovio gaoiheg ", city: "heber", state: "UT", zip: "86868", initialContact: Date())
     
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -31,6 +31,10 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func formatTextView() {
+        guard let client = client else { print("No client passed to email view"); return }
+        guard let marketingPlan = client.marketingPlan else { return }
+        guard let totalCost = marketingPlan.cost,
+            let monthlyBudget = client.monthlyBudget else { return }
         summaryTextView.layer.borderColor = UIColor.gray.cgColor
         summaryTextView.layer.borderWidth = 0.5
         summaryTextView.layer.cornerRadius = 5
@@ -38,7 +42,24 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: ***BUDGET*** per month\n\n***MARKETINGPLAN***\n\nTotal cost: ***TOTAL COST*** per month"
+        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(monthlyBudget) per month\n"
+        let lastSection = "\nTotal cost: \(totalCost) per month"
+        summaryTextView.text = firstSection + printOptions() + lastSection
+    }
+    
+    func printOptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let options = marketingPlan.getOptionsForCategory(.external, includeOnlyActive: true)
+        if options.count != 0 {
+            for option in options {
+                guard let name = option.name else { return "" }
+                optionsList.append(name)
+                optionsList.append("\n")
+            }
+            optionsList.append("\n")
+        }
+        return optionsList
     }
     
     func formatConfirmationButton() {
@@ -53,7 +74,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     func formatTotalPriceLabel() {
     }
     
-    // TODO: - Format Email Content
     func composeEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mc = MFMailComposeViewController()
