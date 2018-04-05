@@ -52,7 +52,7 @@ class MarketingOptionTableViewCell: UITableViewCell {
             infoButton.isHidden = true
             infoButton.isEnabled = false
         }else{
-            infoButton.isEnabled = false
+            infoButton.isHidden = false
             infoButton.isEnabled = true
         }
         nameLabel.text = marketingOption.name
