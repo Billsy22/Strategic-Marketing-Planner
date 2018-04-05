@@ -14,6 +14,7 @@
 		16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7420696C8100B2B1EE /* ClientController.swift */; };
 		16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */; };
 		B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
+		B3202C432075B80000A71F4E /* NextSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CAF2072D52A0061A78C /* NextSteps.storyboard */; };
 		B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */; };
 		B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32DC6002072825E002E68AF /* MarketingOptionsViewController.swift */; };
 		B32DC60320728275002E68AF /* MarketingOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32DC60220728275002E68AF /* MarketingOptions.storyboard */; };
@@ -510,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3202C432075B80000A71F4E /* NextSteps.storyboard in Resources */,
 				DF4EA3D9206D3B7F00C44A83 /* 8-Page Brochures.pdf in Resources */,
 				DF949453207526010035513F /* ExternalMarketing.storyboard in Resources */,
 				DF4EA3DA206D3B7F00C44A83 /* Ad Design.pdf in Resources */,
