@@ -106,7 +106,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         tableViewCustomization()
         formatSlider()
         updateTotalPriceLabel()
-        marketingToLabel.text = marketingToSuburban
+        //marketingToLabel.text = marketingToSuburban
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,7 +114,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     }
     
     func formatSlider() {
-        pricePerMonthSlider.maximumValue = Float(suburbanPrices.count - 1)
+//        pricePerMonthSlider.maximumValue = Float(suburbanPrices.count - 1)
         pricePerMonthSlider.tintColor = .brandBlue
         pricePerMonthSlider.value = 0
     }
