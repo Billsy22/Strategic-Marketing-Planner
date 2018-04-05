@@ -88,6 +88,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="bottom" secondItem="boF-tl-QG7" secondAttribute="bottom" id="E1J-Pc-n6r"/>
                             <constraint firstItem="uOJ-lI-jt0" firstAttribute="trailing" secondItem="vTM-UQ-pEO" secondAttribute="trailing" id="Izg-ov-JQf"/>

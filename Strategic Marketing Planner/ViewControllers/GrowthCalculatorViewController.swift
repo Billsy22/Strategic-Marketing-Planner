@@ -115,6 +115,9 @@ class GrowthCalculatorViewController: UIViewController {
         }
         growthCalc.monthlyBudget = CGFloat(value)
         updateComputedValues()
+        let budgetAsDecimal = Decimal(value)
+        guard let client = ClientController.shared.currentClient else { return }
+        ClientController.shared.updateMonthlyBudget(for: client, withAmount: NSDecimalNumber(decimal: budgetAsDecimal))
     }
 }
 
