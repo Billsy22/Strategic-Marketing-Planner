@@ -74,6 +74,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         formatHeader()
         tableViewCustomization()
         formatSlider()
+        formatTotalPriceLabel()
         marketingToLabel.text = marketingToSuburban
     }
     
@@ -83,8 +84,9 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         pricePerMonthSlider.value = 0
     }
     
-    func formatMarketingToLabel() {
-        
+    func formatTotalPriceLabel() {
+        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
     }
     
     func tableViewCustomization() {

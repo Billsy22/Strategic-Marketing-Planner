@@ -15,6 +15,8 @@ class MarketingOptionsViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var marketingOptionsTableview: UITableView!
     
+    let client = ClientController.shared.currentClient
+    
     var category: MarketingPlan.OptionCategory? = nil {
         didSet {
             marketingOptionsTableview?.reloadData()
@@ -46,9 +48,9 @@ class MarketingOptionsViewController: UIViewController {
         default:
             headerLabel.text = "Error"
         }
-        totalPriceLabel.text = "$\(ClientController.shared.currentClient?.marketingPlan?.cost)/$\(ClientController.shared.currentClient?.monthlyBudget)"
+        guard let client = client, let marketingPlan = client.marketingPlan, let cost = marketingPlan.cost, let monthlyBudget = client.monthlyBudget else { return }
+        totalPriceLabel.text = "$\(cost)/$\(monthlyBudget)"
     }
-    
 
     // MARK: - Navigation
 
