@@ -302,7 +302,6 @@
 				168B0090206A9905002A1580 /* ClientList.storyboard */,
 				168B008E206A98ED002A1580 /* AddClient.storyboard */,
 				B3F55E4320695F8100B2B1EE /* Main.storyboard */,
-				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 				B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */,
 				DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */,
 				DF97F53C206D62DD00E3F8E3 /* NoClientsTableViewCell.swift */,
@@ -426,6 +425,7 @@
 				DF01877C207282E300131358 /* SendEmailViewController.swift */,
 				DF94944E207426170035513F /* NextStepsViewController.swift */,
 				DF949454207529B60035513F /* ExternalMarketingViewController.swift */,
+				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -860,7 +860,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77T5A89VWP;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";
@@ -876,7 +876,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77T5A89VWP;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "Strategic Marketing PlannerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christopherthiebaut.Strategic-Marketing-PlannerTests";

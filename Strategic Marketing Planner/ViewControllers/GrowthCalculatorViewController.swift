@@ -50,6 +50,7 @@ class GrowthCalculatorViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        restoreState()
         updateComputedValues()
     }
 
@@ -118,6 +119,19 @@ class GrowthCalculatorViewController: UIViewController {
         let budgetAsDecimal = Decimal(value)
         guard let client = ClientController.shared.currentClient else { return }
         ClientController.shared.updateMonthlyBudget(for: client, withAmount: NSDecimalNumber(decimal: budgetAsDecimal))
+    }
+    
+    private func restoreState(){
+        guard let client = ClientController.shared.currentClient, let monthlyBudget = client.monthlyBudget, let currentProduction = client.currentProduction, let productionGoal = client.productionGoal else { return }
+        monthlyMarketingBudgetTextField.text = "$\(monthlyBudget)"
+        monthlyMarketingBudgetEntered(monthlyMarketingBudgetTextField)
+        //growthCalc.monthlyBudget = CGFloat(truncating: monthlyBudget)
+        currentProductionTextField.text = "$\(currentProduction)"
+        currentProductionEntered(currentProductionTextField)
+        //growthCalc.currentProduction = CGFloat(truncating: currentProduction)
+        productionGoalTextField.text = "$\(productionGoal)"
+        productionGoalEntered(productionGoalTextField)
+//        growthCalc.productionGoal = CGFloat(truncating: productionGoal)
     }
 }
 
