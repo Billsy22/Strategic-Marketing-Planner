@@ -117,9 +117,13 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-ku-Znp" customClass="PracticeTypeDropDownButton" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-ku-Znp" customClass="PracticeTypeDropDownButton" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="20.5" width="265" height="30"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Select Type...">
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                </state>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -204,7 +208,7 @@
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-Sj-FFq">
                                                                 <rect key="frame" x="0.0" y="20.5" width="262.5" height="30"/>
-                                                                <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -388,6 +392,7 @@
                         <outlet property="notesTextView" destination="dBB-Km-LeR" id="jgD-F8-8FP"/>
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
+                        <outlet property="practiceTypeDropDownButton" destination="bcG-ku-Znp" id="kfZ-M1-zbX"/>
                         <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
                         <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
