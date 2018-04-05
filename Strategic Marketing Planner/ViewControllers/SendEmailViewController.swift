@@ -33,8 +33,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     func formatTextView() {
         guard let client = client else { print("No client passed to email view"); return }
         guard let marketingPlan = client.marketingPlan else { return }
-        guard let totalCost = marketingPlan.cost,
-            let monthlyBudget = client.monthlyBudget else { return }
+        guard let monthlyBudget = client.monthlyBudget else { return }
         summaryTextView.layer.borderColor = UIColor.gray.cgColor
         summaryTextView.layer.borderWidth = 0.5
         summaryTextView.layer.cornerRadius = 5
@@ -43,7 +42,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
         let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(monthlyBudget) per month\n"
-        let lastSection = "\nTotal cost: \(totalCost) per month"
+        let lastSection = "\nTotal cost: \(marketingPlan.cost) per month"
         summaryTextView.text = firstSection + printOptions() + lastSection
     }
     

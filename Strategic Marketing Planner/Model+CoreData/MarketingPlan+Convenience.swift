@@ -18,6 +18,18 @@ extension MarketingPlan {
         case suburban
     }
     
+    var cost: Decimal {
+        var currentCost: Decimal = 0
+        if let options = options {
+            for option in options {
+                if let marketingOption = option as? MarketingOption, marketingOption.isActive {
+                    currentCost += marketingOption.price?.decimalValue ?? 0
+                }
+            }
+        }
+        return currentCost
+    }
+    
     convenience init(practiceType: Client.PracticeType, targetContext context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         options = NSOrderedSet()
