@@ -73,6 +73,10 @@ class ClientController {
         save()
     }
     
+    func updateMonthlyBudget(for client: Client, withAmount amount: NSDecimalNumber) {
+        client.monthlyBudget = amount
+        save()
+    }
     
     //MARK: - Delete
     func removeClient(_ client: Client) {
