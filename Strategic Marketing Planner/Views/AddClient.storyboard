@@ -406,37 +406,6 @@
             </objects>
             <point key="canvasLocation" x="-267.1875" y="79.6875"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="QnX-d5-jlE">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="myA-0K-ccw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="g6g-6S-F0A" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R8o-DB-Bco">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r8Q-Se-sMT">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MKf-J5-Hoa">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="khG-z7-O1t" firstAttribute="bottom" secondItem="r8Q-Se-sMT" secondAttribute="bottom" id="9nc-An-XOk"/>
-                            <constraint firstItem="r8Q-Se-sMT" firstAttribute="top" secondItem="khG-z7-O1t" secondAttribute="top" id="NRJ-Fy-Uh3"/>
-                            <constraint firstItem="r8Q-Se-sMT" firstAttribute="leading" secondItem="khG-z7-O1t" secondAttribute="leading" id="aMT-pG-DqQ"/>
-                            <constraint firstItem="khG-z7-O1t" firstAttribute="trailing" secondItem="r8Q-Se-sMT" secondAttribute="trailing" id="ukO-qy-0hn"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="khG-z7-O1t"/>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="345" y="106"/>
-        </scene>
         <!--PresentationVC-->
         <scene sceneID="JjZ-Jf-IVg">
             <objects>

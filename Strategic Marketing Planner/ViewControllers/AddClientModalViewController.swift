@@ -45,6 +45,7 @@ class AddClientModalViewController: UIViewController {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         practiceNameTextField.delegate = self
+        practiceTypeTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
         addressTextField.delegate = self
@@ -72,6 +73,7 @@ class AddClientModalViewController: UIViewController {
         firstNameTextField.layer.cornerRadius = 5
         lastNameTextField.layer.cornerRadius = 5
         practiceNameTextField.layer.cornerRadius = 5
+        practiceTypeTextField.layer.cornerRadius = 5
         phoneTextField.layer.cornerRadius = 5
         emailTextField.layer.cornerRadius = 5
         addressTextField.layer.cornerRadius = 5
@@ -84,8 +86,6 @@ class AddClientModalViewController: UIViewController {
         if let client = client {
             firstNameTextField.text = client.firstName
             lastNameTextField.text = client.lastName
-            guard let clientImage = client.imageData else { return }
-            clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
             practiceNameTextField.text = client.practiceName
             phoneTextField.text = client.phoneNumber
             emailTextField.text = client.email
@@ -99,6 +99,8 @@ class AddClientModalViewController: UIViewController {
             notesTextView.text = client.notes
             saveOrRemoveClientButton.setTitle("Delete Client", for: .normal)
             saveOrRemoveClientButton.backgroundColor = .red
+            guard let clientImage = client.imageData else { print("No Client image data"); return }
+            clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
         } else {
             print("No Client Found \(#file)\(#function)")
             saveOrRemoveClientButton.setTitle("Save Client", for: .normal)
@@ -216,6 +218,9 @@ extension AddClientModalViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             practiceNameTextField.becomeFirstResponder()
         } else if textField == practiceNameTextField {
+            textField.resignFirstResponder()
+            practiceTypeTextField.becomeFirstResponder()
+        } else if textField == practiceTypeTextField {
             textField.resignFirstResponder()
             phoneTextField.becomeFirstResponder()
         } else if textField == phoneTextField {
