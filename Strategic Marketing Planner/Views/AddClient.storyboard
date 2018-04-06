@@ -78,6 +78,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwM-DW-Iqq">
                                                         <rect key="frame" x="429" y="0.0" width="121" height="121"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" constant="121" id="epc-rC-bzF"/>
                                                             <constraint firstAttribute="width" secondItem="MwM-DW-Iqq" secondAttribute="height" multiplier="1:1" id="zi4-sd-TGm"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="clientDefaultPhoto"/>
@@ -408,6 +409,7 @@
         <!--View Controller-->
         <scene sceneID="QnX-d5-jlE">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myA-0K-ccw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="g6g-6S-F0A" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R8o-DB-Bco">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
@@ -416,6 +418,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r8Q-Se-sMT">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MKf-J5-Hoa">
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -428,7 +434,6 @@
                         <viewLayoutGuide key="safeArea" id="khG-z7-O1t"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="myA-0K-ccw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="345" y="106"/>
         </scene>

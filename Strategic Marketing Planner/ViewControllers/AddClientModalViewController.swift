@@ -40,6 +40,8 @@ class AddClientModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        setUpClientPhotoButtonProperties()
+        
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         practiceNameTextField.delegate = self
@@ -104,6 +106,13 @@ class AddClientModalViewController: UIViewController {
             let formattedDate = DateHelper.format(date: Date())
             initialContactDateTextField.text = formattedDate
         }
+    }
+    
+    func setUpClientPhotoButtonProperties() {
+        clientPhotoButton.clipsToBounds = true
+        clientPhotoButton.layer.cornerRadius = clientPhotoButton.frame.width/2
+        clientPhotoButton.layer.borderWidth = 0.1
+        clientPhotoButton.imageView?.contentMode = .scaleAspectFill
     }
     
     // MARK: -  Actions
@@ -266,5 +275,11 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIImagePickerController {
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
     }
 }
