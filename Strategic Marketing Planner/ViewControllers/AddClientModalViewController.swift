@@ -20,7 +20,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var clientPhotoButton: UIButton!
     @IBOutlet weak var practiceNameTextField: UITextField!
-    @IBOutlet weak var practiceTypeDropDownButton: PracticeTypeDropDownButton!
+    @IBOutlet weak var practiceTypeTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -80,12 +80,11 @@ class AddClientModalViewController: UIViewController {
         initialContactDateTextField.layer.cornerRadius = 5
         saveOrRemoveClientButton.layer.cornerRadius = 5
         startPresentationButton.layer.cornerRadius = 5
-        practiceTypeDropDownButton.layer.cornerRadius = 5
-        practiceTypeDropDownButton.layer.borderWidth = 0.1
         if let client = client {
             firstNameTextField.text = client.firstName
             lastNameTextField.text = client.lastName
-            // TODO: -  Add photo property for button
+            guard let clientImage = client.imageData else { return }
+            clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
             practiceNameTextField.text = client.practiceName
             phoneTextField.text = client.phoneNumber
             emailTextField.text = client.email
@@ -103,7 +102,8 @@ class AddClientModalViewController: UIViewController {
             print("No Client Found \(#file)\(#function)")
             saveOrRemoveClientButton.setTitle("Save Client", for: .normal)
             saveOrRemoveClientButton.backgroundColor = .brandBlue
-            return
+            let formattedDate = DateHelper.format(date: Date())
+            initialContactDateTextField.text = formattedDate
         }
     }
     
@@ -258,8 +258,11 @@ extension AddClientModalViewController: UITextFieldDelegate {
 extension AddClientModalViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-        clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        guard let client = self.client else { return }
+        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? Data else { return }
+        client.imageData = clientImage
+//        save()
+        clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
         dismiss(animated: true, completion: nil)
     }
     
