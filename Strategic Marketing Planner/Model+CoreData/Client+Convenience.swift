@@ -13,6 +13,11 @@ extension Client {
     
     static let practiceTypes = [PracticeType.general, PracticeType.startup, PracticeType.specialty]
     
+    var image: UIImage? {
+        guard let imageData = imageData else { return nil }
+        return UIImage(data: imageData)
+    }
+    
     convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, practiceType: PracticeType = .general, context: NSManagedObjectContext = CoreDataStack.context){
         self.init(context: context)
         

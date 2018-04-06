@@ -6,7 +6,7 @@
 //  Copyright © 2018 Christopher Thiebaut. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 protocol ClientControllerDelegate: class {
@@ -95,10 +95,17 @@ class ClientController {
     
     func updateCurrentProduction(for client: Client, withAmount amount: Decimal) {
         client.currentProduction = amount as NSDecimalNumber
+        save()
     }
     
     func updateProductionGoal(for client: Client, withAmount amount: Decimal) {
         client.productionGoal = amount as NSDecimalNumber
+        save()
+    }
+    
+    func updateImage(for client: Client, toImage image: UIImage){
+        client.imageData = UIImageJPEGRepresentation(image, 1)
+        save()
     }
     
     //MARK: - Delete
