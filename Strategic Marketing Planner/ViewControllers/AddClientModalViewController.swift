@@ -50,8 +50,7 @@ class AddClientModalViewController: UIViewController {
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
         
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        
+        imagePicker.delegate = self        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -254,15 +253,14 @@ extension AddClientModalViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: -  Extention for AVKit
-extension AddClientModalViewController: UIImagePickerControllerDelegate {
+// MARK: -  Extension for Photo Picker button
+extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: -  UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let client = self.client else { return }
-        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? Data else { return }
-        client.imageData = clientImage
-//        save()
-        clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
+//        guard let client = self.client else { return }
+        guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
         dismiss(animated: true, completion: nil)
     }
     
