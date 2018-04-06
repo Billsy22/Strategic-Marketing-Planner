@@ -22,9 +22,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mS4-9R-Zdt">
                                 <rect key="frame" x="0.0" y="64" width="750" height="636"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfu-sb-dGi">
-                                        <rect key="frame" x="385" y="210" width="265" height="216"/>
-                                    </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xHH-YN-812" userLabel="Main Stack">
                                         <rect key="frame" x="100" y="25" width="550" height="571"/>
                                         <subviews>
@@ -363,13 +360,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Sfu-sb-dGi" firstAttribute="width" secondItem="yml-yi-uMi" secondAttribute="width" id="Bl2-M5-rUu"/>
                                     <constraint firstAttribute="trailing" secondItem="xHH-YN-812" secondAttribute="trailing" constant="100" id="FqG-9J-twX"/>
                                     <constraint firstAttribute="bottom" secondItem="xHH-YN-812" secondAttribute="bottom" constant="40" id="IWy-Ch-4eN"/>
                                     <constraint firstItem="xHH-YN-812" firstAttribute="leading" secondItem="mS4-9R-Zdt" secondAttribute="leading" constant="100" id="Q7Q-yb-U84"/>
                                     <constraint firstItem="xHH-YN-812" firstAttribute="top" secondItem="mS4-9R-Zdt" secondAttribute="top" constant="25" id="YJS-FQ-ozj"/>
-                                    <constraint firstAttribute="trailing" secondItem="Sfu-sb-dGi" secondAttribute="trailing" constant="100" id="dzz-vX-x29"/>
-                                    <constraint firstItem="Sfu-sb-dGi" firstAttribute="top" secondItem="yml-yi-uMi" secondAttribute="bottom" id="qyg-Ab-Jmr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -407,7 +401,6 @@
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
                         <outlet property="practiceTypeButton" destination="yml-yi-uMi" id="9M5-cD-5gE"/>
-                        <outlet property="practiceTypePicker" destination="Sfu-sb-dGi" id="e2A-dH-fXu"/>
                         <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
                         <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>

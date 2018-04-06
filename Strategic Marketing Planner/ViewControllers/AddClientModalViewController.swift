@@ -31,11 +31,22 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     @IBOutlet weak var startPresentationButton: UIButton!
-    @IBOutlet weak var practiceTypePicker: UIPickerView!
     var client: Client?
     var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
     weak var delegate: AddClientDelegate?
+    
+    // Picker Properties
+    private lazy var pickerContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        return view
+    }()
+    
+    private lazy var practicePicker: UIPickerView = {
+        let picker = UIPickerView()
+        return picker
+    }()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -43,6 +54,7 @@ class AddClientModalViewController: UIViewController {
         // Update Views
         updateViews()
         setUpClientPhotoButtonProperties()
+        setupPickerViews()
         
         // Set Delegates
         firstNameTextField.delegate = self
@@ -55,10 +67,8 @@ class AddClientModalViewController: UIViewController {
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
         imagePicker.delegate = self
-        
-        practiceTypePicker.delegate = self
-        practiceTypePicker.dataSource = self
-        practiceTypePicker.isHidden = true
+        practicePicker.delegate = self
+        practicePicker.dataSource = self
         
         // Keyboard NotificationCenter observers to move the views frame depending on which text field its in
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -124,6 +134,11 @@ class AddClientModalViewController: UIViewController {
         clientPhotoButton.imageView?.contentMode = .scaleAspectFill
     }
     
+    func setupPickerViews() {
+        view.addSubview(pickerContainer)
+        pickerContainer.addSubview(practicePicker)
+    }
+    
     // MARK: -  Actions
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true) {
@@ -144,9 +159,13 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func practiceTypeButtonTapped(_ sender: Any) {
-        practiceTypePicker.isHidden = false
-        practiceTypeButton.bringSubview(toFront: practiceTypePicker)
-        practiceTypePicker.isUserInteractionEnabled = true
+        pickerContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.bringSubview(toFront: pickerContainer)
+        let widthConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .width, relatedBy: .equal, toItem: practiceTypeButton, attribute: .width, multiplier: 1, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .trailing, relatedBy: .equal, toItem: practiceTypeButton, attribute: .trailing, multiplier: 1, constant: 0)
+        self.view.addConstraints([topConstraint, rightConstraint, widthConstraint, heightConstraint])
     }
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
@@ -311,5 +330,9 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(Client.practiceTypes[row])".capitalized
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("item selected")
     }
 }
