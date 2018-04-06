@@ -18,7 +18,13 @@ class SplashScreenViewController: UIViewController {
     // MARK: -  LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.isStatusBarHidden = true
         updateButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isStatusBarHidden = false
     }
     
     // MARK: -  Update Views
