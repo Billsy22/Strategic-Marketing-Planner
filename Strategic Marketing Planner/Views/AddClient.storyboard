@@ -22,6 +22,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mS4-9R-Zdt">
                                 <rect key="frame" x="0.0" y="64" width="750" height="636"/>
                                 <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sfu-sb-dGi">
+                                        <rect key="frame" x="385" y="210" width="265" height="216"/>
+                                    </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="xHH-YN-812" userLabel="Main Stack">
                                         <rect key="frame" x="100" y="25" width="550" height="571"/>
                                         <subviews>
@@ -118,14 +121,19 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KmI-q7-PiS">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yml-yi-uMi">
                                                                 <rect key="frame" x="0.0" y="20.5" width="265" height="30"/>
                                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
+                                                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Select Type...">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="practiceTypeButtonTapped:" destination="PDO-rf-Pu2" eventType="touchUpInside" id="l4w-bX-E0L"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
@@ -355,10 +363,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Sfu-sb-dGi" firstAttribute="width" secondItem="yml-yi-uMi" secondAttribute="width" id="Bl2-M5-rUu"/>
                                     <constraint firstAttribute="trailing" secondItem="xHH-YN-812" secondAttribute="trailing" constant="100" id="FqG-9J-twX"/>
                                     <constraint firstAttribute="bottom" secondItem="xHH-YN-812" secondAttribute="bottom" constant="40" id="IWy-Ch-4eN"/>
                                     <constraint firstItem="xHH-YN-812" firstAttribute="leading" secondItem="mS4-9R-Zdt" secondAttribute="leading" constant="100" id="Q7Q-yb-U84"/>
                                     <constraint firstItem="xHH-YN-812" firstAttribute="top" secondItem="mS4-9R-Zdt" secondAttribute="top" constant="25" id="YJS-FQ-ozj"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sfu-sb-dGi" secondAttribute="trailing" constant="100" id="dzz-vX-x29"/>
+                                    <constraint firstItem="Sfu-sb-dGi" firstAttribute="top" secondItem="yml-yi-uMi" secondAttribute="bottom" id="qyg-Ab-Jmr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -395,7 +406,8 @@
                         <outlet property="notesTextView" destination="dBB-Km-LeR" id="jgD-F8-8FP"/>
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
-                        <outlet property="practiceTypeTextField" destination="KmI-q7-PiS" id="WsE-tT-W2t"/>
+                        <outlet property="practiceTypeButton" destination="yml-yi-uMi" id="9M5-cD-5gE"/>
+                        <outlet property="practiceTypePicker" destination="Sfu-sb-dGi" id="e2A-dH-fXu"/>
                         <outlet property="saveOrRemoveClientButton" destination="VGJ-Ge-mP0" id="pq0-ll-nnn"/>
                         <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
@@ -405,14 +417,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-NH-j5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-267.1875" y="79.6875"/>
-        </scene>
-        <!--PresentationVC-->
-        <scene sceneID="JjZ-Jf-IVg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="PresentationVC" id="4tT-BN-jcU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mRS-gj-EeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="284" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZfF-yU-XWV">

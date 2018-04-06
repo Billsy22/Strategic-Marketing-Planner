@@ -20,7 +20,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var clientPhotoButton: UIButton!
     @IBOutlet weak var practiceNameTextField: UITextField!
-    @IBOutlet weak var practiceTypeTextField: UITextField!
+    @IBOutlet weak var practiceTypeButton: UIButton!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -31,6 +31,7 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     @IBOutlet weak var startPresentationButton: UIButton!
+    @IBOutlet weak var practiceTypePicker: UIPickerView!
     var client: Client?
     var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
@@ -39,21 +40,27 @@ class AddClientModalViewController: UIViewController {
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Update Views
         updateViews()
         setUpClientPhotoButtonProperties()
         
+        // Set Delegates
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         practiceNameTextField.delegate = self
-        practiceTypeTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
         addressTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
+        imagePicker.delegate = self
         
-        imagePicker.delegate = self        
+        practiceTypePicker.delegate = self
+        practiceTypePicker.dataSource = self
+        practiceTypePicker.isHidden = true
+        
+        // Keyboard NotificationCenter observers to move the views frame depending on which text field its in
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -73,7 +80,7 @@ class AddClientModalViewController: UIViewController {
         firstNameTextField.layer.cornerRadius = 5
         lastNameTextField.layer.cornerRadius = 5
         practiceNameTextField.layer.cornerRadius = 5
-        practiceTypeTextField.layer.cornerRadius = 5
+        practiceTypeButton.layer.cornerRadius = 5
         phoneTextField.layer.cornerRadius = 5
         emailTextField.layer.cornerRadius = 5
         addressTextField.layer.cornerRadius = 5
@@ -136,6 +143,12 @@ class AddClientModalViewController: UIViewController {
         }
     }
     
+    @IBAction func practiceTypeButtonTapped(_ sender: Any) {
+        practiceTypePicker.isHidden = false
+        practiceTypeButton.bringSubview(toFront: practiceTypePicker)
+        practiceTypePicker.isUserInteractionEnabled = true
+    }
+    
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         save()
         ClientController.shared.currentClient = self.client
@@ -181,7 +194,7 @@ extension AddClientModalViewController {
     
     // Creating an alert when textfields are empty
     func createEmptyTextAlert() {
-        let emptyTextAlert = UIAlertController(title: "Required field", message: "Please fill out all r", preferredStyle: .alert)
+        let emptyTextAlert = UIAlertController(title: "Required field empty", message: "Please fill out all required fields", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             print("Alert Dismissed")
         })
@@ -218,9 +231,6 @@ extension AddClientModalViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             practiceNameTextField.becomeFirstResponder()
         } else if textField == practiceNameTextField {
-            textField.resignFirstResponder()
-            practiceTypeTextField.becomeFirstResponder()
-        } else if textField == practiceTypeTextField {
             textField.resignFirstResponder()
             phoneTextField.becomeFirstResponder()
         } else if textField == phoneTextField {
@@ -272,7 +282,6 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
     
     // MARK: -  UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        guard let client = self.client else { return }
         guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
         dismiss(animated: true, completion: nil)
@@ -286,5 +295,21 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
 extension UIImagePickerController {
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
+    }
+}
+
+// MARK: -  Extension for picker view that will pop up for the practice type text field
+extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Client.practiceTypes.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(Client.practiceTypes[row])".capitalized
     }
 }
