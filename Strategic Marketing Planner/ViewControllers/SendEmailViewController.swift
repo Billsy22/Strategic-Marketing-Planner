@@ -9,8 +9,9 @@
 import UIKit
 import MessageUI
 
-class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate, PriceLableable {
     
+    var clientController: ClientController = ClientController.shared
     var client : Client? {
         return ClientController.shared.currentClient
     }
@@ -42,14 +43,11 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         guard let client = client else { print("No client passed to email view"); return }
         guard let marketingPlan = client.marketingPlan, let planCostString = NumberHelper.currencyString(for: marketingPlan.cost) else { return }
         guard let monthlyBudget = client.monthlyBudget, let budgetString = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        summaryTextView.layer.borderColor = UIColor.gray.cgColor
-        summaryTextView.layer.borderWidth = 0.5
-        summaryTextView.layer.cornerRadius = 5
         summaryTextView.contentInset.left = 15
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n"
+        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n\n"
         let lastSection = "\nTotal cost: \(planCostString) per month"
         summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
     }
@@ -107,11 +105,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         headerLabel.textColor = .brandOrange
     }
     
-    func updateTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
-    }
-    
     func composeEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mc = MFMailComposeViewController()
@@ -125,6 +118,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
             self.present(mc, animated: true, completion: nil)
         } else {
             print("Cannot send email")
+            noEmailAlert()
         }
     }
     
@@ -140,5 +134,14 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
             print("Email sent failure: \(String(describing: error?.localizedDescription))")
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func noEmailAlert() {
+        let noEmailAlert = UIAlertController(title: "Unable to send email.", message: "Please sign into an email account on your device.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+            print("Alert dismissed")
+        })
+        noEmailAlert.addAction(dismissAction)
+        self.present(noEmailAlert, animated: true, completion: nil)
     }
 }

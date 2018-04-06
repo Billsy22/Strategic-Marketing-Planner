@@ -156,5 +156,10 @@ extension GrowthCalculatorViewController: UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-//    textField(_ textField: shouldChangeCharactersIn:replacementString:)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var allowedChars = CharacterSet.decimalDigits
+        allowedChars.insert(charactersIn: ".")
+        return CharacterSet(charactersIn: string).isSuperset(of: allowedChars)
+    }
+
 }

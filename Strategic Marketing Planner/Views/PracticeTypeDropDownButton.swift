@@ -31,11 +31,11 @@ class PracticeTypeDropDownButton: UIButton, DropDownProtocol {
         dropDownView.translatesAutoresizingMaskIntoConstraints = false
         self.superview?.addSubview(dropDownView)
         self.superview?.bringSubview(toFront: dropDownView)
-        dropDownView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        dropDownView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        dropDownView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        dropDownHeight = dropDownView.heightAnchor.constraint(equalToConstant: 0)
-        dropDownView.layer.zPosition = 2
+//        dropDownView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        dropDownView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        dropDownView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+//        dropDownHeight = dropDownView.heightAnchor.constraint(equalToConstant: 0)
+//        dropDownView.layer.zPosition = 2
     }
     
     // MARK: -  Event methods

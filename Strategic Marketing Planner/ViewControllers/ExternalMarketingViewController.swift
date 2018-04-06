@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PriceLableable {
     
     var client: Client? {
         return clientController.currentClient
@@ -106,7 +106,7 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
         tableViewCustomization()
         formatSlider()
         updateTotalPriceLabel()
-        marketingToLabel.text = marketingToSuburban
+        updateTotalPriceLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,14 +114,8 @@ class ExternalMarketingViewController: UIViewController, UITableViewDataSource, 
     }
     
     func formatSlider() {
-        pricePerMonthSlider.maximumValue = Float(suburbanPrices.count - 1)
         pricePerMonthSlider.tintColor = .brandBlue
         pricePerMonthSlider.value = 0
-    }
-    
-    func updateTotalPriceLabel() {
-        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
     
     func tableViewCustomization() {

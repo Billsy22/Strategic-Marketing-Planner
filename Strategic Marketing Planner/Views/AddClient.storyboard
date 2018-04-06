@@ -166,7 +166,7 @@
                                                                 <color key="backgroundColor" red="0.93740600350000003" green="0.93709212539999998" blue="0.95686691999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="email"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>

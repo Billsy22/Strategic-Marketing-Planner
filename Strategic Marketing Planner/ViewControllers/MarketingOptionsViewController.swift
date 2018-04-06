@@ -8,8 +8,8 @@
 
 import UIKit
 
-class MarketingOptionsViewController: UIViewController {
-    
+class MarketingOptionsViewController: UIViewController, PriceLableable {
+
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
@@ -55,11 +55,6 @@ class MarketingOptionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateTotalPriceLabel()
-    }
-    
-    func updateTotalPriceLabel(){
-        guard let client = client, let marketingPlan = client.marketingPlan, let marketingPrice = NumberHelper.currencyString(for: marketingPlan.cost), let monthlyBudget = client.monthlyBudget, let budgetPrice = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
-        totalPriceLabel.text = "\(marketingPrice)/\(budgetPrice)"
     }
 
     // MARK: - Navigation
