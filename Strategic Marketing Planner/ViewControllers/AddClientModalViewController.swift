@@ -35,11 +35,12 @@ class AddClientModalViewController: UIViewController {
     var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
     weak var delegate: AddClientDelegate?
+    var practiceTypeListOpen: Bool = false
     
     // Picker Properties
     private lazy var pickerContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.brandPaleBlue
         return view
     }()
     
@@ -55,7 +56,8 @@ class AddClientModalViewController: UIViewController {
         updateViews()
         setUpClientPhotoButtonProperties()
         setupPickerViews()
-        
+        pickerContainer.isHidden = true
+
         // Set Delegates
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
@@ -159,13 +161,13 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func practiceTypeButtonTapped(_ sender: Any) {
-        pickerContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.view.bringSubview(toFront: pickerContainer)
-        let widthConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .width, relatedBy: .equal, toItem: practiceTypeButton, attribute: .width, multiplier: 1, constant: 0)
-        let heightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
-        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: 0)
-        let rightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .trailing, relatedBy: .equal, toItem: practiceTypeButton, attribute: .trailing, multiplier: 1, constant: 0)
-        self.view.addConstraints([topConstraint, rightConstraint, widthConstraint, heightConstraint])
+        if practiceTypeListOpen == false {
+            practiceTypeListOpen = true
+            setupPickerAndContainer()
+        } else {
+            practiceTypeListOpen = false
+            setupPickerAndContainer()
+        }
     }
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
@@ -184,6 +186,29 @@ class AddClientModalViewController: UIViewController {
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
+    
+    // Constrain picker container and picker
+    func setupPickerAndContainer() {
+        pickerContainer.translatesAutoresizingMaskIntoConstraints = false
+        practicePicker.translatesAutoresizingMaskIntoConstraints = false
+        let widthConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .width, relatedBy: .equal, toItem: practiceTypeButton, attribute: .width, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .trailing, relatedBy: .equal, toItem: practiceTypeButton, attribute: .trailing, multiplier: 1, constant: 0)
+        let containerHeight = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+        self.view.addConstraints([topConstraint, rightConstraint, widthConstraint, containerHeight])
+        let pickerLeftConstraint = NSLayoutConstraint(item: practicePicker, attribute: .leading, relatedBy: .equal, toItem: pickerContainer, attribute: .leading, multiplier: 1, constant: 0)
+        let pickerRightConstraint = NSLayoutConstraint(item: practicePicker, attribute: .trailing, relatedBy: .equal, toItem: pickerContainer, attribute: .trailing, multiplier: 1, constant: 0)
+        let pickerTopConstraint = NSLayoutConstraint(item: practicePicker, attribute: .top, relatedBy: .equal, toItem: pickerContainer, attribute: .top, multiplier: 1, constant: 0)
+        let pickerBottomConstraint = NSLayoutConstraint(item: practicePicker, attribute: .bottom, relatedBy: .equal, toItem: pickerContainer, attribute: .bottom, multiplier: 1, constant: 0)
+        let pickerX = NSLayoutConstraint(item: practicePicker, attribute: .centerX, relatedBy: .equal, toItem: pickerContainer, attribute: .centerX, multiplier: 1, constant: 0)
+        let pickerY = NSLayoutConstraint(item: practicePicker, attribute: .centerY, relatedBy: .equal, toItem: pickerContainer, attribute: .centerY, multiplier: 1, constant: 0)
+        self.pickerContainer.addConstraints([pickerLeftConstraint, pickerRightConstraint, pickerTopConstraint, pickerBottomConstraint, pickerX, pickerY])
+        if practiceTypeListOpen == true {
+            pickerContainer.isHidden = false
+        } else {
+            pickerContainer.isHidden = true
+        }
+    }
     
     // Save Client
     func save() {
