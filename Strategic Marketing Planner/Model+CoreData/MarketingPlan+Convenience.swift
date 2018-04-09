@@ -17,6 +17,7 @@ extension MarketingPlan {
         case external
         case suburban
         case startup
+        case businessToBusiness
     }
     
     var cost: Decimal {
@@ -104,6 +105,12 @@ extension MarketingPlan {
         case digital
         case traditional
         case digitalTraditionalMix
+    }
+    
+    enum BusinessToBusinessMarketing: String {
+        case doctors
+        case patients
+        case both
     }
     
 }

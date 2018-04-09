@@ -336,11 +336,8 @@
 				DF949452207526010035513F /* ExternalMarketing.storyboard */,
 				16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */,
 				DF9494562075BF900035513F /* BrandDefinition.storyboard */,
-<<<<<<< HEAD
 				DF6E9DE8207BFFA9000071F7 /* B2B.storyboard */,
-=======
 				164B7F49207BCE320099D6CB /* StartUpMarketingOptions.storyboard */,
->>>>>>> development
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -446,11 +443,8 @@
 				DF949454207529B60035513F /* ExternalMarketingViewController.swift */,
 				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 				B3D190DA2076D240007662EE /* PriceLabelable.swift */,
-<<<<<<< HEAD
 				DF6E9DEA207C0091000071F7 /* B2BViewController.swift */,
-=======
 				164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */,
->>>>>>> development
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
