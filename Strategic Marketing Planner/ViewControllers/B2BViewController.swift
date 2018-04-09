@@ -16,6 +16,7 @@ class B2BViewController: UIViewController {
 //
 //    var clientController: ClientController
 
+    @IBOutlet weak var chooseBudgetLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var b2bTableView: UITableView!
@@ -27,12 +28,17 @@ class B2BViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatHeader()
+        formatChooseBudgetLabel()
         tableViewCustomization()
         //updateTotalPriceLabel()
     }
     
     func formatHeader() {
         headerLabel.textColor = .brandOrange
+    }
+    
+    func formatChooseBudgetLabel() {
+        chooseBudgetLabel.text = "Please select at least one option above."
     }
 
     /*
@@ -90,11 +96,12 @@ extension B2BViewController: UITableViewDataSource, UITableViewDelegate {
 //extension B2BViewController: MarketingOptionTableViewCellDelegate {
 //    func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
 //        guard let client = client else { return false }
+//        if let name = cell.nameLabel.text, let audienceFocus = b2bOptions[IndexPath], let audienceFocusPlan = MarketingPlan.BusinessToBusinessMarketing(rawValue: audienceFocus) {
+//
+//        }
 //    }
 //
 //    func marketingOptionTableViewCell(_ cell: MarketingOptionTableViewCell, receivedRequestForInformationPage pageIndex: Int) {
-//        <#code#>
+//        // Not using information button
 //    }
-//
-//
 //}

@@ -130,16 +130,16 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         guard client != nil else { return defaultDestinations }
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
-        defaultDestinations.append(("Foundation", foundationOptionsVC))
+        defaultDestinations.append(("Foundation Options", foundationOptionsVC))
         //TODO: Replace this temporary test implementation
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
         foundationVC.category = MarketingPlan.OptionCategory.foundation
         guard let internalVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC") as? MarketingOptionsViewController else { fatalError() }
         internalVC.category = MarketingPlan.OptionCategory.internal
-        defaultDestinations.append(("Internal", internalVC))
+        defaultDestinations.append(("Internal Marketing", internalVC))
         let externalStoryboard = UIStoryboard(name: "ExternalMarketing", bundle: nil)
         if let externalVC = externalStoryboard.instantiateInitialViewController(){
-            defaultDestinations.append(("External", externalVC))
+            defaultDestinations.append(("External Marketing", externalVC))
         }
         let summaryStoryboard = UIStoryboard(name: "SummaryAndConfirmation", bundle: nil)
         if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
