@@ -28,6 +28,8 @@
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
 		B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */; };
 		B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C23207BCF24004258DA /* CloudKitSynchable.swift */; };
+		B3615C28207BF7B9004258DA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3615C27207BF7B9004258DA /* CloudKit.framework */; };
+		B3615C2A207BF80B004258DA /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C29207BF80B004258DA /* CloudKitManager.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3D190D72076882C007662EE /* NumberHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D190D62076882C007662EE /* NumberHelper.swift */; };
@@ -162,6 +164,9 @@
 		B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
 		B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+Convenience.swift"; sourceTree = "<group>"; };
 		B3615C23207BCF24004258DA /* CloudKitSynchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSynchable.swift; sourceTree = "<group>"; };
+		B3615C25207BF7AC004258DA /* Strategic Marketing Planner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Strategic Marketing Planner.entitlements"; sourceTree = "<group>"; };
+		B3615C27207BF7B9004258DA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B3615C29207BF80B004258DA /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3615C28207BF7B9004258DA /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +266,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3615C26207BF7B9004258DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3615C27207BF7B9004258DA /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3F55E3320695F8100B2B1EE = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +281,7 @@
 				B3F55E7F2069780900B2B1EE /* Strategic Marketing PlannerTests */,
 				B3F55E3D20695F8100B2B1EE /* Products */,
 				DF4C7DAB206A9625004FC870 /* Recovered References */,
+				B3615C26207BF7B9004258DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,6 +297,7 @@
 		B3F55E3E20695F8100B2B1EE /* Strategic Marketing Planner */ = {
 			isa = PBXGroup;
 			children = (
+				B3615C25207BF7AC004258DA /* Strategic Marketing Planner.entitlements */,
 				B3F55E7320696AA700B2B1EE /* Model Controllers */,
 				B3F55E5A206964E200B2B1EE /* Resources */,
 				DF9D11CB20698CD500529F60 /* ViewControllers */,
@@ -364,6 +380,7 @@
 			children = (
 				E1033B7C206C4702000EC27B /* ProductController.swift */,
 				B3F55E7420696C8100B2B1EE /* ClientController.swift */,
+				B3615C29207BF80B004258DA /* CloudKitManager.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -497,6 +514,14 @@
 					B3F55E3B20695F8100B2B1EE = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					B3F55E7D2069780900B2B1EE = {
 						CreatedOnToolsVersion = 9.2;
@@ -653,6 +678,7 @@
 				B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */,
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
 				16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */,
+				B3615C2A207BF80B004258DA /* CloudKitManager.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,
 				DF97F53D206D62DD00E3F8E3 /* NoClientsTableViewCell.swift in Sources */,
@@ -847,6 +873,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
@@ -863,6 +890,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
