@@ -41,7 +41,6 @@
 		B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9DF34206DD76700DA8A4A /* LineChartView.swift */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
-		B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
 		B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
 		B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
@@ -681,7 +680,6 @@
 				B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */,
 				B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */,
 				B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */,
-				B3E93BD82069B42D001CC0AA /* PresentationBaseViewController.swift in Sources */,
 				DF4C7DAD206A9666004FC870 /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
