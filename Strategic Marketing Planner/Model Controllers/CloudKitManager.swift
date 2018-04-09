@@ -15,7 +15,15 @@ class CloudKitManager {
     //Prevent anyone from making an instance of this class, as it is meant to be used statically.
     private init(){}
     
-    private func loadEntities<T: CloudKitSynchable>(ofType: T.Type, exclude: [CKRecord], completion: @escaping ([T]?, Error?) -> ()){
+    static func loadEntities<T: CloudKitSynchable>(ofType: T.Type, exclude: [CKRecord], completion: @escaping ([T]?, Error?) -> Void){
+        
+    }
+    
+    static func saveEntity<T: CloudKitSynchable>(entity: T, completion: @escaping (Bool) -> Void){
+        let record = entity.asCKRecord
+//        database.save(record) { (record, error) in
+//            <#code#>
+//        }
         
     }
     

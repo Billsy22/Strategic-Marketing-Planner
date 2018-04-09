@@ -14,7 +14,7 @@ import CoreData
 protocol CloudKitSynchable where Self: NSManagedObject {
     ///This should be a unique string that identifies the record for the model object in CloudKit.
     var recordName: String? { get set }
-    var asCKRecord: CKRecord? { get }
+    var asCKRecord: CKRecord { get }
     var lastModificationTimestamp: Double { get }
     ///Stored properties are automatically handled by the default implemtation of asCKRecord.  This method is a hook for conforming classes to use to add CKReferences to their record as needed to maintain their relationships when restored from a CKRecord.
     func addCKReferencesToCKRecord(_ record: CKRecord)
@@ -37,7 +37,7 @@ extension CloudKitSynchable {
     func addCKReferencesToCKRecord(_ record: CKRecord){}
     static func initializeRelationshipsFromReferences(_ record: CKRecord, model: Self) -> Bool { return true }
 
-    var asCKRecord: CKRecord? {
+    var asCKRecord: CKRecord {
         var record: CKRecord
         let recordName = self.recordName != nil ? self.recordName! : UUID().uuidString
         record = CKRecord(recordType: Self.recordType, recordID: CKRecordID(recordName: recordName))
@@ -70,6 +70,11 @@ extension CloudKitSynchable {
             return matchingObject
         }
         updateObjectStoredProperties(from: record, object: matchingObject)
+        do {
+            try context.save()
+        } catch let error {
+            NSLog("Failed to save updated model after loading from CloudKit. Error: \(error.localizedDescription)")
+        }
         return matchingObject
     }
     
@@ -77,6 +82,11 @@ extension CloudKitSynchable {
         let object = Self.init(context: context)
         updateObjectStoredProperties(from: record, object: object)
         guard initializeRelationshipsFromReferences(record, model: object) else { return nil }
+        do {
+            try context.save()
+        } catch let error {
+            NSLog("Failed to save model initialized from CloudKit. Error: \(error.localizedDescription)")
+        }
         return object
     }
     
