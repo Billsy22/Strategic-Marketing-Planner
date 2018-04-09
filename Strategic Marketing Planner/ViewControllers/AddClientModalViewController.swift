@@ -31,11 +31,23 @@ class AddClientModalViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveOrRemoveClientButton: UIButton!
     @IBOutlet weak var startPresentationButton: UIButton!
-    @IBOutlet weak var practiceTypePicker: UIPickerView!
     var client: Client?
     var activeTextField: UITextField?
     let imagePicker = UIImagePickerController()
     weak var delegate: AddClientDelegate?
+    var practiceTypeListOpen: Bool = false
+    
+    // Picker Properties
+    private lazy var pickerContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.brandPaleBlue
+        return view
+    }()
+    
+    private lazy var practicePicker: UIPickerView = {
+        let picker = UIPickerView()
+        return picker
+    }()
     
     // MARK: -  Life Cycles
     override func viewDidLoad() {
@@ -43,7 +55,9 @@ class AddClientModalViewController: UIViewController {
         // Update Views
         updateViews()
         setUpClientPhotoButtonProperties()
-        
+        setupPickerViews()
+        pickerContainer.isHidden = true
+
         // Set Delegates
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
@@ -55,10 +69,8 @@ class AddClientModalViewController: UIViewController {
         stateTextField.delegate = self
         zipCodeTextField.delegate = self
         imagePicker.delegate = self
-        
-        practiceTypePicker.delegate = self
-        practiceTypePicker.dataSource = self
-        practiceTypePicker.isHidden = true
+        practicePicker.delegate = self
+        practicePicker.dataSource = self
         
         // Keyboard NotificationCenter observers to move the views frame depending on which text field its in
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -124,6 +136,11 @@ class AddClientModalViewController: UIViewController {
         clientPhotoButton.imageView?.contentMode = .scaleAspectFill
     }
     
+    func setupPickerViews() {
+        view.addSubview(pickerContainer)
+        pickerContainer.addSubview(practicePicker)
+    }
+    
     // MARK: -  Actions
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true) {
@@ -144,9 +161,13 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func practiceTypeButtonTapped(_ sender: Any) {
-        practiceTypePicker.isHidden = false
-        practiceTypeButton.bringSubview(toFront: practiceTypePicker)
-        practiceTypePicker.isUserInteractionEnabled = true
+        if practiceTypeListOpen == false {
+            practiceTypeListOpen = true
+            setupPickerAndContainer()
+        } else {
+            practiceTypeListOpen = false
+            setupPickerAndContainer()
+        }
     }
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
@@ -165,6 +186,29 @@ class AddClientModalViewController: UIViewController {
 
 // MARK: -  Extension for DRY methods
 extension AddClientModalViewController {
+    
+    // Constrain picker container and picker
+    func setupPickerAndContainer() {
+        pickerContainer.translatesAutoresizingMaskIntoConstraints = false
+        practicePicker.translatesAutoresizingMaskIntoConstraints = false
+        let widthConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .width, relatedBy: .equal, toItem: practiceTypeButton, attribute: .width, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let rightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .trailing, relatedBy: .equal, toItem: practiceTypeButton, attribute: .trailing, multiplier: 1, constant: 0)
+        let containerHeight = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+        self.view.addConstraints([topConstraint, rightConstraint, widthConstraint, containerHeight])
+        let pickerLeftConstraint = NSLayoutConstraint(item: practicePicker, attribute: .leading, relatedBy: .equal, toItem: pickerContainer, attribute: .leading, multiplier: 1, constant: 0)
+        let pickerRightConstraint = NSLayoutConstraint(item: practicePicker, attribute: .trailing, relatedBy: .equal, toItem: pickerContainer, attribute: .trailing, multiplier: 1, constant: 0)
+        let pickerTopConstraint = NSLayoutConstraint(item: practicePicker, attribute: .top, relatedBy: .equal, toItem: pickerContainer, attribute: .top, multiplier: 1, constant: 0)
+        let pickerBottomConstraint = NSLayoutConstraint(item: practicePicker, attribute: .bottom, relatedBy: .equal, toItem: pickerContainer, attribute: .bottom, multiplier: 1, constant: 0)
+        let pickerX = NSLayoutConstraint(item: practicePicker, attribute: .centerX, relatedBy: .equal, toItem: pickerContainer, attribute: .centerX, multiplier: 1, constant: 0)
+        let pickerY = NSLayoutConstraint(item: practicePicker, attribute: .centerY, relatedBy: .equal, toItem: pickerContainer, attribute: .centerY, multiplier: 1, constant: 0)
+        self.pickerContainer.addConstraints([pickerLeftConstraint, pickerRightConstraint, pickerTopConstraint, pickerBottomConstraint, pickerX, pickerY])
+        if practiceTypeListOpen == true {
+            pickerContainer.isHidden = false
+        } else {
+            pickerContainer.isHidden = true
+        }
+    }
     
     // Save Client
     func save() {
@@ -284,6 +328,8 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        guard let client = client else { return }
+        ClientController.shared.updateImage(for: client, toImage: clientImage)
         dismiss(animated: true, completion: nil)
     }
     
@@ -311,5 +357,14 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(Client.practiceTypes[row])".capitalized
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if let client = client {
+            let selectedPracticeType = "\(Client.practiceTypes[row])"
+            client.practiceType = selectedPracticeType.lowercased()
+            practiceTypeButton.setTitle(selectedPracticeType.capitalized, for: .normal)
+        }
+        print("item selected")
     }
 }
