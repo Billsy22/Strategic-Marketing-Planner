@@ -73,22 +73,22 @@ extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDel
         if let name = cell.nameLabel.text, let optionNames = startUpOptions.first(where: {$0.key == name}) {
             switch optionNames.key {
             case "Option 1":
-                costPerMonthLabel.text = "\(optionNames.value)"
+                costPerMonthLabel.text = "$\(optionNames.value) per month"
                 updateTotalPriceLabel()
             case "Option 2":
-                costPerMonthLabel.text = "\(optionNames.value)"
+                costPerMonthLabel.text = "$\(optionNames.value) per month"
                 updateTotalPriceLabel()
             case "Option 3":
-                costPerMonthLabel.text = "\(optionNames.value)"
+                costPerMonthLabel.text = "$\(optionNames.value) per month"
                 updateTotalPriceLabel()
             case "Option 4":
-                costPerMonthLabel.text = "\(optionNames.value)"
+                costPerMonthLabel.text = "$\(optionNames.value) per month"
                 updateTotalPriceLabel()
             case "Option 5":
-                costPerMonthLabel.text = "\(optionNames.value)"
+                costPerMonthLabel.text = "$\(optionNames.value) per month"
                 updateTotalPriceLabel()
             default:
-                return true
+                return false
             }
         }
         return true
