@@ -89,6 +89,7 @@
                     </view>
                     <connections>
                         <outlet property="b2bTableView" destination="z0c-ks-qTz" id="Mxc-fu-gfY"/>
+                        <outlet property="chooseBudgetLabel" destination="p2b-FR-iFs" id="5s9-xI-t1L"/>
                         <outlet property="headerLabel" destination="sx8-Np-2zI" id="bQr-0e-Tmr"/>
                         <outlet property="referralMarketingTableview" destination="WGJ-c1-KXQ" id="gIf-RW-Sj0"/>
                         <outlet property="totalPriceLabel" destination="yEW-R1-nGz" id="ycK-kH-lDr"/>
