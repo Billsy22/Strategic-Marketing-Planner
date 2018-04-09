@@ -16,6 +16,7 @@ extension MarketingPlan {
         case `internal`
         case external
         case suburban
+        case startup
     }
     
     var cost: Decimal {

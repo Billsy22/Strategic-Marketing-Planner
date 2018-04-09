@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164B7F4A207BCE320099D6CB /* StartUpMarketingOptions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 164B7F49207BCE320099D6CB /* StartUpMarketingOptions.storyboard */; };
+		164B7F4C207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */; };
 		168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B008C206A97B9002A1580 /* AddClientModalViewController.swift */; };
 		168B008F206A98ED002A1580 /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		168B0091206A9905002A1580 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
@@ -141,6 +143,8 @@
 
 /* Begin PBXFileReference section */
 		16228718206D41EA00160BF0 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		164B7F49207BCE320099D6CB /* StartUpMarketingOptions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StartUpMarketingOptions.storyboard; sourceTree = "<group>"; };
+		164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupMarketingOptionsViewController.swift; sourceTree = "<group>"; };
 		168B008C206A97B9002A1580 /* AddClientModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClientModalViewController.swift; sourceTree = "<group>"; };
 		168B008E206A98ED002A1580 /* AddClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddClient.storyboard; sourceTree = "<group>"; };
 		168B0090206A9905002A1580 /* ClientList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 				DF949452207526010035513F /* ExternalMarketing.storyboard */,
 				16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */,
 				DF9494562075BF900035513F /* BrandDefinition.storyboard */,
+				164B7F49207BCE320099D6CB /* StartUpMarketingOptions.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				DF949454207529B60035513F /* ExternalMarketingViewController.swift */,
 				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 				B3D190DA2076D240007662EE /* PriceLabelable.swift */,
+				164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				DF4EA3E4206D3B7F00C44A83 /* Internet Review.pdf in Resources */,
 				DF4EA3E5206D3B7F00C44A83 /* Marketing Strategy.pdf in Resources */,
 				DF4EA3E6206D3B7F00C44A83 /* Mini-Zine Mailer.pdf in Resources */,
+				164B7F4A207BCE320099D6CB /* StartUpMarketingOptions.storyboard in Resources */,
 				DF4EA3E7206D3B7F00C44A83 /* Movie Theater Ad.pdf in Resources */,
 				DF4EA3E8206D3B7F00C44A83 /* Open House.pdf in Resources */,
 				DF4EA3E9206D3B7F00C44A83 /* Postcard.pdf in Resources */,
@@ -635,6 +642,7 @@
 				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
+				164B7F4C207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift in Sources */,
 				B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */,
 				B3F90F82206EC0A400EE2940 /* BarGraphView.swift in Sources */,
 				DF94944F207426170035513F /* NextStepsViewController.swift in Sources */,
