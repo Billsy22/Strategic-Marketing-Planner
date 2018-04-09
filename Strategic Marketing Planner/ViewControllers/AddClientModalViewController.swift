@@ -464,7 +464,7 @@ extension AddClientModalViewController: UITextFieldDelegate {
     // move view based on textfield
     @objc func keyboardWillChange(notification: Notification) {
         if notification.name == Notification.Name.UIKeyboardWillChangeFrame || notification.name == Notification.Name.UIKeyboardWillShow {
-            if activeTextField == emailTextField || activeTextField == addressTextField {
+            if activeTextField == addressTextField {
                 view.frame.origin.y = view.frame.origin.y - 50
             } else if activeTextField == cityTextField || activeTextField == stateTextField || activeTextField == zipCodeTextField {
                 view.frame.origin.y = view.frame.origin.y - 100
@@ -516,6 +516,8 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedPracticeType = "\(pickerData[row])"
         practiceTypeButton.setTitle(selectedPracticeType, for: .normal)
+        practiceTypeListOpen = false
+        pickerContainer.isHidden = true
         print("item selected")
     }
 }

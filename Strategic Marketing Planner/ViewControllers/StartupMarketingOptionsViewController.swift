@@ -31,6 +31,7 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
         super.viewDidLoad()
         setUpTableView()
         formatHeader()
+        updateTotalPriceLabel()
     }
     
     // MARK: -  UpdateViews
