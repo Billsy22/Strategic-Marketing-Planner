@@ -36,6 +36,7 @@ class AddClientModalViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     weak var delegate: AddClientDelegate?
     var practiceTypeListOpen: Bool = false
+    let pickerData = ["Select Type...", "\(Client.practiceTypes[0])".capitalized, "\(Client.practiceTypes[1])".capitalized, "\(Client.practiceTypes[2])".capitalized]
     
     // Picker Properties
     private lazy var pickerContainer: UIView = {
@@ -57,7 +58,7 @@ class AddClientModalViewController: UIViewController {
         setUpClientPhotoButtonProperties()
         setupPickerViews()
         pickerContainer.isHidden = true
-
+        
         // Set Delegates
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
@@ -118,6 +119,8 @@ class AddClientModalViewController: UIViewController {
             notesTextView.text = client.notes
             saveOrRemoveClientButton.setTitle("Delete Client", for: .normal)
             saveOrRemoveClientButton.backgroundColor = .red
+            guard let practiceType = client.practiceType?.capitalized else { return }
+            practiceTypeButton.setTitle(practiceType, for: .normal)
             guard let clientImage = client.imageData else { print("No Client image data"); return }
             clientPhotoButton.setBackgroundImage(UIImage(data: clientImage), for: .normal)
         } else {
@@ -192,9 +195,9 @@ extension AddClientModalViewController {
         pickerContainer.translatesAutoresizingMaskIntoConstraints = false
         practicePicker.translatesAutoresizingMaskIntoConstraints = false
         let widthConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .width, relatedBy: .equal, toItem: practiceTypeButton, attribute: .width, multiplier: 1, constant: 0)
-        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .top, relatedBy: .equal, toItem: practiceTypeButton, attribute: .bottom, multiplier: 1, constant: -5)
         let rightConstraint = NSLayoutConstraint(item: pickerContainer, attribute: .trailing, relatedBy: .equal, toItem: practiceTypeButton, attribute: .trailing, multiplier: 1, constant: 0)
-        let containerHeight = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+        let containerHeight = NSLayoutConstraint(item: pickerContainer, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 150)
         self.view.addConstraints([topConstraint, rightConstraint, widthConstraint, containerHeight])
         let pickerLeftConstraint = NSLayoutConstraint(item: practicePicker, attribute: .leading, relatedBy: .equal, toItem: pickerContainer, attribute: .leading, multiplier: 1, constant: 0)
         let pickerRightConstraint = NSLayoutConstraint(item: practicePicker, attribute: .trailing, relatedBy: .equal, toItem: pickerContainer, attribute: .trailing, multiplier: 1, constant: 0)
@@ -221,14 +224,17 @@ extension AddClientModalViewController {
             let zip = self.zipCodeTextField.text,
             let city = self.cityTextField.text,
             let state = self.stateTextField.text,
+            let practiceType = practiceTypeButton.titleLabel?.text,
             let notes = self.notesTextView.text else { return }
-        if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty {
+        if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty || practiceTypeButton.titleLabel?.text == "Select Type..." {
             self.createEmptyTextAlert()
         } else {
             if let client = client {
-                ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
+                guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
+                ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, practiceType: practiceType, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
             } else {
-                self.client = ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
+                guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
+                self.client = ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, practiceType: practiceType, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
             }
             dismiss(animated: true, completion: {
                 print("Client Created")
@@ -352,19 +358,16 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Client.practiceTypes.count
+        return pickerData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(Client.practiceTypes[row])".capitalized
+        return "\(pickerData[row])".capitalized
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if let client = client {
-            let selectedPracticeType = "\(Client.practiceTypes[row])"
-            client.practiceType = selectedPracticeType.lowercased()
-            practiceTypeButton.setTitle(selectedPracticeType.capitalized, for: .normal)
-        }
+        let selectedPracticeType = "\(pickerData[row])"
+        practiceTypeButton.setTitle(selectedPracticeType, for: .normal)
         print("item selected")
     }
 }
