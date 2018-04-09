@@ -152,6 +152,7 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        formatPhone()
         save()
     }
     
@@ -174,6 +175,7 @@ class AddClientModalViewController: UIViewController {
     }
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
+        formatPhone()
         save()
         ClientController.shared.currentClient = self.client
         delegate?.presentationStarting()
@@ -213,6 +215,31 @@ extension AddClientModalViewController {
         }
     }
     
+    func formatPhone() {
+        guard let phone = phoneTextField.text else { return }
+        let result = format(phoneNumber: phone)
+        phoneTextField.text = result
+    }
+    
+    // RegEx Keys
+    func validatePhoneNumber(inputPhone: String) -> Bool {
+        let phoneRegex = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: inputPhone)
+        return phoneTest
+    }
+    
+    func validateEmail(inputEmail: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: inputEmail)
+        return emailTest
+    }
+    
+    func validateZipCode(inputZip: String) -> Bool {
+        let zipRegex = "^[0-9]{5}$"
+        let zipTest = NSPredicate(format: "SELF MATCHES %@", zipRegex).evaluate(with: inputZip)
+        return zipTest
+    }
+    
     // Save Client
     func save() {
         guard let firstName = self.firstNameTextField.text,
@@ -226,8 +253,30 @@ extension AddClientModalViewController {
             let state = self.stateTextField.text,
             let practiceType = practiceTypeButton.titleLabel?.text,
             let notes = self.notesTextView.text else { return }
+        if validatePhoneNumber(inputPhone: phone) == true {
+            print("Valid phone number")
+        } else {
+            print("Invalid phone number")
+            createInvalidPhoneNumberAlert()
+            return
+        }
+        if validateEmail(inputEmail: email) == true {
+            print("Valid email")
+        } else {
+            print("Invalid email")
+            createInvalidEmailAlert()
+            return
+        }
+        if validateZipCode(inputZip: zip) == true {
+            print("Valid zip code")
+        } else {
+            print("Invalid zip code")
+            createInvalidZipAlert()
+            return
+        }
         if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty || practiceTypeButton.titleLabel?.text == "Select Type..." {
             self.createEmptyTextAlert()
+            return
         } else {
             if let client = client {
                 guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
@@ -242,9 +291,39 @@ extension AddClientModalViewController {
         }
     }
     
+    // Creating an alert when phone number is invalid
+    func createInvalidPhoneNumberAlert() {
+        let invalidPhoneNumberAlert = UIAlertController(title: "Invalid phone number", message: "Please input a 10-digit phone number.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        invalidPhoneNumberAlert.addAction(dismissAction)
+        self.present(invalidPhoneNumberAlert, animated: true, completion: nil)
+    }
+    
+    // Creating an alert when email address is invalid
+    func createInvalidEmailAlert() {
+        let invalidEmailAlert = UIAlertController(title: "Invalid email address", message: "Please input a valid email address.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        invalidEmailAlert.addAction(dismissAction)
+        self.present(invalidEmailAlert, animated: true, completion: nil)
+    }
+    
+    // Creating an alert when zip code is invalid
+    func createInvalidZipAlert() {
+        let invalidZipAlert = UIAlertController(title: "Invalid ZIP code", message: "Please input a 5-digit ZIP code.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+            print("Alert Dismissed")
+        })
+        invalidZipAlert.addAction(dismissAction)
+        self.present(invalidZipAlert, animated: true, completion: nil)
+    }
+    
     // Creating an alert when textfields are empty
     func createEmptyTextAlert() {
-        let emptyTextAlert = UIAlertController(title: "Required field empty", message: "Please fill out all required fields", preferredStyle: .alert)
+        let emptyTextAlert = UIAlertController(title: "Required field empty", message: "Please fill out all required fields.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             print("Alert Dismissed")
         })
@@ -266,6 +345,69 @@ extension AddClientModalViewController {
         deleteConfirmationAlert.addAction(cancelAction)
         deleteConfirmationAlert.addAction(deleteAction)
         self.present(deleteConfirmationAlert, animated: true, completion: nil)
+    }
+    
+    func format(phoneNumber sourcePhoneNumber: String) -> String? {
+        if sourcePhoneNumber.count == 10 {
+            let numbersOnly = sourcePhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+            let length = numbersOnly.count
+            let hasLeadingOne = numbersOnly.hasPrefix("1")
+            
+            // Check for supported phone number length
+            guard length == 7 || length == 10 || (length == 11 && hasLeadingOne) else {
+                return nil
+            }
+            
+            let hasAreaCode = (length >= 10)
+            var sourceIndex = 0
+            
+            // Leading 1
+            var leadingOne = ""
+            if hasLeadingOne {
+                leadingOne = "1 "
+                sourceIndex += 1
+            }
+            
+            // Area code
+            var areaCode = ""
+            if hasAreaCode {
+                let areaCodeLength = 3
+                guard let areaCodeSubstring = numbersOnly.substring(start: sourceIndex, offsetBy: areaCodeLength) else {
+                    return nil
+                }
+                areaCode = String(format: "(%@) ", areaCodeSubstring)
+                sourceIndex += areaCodeLength
+            }
+            
+            // Prefix, 3 characters
+            let prefixLength = 3
+            guard let prefix = numbersOnly.substring(start: sourceIndex, offsetBy: prefixLength) else {
+                return nil
+            }
+            sourceIndex += prefixLength
+            
+            // Suffix, 4 characters
+            let suffixLength = 4
+            guard let suffix = numbersOnly.substring(start: sourceIndex, offsetBy: suffixLength) else {
+                return nil
+            }
+            return leadingOne + areaCode + prefix + "-" + suffix
+        } else {
+            return sourcePhoneNumber
+        }
+    }
+}
+
+extension String {
+    // This method makes it easier extract a substring by character index where a character is viewed as a human-readable character (grapheme cluster).
+    internal func substring(start: Int, offsetBy: Int) -> String? {
+        guard let substringStartIndex = self.index(startIndex, offsetBy: start, limitedBy: endIndex) else {
+            return nil
+        }
+        guard let substringEndIndex = self.index(startIndex, offsetBy: start + offsetBy, limitedBy: endIndex) else {
+            return nil
+        }
+        return String(self[substringStartIndex ..< substringEndIndex])
     }
 }
 
@@ -307,6 +449,12 @@ extension AddClientModalViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == phoneTextField {
+            formatPhone()
+        }
     }
     // Dismiss keyboard when touching outside the keyboard or textfield
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
