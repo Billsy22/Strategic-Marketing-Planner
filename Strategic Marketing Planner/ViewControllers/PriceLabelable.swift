@@ -11,7 +11,6 @@ import UIKit
 protocol PriceLabelable: class {
     var totalPriceLabel: UILabel! { get }
     var client: Client? { get }
-    var clientController: ClientController { get }
 }
 
 extension PriceLabelable where Self: UIViewController {

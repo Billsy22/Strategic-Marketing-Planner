@@ -30,10 +30,13 @@ enum ProductsInfo {
     static let urbanKey = MarketingPlan.ExternalMarketingFocus.digital.rawValue
     static let suburbanKey = MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue
     static let ruralKey = MarketingPlan.ExternalMarketingFocus.traditional.rawValue
+    static let startupKey = MarketingPlan.OptionCategory.startup.rawValue
     
     static let urbanValue = assembleUrbanDictionary()
     static let suburbanValue = assembleSuburbanDictionary()
     static let ruralValue = assembleRuralDictionary()
+    
+    static let startupMarketingDictionary = assembleStartupPackagesDictionary()
     
     static let externalMarketingDictionary: Dictionary<String,Dictionary<Int,[String]>> = [urbanKey : urbanValue, suburbanKey : suburbanValue, ruralKey : ruralValue]
     
@@ -79,39 +82,19 @@ enum ProductsInfo {
         dictionary.updateValue(["Results Tracking", "Marketing Strategy", "Postcard", "Mini-Zine Mailer", "Ad Design", "Radio Ad", "Movie Theater Ad", "8-Page Brochures"], forKey: 6000)
         return dictionary
     }
+    
+    private static func assembleStartupPackagesDictionary() -> Dictionary<Int,[String]> {
+        var dictionary = Dictionary<Int,[String]>()
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Referral System", "SEO"], forKey: 1250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Postcard Mailer", "SEO"], forKey: 2250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Mini-zine Mailer", "SEO"], forKey: 3250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targetd Mini-zine Mailer", "Open House Package", "SEO", "Internet Review Cards", "AdWords"], forKey: 4500)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Smile Savings System", "Targeted Mini-zine", "Open House Package", "SEO", "Internet Review Cards", "AdWords", "Facebook Jumpstart", "Facebook Outreach"], forKey: 5500)
+        return dictionary
+    }
 }
-    /*
-    static let ruralOne = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [500 : ["Ad Design", "Tri-fold Brochures"]]]
-    static let ruralTwo = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [1000 : ["Door Hangers", "Ad Design", "Movie Theater Ad", "Tri-fold Brochures"]]]
-    static let ruralThree = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [1500 : ["Postcard", "Ad Design", "Tri-fold Brochures"]]]
-    static let ruralFour = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [2000 : ["Results Tracking", "Marketing Strategy", "Postcard", "Ad Design", "Tri-fold Brochures"]]]
-    static let ruralFive = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [2500 : ["Results Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "8-Page Brochures"]]]
-    static let ruralSix = [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [3000 : ["Results Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Tri-fold Brochures"]]]
-    static let ruralSeven =  [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [3500 : ["Results Tracking", "Marketing Strategy", "Postcard", "Ad Design", "Tri-fold Brochures"]]]
-    static let ruralEight =  [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [4000 : ["Results Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Radio Ad", "Movie Theater Ad", "8-Page Brochures"]]]
-    static let ruralNine =  [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [5000 : ["Results Tracking", "Marketing Strategy", "Postcard", "Mini-Zine Mailer", "Ad Design", "Radio Ad", "Movie Theater Ad", "8-Page Brochures"]]]
-    static let ruralTen =  [MarketingPlan.ExternalMarketingFocus.traditional.rawValue : [6000 : ["Results Tracking", "Marketing Strategy", "Postcard", "Mini-Zine Mailer", "Ad Design", "Radio Ad", "Movie Theater Ad", "8-Page Brochures"]]]
-    
-    static let urbanOne = [MarketingPlan.ExternalMarketingFocus.digital.rawValue : [750 : ["SEO", "Internet Review", "Facebook Outreach"]]]
-    static let urbanTwo = [MarketingPlan.ExternalMarketingFocus.digital.rawValue : [1750 : ["SEO", "AdWords", "Email Campaign", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let urbanThree = [MarketingPlan.ExternalMarketingFocus.digital.rawValue : [2750 : ["Results Tracking", "Marketing Strategy", "SEO", "Internet Review", "AdWords", "Email Campaign", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let urbanFour = [MarketingPlan.ExternalMarketingFocus.digital.rawValue : [3750 : ["Results Tracking", "Marketing Strategy", "SEO", "Internet Review", "AdWords", "Email Campaign", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let urbanFive = [MarketingPlan.ExternalMarketingFocus.digital.rawValue : [4750 : ["Results Tracking", "Marketing Strategy", "SEO", "Internet Review", "AdWords", "Email Campaign", "Facebook Jumpstart", "Facebook Outreach"]]]
-    
-    static let suburbanOne = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [500 : ["Ad Design", "Tri-fold Brochures", "SEO"]]]
-    static let suburbanTwo = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [1000 : ["Ad Design", "Tri-fold Brochures", "SEO", "Internet Review", "Facebook Jumpstart"]]]
-    static let suburbanThree = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [1500 : ["Postcard", "SEO", "Internet Review"]]]
-    static let suburbanFour = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [2000 : ["Result Tracking", "Marketing Strategy", "Postcard", "Tri-fold Brochures", "Ad Design", "Movie Theater Ad"]]]
-    static let suburbanFive = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [2500 : ["Result Tracking", "Marketing Strategy", "Postcard", "SEO", "Internet Review", "Adwords", "Facebook Outreach"]]]
-    static let suburbanSix = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [3000 : ["Result Tracking", "Marketing Strategy", "Postcard", "Tri-fold Brochures", "Ad Design", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanSeven = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [3500 : ["Result Tracking", "Marketing Strategy", "Postcard", "Ad Design", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanEight = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [4000 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Tri-fold Brochures", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanNine = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [4500 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "SEO", "Internet Review", "Adwords", "Facebook Outreach"]]]
-    static let suburbanTen = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [5000 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Tri-fold Brochures", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanEleven = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [5500 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Movie Theater Ad", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanTwelve = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [6000 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Movie Theater Ad", "Tri-fold Brochures", "SEO", "Internet Review", "Adwords", "Email Campaign", "Facebook Jumpstart", "Facebook Outreach"]]]
-    static let suburbanThirteen = [MarketingPlan.ExternalMarketingFocus.digitalTraditionalMix.rawValue : [6500 : ["Result Tracking", "Marketing Strategy", "Mini-Zine Mailer", "Ad Design", "Movie Theater Ad", "Tri-fold Brochures", "SEO", "Internet Review", "Adwords", "Facebook Jumpstart", "Facebook Outreach"]]]
-
+/*
+ 
  ***EXTERNAL MARKETING***
  "8-Page Brochures"
  "Ad Design"
@@ -144,4 +127,5 @@ enum ProductsInfo {
  "Case Acceptance" 750
  "Reactivation System" 175
  "Smile Savings System" 350
- */
+ 
+*/
