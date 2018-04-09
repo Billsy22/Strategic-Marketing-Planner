@@ -7,6 +7,7 @@
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="lastModificationTimestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="monthlyBudget" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="notes" attributeType="String" syncable="YES"/>
@@ -14,6 +15,7 @@
         <attribute name="practiceName" attributeType="String" syncable="YES"/>
         <attribute name="practiceType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productionGoal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streetAddress" attributeType="String" syncable="YES"/>
         <attribute name="zip" attributeType="String" syncable="YES"/>
@@ -23,18 +25,22 @@
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionPageIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastModificationTimestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketingPlan" inverseName="options" inverseEntity="MarketingPlan" syncable="YES"/>
     </entity>
     <entity name="MarketingPlan" representedClassName="MarketingPlan" syncable="YES" codeGenerationType="class">
+        <attribute name="lastModificationTimestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="marketingPlan" inverseEntity="Client" syncable="YES"/>
         <relationship name="options" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MarketingOption" inverseName="plan" inverseEntity="MarketingOption" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-54" positionY="-9" width="128" height="300"/>
-        <element name="MarketingOption" positionX="-18" positionY="117" width="128" height="150"/>
-        <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="75"/>
+        <element name="Client" positionX="-54" positionY="-9" width="128" height="330"/>
+        <element name="MarketingOption" positionX="-18" positionY="117" width="128" height="180"/>
+        <element name="MarketingPlan" positionX="-36" positionY="90" width="128" height="105"/>
     </elements>
 </model>

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 extension Client {
     
@@ -54,3 +55,6 @@ extension Client {
     }
     
 }
+
+//The empty implementation is sufficient as parent objects do not have CKReferences to their children in CloudKit.
+extension Client: CloudKitSynchable {}
