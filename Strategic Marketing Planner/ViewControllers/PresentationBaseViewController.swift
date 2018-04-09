@@ -47,18 +47,40 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         destinations = setupDefaultDestinations()
-        guard let client = client, let customerFirstName = client.firstName, let customerLastName = client.lastName else { return }
-        let customerBarButtonItem = UIBarButtonItem(title: "\(customerFirstName) \(customerLastName)", style: .plain, target: nil, action: nil)
-        customerBarButtonItem.tintColor = UIColor.white
-        navigationItem.setRightBarButtonItems([navigationBarNextButton, customerBarButtonItem], animated: false)
+        createClientBarItem()
+    }
+    
+    func createClientBarItem() {
+        let spacerButton = UIButton(type: .custom)
+        let spacerButtonBarItem = UIBarButtonItem(customView: spacerButton)
+        spacerButtonBarItem.isEnabled = false
+        let clientImageButton = UIButton(type: .custom)
+        let clientImage = client?.image ?? #imageLiteral(resourceName: "clientDefaultPhoto")
+        clientImageButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        UIGraphicsBeginImageContextWithOptions(clientImageButton.frame.size, false, clientImage.scale)
+        let rect = CGRect(x: 0, y: 0, width: clientImageButton.frame.size.width, height: clientImageButton.frame.size.height)
+        UIBezierPath(roundedRect: rect, cornerRadius: rect.width/2).addClip()
+        clientImage.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let color = UIColor(patternImage: newImage!)
+        clientImageButton.backgroundColor = color
+        clientImageButton.layer.cornerRadius = clientImageButton.bounds.size.width / 2
+        clientImageButton.imageView?.contentMode = .scaleAspectFill
+        let clientImageBarButton = UIBarButtonItem(customView: clientImageButton)
+        clientImageBarButton.isEnabled = false
+        let clientNameButton = UIButton(type: .custom)
+        guard let firstName = client?.firstName, let lastName = client?.lastName else { return }
+        let clientName = "\(firstName) \(lastName)"
+        clientNameButton.setTitle(clientName, for: .normal)
+        let clientNameBarButton = UIBarButtonItem(customView: clientNameButton)
+        clientNameButton.isEnabled = false
+        clientNameBarButton.tintColor = .white
+        navigationItem.setRightBarButtonItems([navigationBarNextButton, spacerButtonBarItem, clientImageBarButton, clientNameBarButton], animated: false)
     }
     
     // MARK: - Configure Embedded VCs
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "toEmbeddedNavigationVC" {
             guard let navigationTVC = segue.destination as? PresentationBaseViewControllerNavigationPane else {return}
             navigationTVC.delegate = self
