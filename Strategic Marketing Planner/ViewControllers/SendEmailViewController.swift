@@ -9,9 +9,12 @@
 import UIKit
 import MessageUI
 
-class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate, PriceLabelable {
     
-    var client: Client?
+    var clientController: ClientController = ClientController.shared
+    var client : Client? {
+        return ClientController.shared.currentClient
+    }
     
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -24,26 +27,73 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateTextView()
-    }
-    
-    func populateTextView() {
-        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with ***SALESMAN*** about your marketing plan. This is the information we have based on your conversation.\n\nBudget: ***BUDGET*** per month\n\(String(describing: client?.marketingPlan))\n\nTotal cost: ***TOTAL COST*** per month"
         formatTextView()
         formatConfirmationButton()
         formatHeaderLabel()
-        formatTotalPriceLabel()
+        updateTotalPriceLabel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        formatTextView()
+        updateTotalPriceLabel()
     }
     
     func formatTextView() {
-        summaryTextView.layer.borderColor = UIColor.gray.cgColor
-        summaryTextView.layer.borderWidth = 0.5
-        summaryTextView.layer.cornerRadius = 5
+        guard let client = client else { print("No client passed to email view"); return }
+        guard let marketingPlan = client.marketingPlan, let planCostString = NumberHelper.currencyString(for: marketingPlan.cost) else { return }
+        guard let monthlyBudget = client.monthlyBudget, let budgetString = NumberHelper.currencyString(for: monthlyBudget as Decimal) else { return }
         summaryTextView.contentInset.left = 15
         summaryTextView.contentInset.right = 15
         summaryTextView.contentInset.top = 10
         summaryTextView.contentInset.bottom = 10
-        summaryTextView.text = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: ***BUDGET*** per month\n***MARKETINGPLAN***\n\nTotal cost: ***TOTAL COST*** per month"
+        let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n\n"
+        let lastSection = "\nTotal cost: \(planCostString) per month"
+        summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
+    }
+    
+    func printExternalOptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let options = marketingPlan.getOptionsForCategory(.external, includeOnlyActive: true)
+        guard let name = options.first?.name, let price = options.first?.price else { return "" }
+        let priceKey = Int(truncating: price)
+        guard let packageItems = ProductsInfo.externalMarketingDictionary[name]?[priceKey] else { return "" }
+        if packageItems.count != 0 {
+            for item in packageItems {
+                optionsList.append(item)
+                optionsList.append("\n")
+            }
+        }
+        return optionsList
+    }
+    
+    func printInternalOptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let options = marketingPlan.getOptionsForCategory(.internal, includeOnlyActive: true)
+        if options.count != 0 {
+            for option in options {
+                guard let name = option.name else { return "" }
+                optionsList.append(name)
+                optionsList.append("\n")
+            }
+        }
+        return optionsList
+    }
+    
+    func printFoundationOptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let options = marketingPlan.getOptionsForCategory(.foundation, includeOnlyActive: true)
+        if options.count != 0 {
+            for option in options {
+                guard let name = option.name else { return "" }
+                optionsList.append(name)
+                optionsList.append("\n")
+            }
+        }
+        return optionsList
     }
     
     func formatConfirmationButton() {
@@ -55,17 +105,12 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         headerLabel.textColor = .brandOrange
     }
     
-    func formatTotalPriceLabel() {
-    
-    }
-    
-    // TODO: - Format Email Content
     func composeEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mc = MFMailComposeViewController()
-            let emailSubject = "Confirmation"
+            let emailSubject = "Summary & Confirmation"
             guard let messageBody = summaryTextView.text else { return }
-            let toRecipients = ["\(client?.email ?? "")", "salesman@db.com", "corporate@db.com"]
+            let toRecipients = ["\(client?.email ?? "")", "sheryl.dayler@henryschein.com", "bruce@dentalbranding.com"]
             mc.mailComposeDelegate = self
             mc.setSubject(emailSubject)
             mc.setMessageBody(messageBody, isHTML: false)
@@ -73,6 +118,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
             self.present(mc, animated: true, completion: nil)
         } else {
             print("Cannot send email")
+            noEmailAlert()
         }
     }
     
@@ -88,5 +134,14 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
             print("Email sent failure: \(String(describing: error?.localizedDescription))")
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func noEmailAlert() {
+        let noEmailAlert = UIAlertController(title: "Unable to send email.", message: "Please sign into an email account on your device.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+            print("Alert dismissed")
+        })
+        noEmailAlert.addAction(dismissAction)
+        self.present(noEmailAlert, animated: true, completion: nil)
     }
 }

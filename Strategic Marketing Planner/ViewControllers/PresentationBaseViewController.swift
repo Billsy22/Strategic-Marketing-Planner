@@ -14,20 +14,28 @@ protocol PresentationBaseViewControllerNavigationPane: class {
     var destinations: [String] { get set }
     
     func requestMoveToDestination(index: Int)
+    
+    func destinationsUpdated(to: [String] )
 }
 
 class PresentationBaseViewController: UIViewController, PresentationBaseViewControllerNavigationPaneDelegate {
     
-    weak var navigationPane: PresentationBaseViewControllerNavigationPane?
+    var navigationPane: PresentationBaseViewControllerNavigationPane?
     
-    var client: Client?
+    var client: Client? {
+        return ClientController.shared.currentClient
+    }
 
     @IBOutlet weak var mainContentView: UIView!
-    lazy var destinations: [(destinationName: String, destinationViewController: UIViewController)] = setupDefaultDestinations()
+    var destinations: [(destinationName: String, destinationViewController: UIViewController)] = [] {
+        didSet{
+            navigationPane?.destinationsUpdated(to: destinations.map({$0.destinationName}))
+        }
+    }
     
     @IBOutlet var navigationBarPreviousButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarNextButton: UIBarButtonItem!
-    @IBOutlet weak var navigationBarClientButton: UIBarButtonItem!
+
     
     var currentIndex = 0
     
@@ -36,12 +44,43 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         navigationController?.navigationBar.barTintColor = UIColor.brandBlue
     }
     
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        destinations = setupDefaultDestinations()
+        createClientBarItem()
+    }
+    
+    func createClientBarItem() {
+        let spacerButton = UIButton(type: .custom)
+        let spacerButtonBarItem = UIBarButtonItem(customView: spacerButton)
+        spacerButtonBarItem.isEnabled = false
+        let clientImageButton = UIButton(type: .custom)
+        let clientImage = client?.image ?? #imageLiteral(resourceName: "clientDefaultPhoto")
+        clientImageButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        UIGraphicsBeginImageContextWithOptions(clientImageButton.frame.size, false, clientImage.scale)
+        let rect = CGRect(x: 0, y: 0, width: clientImageButton.frame.size.width, height: clientImageButton.frame.size.height)
+        UIBezierPath(roundedRect: rect, cornerRadius: rect.width/2).addClip()
+        clientImage.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let color = UIColor(patternImage: newImage!)
+        clientImageButton.backgroundColor = color
+        clientImageButton.layer.cornerRadius = clientImageButton.bounds.size.width / 2
+        clientImageButton.imageView?.contentMode = .scaleAspectFill
+        let clientImageBarButton = UIBarButtonItem(customView: clientImageButton)
+        clientImageBarButton.isEnabled = false
+        let clientNameButton = UIButton(type: .custom)
+        guard let firstName = client?.firstName, let lastName = client?.lastName else { return }
+        let clientName = "\(firstName) \(lastName)"
+        clientNameButton.setTitle(clientName, for: .normal)
+        let clientNameBarButton = UIBarButtonItem(customView: clientNameButton)
+        clientNameButton.isEnabled = false
+        clientNameBarButton.tintColor = .white
+        navigationItem.setRightBarButtonItems([navigationBarNextButton, spacerButtonBarItem, clientImageBarButton, clientNameBarButton], animated: false)
+    }
+    
     // MARK: - Configure Embedded VCs
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "toEmbeddedNavigationVC" {
             guard let navigationTVC = segue.destination as? PresentationBaseViewControllerNavigationPane else {return}
             navigationTVC.delegate = self
@@ -73,19 +112,43 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         ]
         
         navigationBarPreviousButton.setTitleTextAttributes(attrs, for: .normal)
+        
+        
     }
+    
+    
     
     private func setupDefaultDestinations() ->  [(String, UIViewController)]{
         var defaultDestinations: [(String, UIViewController)] = []
+        let brandStoryboard = UIStoryboard(name: "BrandDefinition", bundle: nil)
+        if let brandVC  = brandStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Brand Definition", brandVC))
+        }
         let growthCalculatorSB = UIStoryboard(name: "GrowthCalculator", bundle: nil)
         let growthCalculatorVC = growthCalculatorSB.instantiateViewController(withIdentifier: "growthCalculator")
         defaultDestinations.append(("Growth Calculator", growthCalculatorVC))
+        guard client != nil else { return defaultDestinations }
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
-        defaultDestinations.append(("Foundation", foundationOptionsVC))
+        defaultDestinations.append(("Foundation Options", foundationOptionsVC))
         //TODO: Replace this temporary test implementation
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
-        foundationVC.marketingOptions = MarketingPlan(targetContext: CoreDataStack.context).getOptionsForCategory(MarketingPlan.OptionCategory.foundation, includeOnlyActive: false)
+        foundationVC.category = MarketingPlan.OptionCategory.foundation
+        guard let internalVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC") as? MarketingOptionsViewController else { fatalError() }
+        internalVC.category = MarketingPlan.OptionCategory.internal
+        defaultDestinations.append(("Internal Marketing", internalVC))
+        let externalStoryboard = UIStoryboard(name: "ExternalMarketing", bundle: nil)
+        if let externalVC = externalStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("External Marketing", externalVC))
+        }
+        let summaryStoryboard = UIStoryboard(name: "SummaryAndConfirmation", bundle: nil)
+        if let summaryVC = summaryStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Summary + Confirmation", summaryVC))
+        }
+        let nextStepsStoryboard = UIStoryboard(name: "NextSteps", bundle: nil)
+        if let nextStepsVC = nextStepsStoryboard.instantiateInitialViewController(){
+            defaultDestinations.append(("Next Steps", nextStepsVC))
+        }
         return defaultDestinations
     }
     

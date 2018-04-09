@@ -6,7 +6,7 @@
 //  Copyright © 2018 Christopher Thiebaut. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 protocol ClientControllerDelegate: class {
@@ -28,14 +28,17 @@ class ClientController {
     var currentClient: Client?
     
     //MARK: - CREATE
-    func addClient(withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
-        let _ = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes)
+    @discardableResult func addClient(withFirstName firstName: String, lastName: String, practiceName: String, practiceType: Client.PracticeType, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?) -> Client {
+        let client = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes, practiceType: practiceType)
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
         save()
+        return client
     }
     
     //MARK: - UPDATE
     func setMarketingPlan(_ plan: MarketingPlan,forClient client: Client) {
         client.marketingPlan = plan
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
         save()
     }
     
@@ -46,11 +49,63 @@ class ClientController {
         }
         if options.contains(option){
             option.isActive = !option.isActive
+            client.lastModificationTimestamp = Date().timeIntervalSince1970
             save()
         }
     }
     
-    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?){
+    func updateExternalMarketingFocus(_ focus: MarketingPlan.ExternalMarketingFocus, forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.name = focus.rawValue
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateExternalMarketingBudget(_ budget: Decimal, forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.price = budget as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func activateExternalMarketing(forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.isActive = true
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func deactivateExternalMarketing(forClient client: Client){
+        guard let externalMarketingOption = client.marketingPlan?.getOptionsForCategory(.external).first else { return }
+        externalMarketingOption.isActive = false
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateStartupMarketingBudget(forClient client: Client, to price: Decimal){
+        guard let startupMarketingOption = client.marketingPlan?.getOptionsForCategory(.startup).first else { return }
+        startupMarketingOption.price = price as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        startupMarketingOption.isActive = price > 0
+        save()
+    }
+    
+    func updateB2BMarketingFocus(forClient client: Client, to focus: MarketingPlan.BusinessToBusinessMarketing){
+        guard let b2bMarketingOption = client.marketingPlan?.getOptionsForCategory(.businessToBusiness).first else { return }
+        b2bMarketingOption.name = focus.rawValue
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateB2BMarketingBudget(forClient client: Client, to price: Decimal){
+        guard let b2bMarketingOption = client.marketingPlan?.getOptionsForCategory(.businessToBusiness).first else { return }
+        b2bMarketingOption.price = price as NSDecimalNumber
+        b2bMarketingOption.isActive = price > 0
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, practiceType: Client.PracticeType, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
         client.firstName = firstName
         client.lastName = lastName
         client.practiceName = practiceName
@@ -60,13 +115,39 @@ class ClientController {
         client.city = city
         client.state = state
         client.zip = zip
+        client.practiceType = practiceType.rawValue
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
         save()
     }
     
+    func updateMonthlyBudget(for client: Client, withAmount amount: Decimal) {
+        client.monthlyBudget = amount as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateCurrentProduction(for client: Client, withAmount amount: Decimal) {
+        client.currentProduction = amount as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateProductionGoal(for client: Client, withAmount amount: Decimal) {
+        client.productionGoal = amount as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateImage(for client: Client, toImage image: UIImage){
+        client.imageData = UIImageJPEGRepresentation(image, 1)
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
     
     //MARK: - Delete
     func removeClient(_ client: Client) {
         context.delete(client)
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
         save()
     }
     

@@ -166,7 +166,7 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         }
     }
     
-    func clientWasAdded() {
+    func presentationStarting() {
         tabBarController?.selectedIndex = 1
     }
     
@@ -179,7 +179,6 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         })
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.clientController.removeClient(client)
-            self.dismiss(animated: true, completion: nil)
             print("Client Deleted")
         }
         deleteConfirmationAlert.addAction(cancelAction)

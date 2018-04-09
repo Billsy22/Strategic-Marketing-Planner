@@ -32,7 +32,8 @@ class ProductsCollectionViewController: UICollectionViewController {
             let cell = sender as? ProductCollectionViewCell,
             let indexPath = collectionView?.indexPath(for: cell) {
             let detailVC = segue.destination as? ProductDetailPDFViewController
-            let product = productsArray[indexPath.row]
+            let sortedArray = productsArray.sorted()
+            let product = sortedArray[indexPath.row]
             detailVC?.product = product
         }
     }
@@ -44,7 +45,8 @@ class ProductsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        cell.productNameLabel.text = productsArray[indexPath.row]
+        let sortedArray = productsArray.sorted()
+        cell.productNameLabel.text = sortedArray[indexPath.row]
         cell.productImageView.image = #imageLiteral(resourceName: "genericProductImage")
         return cell
     }

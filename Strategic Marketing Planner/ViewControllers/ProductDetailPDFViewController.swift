@@ -20,6 +20,12 @@ class ProductDetailPDFViewController: UIViewController {
         formatNavigationBar()
         loadPDF()
         configurePDFView()
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     func formatNavigationBar() {
@@ -44,11 +50,11 @@ class ProductDetailPDFViewController: UIViewController {
         
         switch Devices.currentDevice {
         case .iPadPro9Inch, .otheriPad:
-            pdfView.scaleFactor = 0.499
+            pdfView.scaleFactor = 0.497
         case .iPadPro10Inch:
-            pdfView.scaleFactor = 0.54
+            pdfView.scaleFactor = 0.539
         case .iPadPro12Inch:
-            pdfView.scaleFactor = 0.665
+            pdfView.scaleFactor = 0.664
         default:
              break
         }
