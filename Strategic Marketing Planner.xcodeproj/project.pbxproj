@@ -88,6 +88,8 @@
 		DF4EA3F1206D3B7F00C44A83 /* Video & Photo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DF4EA3CA206D3ACA00C44A83 /* Video & Photo.pdf */; };
 		DF64C416206EE9CC00E27046 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64C415206EE9CC00E27046 /* Devices.swift */; };
 		DF6E9DE7207BC5EF000071F7 /* Strategic Marketing PlannerTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E7E2069780900B2B1EE /* Strategic Marketing PlannerTests.xctest */; };
+		DF6E9DE9207BFFA9000071F7 /* B2B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6E9DE8207BFFA9000071F7 /* B2B.storyboard */; };
+		DF6E9DEB207C0091000071F7 /* B2BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6E9DEA207C0091000071F7 /* B2BViewController.swift */; };
 		DF883CAE20729DE80061A78C /* GrowthCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF883CAD20729DE80061A78C /* GrowthCalculator.swift */; };
 		DF883CB42073DA910061A78C /* SummaryAndConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */; };
 		DF94944F207426170035513F /* NextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94944E207426170035513F /* NextStepsViewController.swift */; };
@@ -210,6 +212,8 @@
 		DF4EA3D6206D3ACC00C44A83 /* Postcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Postcard.pdf; sourceTree = "<group>"; };
 		DF4EA3D7206D3ACC00C44A83 /* Custom Logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Custom Logo.pdf"; sourceTree = "<group>"; };
 		DF64C415206EE9CC00E27046 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
+		DF6E9DE8207BFFA9000071F7 /* B2B.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B2B.storyboard; sourceTree = "<group>"; };
+		DF6E9DEA207C0091000071F7 /* B2BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BViewController.swift; sourceTree = "<group>"; };
 		DF883CAD20729DE80061A78C /* GrowthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculator.swift; sourceTree = "<group>"; };
 		DF883CAF2072D52A0061A78C /* NextSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextSteps.storyboard; sourceTree = "<group>"; };
 		DF883CB12073D9880061A78C /* NextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 				DF949452207526010035513F /* ExternalMarketing.storyboard */,
 				16FC46DA207679B300CC99D0 /* PracticeTypeDropDownButton.swift */,
 				DF9494562075BF900035513F /* BrandDefinition.storyboard */,
+				DF6E9DE8207BFFA9000071F7 /* B2B.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				DF949454207529B60035513F /* ExternalMarketingViewController.swift */,
 				16FC46D6207545D800CC99D0 /* SplashScreenViewController.swift */,
 				B3D190DA2076D240007662EE /* PriceLabelable.swift */,
+				DF6E9DEA207C0091000071F7 /* B2BViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				DF4EA3DD206D3B7F00C44A83 /* Call Training.pdf in Resources */,
 				DF4EA3DE206D3B7F00C44A83 /* Case Acceptance.pdf in Resources */,
 				DF4EA3DF206D3B7F00C44A83 /* Custom Logo.pdf in Resources */,
+				DF6E9DE9207BFFA9000071F7 /* B2B.storyboard in Resources */,
 				DF4EA3E0206D3B7F00C44A83 /* Door Hangers.pdf in Resources */,
 				DF4EA3E1206D3B7F00C44A83 /* Email Campaign.pdf in Resources */,
 				DF4EA3E2206D3B7F00C44A83 /* Facebook Jumpstart.pdf in Resources */,
@@ -642,6 +649,7 @@
 				DF01877D207282E300131358 /* SendEmailViewController.swift in Sources */,
 				B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */,
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
+				DF6E9DEB207C0091000071F7 /* B2BViewController.swift in Sources */,
 				16FC46D7207545D800CC99D0 /* SplashScreenViewController.swift in Sources */,
 				16BC2368206AD8730027C2EE /* DateHelper.swift in Sources */,
 				B334D033206B19EE00FE87F0 /* GrowthCalculatorViewController.swift in Sources */,

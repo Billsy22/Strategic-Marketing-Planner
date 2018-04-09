@@ -221,6 +221,7 @@ extension AddClientModalViewController {
         phoneTextField.text = result
     }
     
+    // RegEx Keys
     func validatePhoneNumber(inputPhone: String) -> Bool {
         let phoneRegex = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: inputPhone)
