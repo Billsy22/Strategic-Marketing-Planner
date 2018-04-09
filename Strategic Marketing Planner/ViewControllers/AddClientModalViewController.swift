@@ -328,6 +328,8 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
+        guard let client = client else { return }
+        ClientController.shared.updateImage(for: client, toImage: clientImage)
         dismiss(animated: true, completion: nil)
     }
     
@@ -358,6 +360,11 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if let client = client {
+            let selectedPracticeType = "\(Client.practiceTypes[row])"
+            client.practiceType = selectedPracticeType.lowercased()
+            practiceTypeButton.setTitle(selectedPracticeType.capitalized, for: .normal)
+        }
         print("item selected")
     }
 }
