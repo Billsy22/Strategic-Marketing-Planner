@@ -99,7 +99,8 @@ class BarGraphView: UIView, Graph {
             xValues.append(barData.data)
         }
         if xValues.max() == 0 {
-            maxX = 1
+            maxX = 4
+            setTransform(minX: minX, maxX: graphMaxValue)
         } else {
             maxX = xValues.max() ?? 1
             deltaX =  graphMaxValue / xGraduationCount
