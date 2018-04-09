@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PriceLableable {
+class ExternalMarketingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PriceLabelable {
     
     var client: Client? {
         return clientController.currentClient

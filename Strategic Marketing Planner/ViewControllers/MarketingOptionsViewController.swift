@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MarketingOptionsViewController: UIViewController, PriceLableable {
+class MarketingOptionsViewController: UIViewController, PriceLabelable {
 
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
