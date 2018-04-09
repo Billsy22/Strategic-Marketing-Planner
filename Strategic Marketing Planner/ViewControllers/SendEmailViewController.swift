@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate, PriceLableable {
+class SendEmailViewController: UIViewController, MFMailComposeViewControllerDelegate, PriceLabelable {
     
     var clientController: ClientController = ClientController.shared
     var client : Client? {
