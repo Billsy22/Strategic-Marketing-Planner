@@ -82,6 +82,29 @@ class ClientController {
         save()
     }
     
+    func updateStartupMarketingBudget(forClient client: Client, to price: Decimal){
+        guard let startupMarketingOption = client.marketingPlan?.getOptionsForCategory(.startup).first else { return }
+        startupMarketingOption.price = price as NSDecimalNumber
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        startupMarketingOption.isActive = price > 0
+        save()
+    }
+    
+    func updateB2BMarketingFocus(forClient client: Client, to focus: MarketingPlan.BusinessToBusinessMarketing){
+        guard let b2bMarketingOption = client.marketingPlan?.getOptionsForCategory(.businessToBusiness).first else { return }
+        b2bMarketingOption.name = focus.rawValue
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
+    func updateB2BMarketingBudget(forClient client: Client, to price: Decimal){
+        guard let b2bMarketingOption = client.marketingPlan?.getOptionsForCategory(.businessToBusiness).first else { return }
+        b2bMarketingOption.price = price as NSDecimalNumber
+        b2bMarketingOption.isActive = price > 0
+        client.lastModificationTimestamp = Date().timeIntervalSince1970
+        save()
+    }
+    
     func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, practiceType: Client.PracticeType, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
         client.firstName = firstName
         client.lastName = lastName

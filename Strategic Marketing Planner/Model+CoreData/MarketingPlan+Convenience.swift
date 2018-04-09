@@ -40,27 +40,10 @@ extension MarketingPlan {
         case .general:
             setupGeneralPracticeMarketingOptions()
         case .specialty:
-            options = setupDefaultMarketingOptions()
+            setupSpecialtyMarketingOptions()
         case .startup:
-            options = setupDefaultMarketingOptions()
+            setupStartupMarketingOptions()
         }
-    }
-    
-    private func setupDefaultMarketingOptions() -> NSOrderedSet{
-        let options = NSMutableOrderedSet()
-        let customLogo = MarketingOption(name: "Custom Logo", price: 500, category: .foundation, description: nil, isActive: false)
-        let logoIndex = ProductController.shared.products.index { (product) -> Bool in
-            return product.title == customLogo.name
-        }
-        customLogo.descriptionPageIndex = logoIndex as NSNumber?
-        let responsiveWebsite = MarketingOption(name: "Responsive Website", price: 1000, category: .foundation)
-        let hosting = MarketingOption(name: "12 Months of Hosting", price: 50, category: .foundation)
-        let videoAndPhotography = MarketingOption(name: "Video and Photography", price: 1000, category: .foundation)
-        options.add(customLogo)
-        options.add(responsiveWebsite)
-        options.add(hosting)
-        options.add(videoAndPhotography)
-        return options
     }
     
     private func setupGeneralPracticeMarketingOptions()  {
@@ -71,7 +54,7 @@ extension MarketingPlan {
             }
             let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
             options.add(marketingOption)
-            }
+        }
         for productInfo in ProductsInfo.internalMarketingProduct {
             let descriptionIndex = ProductController.shared.products.index { (product) -> Bool in
                 return product.title == productInfo.name
@@ -82,6 +65,27 @@ extension MarketingPlan {
         let externalMarketingOption = MarketingOption(name: "no option selected", price: 0, category: .external, description: nil, isActive: true, extendedDescriptionIndex: nil)
         addToOptions(externalMarketingOption)
         addToOptions(options)
+    }
+    
+    private func setupStartupMarketingOptions() {
+        let startupOption = MarketingOption(name: "Startup Marketing Package", price: 0, category: .startup, isActive: false)
+        addToOptions(startupOption)
+    }
+    
+    private func setupSpecialtyMarketingOptions() {
+        let options = NSMutableOrderedSet()
+        for productInfo in ProductsInfo.foundationProduct {
+            let descriptionIndex = ProductController.shared.products.index { (product) -> Bool in
+                return product.title == productInfo.name
+            }
+            let marketingOption = MarketingOption(name: productInfo.name, price: productInfo.price, category: .foundation, description: nil, isActive: false, extendedDescriptionIndex: descriptionIndex)
+            options.add(marketingOption)
+        }
+        let b2bMarketingOption = MarketingOption(name: "none", price: 0, category: .businessToBusiness, isActive: false)
+        let externalMarketingOption = MarketingOption(name: "no option selected", price: 0, category: .external, description: nil, isActive: true, extendedDescriptionIndex: nil)
+        addToOptions(b2bMarketingOption)
+        addToOptions(options)
+        addToOptions(externalMarketingOption)
     }
     
     func getOptionsForCategory(_ category: OptionCategory?, includeOnlyActive: Bool = false) -> [MarketingOption]{
