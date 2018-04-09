@@ -26,6 +26,8 @@
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */; };
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
+		B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */; };
+		B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C23207BCF24004258DA /* CloudKitSynchable.swift */; };
 		B3998E1D2069BC5200C4F02E /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		B3998E202069C72400C4F02E /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3D190D72076882C007662EE /* NumberHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D190D62076882C007662EE /* NumberHelper.swift */; };
@@ -158,6 +160,8 @@
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
 		B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumericKeyboard.xib; sourceTree = "<group>"; };
 		B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
+		B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+Convenience.swift"; sourceTree = "<group>"; };
+		B3615C23207BCF24004258DA /* CloudKitSynchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSynchable.swift; sourceTree = "<group>"; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 				B3F55E7820696DB800B2B1EE /* CoreDataStack.swift */,
 				E1033B78206BE9EC000EC27B /* Product.swift */,
 				B32DC5FE2071E55A002E68AF /* MarketingPlan+Convenience.swift */,
+				B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */,
+				B3615C23207BCF24004258DA /* CloudKitSynchable.swift */,
 			);
 			path = "Model+CoreData";
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				E1033B7D206C4702000EC27B /* ProductController.swift in Sources */,
 				B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */,
 				B3F55E7920696DB800B2B1EE /* CoreDataStack.swift in Sources */,
+				B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */,
 				E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */,
 				16FC46DB207679B300CC99D0 /* PracticeTypeDropDownButton.swift in Sources */,
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
@@ -627,6 +634,7 @@
 				DF949455207529B60035513F /* ExternalMarketingViewController.swift in Sources */,
 				E1033B79206BE9EC000EC27B /* Product.swift in Sources */,
 				DF64C416206EE9CC00E27046 /* Devices.swift in Sources */,
+				B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */,
 				B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,

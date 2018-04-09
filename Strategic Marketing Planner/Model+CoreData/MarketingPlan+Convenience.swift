@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 extension MarketingPlan {
     
@@ -107,16 +108,25 @@ extension MarketingPlan {
     
 }
 
-extension MarketingOption {
+extension MarketingPlan: CloudKitSynchable {
     
-    fileprivate convenience init(name: String, price: Decimal, category: MarketingPlan.OptionCategory, description: String? = nil, isActive: Bool = false, extendedDescriptionIndex: Int? = nil, context: NSManagedObjectContext = CoreDataStack.context) {
-        self.init(context: context)
-        self.name = name
-        self.category = category.rawValue
-        self.summary = description
-        self.descriptionPageIndex = extendedDescriptionIndex as NSNumber?
-        self.isActive = isActive
-        self.price = price as NSDecimalNumber
+    struct Relationships {
+        static let client = "Client"
+        //Relationship to marketinging option not needed, as it is the job of the marketing option to have a reference to its parent.
+    }
+    
+    func addCKReferencesToCKRecord(_ record: CKRecord) {
+        guard let client = client, let clientRecord = client.asCKRecord else { return }
+        let reference = CKReference(record: clientRecord, action: .deleteSelf)
+        record[Relationships.client] = reference
+    }
+    
+    static func initializeRelationshipsFromReferences(_ record: CKRecord, model: MarketingPlan) -> Bool {
+        guard let clientReference = record[Relationships.client] as? CKReference else { return false }
+        let clientRecordName = clientReference.recordID.recordName
+        guard let client = ClientController.shared.clients.first(where: {$0.recordName == clientRecordName}) else { return false }
+        ClientController.shared.setMarketingPlan(model, forClient: client)
+        return true
     }
 
 }
