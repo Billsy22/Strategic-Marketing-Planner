@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gH2-mq-TT4">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="vHk-hH-qXa">
+            <objects>
+                <viewController id="gH2-mq-TT4" customClass="B2BViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5iM-jD-qYO">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-dl-jif">
+                                <rect key="frame" x="50" y="40" width="924" height="73.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="lTp-4v-ng3">
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Business To Business Marketing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx8-Np-2zI">
+                                                <rect key="frame" x="0.0" y="0.0" width="821" height="44.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEW-R1-nGz">
+                                                <rect key="frame" x="821" y="18" width="103" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your audience (one or both)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2y-Hy-owh">
+                                        <rect key="frame" x="0.0" y="49.5" width="311.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lTp-4v-ng3" firstAttribute="top" secondItem="9fc-dl-jif" secondAttribute="top" id="cIc-xI-hbZ"/>
+                                    <constraint firstItem="lTp-4v-ng3" firstAttribute="leading" secondItem="9fc-dl-jif" secondAttribute="leading" id="k9F-1Y-opf"/>
+                                    <constraint firstAttribute="trailing" secondItem="lTp-4v-ng3" secondAttribute="trailing" id="kPH-kU-DSf"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z0c-ks-qTz">
+                                <rect key="frame" x="50" y="133" width="894" height="125"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="mZj-di-vOn"/>
+                                </constraints>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a professional referral marketing budget" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-FR-iFs">
+                                <rect key="frame" x="50" y="308" width="894" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-c1-KXQ">
+                                <rect key="frame" x="50" y="352" width="894" height="366"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9fc-dl-jif" firstAttribute="leading" secondItem="o0h-vC-qhi" secondAttribute="leading" constant="50" id="64O-g8-71O"/>
+                            <constraint firstItem="z0c-ks-qTz" firstAttribute="top" secondItem="9fc-dl-jif" secondAttribute="bottom" constant="20" id="AIW-a3-4UX"/>
+                            <constraint firstItem="o0h-vC-qhi" firstAttribute="trailing" secondItem="z0c-ks-qTz" secondAttribute="trailing" constant="80" id="Kbc-P4-4a9"/>
+                            <constraint firstItem="o0h-vC-qhi" firstAttribute="trailing" secondItem="p2b-FR-iFs" secondAttribute="trailing" constant="80" id="Kfk-oU-HDP"/>
+                            <constraint firstItem="z0c-ks-qTz" firstAttribute="leading" secondItem="o0h-vC-qhi" secondAttribute="leading" constant="50" id="MfO-8n-KuP"/>
+                            <constraint firstItem="WGJ-c1-KXQ" firstAttribute="top" secondItem="p2b-FR-iFs" secondAttribute="bottom" constant="20" id="Sx7-vS-TWT"/>
+                            <constraint firstItem="o0h-vC-qhi" firstAttribute="trailing" secondItem="WGJ-c1-KXQ" secondAttribute="trailing" constant="80" id="Twu-zI-8vf"/>
+                            <constraint firstItem="z0c-ks-qTz" firstAttribute="top" secondItem="9fc-dl-jif" secondAttribute="bottom" constant="20" id="dQg-x6-i0p"/>
+                            <constraint firstItem="p2b-FR-iFs" firstAttribute="top" secondItem="z0c-ks-qTz" secondAttribute="bottom" constant="50" id="nv2-SO-BzP"/>
+                            <constraint firstItem="o0h-vC-qhi" firstAttribute="trailing" secondItem="9fc-dl-jif" secondAttribute="trailing" constant="50" id="pqH-bF-l1u"/>
+                            <constraint firstItem="WGJ-c1-KXQ" firstAttribute="leading" secondItem="o0h-vC-qhi" secondAttribute="leading" constant="50" id="qWo-Zo-on4"/>
+                            <constraint firstItem="9fc-dl-jif" firstAttribute="top" secondItem="o0h-vC-qhi" secondAttribute="top" constant="20" id="sWq-XW-0iF"/>
+                            <constraint firstItem="p2b-FR-iFs" firstAttribute="leading" secondItem="o0h-vC-qhi" secondAttribute="leading" constant="50" id="vLj-Kx-01l"/>
+                            <constraint firstItem="o0h-vC-qhi" firstAttribute="bottom" secondItem="WGJ-c1-KXQ" secondAttribute="bottom" constant="50" id="zHa-AR-yfN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o0h-vC-qhi"/>
+                    </view>
+                    <connections>
+                        <outlet property="b2bTableView" destination="z0c-ks-qTz" id="Mxc-fu-gfY"/>
+                        <outlet property="headerLabel" destination="sx8-Np-2zI" id="bQr-0e-Tmr"/>
+                        <outlet property="referralMarketingTableview" destination="WGJ-c1-KXQ" id="gIf-RW-Sj0"/>
+                        <outlet property="totalPriceLabel" destination="yEW-R1-nGz" id="ycK-kH-lDr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CyX-62-Xh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-94" y="82"/>
+        </scene>
+    </scenes>
+</document>
