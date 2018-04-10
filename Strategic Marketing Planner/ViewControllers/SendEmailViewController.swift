@@ -96,6 +96,13 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         return optionsList
     }
     
+    func printStartupPackage() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionString = ""
+        let option = marketingPlan.getOptionsForCategory(.startup, includeOnlyActive: true)
+        return optionString
+    }
+    
     func formatConfirmationButton() {
         sendConfirmationEmailButton.layer.cornerRadius = 5
         sendConfirmationEmailButton.backgroundColor = .brandOrange

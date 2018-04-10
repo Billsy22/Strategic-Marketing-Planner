@@ -19,7 +19,7 @@ protocol PresentationBaseViewControllerNavigationPane: class {
 }
 
 protocol CustomNavigationController: class {
-    func insertNewDestination(viewControllerName: String, storyboardName: String, andStoryboardId id: String)
+    func insertNewDestination(afterViewController viewController: UIViewController, viewControllerName: String, storyboardName: String, andStoryboardId id: String)
 }
 
 class PresentationBaseViewController: UIViewController, PresentationBaseViewControllerNavigationPaneDelegate {
@@ -216,14 +216,18 @@ extension PresentationBaseViewController: CustomNavigationController {
         destinations.append(("Foundation Options", foundationOptionsVC))
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
         foundationVC.category = MarketingPlan.OptionCategory.foundation
+        destinations.append(contentsOf: setupFinalDestinations())
         return destinations
     }
     
     // MARK: -  Delegate Methods
-    func insertNewDestination(viewControllerName: String, storyboardName: String, andStoryboardId id: String) {
+    func insertNewDestination(afterViewController viewController: UIViewController, viewControllerName: String, storyboardName: String, andStoryboardId id: String) {
+        let optionalIndex = self.destinations.index { (destination) -> Bool in
+            return destination.destinationViewController == viewController
+        }
+        guard let index = optionalIndex else { return }
         let storyboardToAdd = UIStoryboard(name: storyboardName, bundle: nil)
         let viewControllerToAdd = storyboardToAdd.instantiateViewController(withIdentifier: id)
-        self.destinations.append((viewControllerName, viewControllerToAdd))
-        self.destinations.append(contentsOf: setupFinalDestinations())
+        self.destinations.insert((viewControllerName, viewControllerToAdd), at: index)
     }
 }
