@@ -12,7 +12,7 @@
         <!--Startup Marketing Options View Controller-->
         <scene sceneID="udO-nL-nii">
             <objects>
-                <viewController id="Nqe-0q-M93" customClass="StartupMarketingOptionsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartupMarketingOptionsViewController" id="Nqe-0q-M93" customClass="StartupMarketingOptionsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="89t-6F-B4W">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

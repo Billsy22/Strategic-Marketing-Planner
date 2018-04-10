@@ -19,11 +19,11 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     var client: Client? {
         return clientController.currentClient
     }
-    let startUpOptions: DictionaryLiteral<String, Int> = ["Option 1": 1250, "Option 2": 2250, "Option 3": 3250, "Option 4": 4500, "Option 5": 5500]
+    let startUpOptions: DictionaryLiteral<String, Decimal> = ["Option 1": 1250, "Option 2": 2250, "Option 3": 3250, "Option 4": 4500, "Option 5": 5500]
     var optionNames: [String] {
         return startUpOptions.map({$0.key})
     }
-    var optionPrices: [Int] {
+    var optionPrices: [Decimal] {
         return startUpOptions.map({$0.value})
     }
 
@@ -49,9 +49,10 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     }
     
     // MARK: -  DRY helper methods
-    func makeAListOfWhatsIncluded(forOption option: Int) -> String {
+    func makeAListOfWhatsIncluded(forOption option: Decimal) -> String {
         var list = ""
-        guard let productsForSelectedOption = ProductsInfo.startupMarketingDictionary[option] else { return "" }
+        let indexOfOption = NSDecimalNumber(decimal: option).intValue
+        guard let productsForSelectedOption = ProductsInfo.startupMarketingDictionary[indexOfOption] else { return "" }
         for product in productsForSelectedOption {
             list.append(product)
             list.append("\n")
@@ -73,7 +74,7 @@ extension StartupMarketingOptionsViewController: UITableViewDataSource, UITableV
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MarketingOptionTableViewCell.preferredReuseID) as? MarketingOptionTableViewCell else { fatalError("Unexpected cell type found. Cannot set up marketing options table") }
         cell.delegate = self
         cell.nameLabel.text = optionNames[indexPath.row]
-        cell.descriptionLabel.text = "$\(optionPrices[indexPath.row])"
+        cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: optionPrices[indexPath.row]) ?? "$0")"
         return cell
     }
 }
@@ -87,31 +88,31 @@ extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDel
             switch options.key {
             case "Option 1":
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.value))
+                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
                 let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             case "Option 2":
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.value))
+                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
                 let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             case "Option 3":
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.value))
+                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
                 let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             case "Option 4":
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.value))
+                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
                 let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             case "Option 5":
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.value))
+                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
                 let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
