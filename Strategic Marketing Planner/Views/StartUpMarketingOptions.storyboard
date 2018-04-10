@@ -18,19 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-DK-SsE">
-                                <rect key="frame" x="50" y="20" width="924" height="97.5"/>
+                                <rect key="frame" x="50" y="20" width="924" height="86"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="zwO-GI-0tg">
-                                        <rect key="frame" x="0.0" y="0.0" width="924" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Startup Marketing Packages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-Qq-J8Y">
-                                                <rect key="frame" x="0.0" y="24" width="821" height="44.5"/>
+                                                <rect key="frame" x="0.0" y="12.5" width="821" height="44.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0/$5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA4-vA-NOA">
-                                                <rect key="frame" x="821" y="42" width="103" height="26.5"/>
+                                                <rect key="frame" x="821" y="30.5" width="103" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your marketing package" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wb-sF-PzL">
-                                        <rect key="frame" x="0.0" y="73.5" width="267.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="62" width="267.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,28 +51,27 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oNl-xy-bxh">
-                                <rect key="frame" x="50" y="137.5" width="894" height="367"/>
+                                <rect key="frame" x="50" y="126" width="894" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="367" id="ofs-aT-FPc"/>
+                                    <constraint firstAttribute="height" constant="250" id="Z2G-yY-XVI"/>
                                 </constraints>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JGM-xj-DM5">
-                                <rect key="frame" x="65" y="554" width="894.5" height="164"/>
+                                <rect key="frame" x="65.5" y="430" width="894" height="288"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-VO-TBB">
-                                        <rect key="frame" x="0.0" y="0.0" width="894.5" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 per month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJn-f9-I6b">
-                                        <rect key="frame" x="0.0" y="128" width="894.5" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Package Includes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJn-f9-I6b">
+                                        <rect key="frame" x="0.0" y="0.0" width="894" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-VO-TBB">
+                                        <rect key="frame" x="0.0" y="24" width="894" height="264"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="aJn-f9-I6b" firstAttribute="width" secondItem="JGM-xj-DM5" secondAttribute="width" id="FI6-Jt-eAy"/>
@@ -82,21 +81,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ufj-eY-n99" firstAttribute="bottom" secondItem="JGM-xj-DM5" secondAttribute="bottom" constant="50" id="1GT-tO-nfd"/>
-                            <constraint firstItem="JGM-xj-DM5" firstAttribute="top" secondItem="oNl-xy-bxh" secondAttribute="bottom" constant="50" id="30L-4Z-uPT"/>
+                            <constraint firstItem="oNl-xy-bxh" firstAttribute="top" secondItem="cjg-DK-SsE" secondAttribute="bottom" constant="20" id="HiX-Lc-ZBc"/>
+                            <constraint firstItem="JGM-xj-DM5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oNl-xy-bxh" secondAttribute="bottom" constant="54.5" id="J1a-tF-KPi"/>
                             <constraint firstAttribute="trailing" secondItem="cjg-DK-SsE" secondAttribute="trailing" constant="50" id="NWm-QB-SJJ"/>
-                            <constraint firstItem="oNl-xy-bxh" firstAttribute="top" secondItem="cjg-DK-SsE" secondAttribute="bottom" constant="20" id="Qsc-oc-yAb"/>
                             <constraint firstItem="cjg-DK-SsE" firstAttribute="top" secondItem="89t-6F-B4W" secondAttribute="top" constant="20" id="VVB-EB-Po6"/>
                             <constraint firstItem="JGM-xj-DM5" firstAttribute="width" secondItem="oNl-xy-bxh" secondAttribute="width" id="axi-Ya-Ugy"/>
+                            <constraint firstItem="JGM-xj-DM5" firstAttribute="top" secondItem="oNl-xy-bxh" secondAttribute="bottom" constant="54" id="bTq-dA-CKR"/>
                             <constraint firstItem="oNl-xy-bxh" firstAttribute="leading" secondItem="ufj-eY-n99" secondAttribute="leading" constant="50" id="e00-LM-Evs"/>
                             <constraint firstItem="ufj-eY-n99" firstAttribute="trailing" secondItem="oNl-xy-bxh" secondAttribute="trailing" constant="80" id="eib-ai-MRg"/>
                             <constraint firstItem="JGM-xj-DM5" firstAttribute="centerX" secondItem="89t-6F-B4W" secondAttribute="centerX" id="mtZ-pL-shS"/>
                             <constraint firstItem="cjg-DK-SsE" firstAttribute="leading" secondItem="89t-6F-B4W" secondAttribute="leading" constant="50" id="wW1-dz-bpO"/>
+                            <constraint firstItem="ufj-eY-n99" firstAttribute="bottom" secondItem="JGM-xj-DM5" secondAttribute="bottom" constant="50" id="ycH-aT-PxY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ufj-eY-n99"/>
                     </view>
                     <connections>
-                        <outlet property="costPerMonthLabel" destination="aJn-f9-I6b" id="mVr-zV-S53"/>
                         <outlet property="headerLabel" destination="hMn-Qq-J8Y" id="a6q-RJ-8wq"/>
                         <outlet property="marketingOptionsTableView" destination="oNl-xy-bxh" id="712-ZT-dnB"/>
                         <outlet property="totalPriceLabel" destination="oA4-vA-NOA" id="Q8F-Q7-Kgk"/>
