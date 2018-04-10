@@ -214,6 +214,11 @@ extension PresentationBaseViewController: CustomNavigationController {
         let marketingOptionSB = UIStoryboard(name: "MarketingOptions", bundle: nil)
         let foundationOptionsVC = marketingOptionSB.instantiateViewController(withIdentifier: "marketingOptionsVC")
         destinations.append(("Foundation Options", foundationOptionsVC))
+        let businessToBusinessSB = UIStoryboard(name: "B2B", bundle: nil)
+        if let businessToBusinessVC = businessToBusinessSB.instantiateViewController(withIdentifier: "B2BViewController") as? B2BViewController {
+            businessToBusinessVC.customNavigationController = self
+            destinations.append(("Business to Business", businessToBusinessVC))
+        }
         guard let foundationVC = foundationOptionsVC as? MarketingOptionsViewController else { fatalError() }
         foundationVC.category = MarketingPlan.OptionCategory.foundation
         destinations.append(contentsOf: setupFinalDestinations())

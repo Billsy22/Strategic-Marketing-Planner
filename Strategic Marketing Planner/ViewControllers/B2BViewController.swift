@@ -9,8 +9,8 @@
 import UIKit
 
 class B2BViewController: UIViewController, PriceLabelable {
-    
-    var clientController = ClientController()
+    var customNavigationController: CustomNavigationController?
+    var clientController = ClientController.shared
     var client: Client? {
         return clientController.currentClient
     }
@@ -32,18 +32,18 @@ class B2BViewController: UIViewController, PriceLabelable {
     let referralMarketingBothOptionPrices: [Decimal] = [750, 2000]
     var activeArray:[String] = []
     var activePriceArray:[Decimal] = []
+    var activeName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatHeader()
         formatChooseBudgetLabel()
         tableViewCustomization()
-        updateTotalPriceLabel()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateTotalPriceLabel()
         restoreState()
     }
     
@@ -62,16 +62,19 @@ class B2BViewController: UIViewController, PriceLabelable {
             chooseBudgetLabel.text = "Choose a professional referral marketing budget"
             activeArray = referralMarketingDoctorOptions
             activePriceArray = referralMarketingDoctorOptionPrices
+            activeName = "Referring Doctors"
             referralMarketingTableview.reloadData()
         case .patients:
             chooseBudgetLabel.text = "Please move on to External Marketing"
             activeArray = []
             activePriceArray = []
+            activeName = "Patients"
             referralMarketingTableview.reloadData()
         case .both:
             chooseBudgetLabel.text = "Choose a professional referral marketing budget"
             activeArray = referralMarketingBothOptions
             activePriceArray = referralMarketingBothOptionPrices
+            activeName = "Both"
             referralMarketingTableview.reloadData()
         }
     }
@@ -92,6 +95,9 @@ extension B2BViewController: UITableViewDataSource, UITableViewDelegate {
             cell.nameLabel.text = b2bOptions[indexPath.row]
             cell.descriptionLabel.text = nil
             cell.delegate = self
+            if b2bOptions[indexPath.row] == activeName {
+                cell.showActive = true
+            }
             return cell
         } else if tableView == referralMarketingTableview {
             cell.nameLabel.text = activeArray[indexPath.row]
@@ -134,12 +140,14 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
                     deselectCellsReferral()
                     activeArray = []
                     activePriceArray = []
+                    customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
                     referralMarketingTableview.reloadData()
                 case .both:
                     chooseBudgetLabel.text = "Choose a professional referral marketing budget"
                     deselectCellsReferral()
                     activeArray = referralMarketingBothOptions
                     activePriceArray = referralMarketingBothOptionPrices
+                    customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
                     referralMarketingTableview.reloadData()
                 }
             }
