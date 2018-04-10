@@ -39,6 +39,7 @@ class B2BViewController: UIViewController, PriceLabelable {
         formatChooseBudgetLabel()
         tableViewCustomization()
         updateTotalPriceLabel()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
