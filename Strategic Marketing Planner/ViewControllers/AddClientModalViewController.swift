@@ -153,6 +153,7 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         formatPhone()
+        validateTextFields()
         save()
     }
     
@@ -176,9 +177,11 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         formatPhone()
-        save()
-        ClientController.shared.currentClient = self.client
-        delegate?.presentationStarting()
+        if validateTextFields() == true {
+            save()
+            ClientController.shared.currentClient = self.client
+            delegate?.presentationStarting()
+        }
     }
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
@@ -217,7 +220,7 @@ extension AddClientModalViewController {
     
     func formatPhone() {
         guard let phone = phoneTextField.text else { return }
-        let result = format(phoneNumber: phone)
+        guard let result = format(phoneNumber: phone) else { return }
         phoneTextField.text = result
     }
     
@@ -240,6 +243,32 @@ extension AddClientModalViewController {
         return zipTest
     }
     
+    func validateTextFields() -> Bool {
+        guard let phone = phoneTextField.text, let email = emailTextField.text, let zip = zipCodeTextField.text else { return false }
+        if validatePhoneNumber(inputPhone: phone) == true {
+            print("Valid phone number")
+        } else {
+            print("Invalid phone number")
+            createInvalidPhoneNumberAlert()
+            return false
+        }
+        if validateEmail(inputEmail: email) == true {
+            print("Valid email")
+        } else {
+            print("Invalid email")
+            createInvalidEmailAlert()
+            return false
+        }
+        if validateZipCode(inputZip: zip) == true {
+            print("Valid zip code")
+        } else {
+            print("Invalid zip code")
+            createInvalidZipAlert()
+            return false
+        }
+        return true
+    }
+    
     // Save Client
     func save() {
         guard let firstName = self.firstNameTextField.text,
@@ -253,27 +282,6 @@ extension AddClientModalViewController {
             let state = self.stateTextField.text,
             let practiceType = practiceTypeButton.titleLabel?.text,
             let notes = self.notesTextView.text else { return }
-        if validatePhoneNumber(inputPhone: phone) == true {
-            print("Valid phone number")
-        } else {
-            print("Invalid phone number")
-            createInvalidPhoneNumberAlert()
-            return
-        }
-        if validateEmail(inputEmail: email) == true {
-            print("Valid email")
-        } else {
-            print("Invalid email")
-            createInvalidEmailAlert()
-            return
-        }
-        if validateZipCode(inputZip: zip) == true {
-            print("Valid zip code")
-        } else {
-            print("Invalid zip code")
-            createInvalidZipAlert()
-            return
-        }
         if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty || practiceTypeButton.titleLabel?.text == "Select Type..." {
             self.createEmptyTextAlert()
             return
