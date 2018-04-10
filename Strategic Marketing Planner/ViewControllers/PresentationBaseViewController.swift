@@ -61,7 +61,7 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         case "general":
             destinations = setupGeneralPracticeTypeDestination()
         case "specialty":
-            destinations = setupDefaultStartingDestinations()
+            destinations = setupSpecialtyPraciceTypeDestination()
         default:
             return
         }
