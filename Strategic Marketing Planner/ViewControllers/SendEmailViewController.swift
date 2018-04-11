@@ -54,7 +54,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         } else if client.practiceType == "startup" {
             summaryTextView.text = firstSection + printStartupUptions() + lastSection
         } else if client.practiceType == "specialty" {
-            summaryTextView.text = firstSection + lastSection
+            summaryTextView.text = firstSection + printFoundationOptions() + printExternalOptions() + lastSection
         }
     }
     
