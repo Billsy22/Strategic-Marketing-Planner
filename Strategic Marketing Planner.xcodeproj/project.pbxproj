@@ -121,13 +121,11 @@
 		E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
-		E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1033B8F206D3D61000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
 		E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
 		E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */; };
 		E13F85AB2073ED83003764C1 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */; };
-		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D80F31206D5EB000D3F812 /* ProductList.storyboard */; };
 		E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */; };
 		E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */; };
@@ -244,7 +242,6 @@
 		E1033B7C206C4702000EC27B /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
-		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1D80F31206D5EB000D3F812 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
 		E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
 		E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailListTableViewController.swift; sourceTree = "<group>"; };
@@ -446,7 +443,6 @@
 			isa = PBXGroup;
 			children = (
 				B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */,
-				E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */,
 				168B008C206A97B9002A1580 /* AddClientModalViewController.swift */,
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
@@ -670,7 +666,6 @@
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
 				B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */,
-				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
@@ -706,7 +701,6 @@
 				E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */,
 				E1033B93206D3D78000EC27B /* ProductController.swift in Sources */,
 				E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */,
-				E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */,
 				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
 				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */,
