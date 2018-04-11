@@ -23,8 +23,6 @@ class B2BViewController: UIViewController, PriceLabelable, CustomNavigationContr
     var client: Client? {
         return clientController.currentClient
     }
-    //var client = ClientController.shared.addClient(withFirstName: "test", lastName: "test", practiceName: "test", practiceType: .specialty, phone: "8016919283", email: "test@test.com", streetAddress: "a", city: nil, state: nil, zip: "84058", initialContactDate: Date(), notes: nil)
-
 
     @IBOutlet weak var chooseBudgetLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
@@ -208,7 +206,7 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
     }
     
     func deselectCellsReferral() {
-        for index in 0..<b2bOptions.count {
+        for index in 0..<activeArray.count {
             if let tableViewCell = referralMarketingTableview.cellForRow(at: IndexPath.init(row: index, section: 0)) as? MarketingOptionTableViewCell {
                 if tableViewCell != MarketingOptionTableViewCell() {
                     tableViewCell.showActive = false
