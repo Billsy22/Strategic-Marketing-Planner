@@ -49,7 +49,13 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         summaryTextView.contentInset.bottom = 10
         let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n\n"
         let lastSection = "\nTotal cost: \(planCostString) per month"
+        if client.practiceType == "general" {
         summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
+        } else if client.practiceType == "startup" {
+            summaryTextView.text = firstSection + printStartupUptions() + lastSection
+        } else if client.practiceType == "specialty" {
+            summaryTextView.text = firstSection + lastSection
+        }
     }
     
     func printExternalOptions() -> String {
@@ -78,6 +84,19 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
                 optionsList.append(name)
                 optionsList.append("\n")
             }
+        }
+        return optionsList
+    }
+    
+    func printStartupUptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let optionCostAsDecimal = marketingPlan.cost
+        let optionCostAsInt = NSDecimalNumber(decimal: optionCostAsDecimal).intValue
+        guard let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == optionCostAsInt}) else { return "" }
+        for option in options.value {
+            optionsList.append(option)
+            optionsList.append("\n")
         }
         return optionsList
     }
