@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 
+
 protocol AddClientDelegate: class {
     func presentationStarting()
 }
@@ -16,6 +17,9 @@ protocol AddClientDelegate: class {
 class AddClientModalViewController: UIViewController {
     
     // MARK: -  Properites
+    @IBOutlet weak var zipLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var clientPhotoButton: UIButton!
@@ -50,6 +54,8 @@ class AddClientModalViewController: UIViewController {
         return picker
     }()
     
+    
+    
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +64,8 @@ class AddClientModalViewController: UIViewController {
         setUpClientPhotoButtonProperties()
         setupPickerViews()
         pickerContainer.isHidden = true
+        emailTextField.placeholder = "e.g. john@example.com"
+        phoneTextField.placeholder = "e.g. (555) 123-4567"
         
         // Set Delegates
         firstNameTextField.delegate = self
@@ -153,7 +161,9 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         formatPhone()
+        if validateTextFields() == true {
         save()
+        }
     }
     
     @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
@@ -176,9 +186,11 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func startPresentationButtonTapped(_ sender: Any) {
         formatPhone()
-        save()
-        ClientController.shared.currentClient = self.client
-        delegate?.presentationStarting()
+        if validateTextFields() == true {
+            save()
+            ClientController.shared.currentClient = self.client
+            delegate?.presentationStarting()
+        }
     }
     
     @IBAction func clientPhotoButtonTapped(_ sender: Any) {
@@ -217,7 +229,7 @@ extension AddClientModalViewController {
     
     func formatPhone() {
         guard let phone = phoneTextField.text else { return }
-        let result = format(phoneNumber: phone)
+        guard let result = format(phoneNumber: phone) else { return }
         phoneTextField.text = result
     }
     
@@ -240,6 +252,32 @@ extension AddClientModalViewController {
         return zipTest
     }
     
+    func validateTextFields() -> Bool {
+        guard let phone = phoneTextField.text, let email = emailTextField.text, let zip = zipCodeTextField.text else { return false }
+        if validatePhoneNumber(inputPhone: phone) == true {
+            print("Valid phone number")
+        } else {
+            print("Invalid phone number")
+            createInvalidPhoneNumberAlert()
+            return false
+        }
+        if validateEmail(inputEmail: email) == true {
+            print("Valid email")
+        } else {
+            print("Invalid email")
+            createInvalidEmailAlert()
+            return false
+        }
+        if validateZipCode(inputZip: zip) == true {
+            print("Valid zip code")
+        } else {
+            print("Invalid zip code")
+            createInvalidZipAlert()
+            return false
+        }
+        return true
+    }
+    
     // Save Client
     func save() {
         guard let firstName = self.firstNameTextField.text,
@@ -253,27 +291,6 @@ extension AddClientModalViewController {
             let state = self.stateTextField.text,
             let practiceType = practiceTypeButton.titleLabel?.text,
             let notes = self.notesTextView.text else { return }
-        if validatePhoneNumber(inputPhone: phone) == true {
-            print("Valid phone number")
-        } else {
-            print("Invalid phone number")
-            createInvalidPhoneNumberAlert()
-            return
-        }
-        if validateEmail(inputEmail: email) == true {
-            print("Valid email")
-        } else {
-            print("Invalid email")
-            createInvalidEmailAlert()
-            return
-        }
-        if validateZipCode(inputZip: zip) == true {
-            print("Valid zip code")
-        } else {
-            print("Invalid zip code")
-            createInvalidZipAlert()
-            return
-        }
         if firstName.isEmpty || lastName.isEmpty || practiceName.isEmpty || phone.isEmpty || email.isEmpty || streetAddress.isEmpty || streetAddress.isEmpty || zip.isEmpty || practiceTypeButton.titleLabel?.text == "Select Type..." {
             self.createEmptyTextAlert()
             return
@@ -348,8 +365,8 @@ extension AddClientModalViewController {
     }
     
     func format(phoneNumber sourcePhoneNumber: String) -> String? {
-        if sourcePhoneNumber.count == 10 {
-            let numbersOnly = sourcePhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let numbersOnly = sourcePhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        if numbersOnly.count == 10 {
             let length = numbersOnly.count
             let hasLeadingOne = numbersOnly.hasPrefix("1")
             
@@ -447,6 +464,21 @@ extension AddClientModalViewController: UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneTextField {
+            let allowedSymbols = CharacterSet(charactersIn: "()-")
+            let allowedSymbolsAndNumbers = CharacterSet.decimalDigits.union(allowedSymbols)
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedSymbolsAndNumbers.isSuperset(of: characterSet)
+        } else if textField == zipCodeTextField {
+            let allowedChar = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedChar.isSuperset(of: characterSet)
+        } else {
+            return true
+        }
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextField = textField
     }
@@ -454,6 +486,40 @@ extension AddClientModalViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == phoneTextField {
             formatPhone()
+            guard let phoneNumber = phoneTextField.text else { return }
+            if validatePhoneNumber(inputPhone: phoneNumber) == false {
+                phoneTextField.backgroundColor = .opaqueRed
+                phoneLabel.textColor = .red
+                phoneLabel.text = "Phone Number * (10 digits)"
+            } else {
+                phoneTextField.backgroundColor = .textFieldGrey
+                phoneLabel.textColor = .black
+                phoneLabel.text = "Phone Number *"
+            }
+        }
+        if textField == emailTextField {
+            guard let email = emailTextField.text else { return }
+            if validateEmail(inputEmail: email) == false {
+                emailTextField.backgroundColor = .opaqueRed
+                emailLabel.textColor = .red
+                emailLabel.text = "Email Address *"
+            } else {
+                emailTextField.backgroundColor = .textFieldGrey
+                emailLabel.textColor = .black
+                emailLabel.text = "Email Label *"
+            }
+        }
+        if textField == zipCodeTextField {
+            guard let zip = zipCodeTextField.text else { return }
+            if validateZipCode(inputZip: zip) == false {
+                zipCodeTextField.backgroundColor = .opaqueRed
+                zipLabel.textColor = .red
+                zipLabel.text = "Zip Code * (5 digits)"
+            } else {
+                zipCodeTextField.backgroundColor = .textFieldGrey
+                zipLabel.textColor = .black
+                zipLabel.text = "Zip Code *"
+            }
         }
     }
     // Dismiss keyboard when touching outside the keyboard or textfield
@@ -464,7 +530,7 @@ extension AddClientModalViewController: UITextFieldDelegate {
     // move view based on textfield
     @objc func keyboardWillChange(notification: Notification) {
         if notification.name == Notification.Name.UIKeyboardWillChangeFrame || notification.name == Notification.Name.UIKeyboardWillShow {
-            if activeTextField == emailTextField || activeTextField == addressTextField {
+            if activeTextField == addressTextField {
                 view.frame.origin.y = view.frame.origin.y - 50
             } else if activeTextField == cityTextField || activeTextField == stateTextField || activeTextField == zipCodeTextField {
                 view.frame.origin.y = view.frame.origin.y - 100
@@ -516,6 +582,8 @@ extension AddClientModalViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedPracticeType = "\(pickerData[row])"
         practiceTypeButton.setTitle(selectedPracticeType, for: .normal)
+        practiceTypeListOpen = false
+        pickerContainer.isHidden = true
         print("item selected")
     }
 }

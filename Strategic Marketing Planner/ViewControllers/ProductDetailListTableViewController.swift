@@ -14,14 +14,32 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var whatsIncludedLabel: UILabel!
     @IBOutlet weak var includedItemsLabel: UILabel!
+    @IBOutlet weak var trainingLabel: UILabel!
     @IBOutlet weak var productDetailCollectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    
+    
+    let cellHeight: CGFloat = 255
+    var numberOfRows: Int {
+        let availableWidth = productDetailCollectionView.frame.size.width
+        var imagesWidth: CGFloat = 0
+        for image in images {
+            let sizeFraction = image.size.height/cellHeight
+            let imageWidth = image.size.width/sizeFraction
+            imagesWidth += imageWidth
+        }
+        return Int(ceil(imagesWidth/availableWidth))
+    }
+    
+    lazy var images = product?.images ?? []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         productDetailCollectionView.delegate = self
         productDetailCollectionView.dataSource = self
+        collectionViewHeight.constant = CGFloat(numberOfRows) * cellHeight + 10
       
     }
     //  MARK: - Actions
@@ -43,8 +61,9 @@ class ProductDetailViewController: UIViewController {
         // outlets to product.property
         titleLabel.text = product.title
         discriptionLabel.text = product.intro
-        whatsIncludedLabel.text = product.included
-        includedItemsLabel.text = product.training
+        whatsIncludedLabel.text = "What's Included:"
+        includedItemsLabel.text = product.included
+        trainingLabel.text = product.training
         
     }
 }
@@ -73,9 +92,9 @@ extension ProductDetailViewController: UICollectionViewDataSource, UICollectionV
     // MARK: - Flow
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-    
-        return CGSize(width: 399, height: 299)
+        let image = images[indexPath.row]
+        let sizeFraction = image.size.height/cellHeight
+        return CGSize(width: image.size.width / sizeFraction, height: cellHeight)
     
     }
     

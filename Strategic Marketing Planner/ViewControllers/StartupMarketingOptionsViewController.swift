@@ -14,16 +14,19 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     @IBOutlet weak var marketingOptionsTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var costPerMonthLabel: UILabel!
     @IBOutlet weak var whatsIncludedTextView: UITextView!
     let clientController = ClientController.shared
+    var activeOption: Int?
     var client: Client? {
-        //return clientController.currentClient
-        return Client(firstName: "Taylor", lastName: "Bills", practiceName: "asdf", phone: "8588484848", email: "ljkadfsljkadsflkj", address: "kjlasjkfdsfdsjkfdsajkladsfjksdfalkj", city: nil, state: nil, zip: "90889", initialContact: Date(), notes: nil, image: nil, practiceType: .startup, context: CoreDataStack.context)
+        return clientController.currentClient
     }
-    let startUpOptions: DictionaryLiteral<String, Int> = ["Option 1": 1250, "Option 2": 2250, "Option 3": 3250, "Option 4": 4500, "Option 5": 5500]
-    var optionNames: [String] {
-        return startUpOptions.map({$0.key})
+    let labelNames = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]
+    var optionPrices: [Int] {
+        let arrayToModify = ProductsInfo.startupMarketingDictionary.map({$0.key})
+        return arrayToModify.sorted()
+    }
+    var startupOptions: [[String]] {
+        return ProductsInfo.startupMarketingDictionary.map({$0.value})
     }
 
     // MARK: -  Life Cycles
@@ -31,6 +34,12 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
         super.viewDidLoad()
         setUpTableView()
         formatHeader()
+        updateTotalPriceLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        restoreSavedState()
     }
     
     // MARK: -  UpdateViews
@@ -45,6 +54,41 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     func formatHeader() {
         headerLabel.textColor = .brandOrange
     }
+    
+    func restoreSavedState() {
+        guard let startupMarketing = clientController.currentClient?.marketingPlan?.getOptionsForCategory(.startup).first, let key = startupMarketing.price, let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == Int(truncating: key)}) else { return }
+        switch options.key {
+        case 1250:
+            activeOption = 1250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 2250:
+            activeOption = 2250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 3250:
+            activeOption = 3250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 4500:
+            activeOption = 4500
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 5500:
+            activeOption = 5500
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        default:
+            return
+        }
+    }
+    
+    // MARK: -  DRY helper methods
+    func makeAListOfWhatsIncluded(forOption option: Decimal) -> String {
+        var list = ""
+        let indexOfOption = NSDecimalNumber(decimal: option).intValue
+        guard let productsForSelectedOption = ProductsInfo.startupMarketingDictionary[indexOfOption] else { return "" }
+        for product in productsForSelectedOption {
+            list.append(product)
+            list.append("\n")
+        }
+        return list
+    }
 }
 
 // MARK: -  Extension for TableViewDataSource and Delegate
@@ -53,14 +97,17 @@ extension StartupMarketingOptionsViewController: UITableViewDataSource, UITableV
     // MARK: -  Table View Data Source Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return optionNames.count
+        return startupOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MarketingOptionTableViewCell.preferredReuseID) as? MarketingOptionTableViewCell else { fatalError("Unexpected cell type found. Cannot set up marketing options table") }
         cell.delegate = self
-        cell.nameLabel.text = optionNames[indexPath.row]
-        cell.descriptionLabel.text = nil
+        cell.nameLabel.text = labelNames[indexPath.row]
+        cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: Decimal(optionPrices[indexPath.row])) ?? "$0")"
+        if optionPrices[indexPath.row] == activeOption {
+            cell.showActive = true
+        }
         return cell
     }
 }
@@ -68,29 +115,45 @@ extension StartupMarketingOptionsViewController: UITableViewDataSource, UITableV
 // MARK: -  Extension for custom cell
 extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDelegate {
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
-//        guard let client = client else { return false }
+        guard let client = client else { return false }
         deselectCells()
-        if let name = cell.nameLabel.text, let optionNames = startUpOptions.first(where: {$0.key == name}) {
-            switch optionNames.key {
-            case "Option 1":
-                costPerMonthLabel.text = "$\(optionNames.value) per month"
+        guard let indexPath = marketingOptionsTableView.indexPath(for: cell) else { return false }
+        let caseKey = optionPrices[indexPath.row]
+        guard let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == caseKey}) else { return false }
+            switch options.key {
+            case 1250:
+                whatsIncludedTextView.flashScrollIndicators()
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+                whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 2":
-                costPerMonthLabel.text = "$\(optionNames.value) per month"
+            case 2250:
+                whatsIncludedTextView.flashScrollIndicators()
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+                whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 3":
-                costPerMonthLabel.text = "$\(optionNames.value) per month"
+            case 3250:
+                whatsIncludedTextView.flashScrollIndicators()
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+                whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 4":
-                costPerMonthLabel.text = "$\(optionNames.value) per month"
+            case 4500:
+                whatsIncludedTextView.flashScrollIndicators()
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+                whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 5":
-                costPerMonthLabel.text = "$\(optionNames.value) per month"
+            case 5500:
+                whatsIncludedTextView.flashScrollIndicators()
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+                whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             default:
                 return false
             }
-        }
         return true
     }
     
@@ -99,7 +162,7 @@ extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDel
     }
     
     func deselectCells() {
-        for index in 0..<optionNames.count {
+        for index in 0..<startupOptions.count {
             if let tableViewCell = marketingOptionsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? MarketingOptionTableViewCell {
                 tableViewCell.showActive = false
             }

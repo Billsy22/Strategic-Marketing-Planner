@@ -14,8 +14,8 @@ enum ProductsInfo {
     static let internalMarketingProduct = [referralSystem, ancillaryServices, caseAcceptance, reactivationSystem, smileSavingsSystem]
     
     static let customLogo = ProductInfo(name: "Custom Logo",  price: 175)
-    static let responsiveWebsite = ProductInfo(name: "Responsive Website", price: 500)
-    static let videoAndPhoto = ProductInfo(name: "Video & Photo", price: 750)
+    static let responsiveWebsite = ProductInfo(name: "Responsive Website & 12 Months Hosting", price: 500)
+    static let videoAndPhoto = ProductInfo(name: "Video & Photography", price: 750)
     static let referralSystem = ProductInfo(name: "Referral System", price: 150)
     static let ancillaryServices = ProductInfo(name: "Ancillary Services", price: 175)
     static let caseAcceptance = ProductInfo(name: "Case Acceptance", price: 750)
@@ -85,11 +85,11 @@ enum ProductsInfo {
     
     private static func assembleStartupPackagesDictionary() -> Dictionary<Int,[String]> {
         var dictionary = Dictionary<Int,[String]>()
-        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Referral System", "SEO"], forKey: 1250)
-        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Postcard Mailer", "SEO"], forKey: 2250)
-        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Mini-zine Mailer", "SEO"], forKey: 3250)
-        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targetd Mini-zine Mailer", "Open House Package", "SEO", "Internet Review Cards", "AdWords"], forKey: 4500)
-        dictionary.updateValue(["Brand Definition", "Custom Logo", "Branded Responsive Website", "12 Months of Website Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Smile Savings System", "Targeted Mini-zine", "Open House Package", "SEO", "Internet Review Cards", "AdWords", "Facebook Jumpstart", "Facebook Outreach"], forKey: 5500)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Referral System", "SEO"], forKey: 1250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Postcard Mailer", "SEO"], forKey: 2250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targeted Mini-zine Mailer", "SEO"], forKey: 3250)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Targetd Mini-zine Mailer", "Open House Package", "SEO", "Internet Review Cards", "AdWords"], forKey: 4500)
+        dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Smile Savings System", "Targeted Mini-zine", "Open House Package", "SEO", "Internet Review Cards", "AdWords", "Facebook Jumpstart", "Facebook Outreach"], forKey: 5500)
         return dictionary
     }
 }
@@ -119,7 +119,7 @@ enum ProductsInfo {
  ***FOUNDATION***
  "Custom Logo" 175
  "Responsive Website" 500
- "Video & Photo" 750
+ "Video & Photography" 750
  
  ***INTERNAL MARKETING***
  "Referral System" 150

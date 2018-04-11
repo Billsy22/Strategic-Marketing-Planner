@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="vHk-hH-qXa">
             <objects>
-                <viewController id="gH2-mq-TT4" customClass="B2BViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B2BViewController" id="gH2-mq-TT4" customClass="B2BViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5iM-jD-qYO">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,8 +37,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your audience (one or both)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2y-Hy-owh">
-                                        <rect key="frame" x="0.0" y="49.5" width="311.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your audience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2y-Hy-owh">
+                                        <rect key="frame" x="0.0" y="49.5" width="194.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,20 +51,20 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z0c-ks-qTz">
-                                <rect key="frame" x="50" y="133" width="894" height="125"/>
+                                <rect key="frame" x="50" y="133" width="894" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="mZj-di-vOn"/>
+                                    <constraint firstAttribute="height" constant="150" id="fWc-IK-HGT"/>
                                 </constraints>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a professional referral marketing budget" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-FR-iFs">
-                                <rect key="frame" x="50" y="308" width="894" height="24"/>
+                                <rect key="frame" x="50" y="333" width="894" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WGJ-c1-KXQ">
-                                <rect key="frame" x="50" y="352" width="894" height="366"/>
+                                <rect key="frame" x="50" y="377" width="894" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -89,6 +89,7 @@
                     </view>
                     <connections>
                         <outlet property="b2bTableView" destination="z0c-ks-qTz" id="Mxc-fu-gfY"/>
+                        <outlet property="chooseBudgetLabel" destination="p2b-FR-iFs" id="5s9-xI-t1L"/>
                         <outlet property="headerLabel" destination="sx8-Np-2zI" id="bQr-0e-Tmr"/>
                         <outlet property="referralMarketingTableview" destination="WGJ-c1-KXQ" id="gIf-RW-Sj0"/>
                         <outlet property="totalPriceLabel" destination="yEW-R1-nGz" id="ycK-kH-lDr"/>
