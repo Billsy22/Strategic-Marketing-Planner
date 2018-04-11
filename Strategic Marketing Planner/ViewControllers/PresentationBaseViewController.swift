@@ -38,6 +38,7 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
     }
     
     weak var delegate: CustomNavigationController?
+    var externalMarketingHasBeenInserted: Bool = false
     
     @IBOutlet var navigationBarPreviousButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarNextButton: UIBarButtonItem!
@@ -229,5 +230,6 @@ extension PresentationBaseViewController: CustomNavigationController {
         let storyboardToAdd = UIStoryboard(name: storyboardName, bundle: nil)
         let viewControllerToAdd = storyboardToAdd.instantiateViewController(withIdentifier: id)
         self.destinations.insert((viewControllerName, viewControllerToAdd), at: index)
+        self.externalMarketingHasBeenInserted = true
     }
 }
