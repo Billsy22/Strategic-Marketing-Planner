@@ -140,8 +140,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FH5-86-NkV" userLabel="Phone">
                                                         <rect key="frame" x="0.0" y="0.0" width="262.5" height="50.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMZ-i6-uMd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMZ-i6-uMd">
+                                                                <rect key="frame" x="0.0" y="0.0" width="126.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OUB-dA-dUX" userLabel="Email">
                                                         <rect key="frame" x="287.5" y="0.0" width="262.5" height="50.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcw-2T-V0k">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcw-2T-V0k">
                                                                 <rect key="frame" x="0.0" y="0.0" width="262.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -277,8 +277,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0Rc-aF-jMM" userLabel="Zip">
                                                         <rect key="frame" x="380" y="0.0" width="170" height="50.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-N5-8Vd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-N5-8Vd">
+                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -393,11 +393,13 @@
                         <outlet property="addressTextField" destination="M48-2r-PSf" id="Cza-yb-6U4"/>
                         <outlet property="cityTextField" destination="lBt-fJ-shA" id="bb5-pk-0S5"/>
                         <outlet property="clientPhotoButton" destination="MwM-DW-Iqq" id="wYB-xH-YX9"/>
+                        <outlet property="emailLabel" destination="Qcw-2T-V0k" id="XXy-Ri-3Bh"/>
                         <outlet property="emailTextField" destination="X0C-k8-EBW" id="QeY-jG-aO5"/>
                         <outlet property="firstNameTextField" destination="L2t-3D-xPk" id="5sk-yz-aGE"/>
                         <outlet property="initialContactDateTextField" destination="fFG-Sj-FFq" id="Ueh-zu-9gL"/>
                         <outlet property="lastNameTextField" destination="7jR-OK-Z7s" id="XmU-4U-zLv"/>
                         <outlet property="notesTextView" destination="dBB-Km-LeR" id="jgD-F8-8FP"/>
+                        <outlet property="phoneLabel" destination="AMZ-i6-uMd" id="jBG-89-C7j"/>
                         <outlet property="phoneTextField" destination="XEt-lq-xDo" id="Xo5-qe-jHw"/>
                         <outlet property="practiceNameTextField" destination="3qr-wB-v9f" id="pNM-o7-Lk5"/>
                         <outlet property="practiceTypeButton" destination="yml-yi-uMi" id="9M5-cD-5gE"/>
@@ -405,6 +407,7 @@
                         <outlet property="startPresentationButton" destination="4gG-o4-ncV" id="J0y-uf-my8"/>
                         <outlet property="stateTextField" destination="WB6-iN-z8T" id="9st-IS-Z6P"/>
                         <outlet property="zipCodeTextField" destination="i9o-en-3pE" id="6sO-TA-ahk"/>
+                        <outlet property="zipLabel" destination="Pwh-N5-8Vd" id="7eG-eB-HHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-NH-j5c" userLabel="First Responder" sceneMemberID="firstResponder"/>

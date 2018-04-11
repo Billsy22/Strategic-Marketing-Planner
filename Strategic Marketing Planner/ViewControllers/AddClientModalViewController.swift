@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 
+
 protocol AddClientDelegate: class {
     func presentationStarting()
 }
@@ -16,6 +17,9 @@ protocol AddClientDelegate: class {
 class AddClientModalViewController: UIViewController {
     
     // MARK: -  Properites
+    @IBOutlet weak var zipLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var clientPhotoButton: UIButton!
@@ -50,6 +54,8 @@ class AddClientModalViewController: UIViewController {
         return picker
     }()
     
+    
+    
     // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +64,8 @@ class AddClientModalViewController: UIViewController {
         setUpClientPhotoButtonProperties()
         setupPickerViews()
         pickerContainer.isHidden = true
+        emailTextField.placeholder = "e.g. john@example.com"
+        phoneTextField.placeholder = "e.g. (555) 123-4567"
         
         // Set Delegates
         firstNameTextField.delegate = self
@@ -153,8 +161,9 @@ class AddClientModalViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         formatPhone()
-        validateTextFields()
+        if validateTextFields() == true {
         save()
+        }
     }
     
     @IBAction func saveOrRemoveClientButtonTapped(_ sender: Any) {
@@ -356,8 +365,8 @@ extension AddClientModalViewController {
     }
     
     func format(phoneNumber sourcePhoneNumber: String) -> String? {
-        if sourcePhoneNumber.count == 10 {
-            let numbersOnly = sourcePhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let numbersOnly = sourcePhoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        if numbersOnly.count == 10 {
             let length = numbersOnly.count
             let hasLeadingOne = numbersOnly.hasPrefix("1")
             
@@ -455,6 +464,21 @@ extension AddClientModalViewController: UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneTextField {
+            let allowedSymbols = CharacterSet(charactersIn: "()-")
+            let allowedSymbolsAndNumbers = CharacterSet.decimalDigits.union(allowedSymbols)
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedSymbolsAndNumbers.isSuperset(of: characterSet)
+        } else if textField == zipCodeTextField {
+            let allowedChar = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedChar.isSuperset(of: characterSet)
+        } else {
+            return true
+        }
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextField = textField
     }
@@ -462,6 +486,40 @@ extension AddClientModalViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == phoneTextField {
             formatPhone()
+            guard let phoneNumber = phoneTextField.text else { return }
+            if validatePhoneNumber(inputPhone: phoneNumber) == false {
+                phoneTextField.backgroundColor = .opaqueRed
+                phoneLabel.textColor = .red
+                phoneLabel.text = "Phone Number * (10 digits)"
+            } else {
+                phoneTextField.backgroundColor = .textFieldGrey
+                phoneLabel.textColor = .black
+                phoneLabel.text = "Phone Number *"
+            }
+        }
+        if textField == emailTextField {
+            guard let email = emailTextField.text else { return }
+            if validateEmail(inputEmail: email) == false {
+                emailTextField.backgroundColor = .opaqueRed
+                emailLabel.textColor = .red
+                emailLabel.text = "Email Address *"
+            } else {
+                emailTextField.backgroundColor = .textFieldGrey
+                emailLabel.textColor = .black
+                emailLabel.text = "Email Label *"
+            }
+        }
+        if textField == zipCodeTextField {
+            guard let zip = zipCodeTextField.text else { return }
+            if validateZipCode(inputZip: zip) == false {
+                zipCodeTextField.backgroundColor = .opaqueRed
+                zipLabel.textColor = .red
+                zipLabel.text = "Zip Code * (5 digits)"
+            } else {
+                zipCodeTextField.backgroundColor = .textFieldGrey
+                zipLabel.textColor = .black
+                zipLabel.text = "Zip Code *"
+            }
         }
     }
     // Dismiss keyboard when touching outside the keyboard or textfield
