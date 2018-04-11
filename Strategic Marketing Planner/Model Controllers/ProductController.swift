@@ -22,13 +22,6 @@ class ProductController {
     func productImageCount(indexPath: IndexPath) -> Int {
         return products[indexPath.row].images.count
     }
-    
-//    func productImage(indexPath: IndexPath) -> UIImage? {
-//        let productImage = product.images[indexPath.row]
-//        
-////        let productName = UIImage(named: <#T##String#>)
-//        return productImage
-//    }
 
     // MARK: - Fetch
  

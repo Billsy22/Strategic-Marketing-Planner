@@ -20,6 +20,7 @@ extension MarketingOption {
         self.descriptionPageIndex = extendedDescriptionIndex as NSNumber?
         self.isActive = isActive
         self.price = price as NSDecimalNumber
+        lastModificationTimestamp = Date().timeIntervalSince1970
     }
     
 }

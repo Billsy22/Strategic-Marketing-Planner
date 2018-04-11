@@ -28,6 +28,7 @@
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */; };
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
+		B35396A9207E9BDD00CC6F19 /* CKTokenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35396A8207E9BDD00CC6F19 /* CKTokenSaver.swift */; };
 		B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */; };
 		B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C23207BCF24004258DA /* CloudKitSynchable.swift */; };
 		B3615C28207BF7B9004258DA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3615C27207BF7B9004258DA /* CloudKit.framework */; };
@@ -166,6 +167,7 @@
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
 		B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumericKeyboard.xib; sourceTree = "<group>"; };
 		B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
+		B35396A8207E9BDD00CC6F19 /* CKTokenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKTokenSaver.swift; sourceTree = "<group>"; };
 		B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+Convenience.swift"; sourceTree = "<group>"; };
 		B3615C23207BCF24004258DA /* CloudKitSynchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSynchable.swift; sourceTree = "<group>"; };
 		B3615C25207BF7AC004258DA /* Strategic Marketing Planner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Strategic Marketing Planner.entitlements"; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				DF883CAD20729DE80061A78C /* GrowthCalculator.swift */,
 				DF94945020743B4D0035513F /* ProductsInfo.swift */,
 				B3D190D62076882C007662EE /* NumberHelper.swift */,
+				B35396A8207E9BDD00CC6F19 /* CKTokenSaver.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -525,6 +528,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -666,6 +672,7 @@
 				16FC46DB207679B300CC99D0 /* PracticeTypeDropDownButton.swift in Sources */,
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
+				B35396A9207E9BDD00CC6F19 /* CKTokenSaver.swift in Sources */,
 				B3D190DB2076D240007662EE /* PriceLabelable.swift in Sources */,
 				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
 				DF949455207529B60035513F /* ExternalMarketingViewController.swift in Sources */,

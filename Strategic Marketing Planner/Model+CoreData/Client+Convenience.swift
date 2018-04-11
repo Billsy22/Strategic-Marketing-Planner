@@ -42,6 +42,8 @@ extension Client {
         self.monthlyBudget = 0
         self.currentProduction = 0
         self.productionGoal = 0
+        self.recordModified = true
+        lastModificationTimestamp = Date().timeIntervalSince1970
     }
     
     func matches(searchString: String) -> Bool {
