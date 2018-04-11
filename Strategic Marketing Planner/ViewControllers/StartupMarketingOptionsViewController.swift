@@ -19,12 +19,13 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     var client: Client? {
         return clientController.currentClient
     }
-    let startUpOptions: DictionaryLiteral<String, Decimal> = ["Option 1": 1250, "Option 2": 2250, "Option 3": 3250, "Option 4": 4500, "Option 5": 5500]
-    var optionNames: [String] {
-        return startUpOptions.map({$0.key})
+    let labelNames = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]
+    var optionPrices: [Int] {
+        let arrayToModify = ProductsInfo.startupMarketingDictionary.map({$0.key})
+        return arrayToModify.sorted()
     }
-    var optionPrices: [Decimal] {
-        return startUpOptions.map({$0.value})
+    var startupOptions: [[String]] {
+        return ProductsInfo.startupMarketingDictionary.map({$0.value})
     }
 
     // MARK: -  Life Cycles
@@ -71,14 +72,14 @@ extension StartupMarketingOptionsViewController: UITableViewDataSource, UITableV
     // MARK: -  Table View Data Source Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return optionNames.count
+        return startupOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MarketingOptionTableViewCell.preferredReuseID) as? MarketingOptionTableViewCell else { fatalError("Unexpected cell type found. Cannot set up marketing options table") }
         cell.delegate = self
-        cell.nameLabel.text = optionNames[indexPath.row]
-        cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: optionPrices[indexPath.row]) ?? "$0")"
+        cell.nameLabel.text = labelNames[indexPath.row]
+        cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: Decimal(optionPrices[indexPath.row])) ?? "$0")"
         return cell
     }
 }
@@ -88,42 +89,43 @@ extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDel
     func marketingOptionTableViewCellShouldToggleSelectionState(_ cell: MarketingOptionTableViewCell) -> Bool {
         guard let client = client else { return false }
         deselectCells()
-        if let name = cell.nameLabel.text, let options = startUpOptions.first(where: {$0.key == name}) {
+        guard let indexPath = marketingOptionsTableView.indexPath(for: cell) else { return false }
+        let caseKey = optionPrices[indexPath.row]
+        guard let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == caseKey}) else { return false }
             switch options.key {
-            case "Option 1":
+            case 1250:
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
-                let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 2":
+            case 2250:
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
-                let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 3":
+            case 3250:
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
-                let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 4":
+            case 4500:
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
-                let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
-            case "Option 5":
+            case 5500:
                 whatsIncludedTextView.flashScrollIndicators()
-                clientController.updateStartupMarketingBudget(forClient: client, to: options.value)
-                let includedProducts = makeAListOfWhatsIncluded(forOption: options.value)
+                clientController.updateStartupMarketingBudget(forClient: client, to: Decimal(options.key))
+                let includedProducts = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
                 whatsIncludedTextView.text = includedProducts
                 updateTotalPriceLabel()
             default:
                 return false
             }
-        }
         return true
     }
     
@@ -132,7 +134,7 @@ extension StartupMarketingOptionsViewController: MarketingOptionTableViewCellDel
     }
     
     func deselectCells() {
-        for index in 0..<optionNames.count {
+        for index in 0..<startupOptions.count {
             if let tableViewCell = marketingOptionsTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? MarketingOptionTableViewCell {
                 tableViewCell.showActive = false
             }
