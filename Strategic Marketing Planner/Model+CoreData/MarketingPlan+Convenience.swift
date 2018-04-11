@@ -129,8 +129,7 @@ extension MarketingPlan: CloudKitSynchable {
     }
     
     func addCKReferencesToCKRecord(_ record: CKRecord) {
-        guard let client = client else { return }
-        let clientRecord = client.asCKRecord
+        guard let client = client, let clientRecord = client.asCKRecord else { return }
         let reference = CKReference(record: clientRecord, action: .deleteSelf)
         record[Relationships.client] = reference
     }

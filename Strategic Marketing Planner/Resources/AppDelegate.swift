@@ -51,29 +51,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        CloudKitManager.subscribeNewRecordsAndUpdates(Client.self)
-        CloudKitManager.subscribeNewRecordsAndUpdates(MarketingPlan.self)
-        CloudKitManager.subscribeNewRecordsAndUpdates(MarketingOption.self)
-        CloudKitManager.subscribeToRecordDeletedNotifications(Client.self)
+        CloudKitManager.shared.subscribeToChanges(Client.self)
+        CloudKitManager.shared.subscribeToChanges(MarketingPlan.self)
+        CloudKitManager.shared.subscribeToChanges(MarketingOption.self)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Notification Received")
-        guard let notification = CKNotification(fromRemoteNotificationDictionary: userInfo) as? CKQueryNotification else {
-            completionHandler(UIBackgroundFetchResult.noData)
-            return
-        }
-        if let recordName = notification.recordFields?["recordName"] as? String {
-            guard let client = ClientController.shared.getClientWithRecordName(recordName: recordName) else {
-                completionHandler(UIBackgroundFetchResult.noData)
-                return
+        CloudKitManager.shared.fetchChanges { (success) in
+            if success {
+                completionHandler(UIBackgroundFetchResult.newData)
+            }else{
+                completionHandler(UIBackgroundFetchResult.failed)
             }
-            ClientController.shared.removeClient(client)
-            completionHandler(UIBackgroundFetchResult.newData)
-        }else{
-            ClientController.shared.loadCloudBackup()
-            completionHandler(UIBackgroundFetchResult.newData)
         }
+//        guard let notification = CKNotification(fromRemoteNotificationDictionary: userInfo) as? CKQueryNotification else {
+//            completionHandler(UIBackgroundFetchResult.noData)
+//            return
+//        }
+//        if let recordName = notification.recordFields?["recordName"] as? String {
+//            guard let client = ClientController.shared.getClientWithRecordName(recordName: recordName) else {
+//                completionHandler(UIBackgroundFetchResult.noData)
+//                return
+//            }
+//            ClientController.shared.removeClient(client)
+//            completionHandler(UIBackgroundFetchResult.newData)
+//        }else{
+//            ClientController.shared.loadCloudBackup()
+//            completionHandler(UIBackgroundFetchResult.newData)
+//        }
     }
 }
 

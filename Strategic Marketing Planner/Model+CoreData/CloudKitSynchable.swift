@@ -14,7 +14,7 @@ import CoreData
 protocol CloudKitSynchable: class {
     ///This should be a unique string that identifies the record for the model object in CloudKit.
     var recordName: String? { get set }
-    var asCKRecord: CKRecord { get }
+    var asCKRecord: CKRecord? { get }
     var lastModificationTimestamp: Double { get }
     ///Stored properties are automatically handled by the default implemtation of asCKRecord.  This method is a hook for conforming classes to use to add CKReferences to their record as needed to maintain their relationships when restored from a CKRecord.
     func addCKReferencesToCKRecord(_ record: CKRecord)
@@ -37,10 +37,12 @@ extension CloudKitSynchable where Self: NSManagedObject {
     func addCKReferencesToCKRecord(_ record: CKRecord){}
     static func initializeRelationshipsFromReferences(_ record: CKRecord, model: Self) -> Bool { return true }
 
-    var asCKRecord: CKRecord {
+    var asCKRecord: CKRecord? {
         var record: CKRecord
         self.recordName = self.recordName != nil ? self.recordName! : UUID().uuidString
-        record = CKRecord(recordType: Self.recordType, recordID: CKRecordID(recordName: recordName!))
+        guard let zoneID = UserDefaults.standard.clientRecordZone else { return nil }
+        let recordID = CKRecordID(recordName: self.recordName!, zoneID: zoneID)
+        record = CKRecord(recordType: Self.recordType, recordID: recordID)
         
         let attributes = entity.attributesByName
         for attribute in attributes {

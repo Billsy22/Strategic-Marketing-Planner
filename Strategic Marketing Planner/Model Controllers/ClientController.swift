@@ -30,6 +30,10 @@ class ClientController {
     private init(){
         if clients.count == 0 {
             loadCloudBackup()
+        }else{
+            CloudKitManager.shared.fetchChanges { (success) in
+                if !success { NSLog("Failed to update from stored record.") }
+            }
         }
     }
     
@@ -186,7 +190,7 @@ class ClientController {
     //MARK: - Delete
     func removeClient(_ client: Client) {
         context.delete(client)
-        CloudKitManager.delete(entity: client) { (success) in
+        CloudKitManager.shared.delete(entity: client) { (success) in
             if !success {
                 NSLog("Warning: Failed to delete client")
             }
@@ -208,20 +212,20 @@ class ClientController {
         var planSaved = true
         var allOptionsSaved = true
         guard client.recordModified else { return }
-        CloudKitManager.updateEntity(entity: client) { (success) in
+        CloudKitManager.shared.updateEntity(entity: client) { (success) in
             if !success {
                 NSLog("Failed to save client.")
                 clientSaved = false
             }
             guard let marketingPlan = client.marketingPlan else { return }
-            CloudKitManager.updateEntity(entity: marketingPlan, completion: { (success) in
+            CloudKitManager.shared.updateEntity(entity: marketingPlan, completion: { (success) in
                 if !success {
                     NSLog("Failed to save marketing plan.")
                     planSaved = false
                 }
                 guard let options = marketingPlan.options else { return }
                 for option in options.compactMap({$0 as? MarketingOption}){
-                    CloudKitManager.updateEntity(entity: option, completion: { (success) in
+                    CloudKitManager.shared.updateEntity(entity: option, completion: { (success) in
                         if !success {
                             NSLog("Failed to save marketing option")
                             allOptionsSaved = false
@@ -248,15 +252,15 @@ class ClientController {
     }
     
     func loadCloudBackup() {
-        CloudKitManager.loadEntities(ofType: Client.self, exclude: []) {[weak self] (retrievedObjects, error) in
+        CloudKitManager.shared.loadEntities(ofType: Client.self, exclude: []) {[weak self] (retrievedObjects, error) in
             if let error = error {
                 NSLog("Error fetching clients from backup: \(error.localizedDescription)")
             }
-            CloudKitManager.loadEntities(ofType: MarketingPlan.self, exclude: [], completion: { (retrievedPlans, error) in
+            CloudKitManager.shared.loadEntities(ofType: MarketingPlan.self, exclude: [], completion: { (retrievedPlans, error) in
                 if let error = error {
                     NSLog("Error fetching marketing plans from backup: \(error.localizedDescription)")
                 }
-                CloudKitManager.loadEntities(ofType: MarketingOption.self, exclude: [], completion: { (retrievedOptions, error) in
+                CloudKitManager.shared.loadEntities(ofType: MarketingOption.self, exclude: [], completion: { (retrievedOptions, error) in
                     if let error = error {
                         NSLog("Error fetching marketing options from backup: \(error.localizedDescription)")
                     }
