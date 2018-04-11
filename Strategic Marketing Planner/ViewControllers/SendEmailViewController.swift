@@ -96,12 +96,16 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         return optionsList
     }
     
-    func printStartupPackage() -> String {
-        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
-        var optionString = ""
-        let option = marketingPlan.getOptionsForCategory(.startup, includeOnlyActive: true)
-        return optionString
-    }
+//    func printStartupPackage() -> String {
+//        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+//        var list = ""
+//        let options = marketingPlan.getOptionsForCategory(.startup, includeOnlyActive: true)
+//        for option in options {
+//            list.append("\(option.summary)")
+//            list.append("\n")
+//        }
+//        return list
+//    }
     
     func formatConfirmationButton() {
         sendConfirmationEmailButton.layer.cornerRadius = 5

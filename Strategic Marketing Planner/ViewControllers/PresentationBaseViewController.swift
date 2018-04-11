@@ -20,6 +20,7 @@ protocol PresentationBaseViewControllerNavigationPane: class {
 
 protocol CustomNavigationController: class {
     func insertNewDestination(afterViewController viewController: UIViewController, viewControllerName: String, storyboardName: String, andStoryboardId id: String)
+    func removeExternalMarketingScreen(afterViewController: UIViewController)
 }
 
 class PresentationBaseViewController: UIViewController, PresentationBaseViewControllerNavigationPaneDelegate {
@@ -233,6 +234,14 @@ extension PresentationBaseViewController: CustomNavigationController {
         guard let index = optionalIndex else { return }
         let storyboardToAdd = UIStoryboard(name: storyboardName, bundle: nil)
         let viewControllerToAdd = storyboardToAdd.instantiateViewController(withIdentifier: id)
-        self.destinations.insert((viewControllerName, viewControllerToAdd), at: index)
+        self.destinations.insert((viewControllerName, viewControllerToAdd), at: index + 1)
+    }
+    
+    func removeExternalMarketingScreen(afterViewController: UIViewController) {
+        let optionalIndex = self.destinations.index { (viewToRemove) -> Bool in
+            return viewToRemove.destinationViewController == afterViewController
+        }
+        guard let index = optionalIndex else { return }
+        self.destinations.remove(at: index + 1)
     }
 }

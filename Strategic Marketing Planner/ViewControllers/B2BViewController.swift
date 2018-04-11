@@ -8,8 +8,17 @@
 
 import UIKit
 
-class B2BViewController: UIViewController, PriceLabelable {
+class B2BViewController: UIViewController, PriceLabelable, CustomNavigationController {
+    func removeExternalMarketingScreen(afterViewController: UIViewController) {
+        print("storyboard removed")
+    }
+    
+    func insertNewDestination(afterViewController viewController: UIViewController, viewControllerName: String, storyboardName: String, andStoryboardId id: String) {
+        print("storyboard added")
+    }
+    
     var customNavigationController: CustomNavigationController?
+    var externalMarketingViewControllerAdded: Bool = false // limits the nav pane to only allow it to insert the viewcontroller once
     var clientController = ClientController.shared
     var client: Client? {
         return clientController.currentClient
@@ -134,20 +143,30 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
                     deselectCellsReferral()
                     activeArray = referralMarketingDoctorOptions
                     activePriceArray = referralMarketingDoctorOptionPrices
+                    if externalMarketingViewControllerAdded == true {
+                        customNavigationController?.removeExternalMarketingScreen(afterViewController: self)
+                        externalMarketingViewControllerAdded = false
+                    }
                     referralMarketingTableview.reloadData()
                 case .patients:
                     chooseBudgetLabel.text = "Please move on to External Marketing"
                     deselectCellsReferral()
                     activeArray = []
                     activePriceArray = []
-                    customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
+                    if externalMarketingViewControllerAdded == false {
+                        customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
+                        externalMarketingViewControllerAdded = true
+                    }
                     referralMarketingTableview.reloadData()
                 case .both:
                     chooseBudgetLabel.text = "Choose a professional referral marketing budget"
                     deselectCellsReferral()
                     activeArray = referralMarketingBothOptions
                     activePriceArray = referralMarketingBothOptionPrices
+                    if externalMarketingViewControllerAdded == false {
                     customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
+                        externalMarketingViewControllerAdded = true
+                    }
                     referralMarketingTableview.reloadData()
                 }
             }
