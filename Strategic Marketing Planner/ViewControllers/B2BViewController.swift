@@ -42,6 +42,7 @@ class B2BViewController: UIViewController, PriceLabelable, CustomNavigationContr
     var activeArray:[String] = []
     var activePriceArray:[Decimal] = []
     var activeName = ""
+    var activePrice: Decimal = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class B2BViewController: UIViewController, PriceLabelable, CustomNavigationContr
     }
     
     func formatChooseBudgetLabel() {
-        chooseBudgetLabel.text = "Please select at least one option above."
+        chooseBudgetLabel.text = "Please select an option above."
     }
     
     private func restoreState() {
@@ -85,6 +86,19 @@ class B2BViewController: UIViewController, PriceLabelable, CustomNavigationContr
             activePriceArray = referralMarketingBothOptionPrices
             activeName = "Both"
             referralMarketingTableview.reloadData()
+        }
+        guard let option = clientController.currentClient?.marketingPlan?.getOptionsForCategory(MarketingPlan.OptionCategory.businessToBusiness).first, let price = option.price else { return }
+        switch price {
+        case 750:
+            activePrice = 750
+        case 1000:
+            activePrice = 1000
+        case 1500:
+            activePrice = 1500
+        case 2000:
+            activePrice = 2000
+        default:
+            return
         }
     }
 }
@@ -112,6 +126,9 @@ extension B2BViewController: UITableViewDataSource, UITableViewDelegate {
             cell.nameLabel.text = activeArray[indexPath.row]
             cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: activePriceArray[indexPath.row]) ?? "$0")"
             cell.delegate = self
+            if activePriceArray[indexPath.row] == activePrice {
+                cell.showActive = true
+            }
             return cell
         } else {
             return cell
