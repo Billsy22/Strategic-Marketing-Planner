@@ -48,6 +48,10 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
         headerLabel.textColor = .brandOrange
     }
     
+    func restoreSavedState() {
+        // TODO: -  Implement this ^^^ somehow...should be easy after i get the email info figured out.
+    }
+    
     // MARK: -  DRY helper methods
     func makeAListOfWhatsIncluded(forOption option: Decimal) -> String {
         var list = ""
