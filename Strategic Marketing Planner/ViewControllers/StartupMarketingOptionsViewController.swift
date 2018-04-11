@@ -16,6 +16,7 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var whatsIncludedTextView: UITextView!
     let clientController = ClientController.shared
+    var activeOption: Int?
     var client: Client? {
         return clientController.currentClient
     }
@@ -36,6 +37,11 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
         updateTotalPriceLabel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        restoreSavedState()
+    }
+    
     // MARK: -  UpdateViews
     func setUpTableView() {
         marketingOptionsTableView.dataSource = self
@@ -50,7 +56,26 @@ class StartupMarketingOptionsViewController: UIViewController, PriceLabelable {
     }
     
     func restoreSavedState() {
-        // TODO: -  Implement this ^^^ somehow...should be easy after i get the email info figured out.
+        guard let startupMarketing = clientController.currentClient?.marketingPlan?.getOptionsForCategory(.startup).first, let key = startupMarketing.price, let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == Int(truncating: key)}) else { return }
+        switch options.key {
+        case 1250:
+            activeOption = 1250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 2250:
+            activeOption = 2250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 3250:
+            activeOption = 3250
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 4500:
+            activeOption = 4500
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        case 5500:
+            activeOption = 5500
+            whatsIncludedTextView.text = makeAListOfWhatsIncluded(forOption: Decimal(options.key))
+        default:
+            return
+        }
     }
     
     // MARK: -  DRY helper methods
@@ -80,6 +105,9 @@ extension StartupMarketingOptionsViewController: UITableViewDataSource, UITableV
         cell.delegate = self
         cell.nameLabel.text = labelNames[indexPath.row]
         cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: Decimal(optionPrices[indexPath.row])) ?? "$0")"
+        if optionPrices[indexPath.row] == activeOption {
+            cell.showActive = true
+        }
         return cell
     }
 }
