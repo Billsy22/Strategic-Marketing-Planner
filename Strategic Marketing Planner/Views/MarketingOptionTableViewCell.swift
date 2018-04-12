@@ -47,9 +47,7 @@ class MarketingOptionTableViewCell: UITableViewCell {
     }
     
     private func performSetup(){
-        //TODO: Make info button hidden only if there is no info to go to
-//        infoButton.isHidden = true
-//        infoButton.isEnabled = false
+
         guard let marketingOption = marketingOption else {
             infoButton.isEnabled = false
             infoButton.isHidden = true

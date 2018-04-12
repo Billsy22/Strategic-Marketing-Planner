@@ -28,6 +28,7 @@
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */; };
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
+		B34EC283207FB4550087FEA5 /* CoudKitWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34EC282207FB4550087FEA5 /* CoudKitWarning.swift */; };
 		B35396A9207E9BDD00CC6F19 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35396A8207E9BDD00CC6F19 /* UserDefaultsExtension.swift */; };
 		B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */; };
 		B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C23207BCF24004258DA /* CloudKitSynchable.swift */; };
@@ -139,7 +140,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16228718206D41EA00160BF0 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		164B7F49207BCE320099D6CB /* StartUpMarketingOptions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StartUpMarketingOptions.storyboard; sourceTree = "<group>"; };
 		164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupMarketingOptionsViewController.swift; sourceTree = "<group>"; };
 		168B008C206A97B9002A1580 /* AddClientModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClientModalViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +159,7 @@
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
 		B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumericKeyboard.xib; sourceTree = "<group>"; };
 		B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
+		B34EC282207FB4550087FEA5 /* CoudKitWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoudKitWarning.swift; sourceTree = "<group>"; };
 		B35396A8207E9BDD00CC6F19 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+Convenience.swift"; sourceTree = "<group>"; };
 		B3615C23207BCF24004258DA /* CloudKitSynchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSynchable.swift; sourceTree = "<group>"; };
@@ -222,7 +223,6 @@
 		DF6E9DEA207C0091000071F7 /* B2BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BViewController.swift; sourceTree = "<group>"; };
 		DF883CAD20729DE80061A78C /* GrowthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCalculator.swift; sourceTree = "<group>"; };
 		DF883CAF2072D52A0061A78C /* NextSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextSteps.storyboard; sourceTree = "<group>"; };
-		DF883CB12073D9880061A78C /* NextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
 		DF883CB32073DA910061A78C /* SummaryAndConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryAndConfirmation.storyboard; sourceTree = "<group>"; };
 		DF94944E207426170035513F /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
 		DF94945020743B4D0035513F /* ProductsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsInfo.swift; sourceTree = "<group>"; };
@@ -396,8 +396,6 @@
 		DF4C7DAB206A9625004FC870 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				16228718206D41EA00160BF0 /* LineChartView.swift */,
-				DF883CB12073D9880061A78C /* NextStepsViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -457,6 +455,7 @@
 				B3D190DA2076D240007662EE /* PriceLabelable.swift */,
 				DF6E9DEA207C0091000071F7 /* B2BViewController.swift */,
 				164B7F4B207BCEDC0099D6CB /* StartupMarketingOptionsViewController.swift */,
+				B34EC282207FB4550087FEA5 /* CoudKitWarning.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -678,6 +677,7 @@
 				DF9D11CD20698F9200529F60 /* ClientTableViewCell.swift in Sources */,
 				B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */,
 				DF01877D207282E300131358 /* SendEmailViewController.swift in Sources */,
+				B34EC283207FB4550087FEA5 /* CoudKitWarning.swift in Sources */,
 				B31534A7206C2ADD00688099 /* BoxedTextField.swift in Sources */,
 				168B008D206A97B9002A1580 /* AddClientModalViewController.swift in Sources */,
 				DF6E9DEB207C0091000071F7 /* B2BViewController.swift in Sources */,
@@ -864,7 +864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NZ5N56B84J;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -881,7 +881,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NZ5N56B84J;
+				DEVELOPMENT_TEAM = JM5E6M7XJW;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

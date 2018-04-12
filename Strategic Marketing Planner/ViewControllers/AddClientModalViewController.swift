@@ -299,7 +299,8 @@ extension AddClientModalViewController {
         } else {
             if let client = client {
                 guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
-                ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, practiceType: practiceType, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
+                ClientController.shared.changePracticeType(for: client, to: practiceType)
+                ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
                 ClientController.shared.updateImage(for: client, toImage: clientPhoto)
             } else {
                 guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
@@ -506,11 +507,9 @@ extension AddClientModalViewController: UITextFieldDelegate {
             if validateEmail(inputEmail: email) == false {
                 emailTextField.backgroundColor = .opaqueRed
                 emailLabel.textColor = .red
-                emailLabel.text = "Email Address *"
             } else {
                 emailTextField.backgroundColor = .textFieldGrey
                 emailLabel.textColor = .black
-                emailLabel.text = "Email Address *"
             }
         }
         if textField == zipCodeTextField {

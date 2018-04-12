@@ -121,6 +121,8 @@ class PresentationBaseViewController: UIViewController, PresentationBaseViewCont
         mainContentView.addSubview(destination.view)
         destination.view.frame = mainContentView.bounds
         destination.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        navigationBarNextButton.tintColor = index == destinations.count - 1 ? .clear : .white
+        navigationBarPreviousButton.tintColor = index == 0 ? .clear : .white
     }
     
     private func setupNavBarAppearance(){

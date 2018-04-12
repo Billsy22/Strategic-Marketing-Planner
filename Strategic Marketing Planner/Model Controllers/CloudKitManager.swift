@@ -17,11 +17,32 @@ class CloudKitManager {
     
     static let shared = CloudKitManager()
     
+    enum Notifications {
+        static let NoAccountNotification = NSNotification.Name("NoAccountLoggedIn")
+        static let AccountInfoUnavailable = NSNotification.Name("CloudStatusUnavailable")
+        static let AccountRestricted = NSNotification.Name("NoAccessAccountRestricted")
+    }
+    
     private init(){
         if UserDefaults.standard.clientRecordZone == nil {
             setupRecordZone(withName: clientZoneName)
         }else{
             zoneID = UserDefaults.standard.clientRecordZone
+        }
+        CKContainer.default().accountStatus { (accountStatus, error) in
+            if let error = error {
+                NSLog("Error determining iCloud account status: \(error.localizedDescription)")
+            }
+            switch accountStatus {
+            case .available:
+                NSLog("iCloud status OK")
+            case .noAccount:
+                NotificationCenter.default.post(name: Notifications.NoAccountNotification, object: nil)
+            case .couldNotDetermine:
+                NotificationCenter.default.post(name: Notifications.AccountInfoUnavailable, object: nil)
+            case.restricted:
+                NotificationCenter.default.post(name: Notifications.AccountRestricted, object: nil)
+            }
         }
     }
     
@@ -60,34 +81,6 @@ class CloudKitManager {
         }
         database.add(operation)
     }
-    
-//    func getDatabaseChanges(){
-//        let changesOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: UserDefaults.standard.serverChangeToken)
-//        var changeZoneIDs: [CKRecordZoneID] = []
-//        changesOperation.recordZoneWithIDChangedBlock = { (zoneId) in
-//            changeZoneIDs.append(zoneId)
-//        }
-//
-//        changesOperation.changeTokenUpdatedBlock = { (token) in
-//            UserDefaults.standard.serverChangeToken = token
-//        }
-//
-//        changesOperation.fetchAllChanges = true
-//
-//        changesOperation.fetchDatabaseChangesCompletionBlock = {
-//            (token, moreComing, error) in
-//
-//            if let error = error {
-//                NSLog("Error during fetch database changes operation: \(error.localizedDescription)")
-//            }
-//
-//
-//        }
-//
-//        changesOperation.qualityOfService = .userInitiated
-//
-//        database.add(changesOperation)
-//    }
     
     func fetchChanges(completion: @escaping (_ success: Bool) -> Void){
         var optionsByRecordZoneID: [CKRecordZoneID: CKFetchRecordZoneChangesOptions] = [:]
@@ -145,12 +138,9 @@ class CloudKitManager {
     }
     
     
-    func updateEntity<T: CloudKitSynchable>(entity: T, completion: @escaping (Bool) -> Void){
-        guard let record = entity.asCKRecord else {
-            completion(false)
-            return
-        }
-        let modOperation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+    func updateEntity<T: CloudKitSynchable>(entities: [T], completion: @escaping (Bool) -> Void){
+        let records: [CKRecord] = entities.compactMap({$0.asCKRecord})
+        let modOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
         modOperation.savePolicy = .allKeys
         modOperation.perRecordCompletionBlock = {
             (_, error) in
