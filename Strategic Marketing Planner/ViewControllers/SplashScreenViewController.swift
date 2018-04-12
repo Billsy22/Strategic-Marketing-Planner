@@ -18,6 +18,9 @@ class SplashScreenViewController: UIViewController {
     // MARK: -  LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForCKManagerNotifications()
+        //Force the shared instance of CloudKitManager to perform setup in order to check if user is logged into iCloud.
+        let _ = CloudKitManager.shared
         UIApplication.shared.isStatusBarHidden = true
         updateButton()
     }

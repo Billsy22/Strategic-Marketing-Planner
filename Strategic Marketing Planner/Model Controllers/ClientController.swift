@@ -28,12 +28,8 @@ class ClientController {
     var currentClient: Client?
     
     private init(){
-        if clients.count == 0 {
-            loadCloudBackup()
-        }else{
-            CloudKitManager.shared.fetchChanges { (success) in
-                if !success { NSLog("Failed to update from stored record.") }
-            }
+        CloudKitManager.shared.fetchChanges { (success) in
+            if !success { NSLog("Failed to update from stored record.") }
         }
     }
     
@@ -41,7 +37,6 @@ class ClientController {
     @discardableResult func addClient(withFirstName firstName: String, lastName: String, practiceName: String, practiceType: Client.PracticeType, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, initialContactDate: Date, notes: String?) -> Client {
         let client = Client(firstName: firstName, lastName: lastName, practiceName: practiceName, phone: phone, email: email, address: streetAddress, city: city, state: state, zip: zip, initialContact: initialContactDate, notes: notes, practiceType: practiceType)
         save()
-        updateClientBackup(client: client)
         return client
     }
     
@@ -55,14 +50,14 @@ class ClientController {
         client.marketingPlan = plan
         client.marketingPlan?.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
     func changePracticeType(for client: Client, to practiceType: Client.PracticeType){
         client.practiceType = practiceType.rawValue
         client.marketingPlan = MarketingPlan(practiceType: practiceType)
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -75,7 +70,7 @@ class ClientController {
             option.isActive = !option.isActive
             option.lastModificationTimestamp = Date().timeIntervalSince1970
             client.recordModified = true
-            updateClientBackup(client: client)
+//            updateClientBackup(client: client)
             save()
         }
     }
@@ -85,7 +80,7 @@ class ClientController {
         externalMarketingOption.name = focus.rawValue
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -94,7 +89,7 @@ class ClientController {
         externalMarketingOption.price = budget as NSDecimalNumber
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -103,7 +98,7 @@ class ClientController {
         externalMarketingOption.isActive = true
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -112,7 +107,7 @@ class ClientController {
         externalMarketingOption.isActive = false
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -122,7 +117,7 @@ class ClientController {
         startupMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         startupMarketingOption.isActive = price > 0
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -131,7 +126,7 @@ class ClientController {
         b2bMarketingOption.name = focus.rawValue
         b2bMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -141,11 +136,11 @@ class ClientController {
         b2bMarketingOption.isActive = price > 0
         b2bMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
-    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, practiceType: Client.PracticeType, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
+    func updateClient(_ client: Client, withFirstName firstName: String, lastName: String, practiceName: String, phone: String, email: String, streetAddress: String, city: String?, state: String?, zip: String, notes: String?){
         client.firstName = firstName
         client.lastName = lastName
         client.practiceName = practiceName
@@ -155,10 +150,9 @@ class ClientController {
         client.city = city
         client.state = state
         client.zip = zip
-        client.practiceType = practiceType.rawValue
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -166,7 +160,7 @@ class ClientController {
         client.monthlyBudget = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -174,7 +168,7 @@ class ClientController {
         client.currentProduction = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -182,7 +176,7 @@ class ClientController {
         client.productionGoal = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -190,7 +184,7 @@ class ClientController {
         client.imageData = UIImageJPEGRepresentation(image, 1)
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-        updateClientBackup(client: client)
+//        updateClientBackup(client: client)
         save()
     }
     
@@ -212,6 +206,9 @@ class ClientController {
         DispatchQueue.main.async {[weak self] in
             self?.delegate?.clientsUpdated()
         }
+        for client in clients.filter({$0.recordModified}){
+            updateClientBackup(client: client)
+        }
     }
     
     private func updateClientBackup(client: Client){
@@ -219,20 +216,20 @@ class ClientController {
         var planSaved = true
         var allOptionsSaved = true
         guard client.recordModified else { return }
-        CloudKitManager.shared.updateEntity(entity: client) { (success) in
+        CloudKitManager.shared.updateEntity(entities: [client]) { (success) in
             if !success {
                 NSLog("Failed to save client.")
                 clientSaved = false
             }
             guard let marketingPlan = client.marketingPlan else { return }
-            CloudKitManager.shared.updateEntity(entity: marketingPlan, completion: { (success) in
+            CloudKitManager.shared.updateEntity(entities: [marketingPlan], completion: { (success) in
                 if !success {
                     NSLog("Failed to save marketing plan.")
                     planSaved = false
                 }
                 guard let options = marketingPlan.options else { return }
                 for option in options.compactMap({$0 as? MarketingOption}){
-                    CloudKitManager.shared.updateEntity(entity: option, completion: { (success) in
+                    CloudKitManager.shared.updateEntity(entities: [option], completion: { (success) in
                         if !success {
                             NSLog("Failed to save marketing option")
                             allOptionsSaved = false
