@@ -22,8 +22,8 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var headerLabel: UILabel!
     
     @IBAction func sendConfirmationEmail(sender: UIButton) {
-            composeEmail()
-        }
+        composeEmail()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         formatHeaderLabel()
         updateTotalPriceLabel()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatTextView()
@@ -50,11 +50,11 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         let firstSection = "Thank you for starting a partnership with Dental Branding. We are thrilled to be working with you. Based on our information, you recently talked with us about your marketing plan. This is the information we have based on our conversation.\n\nBudget: \(budgetString) per month\n\n"
         let lastSection = "\nTotal cost: \(planCostString) per month"
         if client.practiceType == "general" {
-        summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
+            summaryTextView.text = firstSection + printFoundationOptions() + printInternalOptions() + printExternalOptions() + lastSection
         } else if client.practiceType == "startup" {
             summaryTextView.text = firstSection + printStartupUptions() + lastSection
         } else if client.practiceType == "specialty" {
-            summaryTextView.text = firstSection + printFoundationOptions() + printExternalOptions() + lastSection
+            summaryTextView.text = firstSection + printFoundationOptions() + printBusinessToBusinessOptions() + printExternalOptions() + lastSection
         }
     }
     
@@ -120,11 +120,19 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         var optionsList = ""
         let optionCostAsDecimal = marketingPlan.cost
         let optionCostAsInt = NSDecimalNumber(decimal: optionCostAsDecimal).intValue
-        guard let options
-        let options = marketingPlan.getOptionsForCategory(.businessToBusiness, includeOnlyActive: true)
-        for option in options {
-            optionsList.append(option)
-            optionsList.append("\n")
+        let optionCategory = marketingPlan.getOptionsForCategory(MarketingPlan.OptionCategory.businessToBusiness, includeOnlyActive: true).first
+        if optionCategory?.name == "doctors" {
+            guard let doctorOptions = ProductsInfo.b2bMarketingDoctorsDictionary.first(where: {$0.key == optionCostAsInt}) else { return "" }
+            for option in doctorOptions.value {
+                optionsList.append(option)
+                optionsList.append("\n")
+            }
+        } else if optionCategory?.name == "both" {
+            guard let bothOptions = ProductsInfo.b2bMarketingBothDictionary.first(where: {$0.key == optionCostAsInt}) else { return "" }
+            for option in bothOptions.value {
+                optionsList.append(option)
+                optionsList.append("\n")
+            }
         }
         return optionsList
     }

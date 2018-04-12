@@ -37,6 +37,8 @@ enum ProductsInfo {
     static let ruralValue = assembleRuralDictionary()
     
     static let startupMarketingDictionary = assembleStartupPackagesDictionary()
+    static let b2bMarketingDoctorsDictionary = assembleB2BDoctorsDictionary()
+    static let b2bMarketingBothDictionary = assembleB2BBothDictionary()
     
     static let externalMarketingDictionary: Dictionary<String,Dictionary<Int,[String]>> = [urbanKey : urbanValue, suburbanKey : suburbanValue, ruralKey : ruralValue]
     
