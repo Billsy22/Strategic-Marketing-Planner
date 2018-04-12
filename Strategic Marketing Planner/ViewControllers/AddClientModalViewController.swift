@@ -507,11 +507,9 @@ extension AddClientModalViewController: UITextFieldDelegate {
             if validateEmail(inputEmail: email) == false {
                 emailTextField.backgroundColor = .opaqueRed
                 emailLabel.textColor = .red
-                emailLabel.text = "Email Address *"
             } else {
                 emailTextField.backgroundColor = .textFieldGrey
                 emailLabel.textColor = .black
-                emailLabel.text = "Email Address *"
             }
         }
         if textField == zipCodeTextField {
