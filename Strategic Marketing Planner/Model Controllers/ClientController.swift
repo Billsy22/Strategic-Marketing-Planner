@@ -59,6 +59,13 @@ class ClientController {
         save()
     }
     
+    func changePracticeType(for client: Client, to practiceType: Client.PracticeType){
+        client.practiceType = practiceType.rawValue
+        client.marketingPlan = MarketingPlan(practiceType: practiceType)
+        updateClientBackup(client: client)
+        save()
+    }
+    
     func toggleActivationForMarketingOption(_ option: MarketingOption, forClient client: Client){
         guard let marketingPlan = client.marketingPlan, let options = marketingPlan.options else {
             NSLog("Tried to edit a marketing option without a marketing plan.")
