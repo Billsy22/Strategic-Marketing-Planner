@@ -18,6 +18,8 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var productDetailCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    
+    
     var cellSizes: [CGSize] = []
     var imagesHeight: CGFloat = 0
     
@@ -69,6 +71,7 @@ class ProductDetailViewController: UIViewController {
         
         // outlets to product.property
         titleLabel.text = product.title
+        titleLabel.textColor = UIColor.brandOrange
         discriptionLabel.text = product.intro
         whatsIncludedLabel.text = "What's Included:"
         includedItemsLabel.text = product.included
