@@ -242,7 +242,7 @@ extension AddClientModalViewController {
     }
     
     func validateEmail(inputEmail: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z0-9]{1,64}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: inputEmail)
         return emailTest
     }
@@ -511,7 +511,7 @@ extension AddClientModalViewController: UITextFieldDelegate {
             } else {
                 emailTextField.backgroundColor = .textFieldGrey
                 emailLabel.textColor = .black
-                emailLabel.text = "Email Label *"
+                emailLabel.text = "Email Address *"
             }
         }
         if textField == zipCodeTextField {
