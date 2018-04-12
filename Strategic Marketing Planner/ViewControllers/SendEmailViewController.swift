@@ -88,19 +88,6 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         return optionsList
     }
     
-    func printStartupUptions() -> String {
-        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
-        var optionsList = ""
-        let optionCostAsDecimal = marketingPlan.cost
-        let optionCostAsInt = NSDecimalNumber(decimal: optionCostAsDecimal).intValue
-        guard let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == optionCostAsInt}) else { return "" }
-        for option in options.value {
-            optionsList.append(option)
-            optionsList.append("\n")
-        }
-        return optionsList
-    }
-    
     func printFoundationOptions() -> String {
         guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
         var optionsList = ""
@@ -115,16 +102,32 @@ class SendEmailViewController: UIViewController, MFMailComposeViewControllerDele
         return optionsList
     }
     
-//    func printStartupPackage() -> String {
-//        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
-//        var list = ""
-//        let options = marketingPlan.getOptionsForCategory(.startup, includeOnlyActive: true)
-//        for option in options {
-//            list.append("\(option.summary)")
-//            list.append("\n")
-//        }
-//        return list
-//    }
+    func printStartupUptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let optionCostAsDecimal = marketingPlan.cost
+        let optionCostAsInt = NSDecimalNumber(decimal: optionCostAsDecimal).intValue
+        guard let options = ProductsInfo.startupMarketingDictionary.first(where: {$0.key == optionCostAsInt}) else { return "" }
+        for option in options.value {
+            optionsList.append(option)
+            optionsList.append("\n")
+        }
+        return optionsList
+    }
+    
+    func printBusinessToBusinessOptions() -> String {
+        guard let client = client, let marketingPlan = client.marketingPlan else { return "" }
+        var optionsList = ""
+        let optionCostAsDecimal = marketingPlan.cost
+        let optionCostAsInt = NSDecimalNumber(decimal: optionCostAsDecimal).intValue
+        guard let options
+        let options = marketingPlan.getOptionsForCategory(.businessToBusiness, includeOnlyActive: true)
+        for option in options {
+            optionsList.append(option)
+            optionsList.append("\n")
+        }
+        return optionsList
+    }
     
     func formatConfirmationButton() {
         sendConfirmationEmailButton.layer.cornerRadius = 5
