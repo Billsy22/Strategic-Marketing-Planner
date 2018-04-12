@@ -92,6 +92,21 @@ enum ProductsInfo {
         dictionary.updateValue(["Brand Definition", "Custom Logo", "Responsive Website & 12 Months Hosting", "Comprehensive Results Tracking", "Monthly Marketing Strategy", "Staff Call Conversion Training (Phone Answering Skills)", "Referral System", "Smile Savings System", "Targeted Mini-zine", "Open House Package", "SEO", "Internet Review Cards", "AdWords", "Facebook Jumpstart", "Facebook Outreach"], forKey: 5500)
         return dictionary
     }
+    
+    private static func assembleB2BDoctorsDictionary() -> Dictionary<Int,[String]> {
+        var dictionary = Dictionary<Int,[String]>()
+        dictionary.updateValue(["Referring Doctors - Option 1"], forKey: 750)
+        dictionary.updateValue(["Referring Doctors - Option 2"], forKey: 1000)
+        dictionary.updateValue(["Referring Doctors - Option 3"], forKey: 1500)
+        return dictionary
+    }
+    
+    private static func assembleB2BBothDictionary() -> Dictionary<Int,[String]> {
+        var dictionary = Dictionary<Int,[String]>()
+        dictionary.updateValue(["Both Referring Doctors & Patients - Option 1"], forKey: 750)
+        dictionary.updateValue(["Both Referring Doctors & Patients - Option 2"], forKey: 2000)
+        return dictionary
+    }
 }
 /*
  
