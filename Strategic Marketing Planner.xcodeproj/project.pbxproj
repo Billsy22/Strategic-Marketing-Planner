@@ -43,15 +43,12 @@
 		B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31534A6206C2ADD00688099 /* BoxedTextField.swift */; };
 		B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */; };
 		B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11CC20698F9200529F60 /* ClientTableViewCell.swift */; };
-		B3D9DF2E206D784100DA8A4A /* GrowthCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334D032206B19ED00FE87F0 /* GrowthCalculatorViewController.swift */; };
 		B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3998E1F2069C72400C4F02E /* Branding.swift */; };
 		B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
 		B3D9DF35206DD76700DA8A4A /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9DF34206DD76700DA8A4A /* LineChartView.swift */; };
 		B3E93BD52069B3CD001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */; };
-		B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */; };
 		B3E93BDA2069B434001CC0AA /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
-		B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9D11C820696F1600529F60 /* ClientListTableViewController.swift */; };
 		B3F55E4020695F8100B2B1EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E3F20695F8100B2B1EE /* AppDelegate.swift */; };
 		B3F55E4520695F8100B2B1EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
 		B3F55E4820695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E4620695F8100B2B1EE /* Strategic_Marketing_Planner.xcdatamodeld */; };
@@ -122,7 +119,6 @@
 		E1033B88206D3D3A000EC27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E4320695F8100B2B1EE /* Main.storyboard */; };
 		E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
-		E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
 		E1033B8F206D3D61000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
 		E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
@@ -172,7 +168,6 @@
 		B3615C29207BF80B004258DA /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3998E1F2069C72400C4F02E /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
-		B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsViewController.swift; sourceTree = "<group>"; };
 		B3D190D62076882C007662EE /* NumberHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberHelper.swift; sourceTree = "<group>"; };
 		B3D190DA2076D240007662EE /* PriceLabelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabelable.swift; sourceTree = "<group>"; };
 		B3D9DF34206DD76700DA8A4A /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
@@ -443,7 +438,6 @@
 		DF9D11CB20698CD500529F60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */,
 				168B008C206A97B9002A1580 /* AddClientModalViewController.swift */,
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
@@ -708,18 +702,14 @@
 				E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */,
 				E1033B93206D3D78000EC27B /* ProductController.swift in Sources */,
 				E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */,
-				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
 				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */,
 				B3D9DF29206D782D00DA8A4A /* NumericKeyboard.swift in Sources */,
-				B3E93BDB2069B437001CC0AA /* ClientListTableViewController.swift in Sources */,
-				B3E93BD92069B431001CC0AA /* NavigationTableViewController.swift in Sources */,
 				E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */,
 				16F7E0F6206AA45600D07940 /* ClientController.swift in Sources */,
 				B3F55E812069780900B2B1EE /* Strategic_Marketing_PlannerTests.swift in Sources */,
 				B3D9DF27206D782700DA8A4A /* Strategic_Marketing_Planner.xcdatamodeld in Sources */,
 				B3D9DF2A206D783300DA8A4A /* BoxedTextField.swift in Sources */,
-				B3D9DF2E206D784100DA8A4A /* GrowthCalculatorViewController.swift in Sources */,
 				B3D9DF32206D785B00DA8A4A /* Branding.swift in Sources */,
 				B3D9DF2C206D783A00DA8A4A /* ClientTableViewCell.swift in Sources */,
 				B3D9DF2B206D783600DA8A4A /* BoxedLabel.swift in Sources */,
@@ -874,7 +864,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 77T5A89VWP;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -891,7 +881,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = 77T5A89VWP;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

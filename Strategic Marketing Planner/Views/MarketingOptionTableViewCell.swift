@@ -51,7 +51,6 @@ class MarketingOptionTableViewCell: UITableViewCell {
         guard let marketingOption = marketingOption else {
             infoButton.isEnabled = false
             infoButton.isHidden = true
-            NSLog("MarketingOptionTableViewCell did not perform setup because no marketing option was provided.")
             return
         }
         if marketingOption.descriptionPageIndex == nil {

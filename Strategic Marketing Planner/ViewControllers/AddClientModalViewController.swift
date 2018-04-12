@@ -162,7 +162,7 @@ class AddClientModalViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         formatPhone()
         if validateTextFields() == true {
-        save()
+            save()
         }
     }
     
@@ -197,6 +197,7 @@ class AddClientModalViewController: UIViewController {
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
 }
@@ -241,7 +242,7 @@ extension AddClientModalViewController {
     }
     
     func validateEmail(inputEmail: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z0-9]{1,64}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: inputEmail)
         return emailTest
     }
@@ -281,6 +282,7 @@ extension AddClientModalViewController {
     // Save Client
     func save() {
         guard let firstName = self.firstNameTextField.text,
+            let clientPhoto = clientPhotoButton.backgroundImage(for: .normal),
             let lastName = self.lastNameTextField.text,
             let practiceName = self.practiceNameTextField.text,
             let phone = self.phoneTextField.text,
@@ -298,9 +300,11 @@ extension AddClientModalViewController {
             if let client = client {
                 guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
                 ClientController.shared.updateClient(client, withFirstName: firstName, lastName: lastName, practiceName: practiceName, practiceType: practiceType, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, notes: notes)
+                ClientController.shared.updateImage(for: client, toImage: clientPhoto)
             } else {
                 guard let practiceType = Client.PracticeType(rawValue: practiceType.lowercased()) else { return }
                 self.client = ClientController.shared.addClient(withFirstName: firstName, lastName: lastName, practiceName: practiceName, practiceType: practiceType, phone: phone, email: email, streetAddress: streetAddress, city: city, state: state, zip: zip, initialContactDate: Date(), notes: notes)
+                ClientController.shared.updateImage(for: self.client!, toImage: clientPhoto)
             }
             dismiss(animated: true, completion: {
                 print("Client Created")
@@ -506,7 +510,7 @@ extension AddClientModalViewController: UITextFieldDelegate {
             } else {
                 emailTextField.backgroundColor = .textFieldGrey
                 emailLabel.textColor = .black
-                emailLabel.text = "Email Label *"
+                emailLabel.text = "Email Address *"
             }
         }
         if textField == zipCodeTextField {
@@ -548,8 +552,6 @@ extension AddClientModalViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let clientImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         clientPhotoButton.setBackgroundImage(clientImage, for: .normal)
-        guard let client = client else { return }
-        ClientController.shared.updateImage(for: client, toImage: clientImage)
         dismiss(animated: true, completion: nil)
     }
     

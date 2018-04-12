@@ -56,7 +56,6 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bgE-zV-r9E" firstAttribute="centerX" secondItem="iCv-xD-A9n" secondAttribute="centerX" id="EcD-vz-NvC"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="bgE-zV-r9E" secondAttribute="trailing" constant="5" id="ZdH-Pz-7db"/>
                                         <constraint firstItem="bgE-zV-r9E" firstAttribute="centerY" secondItem="iCv-xD-A9n" secondAttribute="centerY" id="ceK-lN-UGR"/>
                                         <constraint firstItem="bgE-zV-r9E" firstAttribute="leading" secondItem="iCv-xD-A9n" secondAttribute="leadingMargin" constant="5" id="ihh-n5-crs"/>
