@@ -887,7 +887,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = NZ5N56B84J;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -904,7 +904,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Strategic Marketing Planner/Strategic Marketing Planner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM5E6M7XJW;
+				DEVELOPMENT_TEAM = NZ5N56B84J;
 				INFOPLIST_FILE = "$(SRCROOT)/Strategic Marketing Planner/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
