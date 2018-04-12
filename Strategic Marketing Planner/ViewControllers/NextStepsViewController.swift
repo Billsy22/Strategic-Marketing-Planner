@@ -8,7 +8,8 @@
 
 import UIKit
 
-class NextStepsViewController: UIViewController {
+class NextStepsViewController: UIViewController, PriceLabelable {
+    var client: Client? = ClientController.shared.currentClient
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -16,7 +17,11 @@ class NextStepsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatHeaderLabel()
-        formatTotalPriceLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTotalPriceLabel()
     }
     
     func formatHeaderLabel() {
@@ -24,7 +29,7 @@ class NextStepsViewController: UIViewController {
         headerLabel.text = "Congratulations!"
     }
     
-    func formatTotalPriceLabel() {
-        totalPriceLabel.text = "$0/$5000"
-    }
+//    func formatTotalPriceLabel() {
+//        totalPriceLabel.text = "$0/$5000"
+//    }
 }
