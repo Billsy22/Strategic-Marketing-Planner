@@ -28,6 +28,7 @@
 		B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */; };
 		B3407ADD206C4F9600630F6F /* NumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */; };
+		B35396A9207E9BDD00CC6F19 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35396A8207E9BDD00CC6F19 /* UserDefaultsExtension.swift */; };
 		B3615C22207BCECD004258DA /* MarketingOption+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */; };
 		B3615C24207BCF24004258DA /* CloudKitSynchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3615C23207BCF24004258DA /* CloudKitSynchable.swift */; };
 		B3615C28207BF7B9004258DA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3615C27207BF7B9004258DA /* CloudKit.framework */; };
@@ -114,7 +115,6 @@
 		E1033B80206D3D0F000EC27B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B78206BE9EC000EC27B /* Product.swift */; };
 		E1033B81206D3D15000EC27B /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F55E7620696D1400B2B1EE /* Client+Convenience.swift */; };
 		E1033B82206D3D1B000EC27B /* ProductsCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */; };
-		E1033B83206D3D1F000EC27B /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
 		E1033B84206D3D23000EC27B /* GrowthCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */; };
 		E1033B85206D3D2C000EC27B /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */; };
 		E1033B87206D3D36000EC27B /* PresentationVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F55E8A2069890200B2B1EE /* PresentationVC.storyboard */; };
@@ -122,14 +122,11 @@
 		E1033B89206D3D3F000EC27B /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B0090206A9905002A1580 /* ClientList.storyboard */; };
 		E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168B008E206A98ED002A1580 /* AddClient.storyboard */; };
 		E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA14E5D206C014100920559 /* ProductsCollectionViewController.swift */; };
-		E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1033B8F206D3D61000EC27B /* productPages.json in Resources */ = {isa = PBXBuildFile; fileRef = E1033B7A206C3045000EC27B /* productPages.json */; };
 		E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC2367206AD8730027C2EE /* DateHelper.swift */; };
 		E1033B93206D3D78000EC27B /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1033B7C206C4702000EC27B /* ProductController.swift */; };
 		E13F85A92072D8EE003764C1 /* ProductDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */; };
 		E13F85AB2073ED83003764C1 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */; };
-		E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */; };
-		E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */; };
 		E1D80F32206D5EB000D3F812 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1D80F31206D5EB000D3F812 /* ProductList.storyboard */; };
 		E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */; };
 		E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */; };
@@ -166,6 +163,7 @@
 		B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GrowthCalculator.storyboard; sourceTree = "<group>"; };
 		B3407ADA206C4F2F00630F6F /* NumericKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumericKeyboard.xib; sourceTree = "<group>"; };
 		B3407ADC206C4F9600630F6F /* NumericKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeyboard.swift; sourceTree = "<group>"; };
+		B35396A8207E9BDD00CC6F19 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		B3615C21207BCECD004258DA /* MarketingOption+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarketingOption+Convenience.swift"; sourceTree = "<group>"; };
 		B3615C23207BCF24004258DA /* CloudKitSynchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSynchable.swift; sourceTree = "<group>"; };
 		B3615C25207BF7AC004258DA /* Strategic Marketing Planner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Strategic Marketing Planner.entitlements"; sourceTree = "<group>"; };
@@ -246,8 +244,6 @@
 		E1033B7C206C4702000EC27B /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		E13F85A82072D8EE003764C1 /* ProductDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
-		E1CCB939206AFB9300A00889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MarketingToSuburban.storyboard; sourceTree = "<group>"; };
-		E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketingToSuburbanViewController.swift; sourceTree = "<group>"; };
 		E1D80F31206D5EB000D3F812 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
 		E1D80F33206D5F1300D3F812 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
 		E1D80F35206E96D100D3F812 /* ProductDetailListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailListTableViewController.swift; sourceTree = "<group>"; };
@@ -342,7 +338,6 @@
 				B3998E1C2069BC5200C4F02E /* RootTabBarController.storyboard */,
 				B334D034206B1A3F00FE87F0 /* BoxedLabel.swift */,
 				B334D036206B1A7100FE87F0 /* GrowthCalculator.storyboard */,
-				E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */,
 				DFA14E5B206C00EF00920559 /* ProductsCollectionView.storyboard */,
 				E1D80F31206D5EB000D3F812 /* ProductList.storyboard */,
 				E13F85AA2073ED83003764C1 /* ProductDetail.storyboard */,
@@ -379,6 +374,7 @@
 				DF883CAD20729DE80061A78C /* GrowthCalculator.swift */,
 				DF94945020743B4D0035513F /* ProductsInfo.swift */,
 				B3D190D62076882C007662EE /* NumberHelper.swift */,
+				B35396A8207E9BDD00CC6F19 /* UserDefaultsExtension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -450,7 +446,6 @@
 			isa = PBXGroup;
 			children = (
 				B3CFCC75207430EF00D3B524 /* NextStepsViewController.swift */,
-				E1CCB93B206B046D00A00889 /* MarketingToSuburbanViewController.swift */,
 				168B008C206A97B9002A1580 /* AddClientModalViewController.swift */,
 				B3E93BD62069B3DA001CC0AA /* PresentationBaseViewController.swift */,
 				B3E93BD42069B3CD001CC0AA /* NavigationTableViewController.swift */,
@@ -525,6 +520,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -600,7 +598,6 @@
 				DF06C669206C6D2A00E6F4CC /* SEO.pdf in Resources */,
 				B3407ADB206C4F2F00630F6F /* NumericKeyboard.xib in Resources */,
 				168B0091206A9905002A1580 /* ClientList.storyboard in Resources */,
-				E1CCB93A206AFB9300A00889 /* MarketingToSuburban.storyboard in Resources */,
 				B32DC60D207293D2002E68AF /* MarketingOptionTableViewCell.xib in Resources */,
 				E1033B7B206C3046000EC27B /* productPages.json in Resources */,
 				B334D037206B1A7100FE87F0 /* GrowthCalculator.storyboard in Resources */,
@@ -624,7 +621,6 @@
 				DF6E9DE7207BC5EF000071F7 /* Strategic Marketing PlannerTests.xctest in Resources */,
 				E1033B8F206D3D61000EC27B /* productPages.json in Resources */,
 				E1033B87206D3D36000EC27B /* PresentationVC.storyboard in Resources */,
-				E1033B83206D3D1F000EC27B /* MarketingToSuburban.storyboard in Resources */,
 				E1033B82206D3D1B000EC27B /* ProductsCollectionView.storyboard in Resources */,
 				E1033B85206D3D2C000EC27B /* RootTabBarController.storyboard in Resources */,
 				E1033B8A206D3D43000EC27B /* AddClient.storyboard in Resources */,
@@ -666,6 +662,7 @@
 				16FC46DB207679B300CC99D0 /* PracticeTypeDropDownButton.swift in Sources */,
 				E1D80F36206E96D100D3F812 /* ProductDetailListTableViewController.swift in Sources */,
 				B3E93BD72069B3DA001CC0AA /* PresentationBaseViewController.swift in Sources */,
+				B35396A9207E9BDD00CC6F19 /* UserDefaultsExtension.swift in Sources */,
 				B3D190DB2076D240007662EE /* PriceLabelable.swift in Sources */,
 				B32DC6012072825E002E68AF /* MarketingOptionsViewController.swift in Sources */,
 				DF949455207529B60035513F /* ExternalMarketingViewController.swift in Sources */,
@@ -676,7 +673,6 @@
 				E1D80F34206D5F1300D3F812 /* ProductListTableViewController.swift in Sources */,
 				B3F55E7520696C8100B2B1EE /* ClientController.swift in Sources */,
 				B32DC60C207293D2002E68AF /* MarketingOptionTableViewCell.swift in Sources */,
-				E1CCB93C206B046D00A00889 /* MarketingToSuburbanViewController.swift in Sources */,
 				B32DC5FF2071E55A002E68AF /* MarketingPlan+Convenience.swift in Sources */,
 				B3998E202069C72400C4F02E /* Branding.swift in Sources */,
 				B334D035206B1A3F00FE87F0 /* BoxedLabel.swift in Sources */,
@@ -712,7 +708,6 @@
 				E1033B90206D3D66000EC27B /* DateHelper.swift in Sources */,
 				E1033B93206D3D78000EC27B /* ProductController.swift in Sources */,
 				E1033B7F206D3D0A000EC27B /* CoreDataStack.swift in Sources */,
-				E1033B8E206D3D5D000EC27B /* MarketingToSuburbanViewController.swift in Sources */,
 				E1033B8B206D3D46000EC27B /* ProductsCollectionViewController.swift in Sources */,
 				E1033B80206D3D0F000EC27B /* Product.swift in Sources */,
 				B3D9DF33206D786100DA8A4A /* AppDelegate.swift in Sources */,
@@ -757,14 +752,6 @@
 				B3F55E4C20695F8100B2B1EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E1CCB938206AFB9300A00889 /* MarketingToSuburban.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1CCB939206AFB9300A00889 /* Base */,
-			);
-			name = MarketingToSuburban.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

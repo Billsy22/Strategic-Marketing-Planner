@@ -11,10 +11,10 @@ import CloudKit
 import CoreData
 
 ///The default implementation will take care of stored properties on the model object, but does not handle relationships. Conforming classes should provide implementations of addCKReferencesToCKRecord and initializeRelationshipsFromReferences to set up their relationships as appropriate.  These functions will automatically be called at the appropriate time.
-protocol CloudKitSynchable where Self: NSManagedObject {
+protocol CloudKitSynchable: class {
     ///This should be a unique string that identifies the record for the model object in CloudKit.
     var recordName: String? { get set }
-    var asCKRecord: CKRecord { get }
+    var asCKRecord: CKRecord? { get }
     var lastModificationTimestamp: Double { get }
     ///Stored properties are automatically handled by the default implemtation of asCKRecord.  This method is a hook for conforming classes to use to add CKReferences to their record as needed to maintain their relationships when restored from a CKRecord.
     func addCKReferencesToCKRecord(_ record: CKRecord)
@@ -31,16 +31,18 @@ extension CloudKitSynchable {
 }
 
 //Gives all of the managed objects a baseline implentation that deals with all of their stored properties
-extension CloudKitSynchable {
+extension CloudKitSynchable where Self: NSManagedObject {
     
     //Empty implementation to make implementing this function optional for conforming types. This is because, per CloudKit guidlines, the parent object will not have a reference to the child object and therefore there will be no work to do here.
     func addCKReferencesToCKRecord(_ record: CKRecord){}
     static func initializeRelationshipsFromReferences(_ record: CKRecord, model: Self) -> Bool { return true }
 
-    var asCKRecord: CKRecord {
+    var asCKRecord: CKRecord? {
         var record: CKRecord
-        let recordName = self.recordName != nil ? self.recordName! : UUID().uuidString
-        record = CKRecord(recordType: Self.recordType, recordID: CKRecordID(recordName: recordName))
+        self.recordName = self.recordName != nil ? self.recordName! : UUID().uuidString
+        guard let zoneID = UserDefaults.standard.clientRecordZone else { return nil }
+        let recordID = CKRecordID(recordName: self.recordName!, zoneID: zoneID)
+        record = CKRecord(recordType: Self.recordType, recordID: recordID)
         
         let attributes = entity.attributesByName
         for attribute in attributes {
@@ -99,6 +101,4 @@ extension CloudKitSynchable {
             }
         }
     }
-    
-    
 }
