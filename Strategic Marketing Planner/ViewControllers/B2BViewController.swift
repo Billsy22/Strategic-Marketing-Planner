@@ -120,15 +120,14 @@ extension B2BViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.showActive = true
             }
             return cell
-        } else if tableView == referralMarketingTableview {
+        } else {
             cell.nameLabel.text = activeArray[indexPath.row]
             cell.descriptionLabel.text = "\(NumberHelper.currencyString(for: activePriceArray[indexPath.row]) ?? "$0")"
             cell.delegate = self
             if activePriceArray[indexPath.row] == activePrice {
                 cell.showActive = true
+                activePrice = 0
             }
-            return cell
-        } else {
             return cell
         }
     }
@@ -158,33 +157,41 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
                     deselectCellsReferral()
                     activeArray = referralMarketingDoctorOptions
                     activePriceArray = referralMarketingDoctorOptionPrices
+                    if !cell.showActive {
+                        clientController.updateB2BMarketingBudget(forClient: client, to: 0)
+                    }
                     if externalMarketingViewControllerAdded == true {
                         customNavigationController?.removeExternalMarketingScreen(afterViewController: self)
                         externalMarketingViewControllerAdded = false
                     }
-                    referralMarketingTableview.reloadData()
                 case .patients:
                     chooseBudgetLabel.text = "Please move on to External Marketing"
                     deselectCellsReferral()
                     activeArray = []
                     activePriceArray = []
+                    if !cell.showActive {
+                        clientController.updateB2BMarketingBudget(forClient: client, to: 0)
+                    }
                     if externalMarketingViewControllerAdded == false {
                         customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
                         externalMarketingViewControllerAdded = true
                     }
-                    referralMarketingTableview.reloadData()
                 case .both:
                     chooseBudgetLabel.text = "Choose a professional referral marketing budget"
                     deselectCellsReferral()
                     activeArray = referralMarketingBothOptions
                     activePriceArray = referralMarketingBothOptionPrices
+                    if !cell.showActive {
+                        clientController.updateB2BMarketingBudget(forClient: client, to: 0)
+                    }
                     if externalMarketingViewControllerAdded == false {
                     customNavigationController?.insertNewDestination(afterViewController: self , viewControllerName: "ExternalMarketingViewController", storyboardName: "ExternalMarketing", andStoryboardId: "externalMarketing")
                         externalMarketingViewControllerAdded = true
                     }
-                    referralMarketingTableview.reloadData()
                 }
             }
+            referralMarketingTableview.reloadData()
+            updateTotalPriceLabel()
         } else {
             deselectCellsReferral()
             guard  let indexOfPrice = referralMarketingTableview.indexPath(for: cell) else { return false }
@@ -198,9 +205,7 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
     func deselectCellsB2B() {
         for index in 0..<b2bOptions.count {
             if let tableViewCell = b2bTableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as? MarketingOptionTableViewCell {
-                if tableViewCell != MarketingOptionTableViewCell() {
-                    tableViewCell.showActive = false
-                }
+                tableViewCell.showActive = false
             }
         }
     }
@@ -208,9 +213,7 @@ extension B2BViewController: MarketingOptionTableViewCellDelegate {
     func deselectCellsReferral() {
         for index in 0..<activeArray.count {
             if let tableViewCell = referralMarketingTableview.cellForRow(at: IndexPath.init(row: index, section: 0)) as? MarketingOptionTableViewCell {
-                if tableViewCell != MarketingOptionTableViewCell() {
                     tableViewCell.showActive = false
-                }
             }
         }
     }
