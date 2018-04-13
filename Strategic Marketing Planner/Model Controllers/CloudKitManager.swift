@@ -72,11 +72,15 @@ class CloudKitManager {
             (cursor, error) in
             if let error = error {
                 NSLog("Error fetching records: \(error.localizedDescription)")
-                completion(fetchedRecords.compactMap({T.updateModel(from: $0, in: CoreDataStack.context)}), error)
+                DispatchQueue.main.async {
+                    completion(fetchedRecords.compactMap({T.updateModel(from: $0, in: CoreDataStack.context)}), error)
+                }
             }else if let cursor = cursor {
                 self?.database.add(CKQueryOperation(cursor: cursor))
             }else{
-                completion(fetchedRecords.compactMap({T.updateModel(from: $0, in: CoreDataStack.context)}), nil)
+                DispatchQueue.main.async {
+                    completion(fetchedRecords.compactMap({T.updateModel(from: $0, in: CoreDataStack.context)}), nil)
+                }
             }
         }
         database.add(operation)
@@ -96,22 +100,27 @@ class CloudKitManager {
         
         operation.recordChangedBlock = { (record) in
             let recordType = record.recordType
-            switch recordType {
-            case Client.recordType:
-                _ = Client.updateModel(from: record, in: CoreDataStack.context)
-            case MarketingPlan.recordType:
-                _ = MarketingPlan.updateModel(from: record, in: CoreDataStack.context)
-            case MarketingOption.recordType:
-                _ = MarketingOption.updateModel(from: record, in: CoreDataStack.context)
-            default:
-                NSLog("BIG PROBLEM: Encountered an unknown record type.")
+            DispatchQueue.main.async {
+                switch recordType {
+                case Client.recordType:
+                    _ = Client.updateModel(from: record, in: CoreDataStack.context)
+                case MarketingPlan.recordType:
+                    _ = MarketingPlan.updateModel(from: record, in: CoreDataStack.context)
+                case MarketingOption.recordType:
+                    _ = MarketingOption.updateModel(from: record, in: CoreDataStack.context)
+                default:
+                    NSLog("BIG PROBLEM: Encountered an unknown record type.")
+                }
             }
         }
         
         operation.recordWithIDWasDeletedBlock = { (recordId, recordType) in
             if recordType == Client.recordType {
-                if let client = ClientController.shared.clients.first(where: {$0.recordName == recordId.recordName}){
-                    ClientController.shared.removeClient(client)
+                //TODO: - Refactor this so that there are background an main thread contexts to make things thread safe.  Right now clients cannot be safely accessed outside of the main thread.
+                DispatchQueue.main.async {
+                    if let client = ClientController.shared.clients.first(where: {$0.recordName == recordId.recordName}){
+                        ClientController.shared.removeClient(client)
+                    }
                 }
             }
         }
@@ -190,21 +199,4 @@ class CloudKitManager {
             }
         }
     }
-    
-//    func subscribeToRecordDeletedNotifications<T: CloudKitSynchable>(_ type: T.Type){
-//        let desiredKeys = ["recordName"]
-//        let notificationInfo = CKNotificationInfo()
-//        notificationInfo.alertBody = nil
-//        notificationInfo.shouldBadge = false
-//        notificationInfo.shouldSendContentAvailable = true
-//        notificationInfo.desiredKeys = desiredKeys
-//        let predicate = NSPredicate(value: true)
-//        let subscription = CKQuerySubscription(recordType: T.recordType, predicate: predicate, options: [.firesOnRecordDeletion])
-//        subscription.notificationInfo = notificationInfo
-//        database.save(subscription) { (subscription, error) in
-//            if let error = error {
-//                NSLog("Subscription error.  Failed to create new subscription for deletions: \(error.localizedDescription)")
-//            }
-//        }
-//    }
 }

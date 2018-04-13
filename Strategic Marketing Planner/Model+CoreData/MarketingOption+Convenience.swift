@@ -41,7 +41,9 @@ extension MarketingOption: CloudKitSynchable {
         guard let planReference = record[Relationships.marketingPlan] as? CKReference else { return false }
         let marketingPlanName = planReference.recordID.recordName
         guard let plan = ClientController.shared.clients.first(where: {$0.marketingPlan?.recordName == marketingPlanName})?.marketingPlan else { return false }
-        plan.addToOptions(model)
+        DispatchQueue.main.async {
+            plan.addToOptions(model)
+        }
         return true
     }
     

@@ -49,6 +49,12 @@ extension CloudKitSynchable where Self: NSManagedObject {
             let name = attribute.key
             guard let recordValue = self.value(forKey: name) as? CKRecordValue else { continue }
             record[name] = recordValue
+//            if let data = recordValue as? Data, let url = temporaryURL(data: data) {
+//                let asset = CKAsset(fileURL: url)
+//                record[name] = asset
+//            }else{
+//                record[name] = recordValue
+//            }
         }
         addCKReferencesToCKRecord(record)
         return record
@@ -56,11 +62,17 @@ extension CloudKitSynchable where Self: NSManagedObject {
 
     
     static func updateModel(from record: CKRecord, in context: NSManagedObjectContext) -> Self? {
-        
-        let fetchRequest = NSFetchRequest<Self>(entityName: Self.recordType)
-        let predicate = NSPredicate(format: "recordName == %@", record.recordID.recordName)
-        fetchRequest.predicate = predicate
-        let matchingObjects = (try? context.fetch(fetchRequest))
+        let group = DispatchGroup()
+        group.enter()
+        var matchingObjects: [Self]? = []
+        CoreDataStack.container.performBackgroundTask { (newContext) in
+            let fetchRequest = NSFetchRequest<Self>(entityName: Self.recordType)
+            let predicate = NSPredicate(format: "recordName == %@", record.recordID.recordName)
+            fetchRequest.predicate = predicate
+            matchingObjects = (try? context.fetch(fetchRequest))
+            group.leave()
+        }
+        group.wait()
         guard let matchingObject = matchingObjects?.first else {
             return createNewModel(from: record, in: context)
         }
@@ -72,11 +84,6 @@ extension CloudKitSynchable where Self: NSManagedObject {
             return matchingObject
         }
         updateObjectStoredProperties(from: record, object: matchingObject)
-        do {
-            try context.save()
-        } catch let error {
-            NSLog("Failed to save updated model after loading from CloudKit. Error: \(error.localizedDescription)")
-        }
         return matchingObject
     }
     
@@ -84,11 +91,6 @@ extension CloudKitSynchable where Self: NSManagedObject {
         let object = Self.init(context: context)
         updateObjectStoredProperties(from: record, object: object)
         guard initializeRelationshipsFromReferences(record, model: object) else { return nil }
-        do {
-            try context.save()
-        } catch let error {
-            NSLog("Failed to save model initialized from CloudKit. Error: \(error.localizedDescription)")
-        }
         return object
     }
     
@@ -98,7 +100,25 @@ extension CloudKitSynchable where Self: NSManagedObject {
             //This is so that we will only try to initialize stored properties from the record at this time as relationships must be handled separately.
             if object.entity.attributesByName.keys.contains(key){
                 object.setValue(value, forKey: key)
+//                if let asset = value as? CKAsset {
+//                    try? object.setValue(Data.init(contentsOf: asset.fileURL), forKey: key)
+//                }else{
+//                    object.setValue(value, forKey: key)
+//                }
             }
         }
+    }
+    
+    private func temporaryURL(data: Data) -> URL? {
+        let tempDirectory = NSTemporaryDirectory()
+        let tempDirectoryURL = URL(fileURLWithPath: tempDirectory)
+        let fileURL = tempDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+        do {
+            try data.write(to: fileURL, options: [.atomic])
+        } catch let error {
+            NSLog("Failed to produce valid temp url for data because the data could not be written to a temporary directory: \(error.localizedDescription)")
+            return nil
+        }
+        return fileURL
     }
 }

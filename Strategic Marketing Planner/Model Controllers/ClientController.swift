@@ -28,8 +28,18 @@ class ClientController {
     var currentClient: Client?
     
     private init(){
-        CloudKitManager.shared.fetchChanges { (success) in
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        CloudKitManager.shared.fetchChanges {[weak self] (success) in
             if !success { NSLog("Failed to update from stored record.") }
+            if success {
+                DispatchQueue.main.async {
+                    self?.delegate?.clientsUpdated()
+                }
+            }
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                try? CoreDataStack.context.save()
+            }
         }
     }
     
@@ -167,10 +177,16 @@ class ClientController {
     }
     
     func updateImage(for client: Client, toImage image: UIImage){
-        client.imageData = UIImageJPEGRepresentation(image, 1)
+        let recordSizeLimit = 300_000
+        var quality: CGFloat = 1
+        var imageData = UIImageJPEGRepresentation(image, quality)
+        while ((imageData?.count ?? 0) / recordSizeLimit) > 1 {
+            quality -= 0.1
+            imageData = UIImageJPEGRepresentation(image, quality)
+        }
+        client.imageData = imageData
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//
         save()
     }
     
