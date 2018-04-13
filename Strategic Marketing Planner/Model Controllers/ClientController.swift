@@ -50,14 +50,12 @@ class ClientController {
         client.marketingPlan = plan
         client.marketingPlan?.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
     func changePracticeType(for client: Client, to practiceType: Client.PracticeType){
         client.practiceType = practiceType.rawValue
         client.marketingPlan = MarketingPlan(practiceType: practiceType)
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -70,7 +68,6 @@ class ClientController {
             option.isActive = !option.isActive
             option.lastModificationTimestamp = Date().timeIntervalSince1970
             client.recordModified = true
-//            updateClientBackup(client: client)
             save()
         }
     }
@@ -80,7 +77,6 @@ class ClientController {
         externalMarketingOption.name = focus.rawValue
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -89,7 +85,6 @@ class ClientController {
         externalMarketingOption.price = budget as NSDecimalNumber
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -98,7 +93,6 @@ class ClientController {
         externalMarketingOption.isActive = true
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -107,7 +101,6 @@ class ClientController {
         externalMarketingOption.isActive = false
         externalMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -117,7 +110,6 @@ class ClientController {
         startupMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         startupMarketingOption.isActive = price > 0
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -126,7 +118,6 @@ class ClientController {
         b2bMarketingOption.name = focus.rawValue
         b2bMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -136,7 +127,6 @@ class ClientController {
         b2bMarketingOption.isActive = price > 0
         b2bMarketingOption.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -152,7 +142,6 @@ class ClientController {
         client.zip = zip
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -160,7 +149,6 @@ class ClientController {
         client.monthlyBudget = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -168,7 +156,6 @@ class ClientController {
         client.currentProduction = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -176,7 +163,6 @@ class ClientController {
         client.productionGoal = amount as NSDecimalNumber
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
         save()
     }
     
@@ -184,7 +170,7 @@ class ClientController {
         client.imageData = UIImageJPEGRepresentation(image, 1)
         client.lastModificationTimestamp = Date().timeIntervalSince1970
         client.recordModified = true
-//        updateClientBackup(client: client)
+//
         save()
     }
     
