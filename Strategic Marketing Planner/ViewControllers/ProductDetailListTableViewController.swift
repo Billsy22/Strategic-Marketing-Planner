@@ -50,7 +50,6 @@ class ProductDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //collectionViewHeight.constant = CGFloat(numberOfRows) * cellHeight
         setupCollectionViewDimensions(numberOfColumns: 2)
     }
     
@@ -88,20 +87,11 @@ extension ProductDetailViewController: UICollectionViewDataSource, UICollectionV
         return productImageCount
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 20
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 20
-    //    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as? ProductDetailCollectionViewCell else { return UICollectionViewCell() }
         guard let prodcut = product else { return UICollectionViewCell() }
         let productImages = prodcut.images[indexPath.row]
         
-        //cell.productDetailImageView.image = ProductController.shared.productImage(indexPath: indexPath)
         cell.productDetailImageView.image = productImages
         
         return cell
