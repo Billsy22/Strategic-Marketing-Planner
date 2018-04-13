@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CeT-hd-r2e">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Product Detail Collection View Controller-->
+        <scene sceneID="1cB-HM-kdE">
+            <objects>
+                <collectionViewController id="CeT-hd-r2e" customClass="ProductDetailCollectionViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="J0s-FE-eGN">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OPp-5H-IYO">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="192"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductPhotoCell" id="UGf-03-7WL" customClass="PhotoCollectionViewCell" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="192" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jlb-Ed-bqD">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Jlb-Ed-bqD" secondAttribute="bottom" id="JC9-au-mT9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jlb-Ed-bqD" secondAttribute="trailing" id="VSw-Yi-Qc4"/>
+                                    <constraint firstItem="Jlb-Ed-bqD" firstAttribute="leading" secondItem="UGf-03-7WL" secondAttribute="leading" id="fvX-po-pNk"/>
+                                    <constraint firstItem="Jlb-Ed-bqD" firstAttribute="top" secondItem="UGf-03-7WL" secondAttribute="top" id="hCh-lp-amV"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="Jlb-Ed-bqD" id="lbc-b6-5Cp"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ProductDetailHeaderCollectionReuasableView" id="ohE-n3-rVK" customClass="ProductDetailHeaderCollectionReusableView" customModule="Strategic_Marketing_Planner" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="192"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="(title)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uye-h5-ev4">
+                                    <rect key="frame" x="16" y="16" width="68" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(description)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQG-wf-hJD">
+                                    <rect key="frame" x="16" y="60" width="137.5" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="What's Included:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qa9-0a-WwV">
+                                    <rect key="frame" x="16" y="98" width="216" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(included items)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeH-kD-AaJ">
+                                    <rect key="frame" x="16" y="142" width="173.5" height="42"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="PeH-kD-AaJ" firstAttribute="top" secondItem="Qa9-0a-WwV" secondAttribute="bottom" constant="8" id="8s0-Pc-w9M"/>
+                                <constraint firstItem="uye-h5-ev4" firstAttribute="top" secondItem="ohE-n3-rVK" secondAttribute="topMargin" constant="8" id="DIe-xu-ixj"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uye-h5-ev4" secondAttribute="trailing" constant="8" id="ENG-QK-1sU"/>
+                                <constraint firstItem="Qa9-0a-WwV" firstAttribute="top" secondItem="pQG-wf-hJD" secondAttribute="bottom" constant="8" id="K1r-02-dwI"/>
+                                <constraint firstItem="PeH-kD-AaJ" firstAttribute="leading" secondItem="ohE-n3-rVK" secondAttribute="leadingMargin" constant="8" id="Oba-9n-Oj5"/>
+                                <constraint firstItem="Qa9-0a-WwV" firstAttribute="leading" secondItem="ohE-n3-rVK" secondAttribute="leadingMargin" constant="8" id="Z6v-hH-OfD"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PeH-kD-AaJ" secondAttribute="trailing" constant="8" id="aZ8-oQ-OpO"/>
+                                <constraint firstItem="uye-h5-ev4" firstAttribute="leading" secondItem="ohE-n3-rVK" secondAttribute="leadingMargin" constant="8" id="bp8-FX-EPC"/>
+                                <constraint firstItem="pQG-wf-hJD" firstAttribute="top" secondItem="uye-h5-ev4" secondAttribute="bottom" constant="8" id="fjQ-OQ-4Nw"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qa9-0a-WwV" secondAttribute="trailing" constant="8" id="kOs-U8-vB3"/>
+                                <constraint firstItem="pQG-wf-hJD" firstAttribute="leading" secondItem="ohE-n3-rVK" secondAttribute="leadingMargin" constant="8" id="pkY-IB-vzF"/>
+                                <constraint firstAttribute="bottom" secondItem="PeH-kD-AaJ" secondAttribute="bottom" constant="8" id="saF-EF-1so"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pQG-wf-hJD" secondAttribute="trailing" constant="8" id="w3O-dD-uVh"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="descriptionLabel" destination="pQG-wf-hJD" id="qQ6-AD-yfc"/>
+                                <outlet property="includedItemsLabel" destination="PeH-kD-AaJ" id="NWK-MK-xMD"/>
+                                <outlet property="titleLabel" destination="uye-h5-ev4" id="Bmr-Oi-aI2"/>
+                                <outlet property="whatsIncludedLabel" destination="Qa9-0a-WwV" id="2fM-I0-LYK"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="CeT-hd-r2e" id="oNQ-Tf-w85"/>
+                            <outlet property="delegate" destination="CeT-hd-r2e" id="LRI-yA-Jbi"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rnk-8r-dZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103.7109375" y="-5.46875"/>
+        </scene>
+    </scenes>
+</document>
