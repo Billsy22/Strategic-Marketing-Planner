@@ -1,0 +1,35 @@
+//
+//  NextStepsViewController.swift
+//  Strategic Marketing Planner
+//
+//  Created by Steven Brown on 4/3/18.
+//  Copyright © 2018 Christopher Thiebaut. All rights reserved.
+//
+
+import UIKit
+
+class NextStepsViewController: UIViewController {
+    
+<<<<<<< HEAD
+=======
+    @IBOutlet weak var headerLabel: UILabel!
+>>>>>>> steven
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+<<<<<<< HEAD
+=======
+        formatHeaderLabel()
+        formatTotalPriceLabel()
+    }
+    
+    func formatHeaderLabel() {
+        headerLabel.textColor = .brandOrange
+    }
+    
+    func formatTotalPriceLabel() {
+>>>>>>> steven
+        totalPriceLabel.text = "$0/$5000"
+    }
+}

@@ -8,10 +8,18 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 extension Client {
     
-    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, context: NSManagedObjectContext = CoreDataStack.context){
+    static let practiceTypes = [PracticeType.general, PracticeType.startup, PracticeType.specialty]
+    
+    var image: UIImage? {
+        guard let imageData = imageData else { return nil }
+        return UIImage(data: imageData)
+    }
+    
+    convenience init(firstName: String, lastName: String, practiceName: String, phone: String, email: String, address: String, city: String?, state: String?, zip: String, initialContact: Date, notes: String? = nil, image: UIImage? = nil, practiceType: PracticeType = .general, context: NSManagedObjectContext = CoreDataStack.context){
         self.init(context: context)
         
         self.firstName = firstName
@@ -25,14 +33,30 @@ extension Client {
         self.zip = zip
         self.contactDate = initialContact
         self.notes = notes
+        self.practiceType = practiceType.rawValue
         if let image = image {
             let imageData = UIImageJPEGRepresentation(image, 1)
             self.imageData = imageData
         }
+        self.marketingPlan = MarketingPlan(practiceType: practiceType,targetContext: context)
+        self.monthlyBudget = 0
+        self.currentProduction = 0
+        self.productionGoal = 0
+        self.recordModified = true
+        lastModificationTimestamp = Date().timeIntervalSince1970
     }
     
     func matches(searchString: String) -> Bool {
         return firstName?.contains(searchString) ?? false || lastName?.contains(searchString) ?? false || practiceName?.contains(searchString) ?? false
     }
     
+    enum PracticeType: String {
+        case startup
+        case general
+        case specialty
+    }
+    
 }
+
+//The empty implementation is sufficient as parent objects do not have CKReferences to their children in CloudKit.
+extension Client: CloudKitSynchable {}

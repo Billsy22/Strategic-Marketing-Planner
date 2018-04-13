@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cE0-MQ-xVU">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Marketing Options View Controller-->
+        <scene sceneID="BpI-bV-1Gl">
+            <objects>
+                <viewController storyboardIdentifier="marketingOptionsVC" id="cE0-MQ-xVU" customClass="MarketingOptionsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qce-XN-Lmp">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-yw-fmb">
+                                <rect key="frame" x="50" y="20" width="924" height="73.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="bym-aU-qkD">
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foundation Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciG-Sv-3DA">
+                                                <rect key="frame" x="0.0" y="0.0" width="694.5" height="44.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                <color key="textColor" red="0.82745098039215681" green="0.4823529411764706" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="$0/$5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UZ-Iw-wU2">
+                                                <rect key="frame" x="694.5" y="18" width="229.5" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8UZ-Iw-wU2" secondAttribute="trailing" id="Uaf-Bg-r68"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foundation items enhance all your marketing efforts and ensure increased effectiveness." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWr-Va-iLZ">
+                                        <rect key="frame" x="0.0" y="49.5" width="844" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bym-aU-qkD" firstAttribute="leading" secondItem="YsB-yw-fmb" secondAttribute="leading" id="ZXF-50-tkM"/>
+                                    <constraint firstAttribute="trailing" secondItem="RWr-Va-iLZ" secondAttribute="trailing" constant="80" id="a6v-V7-yRY"/>
+                                    <constraint firstItem="bym-aU-qkD" firstAttribute="top" secondItem="YsB-yw-fmb" secondAttribute="top" id="jLn-ST-OXU"/>
+                                    <constraint firstAttribute="trailing" secondItem="bym-aU-qkD" secondAttribute="trailing" id="xQc-J0-dil"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioV-Yz-sI6">
+                                <rect key="frame" x="50" y="113.5" width="894" height="646.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ioV-Yz-sI6" firstAttribute="top" secondItem="YsB-yw-fmb" secondAttribute="bottom" constant="20" id="2lR-yD-fWG"/>
+                            <constraint firstItem="b04-tF-oD6" firstAttribute="trailing" secondItem="YsB-yw-fmb" secondAttribute="trailing" constant="50" id="9IC-TW-bdt"/>
+                            <constraint firstItem="YsB-yw-fmb" firstAttribute="leading" secondItem="b04-tF-oD6" secondAttribute="leading" constant="50" id="BCR-5e-5M1"/>
+                            <constraint firstItem="b04-tF-oD6" firstAttribute="trailing" secondItem="ioV-Yz-sI6" secondAttribute="trailing" constant="80" id="Tr9-Cg-GKm"/>
+                            <constraint firstItem="b04-tF-oD6" firstAttribute="bottom" secondItem="ioV-Yz-sI6" secondAttribute="bottom" constant="8" id="eVA-j1-q4y"/>
+                            <constraint firstItem="ioV-Yz-sI6" firstAttribute="leading" secondItem="b04-tF-oD6" secondAttribute="leading" constant="50" id="pKG-Ct-D6n"/>
+                            <constraint firstItem="YsB-yw-fmb" firstAttribute="top" secondItem="qce-XN-Lmp" secondAttribute="top" constant="20" id="y5U-rV-XQf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b04-tF-oD6"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerLabel" destination="ciG-Sv-3DA" id="Hr7-hT-G50"/>
+                        <outlet property="marketingOptionsTableview" destination="ioV-Yz-sI6" id="J0F-2z-Etz"/>
+                        <outlet property="summaryLabel" destination="RWr-Va-iLZ" id="EPV-uS-sfl"/>
+                        <outlet property="totalPriceLabel" destination="8UZ-Iw-wU2" id="MbD-Up-SF3"/>
+                        <segue destination="FGQ-X1-2uc" kind="presentation" identifier="presentProductDetailModal" modalPresentationStyle="pageSheet" id="VvC-11-NeJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wDO-zQ-zHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-308.203125" y="-63.28125"/>
+        </scene>
+        <!--ProductDetail-->
+        <scene sceneID="fbe-Vc-i0f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductDetail" id="FGQ-X1-2uc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5D-8D-tff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="-63"/>
+        </scene>
+    </scenes>
+</document>

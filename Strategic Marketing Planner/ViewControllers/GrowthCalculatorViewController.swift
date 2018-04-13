@@ -10,93 +10,156 @@ import UIKit
 
 class GrowthCalculatorViewController: UIViewController {
     
-    @IBOutlet weak var currentProductionTextfield: UITextField!
+    // MARK: -  Properties and Outlets
+    @IBOutlet weak var currentProductionTextField: UITextField!
     @IBOutlet weak var productionGoalTextField: UITextField!
+    @IBOutlet weak var desiredGrowthTextField: UITextField!
+    @IBOutlet weak var monthlyMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var annualMarketingBudgetTextField: UITextField!
+    @IBOutlet weak var lowEndReturnTextField: UITextField!
+    @IBOutlet weak var highEndReturnTextField: UITextField!
+    @IBOutlet weak var averageReturnTextField: UITextField!
+    @IBOutlet weak var estimatedGrowthTextField: UITextField!
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var barGraphView: BarGraphView!
     
-    var currentProduction: Decimal = 0 {
-        didSet {
-            updateComputedValues()
-        }
+    let growthCalc = GrowthCalculator()
+    let clientController = ClientController.shared
+    var client: Client? {
+        return clientController.currentClient
     }
-    var productionGoal: Decimal = 0 {
-        didSet {
-            updateComputedValues()
-        }
-    }
-    var desiredGrowth: Decimal { return productionGoal - currentProduction }
-
-    @IBOutlet weak var desiredGrowthLabel: UILabel!
     
+    // MARK: -  Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentProductionTextfield.setAsNumericKeyboard()
+        currentProductionTextField.delegate = self
+        currentProductionTextField.setAsNumericKeyboard()
+        productionGoalTextField.delegate = self
         productionGoalTextField.setAsNumericKeyboard()
-        updateComputedValues()
-        // Do any additional setup after loading the view.
-        var points: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 100_001 * position)
-            points.append(newPoint)
-        }
-        var morePoints: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 150_000 * position)
-            morePoints.append(newPoint)
-        }
-        var points2: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 110_001 * position)
-            points2.append(newPoint)
-        }
-        var points3: [CGPoint] = []
-        for position in 1...5 {
-            let newPoint = CGPoint(x: position, y: 110_001 * position)
-            points3.append(newPoint)
-        }
-
-        lineChartView.addDataSeries(points: points, color: .blue, labelText: "Cumulative Return")
-        lineChartView.addDataSeries(points: morePoints, color: .black, labelText: "Desired Growth")
-        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Another Series")
-        lineChartView.addDataSeries(points: points2, color: .green, labelText: "Yet Another Series")
-    }
-
-    func updateComputedValues(){
-        desiredGrowthLabel.text = "\(desiredGrowth)"
+        desiredGrowthTextField.delegate = self
+        desiredGrowthTextField.isEnabled = false
+        monthlyMarketingBudgetTextField.delegate = self
+        monthlyMarketingBudgetTextField.setAsNumericKeyboard()
+        annualMarketingBudgetTextField.delegate = self
+        annualMarketingBudgetTextField.isEnabled = false
+        lowEndReturnTextField.delegate = self
+        lowEndReturnTextField.isEnabled = false
+        highEndReturnTextField.delegate = self
+        highEndReturnTextField.isEnabled = false
+        averageReturnTextField.delegate = self
+        averageReturnTextField.isEnabled = false
+        estimatedGrowthTextField.delegate = self
+        estimatedGrowthTextField.isEnabled = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        restoreState()
+        updateComputedValues()
     }
-    */
 
+    // MARK: -  Update Views
+    func updateComputedValues(){
+        desiredGrowthTextField.text = "$\(Int(growthCalc.desiredGrowth))"
+        annualMarketingBudgetTextField.text = "$\(Int(growthCalc.annualizedBudget))"
+        lowEndReturnTextField.text = "$\(Int(growthCalc.lowEndReturn))"
+        highEndReturnTextField.text = "$\(Int(growthCalc.highEndReturn))"
+        averageReturnTextField.text = "$\(Int(growthCalc.averageReturn))"
+        estimatedGrowthTextField.text = "\(growthCalc.growthPercentage)"
+        updateGraphs()
+    }
+    
+    func updateGraphs() {
+        barGraphView.clearBarData()
+        barGraphView.addBarData(data: growthCalc.averageReturn, dataLabelText: "Estimated Average Return", color: .returnGreen)
+        barGraphView.addBarData(data: growthCalc.desiredGrowth, dataLabelText: "Desired Growth", color: .black)
+        barGraphView.addBarData(data: growthCalc.productionGoal, dataLabelText: "12 Month Production Goal", color: .goalBlue)
+        barGraphView.addBarData(data: growthCalc.currentProduction, dataLabelText: "Current Production(Last 12 Months)", color: .currentBlue)
+        lineChartView.clearLineData()
+        lineChartView.addDataSeries(points: growthCalc.goal, color: .black, labelText: "Goal", showLines: true, showCircles: false)
+        lineChartView.addDataSeries(points: growthCalc.cumulativeROI, color: .goalBlue, labelText: "Cululative ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearlyInvestment, color: .lightGray, labelText: "Yearly Investment", showLines: false)
+        lineChartView.addDataSeries(points: growthCalc.yearOneROI, color: .returnGreen, labelText: "Yr 1 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearTwoROI, color: .returnGreen, labelText: "Yr 2 - Annual ROI", showLines:  true)
+        lineChartView.addDataSeries(points: growthCalc.yearThreeROI, color: .returnGreen, labelText: "Yr 3 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearFourROI, color: .returnGreen, labelText: "Yr 4 - Annual ROI", showLines: true)
+        lineChartView.addDataSeries(points: growthCalc.yearFiveROI, color: .returnGreen, labelText: "Yr 5 - Annual ROI", showLines: true)
+    }
     
     @IBAction func currentProductionEntered(_ sender: UITextField) {
-        guard let text = sender.text, let value = Decimal(string: text) else {
-            currentProduction = 0
+        var text = sender.text
+        text?.removeFirst()
+        guard let valueAsString = text else { return }
+        guard let value = Double(valueAsString) else {
+            growthCalc.currentProduction = 0
             return
         }
-        currentProduction = value
+        growthCalc.currentProduction = CGFloat(value)
+        updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateCurrentProduction(for: client, withAmount: Decimal(value))
     }
     
     @IBAction func productionGoalEntered(_ sender: UITextField) {
-        guard let text = sender.text, let value = Decimal(string: text) else {
-            productionGoal = 0
+        var text = sender.text
+        text?.removeFirst()
+        guard let valueAsString = text else { return }
+        guard let value = Double(valueAsString) else {
+            growthCalc.productionGoal = 0
             return
         }
-        productionGoal = value
+        growthCalc.productionGoal = CGFloat(value)
+        updateComputedValues()
+        guard let client = client else { return }
+        clientController.updateProductionGoal(for: client, withAmount: Decimal(value))
+    }
+    
+    @IBAction func monthlyMarketingBudgetEntered(_ sender: UITextField) {
+        var text = sender.text
+        text?.removeFirst()
+        guard let valueAsString = text else { return }
+        guard let value = Double(valueAsString) else {
+            growthCalc.monthlyBudget = 0
+            return
+        }
+        growthCalc.monthlyBudget = CGFloat(value)
+        updateComputedValues()
+        let budgetAsDecimal = Decimal(value)
+        guard let client = client else { return }
+        clientController.updateMonthlyBudget(for: client, withAmount: budgetAsDecimal)
+    }
+    
+    private func restoreState(){
+        guard let client = ClientController.shared.currentClient, let monthlyBudget = client.monthlyBudget, let currentProduction = client.currentProduction, let productionGoal = client.productionGoal else { return }
+        monthlyMarketingBudgetTextField.text = "$\(monthlyBudget)"
+        monthlyMarketingBudgetEntered(monthlyMarketingBudgetTextField)
+        //growthCalc.monthlyBudget = CGFloat(truncating: monthlyBudget)
+        currentProductionTextField.text = "$\(currentProduction)"
+        currentProductionEntered(currentProductionTextField)
+        //growthCalc.currentProduction = CGFloat(truncating: currentProduction)
+        productionGoalTextField.text = "$\(productionGoal)"
+        productionGoalEntered(productionGoalTextField)
+//        growthCalc.productionGoal = CGFloat(truncating: productionGoal)
     }
 }
 
+// MARK: -  TextFieldDelegate and resign keyboard extension
 extension GrowthCalculatorViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true
+        view.layoutIfNeeded()
+        return false
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var allowedChars = CharacterSet.decimalDigits
+        allowedChars.insert(charactersIn: ".")
+        return CharacterSet(charactersIn: string).isSuperset(of: allowedChars)
+    }
+
 }

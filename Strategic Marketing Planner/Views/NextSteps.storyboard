@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K8t-CR-E1u">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Next Steps View Controller-->
+        <scene sceneID="F54-FX-emA">
+            <objects>
+                <viewController id="K8t-CR-E1u" customClass="NextStepsViewController" customModule="Strategic_Marketing_Planner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aM2-No-8cY">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="GGr-2C-S0Y">
+                                <rect key="frame" x="50" y="40" width="924" height="284.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aid-HM-aIn">
+                                        <rect key="frame" x="0.0" y="0.0" width="924" height="99.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="sQH-pq-aD8">
+                                                <rect key="frame" x="0.0" y="0.0" width="924" height="44.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Congratulations!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHM-NI-aOa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="754.5" height="44.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                                        <color key="textColor" red="0.87058823529411766" green="0.45098039215686275" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(total price goes here)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1c-Bq-mU0">
+                                                        <rect key="frame" x="754.5" y="0.0" width="169.5" height="44.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="c1c-Bq-mU0" firstAttribute="height" secondItem="sQH-pq-aD8" secondAttribute="height" id="Ibc-JQ-5jm"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-e1-4He">
+                                                <rect key="frame" x="0.0" y="49.5" width="918" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9N0-6G-JfD"/>
+                                                </constraints>
+                                                <string key="text">We are so excited to start working with you on your marketing plan. Here is what you can expect to happen within the next 48 hours.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="IeT-e1-4He" firstAttribute="leading" secondItem="aid-HM-aIn" secondAttribute="leading" id="3ZB-em-UlZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="sQH-pq-aD8" secondAttribute="trailing" id="l2P-KR-4Lu"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="k8M-PE-diM">
+                                        <rect key="frame" x="0.0" y="139.5" width="924" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orientation Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIc-Tv-QVe">
+                                                <rect key="frame" x="0.0" y="0.0" width="141" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-Sg-SYY">
+                                                <rect key="frame" x="0.0" y="28.5" width="909" height="24"/>
+                                                <string key="text">To kick everything off we will schedule an orientation call. The purpose of this call is to align expectations, present your timeline, and introduce you to your marketing team.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="QY7-Sg-SYY" firstAttribute="width" relation="lessThanOrEqual" secondItem="k8M-PE-diM" secondAttribute="width" id="7VB-Yd-9BX"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Yj-sP-Lv2">
+                                        <rect key="frame" x="0.0" y="232" width="861" height="52.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-zf-tf7">
+                                                <rect key="frame" x="0.0" y="0.0" width="861" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-S0-kic">
+                                                <rect key="frame" x="0.0" y="28.5" width="861" height="24"/>
+                                                <string key="text">Your Dental Branding Marketing Strategist  will work with you to establish an ideal timeline for the completion of your custom marketing plan. Everything will be implemented according to the defined timeline.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="aOs-zf-tf7" secondAttribute="trailing" id="6KD-kl-WF1"/>
+                                            <constraint firstItem="VFw-S0-kic" firstAttribute="width" relation="lessThanOrEqual" secondItem="4Yj-sP-Lv2" secondAttribute="width" id="a8E-0Q-god"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aid-HM-aIn" firstAttribute="leading" secondItem="GGr-2C-S0Y" secondAttribute="leading" id="1Au-Pa-A5t"/>
+                                    <constraint firstAttribute="trailing" secondItem="aid-HM-aIn" secondAttribute="trailing" id="3At-tm-HEJ"/>
+                                    <constraint firstItem="aid-HM-aIn" firstAttribute="top" secondItem="GGr-2C-S0Y" secondAttribute="top" id="CGC-HI-7QW"/>
+                                    <constraint firstAttribute="trailing" secondItem="k8M-PE-diM" secondAttribute="trailing" id="CON-ek-zZq"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Yj-sP-Lv2" secondAttribute="bottom" id="SYT-D7-pd4"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GGr-2C-S0Y" firstAttribute="top" secondItem="GQK-O6-fJp" secondAttribute="top" constant="20" id="H3L-tt-fdq"/>
+                            <constraint firstItem="GGr-2C-S0Y" firstAttribute="width" secondItem="GQK-O6-fJp" secondAttribute="width" constant="-100" id="Sdz-KT-B40"/>
+                            <constraint firstItem="GGr-2C-S0Y" firstAttribute="centerX" secondItem="aM2-No-8cY" secondAttribute="centerX" id="gYt-zT-Yne"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GQK-O6-fJp"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerLabel" destination="iHM-NI-aOa" id="ywY-eg-HpN"/>
+                        <outlet property="totalPriceLabel" destination="c1c-Bq-mU0" id="N8a-Fl-mlW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oIM-wY-jLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86.71875" y="137.5"/>
+        </scene>
+    </scenes>
+</document>

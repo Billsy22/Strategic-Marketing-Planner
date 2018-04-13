@@ -14,8 +14,7 @@ private let segueIdentifier = "toProductDetailPDF"
 class ProductsCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
-    let productsArray: [String] = ["SEO", "Ad Design", "Adwords", "Referral System", "Call Training", "Custom Logo", "Responsive Website", "Marketing Strategy", "Video & Photo", "Tri-fold Brochures", "Brand Definition", "Ancillary Services", "Postcard", "Internet Review", "Email Campaign", "Smile Savings System", "Reactivation System", "Case Acceptance", "Open House", "Mini-Zine Mailer", "Door Hangers", "8-Page Brochures", "Movie Theater Ad", "Radio Ad", "Facebook Jumpstart", "Facebook Outreach", "Result Tracking"]
-    //let imagesArray: [UIImage] = [#imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable"), #imageLiteral(resourceName: "imageNotAvailable")]
+    let productsArray = ["SEO", "Ad Design", "Adwords", "Referral System", "Call Training", "Custom Logo", "Responsive Website", "Marketing Strategy", "Video & Photo", "Tri-fold Brochures", "Brand Definition", "Ancillary Services", "Postcard", "Internet Review", "Email Campaign", "Smile Savings System", "Reactivation System", "Case Acceptance", "Open House", "Mini-Zine Mailer", "Door Hangers", "8-Page Brochures", "Movie Theater Ad", "Radio Ad", "Facebook Jumpstart", "Facebook Outreach", "Result Tracking"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,8 @@ class ProductsCollectionViewController: UICollectionViewController {
             let cell = sender as? ProductCollectionViewCell,
             let indexPath = collectionView?.indexPath(for: cell) {
             let detailVC = segue.destination as? ProductDetailPDFViewController
-            let product = productsArray[indexPath.row]
+            let sortedArray = productsArray.sorted()
+            let product = sortedArray[indexPath.row]
             detailVC?.product = product
         }
     }
@@ -45,9 +45,9 @@ class ProductsCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        cell.productNameLabel.text = productsArray[indexPath.row]
-        cell.productImageView.image = #imageLiteral(resourceName: "imageNotAvailable") //imagesArray[indexPath.row]
-        // TODO: - Need to implement photos for product cells.
+        let sortedArray = productsArray.sorted()
+        cell.productNameLabel.text = sortedArray[indexPath.row]
+        cell.productImageView.image = #imageLiteral(resourceName: "genericProductImage")
         return cell
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientListTableViewController: UITableViewController, UISearchBarDelegate, ClientControllerDelegate {
+class ClientListTableViewController: UITableViewController, UISearchBarDelegate, ClientControllerDelegate, AddClientDelegate {
     
     // MARK: - Properties
     @IBOutlet weak var searchBar: UISearchBar!
@@ -158,7 +158,16 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
             let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
             let client = sections[indexPath.section][indexPath.row]
             addClientVC?.client = client
+            addClientVC?.delegate = self
+        } else if segue.identifier == "toAddClient" {
+            let detailVC = segue.destination as? UINavigationController
+            let addClientVC = detailVC?.viewControllers.first as? AddClientModalViewController
+            addClientVC?.delegate = self
         }
+    }
+    
+    func presentationStarting() {
+        tabBarController?.selectedIndex = 1
     }
     
     // MARK: - Alerts
@@ -170,7 +179,6 @@ class ClientListTableViewController: UITableViewController, UISearchBarDelegate,
         })
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.clientController.removeClient(client)
-            self.dismiss(animated: true, completion: nil)
             print("Client Deleted")
         }
         deleteConfirmationAlert.addAction(cancelAction)
