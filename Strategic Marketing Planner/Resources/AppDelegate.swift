@@ -65,21 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler(UIBackgroundFetchResult.failed)
             }
         }
-//        guard let notification = CKNotification(fromRemoteNotificationDictionary: userInfo) as? CKQueryNotification else {
-//            completionHandler(UIBackgroundFetchResult.noData)
-//            return
-//        }
-//        if let recordName = notification.recordFields?["recordName"] as? String {
-//            guard let client = ClientController.shared.getClientWithRecordName(recordName: recordName) else {
-//                completionHandler(UIBackgroundFetchResult.noData)
-//                return
-//            }
-//            ClientController.shared.removeClient(client)
-//            completionHandler(UIBackgroundFetchResult.newData)
-//        }else{
-//            ClientController.shared.loadCloudBackup()
-//            completionHandler(UIBackgroundFetchResult.newData)
-//        }
     }
 }
 
